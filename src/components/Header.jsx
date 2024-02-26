@@ -1,14 +1,14 @@
 
 export function Header () {
     return (
-        <div className="flex ">
-            <img src="" alt="logo_bloomsterly" />
-            <div className="flex">
-                <a href="#" className="font-text">Nosotros</a>
-                <a href="#">Servicios</a>
-                <a href="#">Pedidos</a>
+        <nav className="flex bg-dark_theme h-16 justify-between items-center p-4 shadow-md shadow-purple-900">
+            <img src="" alt="logo_bloomsterly"  className=" text-white bg-transparent hover:bg-purple-900 px-3 py-1 rounded-lg"/>
+            <div className="flex gap-4">
+                <a href="#" className="font-title italic text-white text-lg bg-transparent hover:bg-purple-900 px-3 py-1 rounded-lg">Nosotros</a>
+                <a href="#" className="font-title italic text-white text-lg bg-transparent hover:bg-purple-900 px-3 py-1 rounded-lg">Servicios</a>
+                <a href="#" className="font-title italic text-white text-lg bg-transparent hover:bg-purple-900 px-3 py-1 rounded-lg">Pedidos</a>
             </div>
-            <h3>iniciar sesion</h3>
-        </div>
+            <h3 className="font-title italic text-white text-lg bg-transparent hover:bg-purple-900 px-3 py-1 rounded-lg">Iniciar sesion</h3>
+        </nav>
     )
 }

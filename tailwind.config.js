@@ -11,6 +11,10 @@ export default {
         'title' : ['Merriweather', 'Arial', 'sans-serif'],
         'subTitle' : ['Poppins', 'Arial', 'sans-serif'],
         'text' : ['Raleway', 'Arial', 'sans-serif'],
+      },
+      colors:{
+        'dark_theme': "#3c0764"
+
       }
     },
    
