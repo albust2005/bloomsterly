@@ -21,7 +21,7 @@ export function LandingPage() {
             </section>
             <section className='flex flex-col gap-5 px-10 md:px-16 lg:px-24 2xl:px-64 mb-3'>
                 <div>
-
+                    {/*Este es un link de conexion con CONOCE */}
                     <h1 
                     className='font-subTitle font-extrabold italic text-color_font_dark text-4xl md:text-8xl lg:text-9xl'
                     >
