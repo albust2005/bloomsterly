@@ -13,8 +13,8 @@ export default {
         'text' : ['Raleway', 'Arial', 'sans-serif'],
       },
       colors:{
-        'dark_theme': "#3c0764"
-
+        'dark_theme': "#3c0764",
+        'color_font_dark' : "#9173C4"
       }
     },
    
