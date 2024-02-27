@@ -10,18 +10,11 @@ import { PolaroidCard } from "./PolaroidCard";
 
 export function LandingPage() {
     return (
-<<<<<<< HEAD
+
         <main className='bg-dark_theme'>
             <Header />
             <section className=''>
                 <img className='aspect-auto w-full -mt-7' src={luces} alt="luces portada" />
-=======
-        <main>
-            <Header/>
-
-            <section>
-                <img src="../src/assets/luces_dark_theme.png" alt="" />
->>>>>>> 969b5b9f6a2aaa6fccf974076720bb0bab4918c7
             </section>
             <section>
                 {/*Seccion Nosotros*/}
