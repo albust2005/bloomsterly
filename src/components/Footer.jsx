@@ -13,7 +13,7 @@ export function Footer() {
             </article>
             <article className="flex flex-col place-content-center m-auto items-center">
                 <h1 className="font-bloomsterly text-2xl text-white">BloomSterly</h1>
-                <small className="text-white">Copyright 2024_nombregroup</small>
+                <small className="text-white">Copyright 2024 nombregroup</small>
             </article>
         </footer>
     )
