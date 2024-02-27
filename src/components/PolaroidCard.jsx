@@ -2,10 +2,10 @@ import PropTypes from 'prop-types'
 
 export function PolaroidCard({url, nombre, descripcion}) {
     return (
-        <article className='flex flex-col w-full 2xl:h-[600px] bg-white p-5 rounded-md gap-1'>
+        <article className='flex flex-col w-full 2xl:h-[600px] bg-white p-5 rounded-md gap-3  hover:scale-105 transition-all'>
             <img
-                className='w-full h-96 border-2 object-cover'
-                src={`${url}`}
+                className='w-full h-96 border-2 object-cover grayscale hover:grayscale-0 rounded-md transition-all duration-200 '
+                src={url}
                 alt='imagen servicio'
             ></img>
             <h1 
@@ -15,7 +15,7 @@ export function PolaroidCard({url, nombre, descripcion}) {
             </h1>
 
             <p>{descripcion}</p>
-        </article>
+        </article>   
     )
 } 
 
