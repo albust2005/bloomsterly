@@ -10,8 +10,10 @@ import { ThemeColor } from "./buttons/buttonThemeColor"
 
 
 import { PolaroidCard } from "./PolaroidCard";
+import { Flores } from "./Flores";
 
 export function LandingPage() {
+
   return (
 <<<<<<< HEAD
     <main className="bg-gradient-radial from-[#664B93] via-[#432474] to-dark_theme flex flex-col gap-16 
@@ -23,6 +25,15 @@ export function LandingPage() {
         dark:text-color_font_light ">
 =======
     <main className="bg-dark_theme flex flex-col gap-20">
+      <Flores
+        x='20'
+        y='20'
+        size='20'
+        color='black'
+      >
+      </Flores>
+
+
       <Header></Header>
       {/* BloomSterly */}
       <section className="">
@@ -36,7 +47,7 @@ export function LandingPage() {
       {/*Seccion Nosotros*/}
 
       <div className="flex flex-col gap:12 lg:gap-32">
-        
+
         <section className="h-full xl:flex gap-5 px-10 md:px-16 lg:px-24 2xl:px-64 mb-3">
 
           <article className="w-full xl:w-3/5 2xl:w-1/2">
