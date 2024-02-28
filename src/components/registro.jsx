@@ -20,35 +20,44 @@ export function Registrar() {
     //Registro 
     return(
         <main>
-            <h1>BloomSterly</h1>
-            {'Formulario Registro'}
-            <form onSubmit={handleSubmit(enviar)}>
+            <section>
+                <h1>BloomSterly</h1>
+                {'Formulario Registro'}
+                <form onSubmit={handleSubmit(enviar)}>
+                    <div>
+                        {'Sección registro nombre'}
+                        <label>Nombre</label>
+                        <input type="text" {...register('nombre', {
+                            required: true
+                        })}/>
+                        {'Validación del nombre (provicional)'}
+                        {errors.nombre?.type === 'required' && <p>El campo es requerido</p>}
+                    </div>
+                    <div>
+                        {'Sección registro Correo electronico'}
+                        <label>Correo Electronico</label>
+                        <input type="email" {...register('correo')}/>
+                    </div>
+                    <div>
+                        {'Sección contraseña'}
+                        <label>Contraseña</label>
+                        <input type="password" {...register('contrasena', {
+                            required: true
+                        })}/>
+                        {'Validación de la contraseña (provicional)'}
+                        {errors.contrasena?.type === 'required' && <p>EL campo es requerido</p>}
+                    </div>  
+                    {'Boton de envio de datos'}
+                    <input type="submit" value="Enviar"/>
+                </form>
+            </section>
+            <section>
+                <i></i>
                 <div>
-                    {'Sección registro nombre'}
-                    <label>Nombre</label>
-                    <input type="text" {...register('nombre', {
-                        required: true
-                    })}/>
-                    {'Validación del nombre (provicional)'}
-                    {errors.nombre?.type === 'required' && <p>El campo es requerido</p>}
+                    <p>Bienvenid@</p>
+                    <input type="submit" value={'Inicio Sesion'}/>
                 </div>
-                <div>
-                    {'Sección registro Correo electronico'}
-                    <label>Correo Electronico</label>
-                    <input type="email" {...register('correo')}/>
-                </div>
-                <div>
-                    {'Sección contraseña'}
-                    <label>Contraseña</label>
-                    <input type="password" {...register('contrasena', {
-                        required: true
-                    })}/>
-                    {'Validación de la contraseña (provicional)'}
-                    {errors.contrasena?.type === 'required' && <p>EL campo es requerido</p>}
-                </div>  
-                {'Boton de envio de datos'}
-                <input type="submit" value="Enviar"/>
-            </form>
+            </section>
         </main>
     )
 }
