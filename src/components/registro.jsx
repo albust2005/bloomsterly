@@ -19,11 +19,11 @@ export function Registrar() {
     //Registro 
     return(
         <main>
-            <section>
+            <section className='bg-orange-400'>
                 <h1>BloomSterly</h1>
                 {'Formulario Registro'}
                 <form onSubmit={handleSubmit(enviar)}>
-                    <div>
+                    <div className='bg-amber-300'>
                         {'Sección registro nombre'}
                         <label>Nombre</label>
                         <input type="text" {...register('nombre', {
