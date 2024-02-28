@@ -1,9 +1,8 @@
+
+import "../App.css";
+
 import { Header } from "./Header";
 import { Footer } from "./Footer";
-import "../App.css";
-//solucion para cuando no funcione la carga de imagenes
-//si encuentran otra avisen
-
 import { PolaroidCard } from "./PolaroidCard";
 
 export function LandingPage() {
@@ -22,29 +21,36 @@ export function LandingPage() {
       {/*Seccion Nosotros*/}
 
       <div className="flex flex-col gap-32">
-        <section className="flex gap-5 px-10 md:px-16 lg:px-24 2xl:px-64 mb-3 h-full bg-gray-800">
-          <article className=" bg-red-500">
+        <section className="h-full xl:flex gap-5 px-10 md:px-16 lg:px-24 2xl:px-64 mb-3">
+
+          <article className="w-full xl:w-3/5 2xl:w-1/2">
             <h1 className="font-subTitle font-extrabold italic text-color_font_dark text-5xl md:text-8xl lg:text-9xl">
               NOSOTROS
             </h1>
             <h2 className="font-text text-white text-2xl md:text-5xl lg:text-6xl ml-12 md:ml-16 lg:ml-20 -mt-5 md:-mt-7 lg:-mt-9 ">
               ¿Que hacemos?
             </h2>
-            <p className="text-white w-full pt-6 text-2xl md:text-4xl">
+            <p className="text-white w-full pt-6 text-1xl sm:text-2xl md:text-3xl lg-text-4xl">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto
               vero accusantium rem quas facilis, placeat modi, distinctio
               exercitationem ipsam necessitatibus vitae enim assumenda,
               asperiores optio dignissimos. Dolorum recusandae porro reiciendis.
             </p>
           </article>
-          <div className="flex justify-center bg-black">
-            <img src="../src/assets/img/nosotros_imagen_mesas.png" alt="" className=""/>
+
+          <div className="flex xl:w-2/5 2xl:w-1/2 justify-center">
+            <img 
+            className='aspect-auto w-full object-cover' 
+            src="../src/assets/img/nosotros_imagen_mesas.png" 
+            alt=""/>
           </div>
+
         </section>
 
 
         {/*Seccion Conoce*/}
         <section className="flex flex-col gap-5 px-10 md:px-16 lg:px-24 2xl:px-64 mb-3">
+
           <article>
             <h1 className="font-subTitle font-extrabold italic text-color_font_dark text-4xl md:text-8xl lg:text-9xl">
               CONOCE
@@ -55,7 +61,7 @@ export function LandingPage() {
             </h2>
           </article>
 
-          <article className="container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+          <article className="container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <PolaroidCard
               url={"../src/assets/img/musica_servicio.jpg"}
               nombre={"Musica"}
@@ -79,10 +85,14 @@ export function LandingPage() {
             <PolaroidCard />
             <PolaroidCard />
           </article>
+
         </section>
+
       </div>
 
       <Footer />
     </main>
   );
 }
+
+
