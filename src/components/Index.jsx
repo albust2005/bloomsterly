@@ -1,15 +1,15 @@
 
 import "../App.css";
-
 import { Header } from "./Header";
 import { Footer } from "./Footer";
+
+
 import { PolaroidCard } from "./PolaroidCard";
 
 export function LandingPage() {
   return (
     <main className="bg-dark_theme flex flex-col gap-16">
-      <Header />
-
+      <Header></Header>
       {/* BloomSterly */}
       <section className="">
         <h1 className="flex justify-center font-bloomsterly text-white text-7xl sm:text-8xl md:text-[170px] lg:text-[210px] xl:text-[250px]">
@@ -39,10 +39,10 @@ export function LandingPage() {
           </article>
 
           <div className="flex xl:w-2/5 2xl:w-1/2 justify-center">
-            <img 
-            className='aspect-auto w-full object-cover' 
-            src="../src/assets/img/nosotros_imagen_mesas.png" 
-            alt=""/>
+            <img
+              className='aspect-auto w-full object-cover xl:scale-115'
+              src="../src/assets/img/nosotros_imagen_mesas.png"
+              alt="" />
           </div>
 
         </section>
@@ -87,10 +87,8 @@ export function LandingPage() {
           </article>
 
         </section>
-
+        <Footer></Footer>
       </div>
-
-      <Footer />
     </main>
   );
 }
