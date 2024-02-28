@@ -2,6 +2,7 @@
 import "../App.css";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
+import { ThemeColor } from "./buttons/buttonThemeColor"
 
 
 import { PolaroidCard } from "./PolaroidCard";
@@ -87,6 +88,7 @@ export function LandingPage() {
           </article>
 
         </section>
+        <ThemeColor></ThemeColor>
         <Footer></Footer>
       </div>
     </main>

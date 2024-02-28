@@ -1,15 +1,17 @@
 import './App.css'
 
-import { ThemeColor } from './components/buttons/buttonThemeColor';
 import { LandingPage } from './components/Index'
-
+import { Registrar } from './components/registro'
+import { Route, Routes } from 'react-router'
 
 function App() {
   return (
-    <>
-      <LandingPage/>
-      <ThemeColor/>
-    </>
+    <div>
+      <Routes>
+        <Route path='/' element={<LandingPage/>}></Route>
+        <Route path='/login' element={<Registrar/>}></Route>
+      </Routes>
+    </div>
   )
 }
 
