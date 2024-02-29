@@ -29,7 +29,8 @@ export function LandingPage() {
 
           <article className="w-full xl:w-3/5 2xl:w-1/2">
             <h1 className="font-subTitle font-extrabold italic text-color_font_dark text-5xl md:text-8xl lg:text-9xl
-            dark:text-second_color_lt">
+            dark:text-second_color_lt animate-pulse hover:text-yellow-300 cursor-pointer
+            transition-all">
               NOSOTROS
             </h1>
             <h2 className="font-text text-white text-2xl md:text-5xl lg:text-6xl ml-12 md:ml-16 lg:ml-20 -mt-5 md:-mt-7 lg:-mt-9 
@@ -60,7 +61,8 @@ export function LandingPage() {
 
           <article>
             <h1 className="font-subTitle font-extrabold italic text-color_font_dark text-4xl 
-            md:text-8xl lg:text-9xl dark:text-second_color_lt">
+            md:text-8xl lg:text-9xl dark:text-second_color_lt animate-pulse
+            hover:text-yellow-300 cursor-pointer transition-all">
               CONOCE
             </h1>
 
@@ -90,9 +92,6 @@ export function LandingPage() {
               nombre={"Alimentacion"}
               descripcion={"Ofrecemos distintos de comida para tu evento"}
             />
-            <PolaroidCard />
-            <PolaroidCard />
-            <PolaroidCard />
           </article>
 
         </section>
