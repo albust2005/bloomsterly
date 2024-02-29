@@ -18,35 +18,26 @@ export function Registrar() {
 
     //Registro 
     return(
-        <main>
-            <section className='bg-orange-400'>
-                <h1>BloomSterly</h1>
-                {'Formulario Registro'}
+        <main className=''>
+            <section className="">
+                <h1 className="font-bloomsterly text-6xl">BloomSterly</h1>
+                {/*Formulario Registro*/}
                 <form onSubmit={handleSubmit(enviar)}>
                     <div>
-                        {'Sección registro nombre'}
-                        <label>Nombre</label>
-                        <input type="text" {...register('nombre', {
-                            required: true
-                        })}/>
-                        {'Validación del nombre (provicional)'}
-                        {errors.nombre?.type === 'required' && <p>El campo es requerido</p>}
-                    </div>
-                    <div>
-                        {'Sección registro Correo electronico'}
+                        {/*Sección registro Correo electronico*/}
                         <label>Correo Electronico</label>
                         <input type="email" {...register('correo')}/>
                     </div>
                     <div>
-                        {'Sección contraseña'}
+                        {/*Sección contraseña*/}
                         <label>Contraseña</label>
                         <input type="password" {...register('contrasena', {
                             required: true
                         })}/>
-                        {'Validación de la contraseña (provicional)'}
+                        {/*Validación de la contraseña (provicional)*/}
                         {errors.contrasena?.type === 'required' && <p>EL campo es requerido</p>}
                     </div>  
-                    {'Boton de envio de datos'}
+                    {/*Boton de envio de datos*/}
                     <input type="submit" value="Enviar"/>
                 </form>
             </section>

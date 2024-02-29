@@ -20,7 +20,8 @@ export default {
         'second_color_lt' :"#BC0B38",
         'nav_light_theme' : "#EEDAC7",
         'color_font_light' : "#3c0764",
-        'color_switch_theme_dark' : "#9173C4"
+        'color_switch_theme_dark' : "#9173C4",
+        'color_inicio_sesion' : "#D9C2FF"
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
