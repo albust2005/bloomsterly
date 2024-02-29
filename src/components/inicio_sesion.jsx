@@ -21,34 +21,36 @@ export function Ingresar() {
         <main>
             <section>
                 <i></i> 
-                <div className="bg-orange-400">
+                <div className="">
                     <h3>Crea una cuenta</h3>
                     <input type="submit" value={'Registrate'}/>
                 </div>
             </section>
             <section>
-                <h1>BloomSterly</h1>
-                {'formulario Ingresar'}
+                <h1 className="font-bloomsterly">
+                    BloomSterly
+                </h1>
+                {/*formulario Ingresar*/}
                 <form onSubmit={handleSubmit(enviar)}>
                     <div>
-                        {'Sección registro nombre'}
+                        {/*Sección registro nombre*/}
                         <label>Correo Electronico</label>
                         <input type="text" {...register('email',{
                             required: true
                         })}/>
-                        {'Muestra de errores'}
+                        {/*Muestra de errores*/}
                         {errors.email?.type === 'required' && <p>El campo es requerido</p>}
                     </div>
                     <div>
-                        {'Sección contraseña'}
+                        {/*Sección contraseña*/}
                         <label>Contraseña</label>
                         <input type="password" {...register('password',{
                             required: true
                         })}/>
-                        {'Muestra de errores'}
+                        {/*Muestra de errores*/}
                         {errors.password?.type === 'required' && <p>El campo es requerido</p>}
                     </div>
-                    {'Boton de envio'}
+                    {/*Boton de envio*/}
                     <input type="submit"  value={'Enviar'}/>
                 </form>
             </section>

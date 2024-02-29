@@ -32,7 +32,7 @@ export function ThemeColor (){
         }
 
     return (
-        <div className='fixed bottom-20 right-0 w-auto h-auto dark:b'>
+        <div className='fixed bottom-20 right-0 w-auto h-auto dark:b z-10'>
             <button className="w-10 h-10 border-solid rounded border-2 border-yellow-500 hover:border-yellow-300 
             bg-trasparent dark:bg-second_color_lt dark:border-second_color_lt"
             onClick={handleChangeDark}
