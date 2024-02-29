@@ -24,7 +24,7 @@ export function Registrar() {
                 {'Formulario Registro'}
                 <form onSubmit={handleSubmit(enviar)}>
                     <div>
-                        {'Sección registro nombre'}
+                        {/*Sección registro nombre*/}
                         <label>Nombre</label>
                         <input type="text" {...register('nombre', {
                             required: true
