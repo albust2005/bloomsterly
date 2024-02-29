@@ -1,7 +1,7 @@
 // Importación de los elementos previamente descargados
 
 import { useForm } from "react-hook-form"; 
-import React from "react";
+//import React from "react";
 import '../App.css'
 
 // Creación de un Hook para renderizar el formulario de ingreso
@@ -20,8 +20,8 @@ export function Ingresar() {
     return (
         <main>
             <section>
-                <i></i>
-                <div>
+                <i></i> 
+                <div className="bg-orange-400">
                     <h3>Crea una cuenta</h3>
                     <input type="submit" value={'Registrate'}/>
                 </div>

@@ -1,11 +1,15 @@
+
 import { ButtonNav } from "./buttons/buttonNav";
 
 export function Header() {
+
+
     return (
         <div>
-            <nav className="flex bg-dark_theme h-16 justify-between items-center p-4 shadow-md shadow-purple-900">
+            <nav className="flex bg-dark_theme h-16 justify-between items-center p-4 shadow-lg shadow-purple-900 
+            dark:bg-nav_light_theme dark:shadow-light_theme">
                 <img src="" alt="logo_bloomsterly" className=" text-white bg-transparent hover:bg-purple-900 px-3 py-1 rounded-lg" />
-                <div className="flex gap-4">
+                <div className="flex gap-4 ">
                     <ButtonNav text='Nosotros' />
                     <ButtonNav text='Servicios' />
                     <ButtonNav text='Pedidos' />
@@ -16,7 +20,7 @@ export function Header() {
             </nav>
             <div>
                 <img
-                    className='aspect-auto w-full -mt-12'
+                    className='aspect-auto w-full -mt-12 '
                     src="../src/assets/img/luces_dark_theme.png"
                     alt="luces portada"
                 />
