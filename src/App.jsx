@@ -1,9 +1,9 @@
 import './App.css'
 
 import { LandingPage } from './components/Index'
-import { Registrar } from './components/registro'
 import { Route, Routes } from 'react-router'
 import { ThemeColor } from './components/buttons/buttonThemeColor'
+import { Login } from './components/Login'
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
       <ThemeColor></ThemeColor>
       <Routes>
         <Route path='/' element={<LandingPage/>}></Route>
-        <Route path='/login' element={<Registrar/>}></Route>
+        <Route path='/login' element={<Login/>}></Route>
       </Routes>
     </div>
   )
