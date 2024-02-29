@@ -1,5 +1,6 @@
 // Importación de los elementos previamente descargados
 
+import { Link } from 'react-router-dom'
 import { useForm } from "react-hook-form"; 
 //import React from "react";
 import '../App.css'
@@ -18,7 +19,7 @@ export function Ingresar() {
 
     // Ingreso al aplicativo
     return (
-        <main>
+        <section>
             <section>
                 <i></i> 
                 <div className="">
@@ -27,33 +28,44 @@ export function Ingresar() {
                 </div>
             </section>
             <section>
-                <h1 className="font-bloomsterly">
+                <h1 className="font-bloomsterly text-6xl">
                     BloomSterly
                 </h1>
                 {/*formulario Ingresar*/}
-                <form onSubmit={handleSubmit(enviar)}>
-                    <div>
+                <form onSubmit={handleSubmit(enviar)} className='flex flex-col gap-3'>
+                    <div className='flex flex-col'>
                         {/*Sección registro nombre*/}
-                        <label>Correo Electronico</label>
+                        <label className="font-title italic">
+                            Correo Electronico
+                        </label>
                         <input type="text" {...register('email',{
                             required: true
-                        })}/>
+                        })}
+                        className='bg-transparent border-b-2 border-dark_theme 
+                        focus:outline-none'/>
                         {/*Muestra de errores*/}
                         {errors.email?.type === 'required' && <p>El campo es requerido</p>}
                     </div>
-                    <div>
+                    <div className='flex flex-col'>
                         {/*Sección contraseña*/}
-                        <label>Contraseña</label>
+                        <label className="font-title italic">Contraseña</label>
                         <input type="password" {...register('password',{
                             required: true
-                        })}/>
+                        })}
+                        className='bg-transparent border-b-2 border-dark_theme 
+                        focus:outline-none'/>
                         {/*Muestra de errores*/}
                         {errors.password?.type === 'required' && <p>El campo es requerido</p>}
                     </div>
                     {/*Boton de envio*/}
-                    <input type="submit"  value={'Enviar'}/>
+                    <button  type="submit"
+                    className="bg-dark_theme text-white rounded-md mt-4 pl-2 pr-2 pt-1 pb-1 w-full">
+                        Inicia Sesión
+                    </button>
+                    <Link to="/recuperarpassword">
+                    </Link>
                 </form>
             </section>
-        </main>
+        </section>
     )
 }

@@ -18,27 +18,42 @@ export function Registrar() {
 
     //Registro 
     return(
-        <main className=''>
-            <section className="">
+        <section>
+            <section>
                 <h1 className="font-bloomsterly text-6xl">BloomSterly</h1>
                 {/*Formulario Registro*/}
-                <form onSubmit={handleSubmit(enviar)}>
-                    <div>
-                        {/*Sección registro Correo electronico*/}
-                        <label>Correo Electronico</label>
-                        <input type="email" {...register('correo')}/>
+                <form onSubmit={handleSubmit(enviar)} className='flex flex-col gap-3'>
+                    <div className='flex flex-col'>
+                        {/*Sección registro Nombre*/}
+                        <label className="font-title italic">Nombre</label>
+                        <input type="text" {...register('nombre')}
+                        className='bg-transparent border-b-2 border-dark_theme 
+                        focus:outline-none '/>
                     </div>
-                    <div>
+                    <div className='flex flex-col'>
+                        {/*Sección registro Correo electronico*/}
+                        <label className="font-title italic">Correo Electronico</label>
+                        <input type="email" {...register('correo')}
+                        className='bg-transparent border-b-2 border-dark_theme 
+                        focus:outline-none'/>
+                    </div>
+                    <div className='flex flex-col'>
                         {/*Sección contraseña*/}
-                        <label>Contraseña</label>
+                        <label className="font-title italic">Contraseña</label>
                         <input type="password" {...register('contrasena', {
                             required: true
-                        })}/>
+                        })}
+                        className='bg-transparent border-b-2 border-dark_theme 
+                        focus:outline-none'/>
                         {/*Validación de la contraseña (provicional)*/}
                         {errors.contrasena?.type === 'required' && <p>EL campo es requerido</p>}
-                    </div>  
+                    </div >  
                     {/*Boton de envio de datos*/}
-                    <input type="submit" value="Enviar"/>
+                    <button type='submit' 
+                    className="bg-dark_theme text-white 
+                    rounded-md mt-4 pl-2 pr-2 pt-1 pb-1 w-full dark:bg-second_color_lt ">
+                        Registrate
+                    </button>
                 </form>
             </section>
             <section>
@@ -48,6 +63,6 @@ export function Registrar() {
                     <input type="submit" value={'Inicio Sesion'}/>
                 </div>
             </section>
-        </main>
+        </section>
     )
 }
