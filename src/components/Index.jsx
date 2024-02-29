@@ -6,6 +6,26 @@ import { Footer } from "./Footer";
 import { PolaroidCard } from "./PolaroidCard";
 
 
+function Titles({ title, subTitle }) {
+  return (
+    <>
+      <h1
+        className="font-subTitle font-extrabold italic text-color_font_dark text-5xl sm:text-6xl md:text-8xl lg:text-7xl xl:text-8xl
+        animate-pulse hover:text-yellow-300 cursor-pointer
+        transition ease-in-out duration-300 dark:text-second_color_lt dark:hover:text-color_font_light"
+      >
+        {title}
+      </h1>
+
+      <h2 className="font-text text-white text-2xl 
+        md:text-5xl ml-8 md:ml-16 lg:ml-20 -mt-5 md:-mt-5 lg:-mt-6 dark:text-color_font_light">
+        {subTitle}
+      </h2>
+    </>
+  )
+}
+
+
 export function LandingPage() {
 
   return (
@@ -23,22 +43,17 @@ export function LandingPage() {
 
       {/*Seccion Nosotros*/}
 
-      <div className="flex flex-col gap:12 lg:gap-32">
+      <div className="flex flex-col gap-16 xl:gap-32">
 
         <section className="h-full xl:flex gap-5 px-10 md:px-16 lg:px-24 2xl:px-64 mb-3">
 
           <article className="w-full xl:w-3/5 2xl:w-1/2">
-            
-            <h1 className="font-subTitle font-extrabold italic text-color_font_dark text-5xl md:text-8xl lg:text-9xl
-            animate-pulse hover:text-yellow-300 cursor-pointer
-            transition-all dark:text-second_color_lt dark:hover:text-color_font_light">
-              NOSOTROS
-            </h1>
 
-            <h2 className="font-text text-white text-2xl 
-            md:text-5xl ml-8 md:ml-16 lg:ml-20 -mt-5 md:-mt-5 lg:-mt-6 dark:text-color_font_light">
-              ¿Que hacemos?
-            </h2>
+            <Titles
+              title='NOSOTROS'
+              subTitle='¿Que hacemos?'
+            />
+
 
             <p className="text-white w-full pt-6 text-1xl sm:text-2xl md:text-3xl lg-text-4xl
             dark:text-color_font_light">
@@ -47,15 +62,15 @@ export function LandingPage() {
               exercitationem ipsam necessitatibus vitae enim assumenda,
               asperiores optio dignissimos. Dolorum recusandae porro reiciendis.
             </p>
-            
+
           </article>
 
-          <div className="flex xl:w-2/5 2xl:w-1/2 justify-center">
+          <article className="flex xl:w-2/5 2xl:w-1/2 justify-center">
             <img
               className='aspect-auto w-full object-cover xl:scale-115'
               src="../src/assets/img/nosotros_imagen_mesas.png"
               alt="" />
-          </div>
+          </article>
 
         </section>
 
@@ -64,19 +79,15 @@ export function LandingPage() {
         <section className="flex flex-col gap-5 px-10 md:px-16 lg:px-24 2xl:px-64 mb-3">
 
           <article>
-            <h1 className="font-subTitle font-extrabold italic text-color_font_dark text-4xl 
-            md:text-8xl lg:text-9xl dark:text-second_color_lt animate-pulse
-            hover:text-yellow-300 cursor-pointer transition-all">
-              CONOCE
-            </h1>
 
-            <h2 className="font-text text-white text-xl md:text-5xl lg:text-6xl ml-12 md:ml-16 
-            lg:ml-20 -mt-5 md:-mt-7 lg:-mt-9  dark:text-color_font_light">
-              Nuestros servicios
-            </h2>
+            <Titles
+              title='CONOCE'
+              subTitle='Nuestros servicios'
+            />
+
           </article>
 
-          <article className="container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <article className="container mx-auto grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
             <PolaroidCard
               url={"../src/assets/img/musica_servicio.jpg"}
               nombre={"Musica"}
@@ -95,6 +106,11 @@ export function LandingPage() {
               url={"../src/assets/img/comida_servicio.jpg"}
               nombre={"Alimentacion"}
               descripcion={"Ofrecemos distintos de comida para tu evento"}
+            />
+              <PolaroidCard
+              url={"../src/assets/img/comida_servicio.jpg"}
+              nombre={"Cocteleria"}
+              descripcion={"Ofrecemos distintos servicios de cocteleria para tu evento"}
             />
           </article>
 

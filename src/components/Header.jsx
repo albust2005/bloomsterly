@@ -10,9 +10,11 @@ export function Header() {
             dark:bg-nav_light_theme dark:shadow-light_theme">
                 <img src="" alt="logo_bloomsterly" className=" text-white bg-transparent hover:bg-purple-900 px-3 py-1 rounded-lg" />
                 <div className="flex gap-4 ">
+
                     <ButtonNav text='Nosotros' />
-                    <ButtonNav text='Servicios' />
-                    <ButtonNav text='Pedidos' />
+                    <ButtonNav text='Servicios' href='/servicios'/>
+                    <ButtonNav text='Pedidos' href='/pedidos '/>
+
                 </div>
                
                 <ButtonNav href='/login' text='Iniciar sesion' />
