@@ -2,9 +2,9 @@
 import "../App.css";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
-
 import { PolaroidCard } from "./PolaroidCard";
 
+import { PropTypes } from "prop-types"
 
 function Titles({ title, subTitle }) {
   return (
@@ -25,6 +25,10 @@ function Titles({ title, subTitle }) {
   )
 }
 
+Titles.propTypes = {
+  title: PropTypes.string,
+  subTitle: PropTypes.string
+}
 
 export function LandingPage() {
 
