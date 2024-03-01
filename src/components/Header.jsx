@@ -20,13 +20,6 @@ export function Header() {
                 <ButtonNav href='/login' text='Iniciar sesion' />
                 
             </nav>
-            <div>
-                <img
-                    className='aspect-auto w-full -mt-12 '
-                    src="../src/assets/img/luces_dark_theme.png"
-                    alt="luces portada"
-                />
-            </div>
         </div>
     )
 }

@@ -9,7 +9,7 @@ export function PolaroidCard({url, nombre, descripcion}) {
                 alt='imagen servicio'
             ></img>
             <h1 
-            className='font-title text-2xl italic text-dark_theme font-bold'
+            className='font-title text-2xl italic text-dark_theme font-bold dark:text-second_color_lt'
             >
                 {nombre}
             </h1>
