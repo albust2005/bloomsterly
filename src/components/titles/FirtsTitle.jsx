@@ -1,3 +1,4 @@
+
 export function FirtsTitle({title, descripcion}) {
     return (
         <section className="flex flex-col items-center">
@@ -5,13 +6,15 @@ export function FirtsTitle({title, descripcion}) {
             sm:text-9xl md:text-[170px] lg:text-[210px] xl:text-[250px] dark:text-second_color_lt">
                 {title}
             </h1>
-            <p className="">
+            <p className="font-text text-xl text-white dark:text-black">
                 {descripcion}
             </p>
         </section>
 
     )
 }
+
+
 
 
 
