@@ -27,4 +27,5 @@ PolaroidCard.propTypes = {
     url: PropTypes.string,
     nombre: PropTypes.string,
     descripcion: PropTypes.string,
+    uuid: PropTypes.string,
 }

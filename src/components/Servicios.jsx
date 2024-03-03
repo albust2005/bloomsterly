@@ -1,9 +1,8 @@
 import { Layaout } from "./Layaout"
-import { Footer } from "./Footer"
 import { PolaroidCard } from "./PolaroidCard"
 
 
-import { servicios } from "./const-js/servicios"
+import { servicios } from "./db/servicios"
 import { FirtsTitle } from "./titles/FirtsTitle"
 
 export function Servicios() {
@@ -19,11 +18,12 @@ export function Servicios() {
                 <article className="container mx-auto grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
                     {servicios.map(servicio => (
 
-                        <div key={servicio.nombre}>
+                        <div key={servicio.uuid}>
                             <PolaroidCard
                                 url={servicio.img}
                                 nombre={servicio.nombre}
                                 descripcion={servicio.descripcion}
+                                uuid={servicio.uuid}
                             />
                         </div>
                     ))}

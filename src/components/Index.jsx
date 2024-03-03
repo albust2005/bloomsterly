@@ -3,7 +3,7 @@ import "../App.css";
 
 import { PolaroidCard } from "./PolaroidCard";
 import { FirtsTitle, Titles } from "./titles/FirtsTitle";
-import { servicios } from "./const-js/servicios";
+import { servicios } from "./db/servicios";
 
 
 import { PropTypes } from "prop-types"
@@ -22,7 +22,9 @@ export function LandingPage() {
     <Layaout>
 
       {/* BloomSterly */}
-      <FirtsTitle title="BloomSterly"></FirtsTitle>
+      <FirtsTitle 
+        title="BloomSterly"
+      />
 
       {/*Seccion Nosotros*/}
 
