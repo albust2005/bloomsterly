@@ -2,19 +2,14 @@ import { useParams } from "react-router-dom"
 
 import { servicios } from "./db/servicios.js"
 import { empresas } from "./db/empresas.js"
-import { Layaout } from "./Layaout.jsx"
+import { Layaout } from "./templates/Layaout.jsx"
 import { FirtsTitle } from "./titles/FirtsTitle.jsx"
-import { EmpresaCards } from "./EmpresaCard.jsx"
+import { EmpresaCards } from "./templates/EmpresaCard.jsx"
 
 export function ServicioEspecifico() {
     const { name } = useParams()
 
     const servicio = servicios.find((servicio) => servicio.nombre === name)
-
-    if (!servicio) {
-        // Servicio no encontrado, puedes manejar este caso según tus necesidades
-        return <h1>Servicio no encontrado</h1>
-    }
 
     // Encontrar empresas que contienen el servicio por su UUID
     const empresasConServicio = empresas.filter((empresa) => {

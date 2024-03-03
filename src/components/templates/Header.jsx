@@ -1,5 +1,5 @@
 
-import { ButtonNav } from "./buttons/buttonNav";
+import { ButtonNav } from "../buttons/buttonNav";
 
 export function Header() {
 

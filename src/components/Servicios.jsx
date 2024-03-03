@@ -1,5 +1,5 @@
-import { Layaout } from "./Layaout"
-import { PolaroidCard } from "./PolaroidCard"
+import { Layaout } from "./templates/Layaout"
+import { PolaroidCard } from "./templates/PolaroidCard"
 
 
 import { servicios } from "./db/servicios"
