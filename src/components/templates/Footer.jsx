@@ -9,7 +9,7 @@ export function Footer() {
                     <a href="">GH</a>
                     <a href="">GM</a>
                 </div>
-                <div className="bg-white border-white w-full h-0.5 rounded-sm m-2" ></div>
+                <div className="bg-white border-white w-full h-0.5 rounded-sm m-2"></div>
             </article>
             <article className="flex flex-col place-content-center m-auto items-center">
                 <h1 className="font-bloomsterly text-2xl text-white">BloomSterly</h1>

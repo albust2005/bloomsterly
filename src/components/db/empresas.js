@@ -1,6 +1,9 @@
+//remplazar este objeto por los servicios que se encuentran en la base de datos
+//remplazar el id por un uuid generado
+
 export const empresas = [
     {
-        id: "e111",
+        uuid: "e111",
         nombre: "RecreacionJY",
         logo: "../src/assets/img_servicios/musica_servicio.jpg",
         descripcion: "Hacemos que tus ocaciones espaciales sean innolvidables, celebra con nostros",
@@ -25,7 +28,7 @@ export const empresas = [
         ],
     },
     {
-        id: "e112",
+        uuid: "e112",
         nombre: "Los lirios",
         logo: "",
         descripcion: "Hacemos que tus ocaciones espaciales sean innolvidables, celebra con nostros",

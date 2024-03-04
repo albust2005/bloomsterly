@@ -5,38 +5,47 @@ import { empresas } from "./db/empresas.js"
 import { Layaout } from "./templates/Layaout.jsx"
 import { FirtsTitle } from "./titles/FirtsTitle.jsx"
 import { EmpresaCards } from "./templates/EmpresaCard.jsx"
+import { NotFound } from "./templates/NotFound.jsx"
+
 
 export function ServicioEspecifico() {
     const { name } = useParams()
 
+    //encontramos la informacion del pedido seleccionado
     const servicio = servicios.find((servicio) => servicio.nombre === name)
-
-    // Encontrar empresas que contienen el servicio por su UUID
+    //buscamos que empresa contiene el uuid del servicio
+    //nos devuelve un array con las empresas que coinciden
     const empresasConServicio = empresas.filter((empresa) => {
         return empresa.servicios.includes(servicio.uuid)
     })
 
-    console.log(empresasConServicio)
-
+    //mostramos las empresas por pantalla haciendo mapenado el array que las contiene
+    //y renderizamos el componente EmpresaCards que contiene la estructura
     return (
         <Layaout>
-            <section className="flex gap-4 flex-col">
+            <section className="flex gap-4 flex-col items-center">
                 <FirtsTitle
                     title={name}
                     descripcion={servicio.descripcion}
                 />
-                <section className="columns-2 mx-36 md:mx-44 lg:mx-52 xl:mx-64">
-                    {empresasConServicio.map(empresa => (
-                        <div key={empresa.id} className=" ">
-                            <EmpresaCards
-                                img={empresa.logo}
-                                empresa={empresa.nombre}
-                                direccion={empresa.direccion}
-                                municipio={empresa.municipio}
-                                telefono={empresa.telefono}
-                            />
-                        </div>
-                    ))}
+                <section className="flex items-center">
+                    {
+
+                        empresasConServicio.length === 0
+                            ? <NotFound razon="empresas"/>
+                            : empresasConServicio.map(empresa => (
+                                <div key={empresa.uuid} className=" ">
+                                    <EmpresaCards
+                                        img={empresa.logo}
+                                        empresa={empresa.nombre}
+                                        direccion={empresa.direccion}
+                                        municipio={empresa.municipio}
+                                        telefono={empresa.telefono}
+                                    />
+                                </div>
+                            ))
+
+                    }
                 </section>
 
             </section>

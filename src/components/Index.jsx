@@ -28,7 +28,7 @@ export function LandingPage() {
 
       {/*Seccion Nosotros*/}
 
-      <div className="flex flex-col gap-16 xl:gap-32">
+      <div className="flex flex-col items-center gap-16 xl:gap-32">
 
         <section className="h-full xl:flex gap-5 px-10 md:px-16 lg:px-24 2xl:px-64 mb-3">
 
