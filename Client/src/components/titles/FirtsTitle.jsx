@@ -2,7 +2,7 @@
 export function FirtsTitle({title, descripcion}) {
     return (
         <section className="flex flex-col items-center">
-            <h1 className="flex justify-center font-bloomsterly text-white text-7xl 
+            <h1 className="flex justify-center font-bloomsterly text-white text-8xl 
             sm:text-9xl md:text-[170px] lg:text-[210px] xl:text-[250px] dark:text-second_color_lt">
                 {title}
             </h1>
