@@ -23,7 +23,7 @@ export function Header() {
     };
 
     return (
-        <nav className="bg-dark_theme p-5 shadow flex justify-between items-center md:items-center md:justify-between h-20 dark:bg-nav_light_theme">
+        <nav className="bg-dark_theme p-5 shadow-lg shadow-purple-800 flex justify-between items-center md:items-center md:justify-between h-20 dark:bg-nav_light_theme dark:shadow-second_color_lt">
             <Link className="flex justify-between items-center" to="/">
                 <span className="cursor-pointer text-white">BloomSterly</span>
             </Link>

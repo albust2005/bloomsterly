@@ -7,8 +7,10 @@ export function Layaout({ children }) {
 
     return (
         <main 
-        className="bg-dark_theme flex flex-col gap-20 xl:gap-36 dark:bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))]
-        from-[#F5E1CE] via-[#EEDAC7] to-[#83786D] min-h-full min-w-full absolute z-[-10]"
+        className="bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))]
+        from-[#451693] from-40% via-[#370d7d] via-60% to-[#190042] 
+          to-90% flex flex-col gap-20 xl:gap-36 dark:bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))]
+        dark:from-[#F5E1CE] dark:via-[#EEDAC7] dark:to-[#83786D] min-h-full min-w-full absolute z-[-10]"
         >
             <Header></Header>
             {children}

@@ -4,7 +4,7 @@ import {faLinkedin, faFacebook, faGithub, faInstagram } from '@fortawesome/free-
 
 export function Footer() {
     return (
-        <footer className="flex h-full w-full flex-col gap-2 p-2 bg-purple-900 dark:bg-second_color_lt">
+        <footer className="flex h-full w-full flex-col gap-2 p-2 bg-dark_theme dark:bg-second_color_lt ">
             <article className="flex w-full justify-center gap-3 items-center">
                 <div className="bg-white border-white w-full h-0.5 rounded-sm m-2" ></div>
                 <div className="flex gap-3 text-white justify-center p-2">

@@ -14,7 +14,7 @@ export default {
         'text' : ['Raleway', 'Arial', 'sans-serif'],
       },
       colors:{
-        'dark_theme': "#3c0764",
+        'dark_theme': "#2D0969",
         'color_font_dark' : "#9173C4",
         'light_theme' :"#F5E1CE",
         'second_color_lt' :"#BC0B38",
