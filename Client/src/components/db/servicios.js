@@ -12,7 +12,7 @@ export const servicios = [
         uuid: "s112",
         img: "../src/assets/img_servicios/decoracion_servicio.jpg",
         nombre: "Decoracion",
-        descripcion: "Ofrecemos distintos estilos en el momento de la decoracion de tu evento"
+        descripcion: "Ofrecemos distintos estilos de decoracion de tu evento"
     },
     {
         uuid: "s113",

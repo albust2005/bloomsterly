@@ -26,6 +26,9 @@ export default {
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+      },
+      screens: {
+        'celular' : '350px'
       }
     },
    

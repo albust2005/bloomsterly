@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types'  
 
 export function EmpresaCards({ img, empresa, municipio, direccion, telefono }) {
     return (

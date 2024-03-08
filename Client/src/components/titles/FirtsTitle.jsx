@@ -1,12 +1,13 @@
+import PropTypes from 'prop-types'
 
 export function FirtsTitle({title, descripcion}) {
     return (
         <section className="flex flex-col items-center">
-            <h1 className="flex justify-center font-bloomsterly text-white text-8xl 
-            sm:text-9xl md:text-[170px] lg:text-[210px] xl:text-[250px] dark:text-second_color_lt z-[-10]">
+            <h1 className="flex justify-center font-bloomsterly text-white text-6xl celular:text-7xl
+            sm:text-9xl md:text-[160px] lg:text-[210px] xl:text-[250px] dark:text-second_color_lt z-[-10]">
                 {title}
             </h1>
-            <p className="font-text text-xl text-white dark:text-black">
+            <p className="font-subTitle text-md  md:text-xl lg:text-3xl text-white dark:text-black">
                 {descripcion}
             </p>
         </section>
@@ -32,3 +33,13 @@ export function Titles({ title, subTitle }) {
       </>
     )
   }
+
+  FirtsTitle.propTypes = {
+    title: PropTypes.string,
+    descripcion: PropTypes.string,
+}
+
+  Titles.propTypes = {
+  title: PropTypes.string,
+  subTitle: PropTypes.string,
+}

@@ -30,7 +30,7 @@ export function LandingPage() {
 
       <div className="flex flex-col items-center gap-16 xl:gap-32">
 
-        <section className="h-full xl:flex gap-5 px-10 md:px-16 lg:px-24 2xl:px-64 mb-3">
+        <section className="h-full xl:flex gap-5 px-5 md:px-16 lg:px-24 2xl:px-64 mb-3">
 
           <article className="w-full xl:w-3/5 2xl:w-1/2">
 
@@ -41,7 +41,7 @@ export function LandingPage() {
 
 
             <p className="text-white w-full pt-6 text-1xl sm:text-2xl md:text-3xl lg-text-4xl
-            dark:text-black">
+            dark:text-black ">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto
               vero accusantium rem quas facilis, placeat modi, distinctio
               exercitationem ipsam necessitatibus vitae enim assumenda,
