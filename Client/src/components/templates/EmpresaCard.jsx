@@ -1,9 +1,12 @@
 import PropTypes from 'prop-types'  
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 
 export function EmpresaCards({ img, empresa, municipio, direccion, telefono }) {
+    
+    const {servicioName} = useParams()
+    
     return (
-        <Link to="/empresa" className="flex bg-empresa_card gap-10 rounded-lg py-5 px-5 max-h-64">
+        <Link to={`/servicios/${servicioName}/${empresa}`} className="flex bg-empresa_card gap-10 rounded-lg py-5 px-5 max-h-64">
             <article className="w-1/4">
                 <img src={img} alt="imagen_empresa" className="w-full h-full aspect-auto object-cover rounded-lg"/>
             </article>
