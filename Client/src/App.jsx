@@ -8,7 +8,7 @@ import { ThemeColor } from './components/buttons/buttonThemeColor'
 import { Login } from './components/Login'
 import { Servicios } from './components/Servicios'
 import { Pedidos } from './components/Pedidos'
-import { ServicioEspecifico } from './components/ServicioEspecifico'
+import { ServicioEspecifico } from './components/EmpresasServicio'
 
 
 
