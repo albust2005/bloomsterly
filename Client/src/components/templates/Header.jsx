@@ -6,12 +6,13 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export function Header() {
 
     //use stated para asignar el logo y las clases necesarias al menu responsive
     const [menu, setMenu] = useState(faBars);
+    const [colorMenu, setColorMenu] = useState("#fff")
 
     //cada click cambia el estado 
     const toggleClick = () => {
@@ -46,13 +47,13 @@ export function Header() {
 
             <div className="flex h-full justify-center">
                 <ButtonNav href="/login" text="Iniciar sesión" />
-                <span className="text-3xl cursor-pointer md:hidden block mx-2">
+                <span className="text-3xl cursor-pointer md:hidden block mx-2 dark:fill-black">
                     <FontAwesomeIcon
                         icon={menu}
                         onClick={toggleClick}
-                        style={{ color: "#ffff", }}
+                        style={{ color: "#fff", }}
                         size="xs"
-                    />{" "}
+                    />
                 </span>
             </div>
         </nav>
