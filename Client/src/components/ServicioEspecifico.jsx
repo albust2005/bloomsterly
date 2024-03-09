@@ -9,10 +9,10 @@ import { NotFound } from "./templates/NotFound.jsx"
 
 
 export function ServicioEspecifico() {
-    const { name } = useParams()
+    const { servicioName } = useParams()
 
     //encontramos la informacion del pedido seleccionado
-    const servicio = servicios.find((servicio) => servicio.nombre === name)
+    const servicio = servicios.find((servicio) => servicio.nombre === servicioName)
     //buscamos que empresa contiene el uuid del servicio
     //nos devuelve un array con las empresas que coinciden
     const empresasConServicio = empresas.filter((empresa) => {
@@ -25,7 +25,7 @@ export function ServicioEspecifico() {
         <Layaout>
             <section className="flex gap-4 flex-col items-center">
                 <FirtsTitle
-                    title={name}
+                    title={servicioName}
                     descripcion={servicio.descripcion}
                 />
                 <section className="flex items-center">

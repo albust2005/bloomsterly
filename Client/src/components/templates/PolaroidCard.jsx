@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 export function PolaroidCard({url, nombre, descripcion}) {
 
     return (
-        <Link to={`/servicio/${nombre}`} className='flex flex-col w-full sm:min-h-[300px] md:min-h-[550px]  bg-white p-5 rounded-md gap-3  hover:scale-105 transition-all 
+        <Link to={`/servicios/${nombre}`} className='flex flex-col w-full sm:min-h-[300px] md:min-h-[550px]  bg-white p-5 rounded-md gap-3  hover:scale-105 transition-all 
             '>
             <img
                 className='w-full h-80 md:h-96  object-cover grayscale hover:grayscale-0 rounded-md transition-all duration-200 '
