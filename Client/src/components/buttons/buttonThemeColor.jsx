@@ -38,7 +38,7 @@ export function ThemeColor (){
             w-6 h-6 celular:w-8 celular:h-8"
             onClick={handleChangeDark}
             >
-                <img src="../src/assets/img/light.theme_1.png" alt="" 
+                <img src="../src/assets/img/light_theme.webp" alt="" 
                 className="flex justify-center "/>
             </button>
             <div className="border-solid rounded border-2 border-yellow-500 
@@ -46,7 +46,7 @@ export function ThemeColor (){
              w-6 h-6 celular:w-8 celular:h-8"
             onClick={handleChangeLight}
             >
-                <img src="../src/assets/img/dark_theme.png" alt="" />
+                <img src="../src/assets/img/dark_theme.webp" alt="" />
             </div>
         </div>
     )

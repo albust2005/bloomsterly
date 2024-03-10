@@ -10,8 +10,7 @@ import { Servicios } from './components/Servicios'
 import { Pedidos } from './components/Pedidos'
 import { ServicioEspecifico } from './components/ServicioEspecifico'
 import { Administrador } from './components/administrador'  
-
-
+import { EmpresaInfo } from './components/EmpresaInfo'
 
 
 function App() {
@@ -25,7 +24,7 @@ function App() {
         
         <Route path='/servicios' element={<Servicios/>}></Route>
         <Route path='/servicios/:servicioName' element={<ServicioEspecifico/>}></Route>
-        <Route path='/servicios/:servicioName/:empresa' element={<h1>Empresa info</h1>}></Route>
+        <Route path='/servicios/:servicioName/:empresa' element={<EmpresaInfo/>}></Route>
 
         <Route path='/pedidos' element={<Pedidos/>}>
 

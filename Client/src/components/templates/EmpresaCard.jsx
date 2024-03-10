@@ -7,7 +7,7 @@ export function EmpresaCards({ img, empresa, municipio, direccion, telefono }) {
     
     return (
         <Link to={`/servicios/${servicioName}/${empresa}`} className="flex bg-empresa_card gap-10 rounded-lg py-5 px-5 max-h-64">
-            <article className="w-1/4">
+            <article className="w-full h-full">
                 <img src={img} alt="imagen_empresa" className="w-full h-full aspect-auto object-cover rounded-lg"/>
             </article>
             <article className="flex flex-col w-3/4 justify-center gap-5">

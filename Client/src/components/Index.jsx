@@ -30,7 +30,7 @@ export function LandingPage() {
 
       <div className="flex flex-col items-center gap-16 xl:gap-32">
 
-        <section className="h-full xl:flex gap-5 px-5 md:px-16 lg:px-24 2xl:px-64 mb-3">
+        <section className="h-full xl:flex gap-5 px-5 md:px-16 lg:px-24 2xl:px-64">
 
           <article className="w-full xl:w-3/5 2xl:w-1/2">
 
@@ -53,7 +53,7 @@ export function LandingPage() {
           <article className="flex xl:w-2/5 2xl:w-1/2 justify-center">
             <img
               className='aspect-auto w-full object-cover xl:scale-115'
-              src="../src/assets/img/nosotros_imagen_mesas.png"
+              src="../src/assets/img/nosotros_imagen_mesas.webp"
               alt="" />
           </article>
 
@@ -61,9 +61,9 @@ export function LandingPage() {
 
 
         {/*Seccion Conoce*/}
-        <section className="flex flex-col gap-5 px-10 md:px-16 lg:px-24 2xl:px-64 mb-3">
+        <section className="flex flex-col w-full gap-5 px-5 md:px-16 lg:px-24 2xl:px-64">
 
-          <article>
+          <article className="w-full">
 
             <Titles
               title='CONOCE'
@@ -86,6 +86,7 @@ export function LandingPage() {
             </article>
 
         </section>
+        
       </div>
 
     </Layaout>
