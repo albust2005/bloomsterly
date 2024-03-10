@@ -16,39 +16,32 @@ export function Header() {
     //cada click cambia el estado 
     const toggleClick = () => {
         setMenu(menu === faBars ? faXmark : faBars);
-        console.log(document.querySelector('ul'))
-
     };
 
     return (
-        <nav className="bg-transparent p-5 flex justify-between items-center h-20 dark:bg-transparent dark:shadow-[#f7e6d5]">
+        <nav className="bg-transparent px-5 md:px-16 lg:px-24 2xl:px-64 flex justify-between items-center h-20 dark:bg-transparent dark:shadow-[#f7e6d5]">
             <Link className="flex justify-between items-center" to="/">
                 <span className="cursor-pointer text-white">BloomSterly</span>
             </Link>
 
-            <ul
-                className={`dark:bg-nav_light_theme md:dark:bg-transparent md:flex md:items-center md:justify-center md:z-auto md:static absolute bg-color_font_dark md:bg-transparent w-full left-0 md:w-auto
-                md:py-0 px-4 md:pl-0 pl-7 md:opacity-100 duration-75 md:duration-0
+            <div
+                className={`dark:bg-nav_light_theme md:dark:bg-transparent bg-color_font_dark md:bg-transparent flex flex-col px-4 md:flex-row md:px-0 md:z-auto md:static absolute w-full left-0 md:w-auto md:py-0 md:pl-0 pl-7 md:opacity-100 duration-75 md:duration-0
                 ${menu === faBars ? "top-[-400px] opacity-0" : "top-[80px] opacity-100"}`}
             >
-                <li className="mx-4 my-6 md:my-0">
-                    <ButtonNav text="Nosotros" />
-                </li>
-                <li className="mx-4 my-6 md:my-0">
-                    <ButtonNav text="Servicios" href="/servicios" />
-                </li>
-                <li className="mx-4 my-6 md:my-0">
-                    <ButtonNav text="Reservas" href="/pedidos" />
-                </li>
-            </ul>
+                <ButtonNav text="Nosotros" />
+                <ButtonNav text="Servicios" href="/servicios" />
+                <ButtonNav text="Reservas" href="/pedidos" />
+            </div>
 
-            <div className="flex justify-center">
-                <ButtonNav href="/login" text="Iniciar sesión"/>
-                <span className="text-3xl cursor-pointer md:hidden block ml-2 dark:fill-black">
+            <div className="flex justify-center items-center">
+                <span className="border-2 rounded-lg border-solid border-purple-900">
+                    <ButtonNav href="/login" text="Iniciar sesión" />
+                </span>
+                <span className="text-3xl cursor-pointer md:hidden block dark:fill-black">
                     <FontAwesomeIcon
                         icon={menu}
                         onClick={toggleClick}
-                        style={{ color: "#ffff",}}
+                        style={{ color: "#ffff", }}
                         size="xs"
                     />
                 </span>

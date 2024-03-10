@@ -72,7 +72,7 @@ export function LandingPage() {
           
           </article>
 
-          <article className="container mx-auto grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+          <article className="containe mx-auto grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
                 {servicios.slice(0, 3).map(servicio => (
 
                     <div key={servicio.nombre}>

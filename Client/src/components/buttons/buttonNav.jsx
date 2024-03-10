@@ -5,7 +5,7 @@ export function ButtonNav ({text, href}){
         <Link 
         to={href} 
         className="font-title italic text-white text-lg bg-transparent 
-        hover:bg-purple-900 px-3 py-1 rounded-lg hover:ease-in-out duration-300 z-10
+        hover:bg-purple-900 px-5 py-5 md:py-1 rounded-lg hover:ease-in-out duration-300 z-10
         dark:text-second_color_lt hover:dark:bg-[#faeee3]">
         {text}
         </Link>
