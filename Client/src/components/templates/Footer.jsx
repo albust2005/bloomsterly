@@ -4,9 +4,9 @@ import {faLinkedin, faFacebook, faGithub, faInstagram } from '@fortawesome/free-
 
 export function Footer() {
     return (
-        <footer className="flex h-full w-full flex-col gap-2 p-2 bg-dark_theme dark:bg-second_color_lt ">
+        <footer className="flex flex-col w-full mt-auto gap-2 px-2 py-5 bg-transparent dark:bg-second_color_lt ">
             <article className="flex w-full justify-center gap-3 items-center">
-                <div className="bg-white border-white w-full h-0.5 rounded-sm m-2" ></div>
+                <div className="bg-white border-white w-full h-0.5 rounded-sm m-2"></div>
                 <div className="flex gap-3 text-white justify-center p-2">
                     <FontAwesomeIcon icon={faGithub} style={{ color: "#ffffff", }} size="lg" />
                     <FontAwesomeIcon icon={faInstagram} style={{ color: "#ffffff", }} size="lg" />

@@ -21,14 +21,14 @@ export function Header() {
     };
 
     return (
-        <nav className="bg-dark_theme p-5 shadow-lg shadow-purple-800 flex justify-between items-center md:items-center md:justify-between h-20 dark:bg-nav_light_theme dark:shadow-[#f7e6d5]">
+        <nav className="bg-transparent p-5 flex justify-between items-center h-20 dark:bg-transparent dark:shadow-[#f7e6d5]">
             <Link className="flex justify-between items-center" to="/">
                 <span className="cursor-pointer text-white">BloomSterly</span>
             </Link>
 
             <ul
-                className={`dark:bg-nav_light_theme  md:flex md:items-center md:justify-center md:z-auto md:static absolute bg-color_font_dark md:bg-dark_theme w-full left-0 md:w-auto
-                md:py-0 px-4 md:pl-0 pl-7 md:opacity-100 duration-75 md:duration-0 z-[-1]
+                className={`dark:bg-nav_light_theme md:dark:bg-transparent md:flex md:items-center md:justify-center md:z-auto md:static absolute bg-color_font_dark md:bg-transparent w-full left-0 md:w-auto
+                md:py-0 px-4 md:pl-0 pl-7 md:opacity-100 duration-75 md:duration-0
                 ${menu === faBars ? "top-[-400px] opacity-0" : "top-[80px] opacity-100"}`}
             >
                 <li className="mx-4 my-6 md:my-0">
@@ -42,15 +42,15 @@ export function Header() {
                 </li>
             </ul>
 
-            <div className="flex h-full justify-center">
-                <ButtonNav href="/login" text="Iniciar sesión" />
-                <span className="text-3xl cursor-pointer md:hidden block mx-2">
+            <div className="flex justify-center">
+                <ButtonNav href="/login" text="Iniciar sesión"/>
+                <span className="text-3xl cursor-pointer md:hidden block ml-2 dark:fill-black">
                     <FontAwesomeIcon
                         icon={menu}
                         onClick={toggleClick}
-                        style={{ color: "#fff",}}
+                        style={{ color: "#ffff",}}
                         size="xs"
-                    />{" "}
+                    />
                 </span>
             </div>
         </nav>
