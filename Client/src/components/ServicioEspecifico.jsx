@@ -41,6 +41,7 @@ export function ServicioEspecifico() {
                                         direccion={empresa.direccion}
                                         municipio={empresa.municipio}
                                         telefono={empresa.telefono}
+                                        uuid={empresa.uuid}
                                     />
                                 </div>
                             ))
