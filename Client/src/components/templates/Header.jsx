@@ -16,8 +16,6 @@ export function Header() {
     //cada click cambia el estado 
     const toggleClick = () => {
         setMenu(menu === faBars ? faXmark : faBars);
-        console.log(menu);
-
         console.log(document.querySelector('ul'))
 
     };
@@ -50,7 +48,7 @@ export function Header() {
                     <FontAwesomeIcon
                         icon={menu}
                         onClick={toggleClick}
-                        style={{ color: "#ffff", }}
+                        style={{ color: "#fff",}}
                         size="xs"
                     />{" "}
                 </span>

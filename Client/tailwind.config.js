@@ -29,7 +29,10 @@ export default {
       },
       screens: {
         'celular' : '350px'
-      }
+      },
+      height: {
+        'screen/100' :'100vh'
+      }, 
     },
    
   },
