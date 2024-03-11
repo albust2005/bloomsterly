@@ -14,7 +14,7 @@ export function Administrador({ user }) {
                 <div>
                     <p>
                         Estamos ingresando al apartado del administrador. <br/>
-                        Tenga en cuenta los parametros de los elementos con cuidado y actue con responsabilidad
+                        Tenga en cuenta los parámetros de los elementos con cuidado y actúe con responsabilidad. No tengo inspiración
                     </p>
                 </div>
             </section>
