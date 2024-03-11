@@ -1,18 +1,19 @@
 import { useParams } from "react-router-dom"
+import { useState, useEffect } from "react"
 
 import { servicios } from "./db/servicios.js"
 import { empresas } from "./db/empresas.js"
 import { Layaout } from "./templates/Layaout.jsx"
-import { FirtsTitle } from "./titles/FirtsTitle.jsx"
+import { FirtsTitle } from "./titles/Title.jsx"
 import { EmpresaCards } from "./templates/EmpresaCard.jsx"
 import { NotFound } from "./templates/NotFound.jsx"
-import { useState, useEffect } from "react"
+
 
 
 export function ServicioEspecifico() {
     const { servicioName } = useParams()
     
-    const [empresasConServicio, setEmpresasConServicio] = useState([])
+    const [ empresasConServicio, setEmpresasConServicio ] = useState([])
     const [ descripcion, setDescripcion] = useState(null) 
 
     useEffect(() => {

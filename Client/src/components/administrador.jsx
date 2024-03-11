@@ -1,6 +1,6 @@
 import { Layaout } from "./templates/Layaout"
 
-import { FirtsTitle } from "./titles/FirtsTitle"
+import { FirtsTitle } from "./titles/Title.jsx"
 
 export function Administrador({ user }) {
     return(

@@ -3,7 +3,7 @@ import { PolaroidCard } from "./templates/PolaroidCard"
 
 
 import { servicios } from "./db/servicios"
-import { FirtsTitle } from "./titles/FirtsTitle"
+import { FirtsTitle } from "./titles/Title.jsx"
 
 export function Servicios() {
 

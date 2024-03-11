@@ -2,7 +2,7 @@
 import "../App.css";
 
 import { PolaroidCard } from "./templates/PolaroidCard";
-import { FirtsTitle, Titles } from "./titles/FirtsTitle";
+import { FirtsTitle, Titles } from "./titles/Title";
 import { servicios } from "./db/servicios";
 
 
