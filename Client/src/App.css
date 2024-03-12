@@ -55,7 +55,7 @@ form.sign-in-form {
 
 .title {
   font-size: 2.2rem;
-  color: #000000;
+  color: #444;
   margin-bottom: 10px;
 }
 
@@ -72,9 +72,9 @@ form.sign-in-form {
   position: relative;
 }
 
-.input-field .i {
-  justify-content: center;
-  align-items: center;
+.input-field i {
+  text-align: center;
+  line-height: 55px;
   color: #acacac;
   transition: 0.5s;
   font-size: 1.1rem;
@@ -90,6 +90,11 @@ form.sign-in-form {
   color: #333;
 }
 
+.input-field input::placeholder {
+  color: #aaa;
+  font-weight: 500;
+}
+
 
 .btn {
   width: 150px;
@@ -99,6 +104,8 @@ form.sign-in-form {
   height: 49px;
   border-radius: 49px;
   color: #fff;
+  text-transform: uppercase;
+  font-weight: 600;
   margin: 10px 0;
   cursor: pointer;
   transition: 0.5s;
@@ -107,25 +114,6 @@ form.sign-in-form {
 .btn:hover {
   background-color: #4d84e2;
 }
-
-.btn-solid {
-  width: 150px;
-  background-color: #2D0969;
-  border: #2D0969;
-  outline: none;
-  height: 49px;
-  border-radius: 49px;
-  color: #000000;
-  margin: 10px 0;
-  cursor: pointer;
-  transition: 0.5s;
-}
-
-.btn-solid:hover {
-  background-color: #2D0969;
-  color: #fff;
-}
-
 .panels-container {
   position: absolute;
   height: 100%;
@@ -144,18 +132,13 @@ form.sign-in-form {
   top: -10%;
   right: 48%;
   transform: translateY(-50%);
-  background-image: linear-gradient(-45deg, #2D0969 0%, #3b117e 100%);
+  background-image: linear-gradient(-45deg, #4481eb 0%, #04befe 100%);
   transition: 1.8s ease-in-out;
   border-radius: 50%;
   z-index: 6;
 }
 
 
-.image {
-  width: 100%;
-  transition: transform 1.1s ease-in-out;
-  transition-delay: 0.4s;
-}
 
 .panel {
   display: flex;

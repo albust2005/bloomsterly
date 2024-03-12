@@ -38,7 +38,7 @@ export function ServicioEspecifico() {
                     title={categoriaName}
                     descripcion={descripcion}
                 />
-                <section className="px-5 md:px-16 lg:px-24 2xl:px-64 mx-auto grid grid-cols-1 sm:grid-cols-1 xl:grid-cols-2 gap-6 ">
+                <section className="px-5 md:px-16 lg:px-24 2xl:px-64 mx-auto grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 ">
                     {
 
                         empresasConServicio.length === 0
