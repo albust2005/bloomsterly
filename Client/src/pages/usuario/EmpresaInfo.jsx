@@ -15,6 +15,8 @@ export function EmpresaInfo() {
 
     }, [empresa])
 
+
+    console.log(empresaInfo)
     const { nombre } = empresaInfo
 
     //obtenemos el id de la empresa mediante useParams() 
@@ -33,6 +35,7 @@ export function EmpresaInfo() {
                 <article className="bg-color_font_dark rounded-lg h-screen lg:w-3/4">
                     <div>
                         <h1>{nombre}</h1>
+
                     </div>
                 </article>
             </section>
