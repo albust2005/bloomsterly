@@ -1,5 +1,5 @@
 
-import { empresas } from "../../components/db/empresas.js"
+import { empresas } from "../../db/empresas.js"
 import { Layaout } from "../../components/templates/Layaout.jsx";
 
 import { useEffect, useState } from "react";

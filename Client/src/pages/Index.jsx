@@ -3,7 +3,7 @@ import "../App.css";
 
 import { PolaroidCard } from "../components/templates/PolaroidCard";
 import { FirtsTitle, Titles } from "../components/titles/Title";
-import { servicios } from "../components/db/servicios";
+import { categorias } from "../db/categorias.js";
 
 
 import { PropTypes } from "prop-types"
@@ -72,8 +72,8 @@ export function LandingPage() {
           
           </article>
 
-          <article className="containe mx-auto grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
-                {servicios.slice(0, 3).map(servicio => (
+          <article className="mx-auto grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+                {categorias.slice(0, 3).map(servicio => (
 
                     <div key={servicio.nombre}>
                         <PolaroidCard

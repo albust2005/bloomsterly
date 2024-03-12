@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom"
 import { useState, useEffect } from "react"
 
-import { servicios } from "../../components/db/servicios.js"
-import { empresas } from "../../components/db/empresas.js"
+import { categorias } from "../../db/categorias.js"
+import { empresas } from "../../db/empresas.js"
 import { Layaout } from "../../components/templates/Layaout.jsx"
 import { FirtsTitle } from "../../components/titles/Title.jsx"
 import { EmpresaCards } from "../../components/templates/EmpresaCard.jsx"
@@ -11,14 +11,14 @@ import { NotFound } from "../../components/templates/NotFound.jsx"
 
 
 export function ServicioEspecifico() {
-    const { servicioName } = useParams()
-    
+    const { categoriaName } = useParams()
+
     const [ empresasConServicio, setEmpresasConServicio ] = useState([])
     const [ descripcion, setDescripcion] = useState(null) 
 
     useEffect(() => {
         //encontramos la informacion del pedido seleccionado
-        const servicio = servicios.find((servicio) => servicio.nombre === servicioName)
+        const servicio = categorias.find((categoria) => categoria.nombre === categoriaName)
         setDescripcion(servicio.descripcion)
         //buscamos que empresa contiene el uuid del servicio
         //nos devuelve un array con las empresas que coinciden
@@ -26,19 +26,19 @@ export function ServicioEspecifico() {
             return empresa.servicios.includes(servicio.uuid)
         })
         setEmpresasConServicio(empresasConServicioInfo)
-    }, [servicioName])
+    }, [categoriaName])
 
 
     //mostramos las empresas por pantalla haciendo mapenado el array que las contiene
     //y renderizamos el componente EmpresaCards que contiene la estructura
     return (
         <Layaout>
-            <section className="flex gap-4 flex-col items-center">
+            <section className="flex gap-12 flex-col items-center">
                 <FirtsTitle
-                    title={servicioName}
+                    title={categoriaName}
                     descripcion={descripcion}
                 />
-                <section className="flex items-center">
+                <section className="px-5 md:px-16 lg:px-24 2xl:px-64 mx-auto grid grid-cols-1 sm:grid-cols-1 xl:grid-cols-2 gap-6 ">
                     {
 
                         empresasConServicio.length === 0
