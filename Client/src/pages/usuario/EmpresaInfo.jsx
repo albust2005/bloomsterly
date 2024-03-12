@@ -1,6 +1,6 @@
 
-import { empresas } from "./db/empresas.js"
-import { Layaout } from "./templates/Layaout";
+import { empresas } from "../../components/db/empresas.js"
+import { Layaout } from "../../components/templates/Layaout.jsx";
 
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";

@@ -1,9 +1,9 @@
-import { Layaout } from "./templates/Layaout"
-import { PolaroidCard } from "./templates/PolaroidCard"
+import { Layaout } from "../../components/templates/Layaout.jsx"
+import { PolaroidCard } from "../../components/templates/PolaroidCard.jsx"
 
 
-import { servicios } from "./db/servicios"
-import { FirtsTitle } from "./titles/Title.jsx"
+import { servicios } from "../../components/db/servicios.js"
+import { FirtsTitle } from "../../components/titles/Title.jsx"
 
 export function Servicios() {
 

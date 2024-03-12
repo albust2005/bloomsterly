@@ -1,6 +1,7 @@
-import { Layaout } from "./templates/Layaout"
+import PropTypes from 'prop-types'
 
-import { FirtsTitle } from "./titles/Title.jsx"
+import { Layaout } from "../../components/templates/Layaout.jsx"
+import { FirtsTitle } from "../../components/titles/Title.jsx"
 
 export function Administrador({ user }) {
     return(
@@ -22,3 +23,6 @@ export function Administrador({ user }) {
     )
 }
 
+Administrador.propTypes = {
+    user: PropTypes.string,
+}

@@ -1,12 +1,12 @@
 import { useParams } from "react-router-dom"
 import { useState, useEffect } from "react"
 
-import { servicios } from "./db/servicios.js"
-import { empresas } from "./db/empresas.js"
-import { Layaout } from "./templates/Layaout.jsx"
-import { FirtsTitle } from "./titles/Title.jsx"
-import { EmpresaCards } from "./templates/EmpresaCard.jsx"
-import { NotFound } from "./templates/NotFound.jsx"
+import { servicios } from "../../components/db/servicios.js"
+import { empresas } from "../../components/db/empresas.js"
+import { Layaout } from "../../components/templates/Layaout.jsx"
+import { FirtsTitle } from "../../components/titles/Title.jsx"
+import { EmpresaCards } from "../../components/templates/EmpresaCard.jsx"
+import { NotFound } from "../../components/templates/NotFound.jsx"
 
 
 

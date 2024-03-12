@@ -1,13 +1,13 @@
 
 import "../App.css";
 
-import { PolaroidCard } from "./templates/PolaroidCard";
-import { FirtsTitle, Titles } from "./titles/Title";
-import { servicios } from "./db/servicios";
+import { PolaroidCard } from "../components/templates/PolaroidCard";
+import { FirtsTitle, Titles } from "../components/titles/Title";
+import { servicios } from "../components/db/servicios";
 
 
 import { PropTypes } from "prop-types"
-import { Layaout } from "./templates/Layaout";
+import { Layaout } from "../components/templates/Layaout";
 
 
 
