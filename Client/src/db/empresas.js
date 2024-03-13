@@ -10,7 +10,7 @@ export const empresas = [
         municipio: "Medellin",
         direccion: "--",
         telefono: "3157674583",
-        servicios : [
+        categorias : [
             "s112",
             "s111",
             "s113",
@@ -35,7 +35,7 @@ export const empresas = [
         municipio: "Rionegro",
         direccion: "--",
         telefono: "3014209936",
-        servicios : [
+        categorias : [
             "s111",
             "s117",
         ],
@@ -57,7 +57,7 @@ export const empresas = [
         municipio: "Rionegro",
         direccion: "--",
         telefono: "3014209936",
-        servicios : [
+        categorias : [
             "s111",
             "s117",
         ],

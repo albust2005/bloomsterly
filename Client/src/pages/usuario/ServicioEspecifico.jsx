@@ -18,12 +18,12 @@ export function ServicioEspecifico() {
 
     useEffect(() => {
         //encontramos la informacion del pedido seleccionado
-        const servicio = categorias.find((categoria) => categoria.nombre === categoriaName)
-        setDescripcion(servicio.descripcion)
+        const categoria = categorias.find((categoria) => categoria.nombre === categoriaName)
+        setDescripcion(categoria.descripcion)
         //buscamos que empresa contiene el uuid del servicio
         //nos devuelve un array con las empresas que coinciden
         const empresasConServicioInfo = empresas.filter((empresa) => {
-            return empresa.servicios.includes(servicio.uuid)
+            return empresa.categorias.includes(categoria.uuid)
         })
         setEmpresasConServicio(empresasConServicioInfo)
     }, [categoriaName])
