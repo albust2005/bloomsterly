@@ -20,10 +20,10 @@ export const empresas = [
         imagenes: [
 
         ],
-        redesSociales: [
+        redesSociales : [
             {
-                instagram:"@YJrecreacion",
-                facebook:"",
+                instagram: "@YJrecreacion",
+                facebook: "",
             }
         ],
     },

@@ -17,7 +17,7 @@ export function PolaroidCard({url, nombre, descripcion}) {
                 {nombre}
             </h1>
 
-            <p>{descripcion}</p>
+            <p className='font-subTitle'>{descripcion}</p>
         </Link>    
     )
 } 
