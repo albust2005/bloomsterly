@@ -8,7 +8,7 @@ import { FirtsTitle } from "../../components/titles/Title.jsx"
 export function Servicios() {
 
     return (
-        <Layaout>
+        <>
             <FirtsTitle 
             title="Servicios" 
             descripcion="Aqui podras encontrar las categorias de los servicios que ofrecemos para que crees tu evento de la mejor manera.">
@@ -31,9 +31,7 @@ export function Servicios() {
                 </article>
             </section>
 
-        </Layaout>
-
-
+        </>
     )
 }
 
