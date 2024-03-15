@@ -2,12 +2,12 @@ import PropTypes from 'prop-types'
 
 export function FirtsTitle({title, descripcion}) {
     return (
-        <section className="flex flex-col items-center text-center w-full px-6">
+        <section className="flex flex-col items-center text-center w-full">
             <h1 className="flex justify-center font-bloomsterly text-white text-6xl celular:text-7xl
             sm:text-9xl md:text-[160px] lg:text-[210px] xl:text-[250px] dark:text-second_color_lt ">
                 {title}
             </h1>
-            <p className="font-subTitle text-sm md:text-xl lg:text-3xl px-5 md:px-16 lg:px-24 2xl:px-64 text-white dark:text-black ">
+            <p className="font-subTitle text-sm md:text-xl lg:text-3xl text-white dark:text-black ">
                 {descripcion}
             </p>
         </section>

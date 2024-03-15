@@ -1,10 +1,10 @@
-export function Pedidos () {
-    return(
-        <main>
-        <h1>Pedidos</h1>
-        <div>
+export function Pedidos() {
+    return (
+        <section>
+            <h1>Pedidos</h1>
+            <div>
 
-        </div>
-    </main>
+            </div>
+        </section>
     )
 }

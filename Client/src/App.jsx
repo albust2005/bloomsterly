@@ -67,7 +67,6 @@ function App() {
       </Routes>
       
       <Footer></Footer>
-
     </Layaout>
   )
 }

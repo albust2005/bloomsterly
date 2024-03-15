@@ -23,31 +23,30 @@ export function EmpresaInfo() {
 
     /***COMPONETIZAR TITULOS CORRECTAMENTE***/
     return (
-        <Layaout>
-            <section className="flex flex-col-reverse gap-4 lg:flex-row px-5 md:px-16 lg:px-24 2xl:px-64 mb-3">
-                <aside className="bg-black h-72 lg:h-screen lg:w-1/4">
+        <section className="flex flex-col-reverse gap-4 lg:flex-row mb-3">
+            <aside className="bg-black h-72 lg:h-screen lg:w-1/4">
 
-                </aside>
-                <article className="bg-color_font_dark flex flex-col gap-5 rounded-lg p-5 min-h-96 lg:w-3/4">
+            </aside>
+            <article className="bg-color_font_dark flex flex-col gap-5 rounded-lg p-5 min-h-96 lg:w-3/4">
 
-                    <div className="flex flex-col gap-2">
-                        <h1 className="font-title text-4xl italic font-black">{nombre}</h1>
-                        <p className="font-subTitle text-xl">{municipio}</p>
-                        <p className="font-text">{descripcion}</p>
-                    </div>
+                <div className="flex flex-col gap-2">
+                    <h1 className="font-title text-4xl italic font-black">{nombre}</h1>
+                    <p className="font-subTitle text-xl">{municipio}</p>
+                    <p className="font-text">{descripcion}</p>
+                </div>
 
-                    <div>
-                        <p>{categorias}</p>
-                    </div>
+                <div>
+                    <p>{categorias}</p>
+                </div>
 
-                    <div>
-                        {
+                <div>
+                    {
 
-                        }
-                    </div>
+                    }
+                </div>
 
-                </article>
-            </section>
-        </Layaout>
+            </article>
+        </section>
+
     )
 }

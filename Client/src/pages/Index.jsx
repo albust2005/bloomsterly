@@ -27,7 +27,7 @@ export function LandingPage() {
       {/*Seccion Nosotros*/}
       <div className="flex flex-col items-center gap-16 xl:gap-32">
 
-        <section className="h-full xl:flex gap-5 px-5 md:px-16 lg:px-24 2xl:px-64">
+        <section className="h-full xl:flex gap-5">
 
           <article className="w-full xl:w-3/5 2xl:w-1/2">
 
@@ -58,7 +58,7 @@ export function LandingPage() {
 
 
         {/*Seccion Conoce*/}
-        <section className="flex flex-col w-full gap-5 px-5 md:px-16 lg:px-24 2xl:px-64">
+        <section className="flex flex-col w-full gap-5">
 
           <article className="w-full">
             <Titles
