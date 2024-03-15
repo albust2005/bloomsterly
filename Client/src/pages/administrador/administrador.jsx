@@ -5,7 +5,7 @@ import { FirtsTitle } from "../../components/titles/Title.jsx"
 
 export function Administrador({ user }) {
     return(
-        <Layaout>
+        <section>
             {/*Titulo administrador*/}
             <FirtsTitle
                 title="Administrador"
@@ -19,7 +19,7 @@ export function Administrador({ user }) {
                     </p>
                 </div>
             </section>
-        </Layaout>
+        </section>
     )
 }
 

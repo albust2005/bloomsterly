@@ -32,13 +32,13 @@ export function ServicioEspecifico() {
     //mostramos las empresas por pantalla haciendo mapenado el array que las contiene
     //y renderizamos el componente EmpresaCards que contiene la estructura
     return (
-        <Layaout>
+        <section>
             <section className="flex gap-12 flex-col items-center">
                 <FirtsTitle
                     title={categoriaName}
                     descripcion={descripcion}
                 />
-                <section className="px-5 md:px-16 lg:px-24 2xl:px-64 mx-auto grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 ">
+                <section className="mx-auto grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 ">
                     {
 
                         empresasConServicio.length === 0
@@ -60,7 +60,7 @@ export function ServicioEspecifico() {
                 </section>
 
             </section>
-        </Layaout >
+        </section>
 
     )
 

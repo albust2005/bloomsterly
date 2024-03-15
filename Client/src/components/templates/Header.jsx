@@ -19,7 +19,7 @@ export function Header() {
     };
 
     return (
-        <nav className="bg-transparent px-5 md:px-16 lg:px-24 2xl:px-64 flex justify-between items-center h-20 dark:bg-transparent dark:shadow-[#f7e6d5]">
+        <nav className="bg-transparent flex justify-between items-center h-20 dark:bg-transparent dark:shadow-[#f7e6d5]">
             <Link className="flex justify-between items-center" to="/">
                 <span className="cursor-pointer text-white">BloomSterly</span>
             </Link>
