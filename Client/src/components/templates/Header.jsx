@@ -6,23 +6,23 @@ import { Link, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { useThemeContext } from "../providers/themeProvider";
 
-export function Header({theme}) {
+export function Header() {
     const location = useLocation()
-    //use stated para asignar el logo y las clases necesarias al menu responsive
-    const [menu, setMenu] = useState(faBars);
-    const [logoColor, setLogoColor] = useState("#fff")
-    
-    useEffect(()=>{
-        setLogoColor(theme === 'dark' ? '#BC0B38' : '#fff')
-    },[theme])
-
-
+    const [menu, setMenu] = useState(faBars);   //use stated para asignar el logo y las clases necesarias al menu responsive
     //cada click cambia el estado 
     const toggleClick = () => {
         setMenu(menu === faBars ? faXmark : faBars);
     };
+
+    //para evitar la reutilizacion de nuevo del hook useEffect y estar pasando 
+    //informacion mediante las props creamos un objeto que va a guardar el valor del contexto 
+    //dependiendo de este valor podemos aplicar la logica deseada
+    const theme = useThemeContext()
+    const logoColor = theme === 'dark' ? '#BC0B38' : '#fff'
+
 
 
     if (location.pathname !== '/login') {
@@ -56,7 +56,7 @@ export function Header({theme}) {
                 </div>
             </nav>
         )
-    }else{
+    } else {
         return null
     }
 
