@@ -3,7 +3,6 @@ import { useState, useEffect } from "react"
 
 import { categorias } from "../../db/categorias.js"
 import { empresas } from "../../db/empresas.js"
-import { Layaout } from "../../components/templates/Layaout.jsx"
 import { FirtsTitle } from "../../components/titles/Title.jsx"
 import { EmpresaCards } from "../../components/templates/EmpresaCard.jsx"
 import { NotFound } from "../../components/templates/NotFound.jsx"

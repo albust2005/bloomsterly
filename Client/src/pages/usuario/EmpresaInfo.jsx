@@ -1,6 +1,5 @@
 
 import { empresas } from "../../db/empresas.js"
-import { Layaout } from "../../components/templates/Layaout.jsx";
 //import { NotFound } from "../../components/templates/NotFound.jsx"
 
 import { useEffect, useState } from "react";

@@ -17,7 +17,6 @@ import { Footer } from './components/templates/Footer'
 
 
 function App() {
-
   // Cambio al tema dep la config del sistema
   const [theme, setTheme] = useState(() => {
     if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
@@ -47,7 +46,7 @@ function App() {
 
   return (
     <Layaout>
-      <Header></Header>
+      <Header theme={theme}/>
 
       <ThemeColor
         handleChangeDark={handleChangeDark}
@@ -65,8 +64,8 @@ function App() {
 
         <Route path='/pedidos' element={<Pedidos />} />
       </Routes>
-      
-      <Footer></Footer>
+
+      <Footer theme={theme} />
     </Layaout>
   )
 }
