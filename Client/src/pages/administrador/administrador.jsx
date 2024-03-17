@@ -1,6 +1,5 @@
-import { Layaout } from "./templates/Layaout"
-
-import { FirtsTitle } from "./titles/FirtsTitle"
+import { FirtsTitle, Titles } from "../../components/titles/Title";
+import { Layaout } from "../../components/templates/Layaout";
 
 export function Administrador({ user }) {
     return(
