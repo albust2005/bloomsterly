@@ -1,12 +1,8 @@
 import { Layaout } from "./templates/Layaout"
-import { useState, useEffect } from "react"
 
 import { FirtsTitle } from "./titles/FirtsTitle"
 
 export function Administrador({ user }) {
-
-    const [{change, setChange}] = useState();
-
     return(
         <Layaout>
             {/*Titulo administrador*/}
