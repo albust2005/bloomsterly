@@ -25,7 +25,7 @@ export function InicioSesion({ChangeActive}) {
           <input type="text" 
           className="" 
           required 
-          {errors.Username && <span className="text-sm">{errors.Username.message}</span>
+          
           />
           <label htmlFor="Username" className="">
             Username
