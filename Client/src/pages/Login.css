@@ -136,6 +136,17 @@
     flex-direction: column;
 }
 
+.info-content.Login{
+    right: 0;
+    text-align: right;
+    padding: 0 40px 60px 150px;
+}
+
+.info-content.Login .animation{
+    transform: translateX(0);
+    transition: .7s ease;
+}
+
 .info-content h2{
     text-transform: uppercase;
     font-size: 36px;
@@ -183,6 +194,7 @@
 
 .form-box.Login .animation{
     transform: translateX(0%);
+    transition: .7s;
     opacity: 1;
 }
 
@@ -191,11 +203,11 @@
     opacity: 0;
 }
 
-
-.info-content.Login .animation{
-    transform: translateX(0);
-    transition: .7s ease;
+.container.active .info-content.Login .animation{
+    transform: translateX(120%);
+    opacity: 0;
 }
+
 
 
 /*REGISTER*/
@@ -207,17 +219,6 @@
     pointer-events: none;
 }
 
-.info-content.Register .animation{
-    transform: translateX(-120%);
-    transition: .7s ease;
-}
-
-.container.active .form-box.Register .animation{
-    transform: translateX(120%);
-    opacity: 0;
-}
-
-
 .form-box.Register{
     right: 0;
     padding: 0 60px;
@@ -225,10 +226,21 @@
 
 .form-box.Register .animation{
     transform: translateX(120%);
+    transition: .7s;
     opacity: 0;
+    transition-delay: .2s;
 }
 
 .container.active .form-box.Register .animation{
     transform: translateX(0%);
     opacity: 1;
+}
+
+.info-content.Register .animation{
+    transform: translateX(-135%);
+    transition: .7s ease;
+}
+
+.container.active .info-content.Register .animation{
+    transform: translateX(0%);
 }

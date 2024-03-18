@@ -5,6 +5,8 @@ import { faUser, faLock, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import "./Login.css";
 import { useState } from "react";
 
+
+
 export function Login() {
 
   const [active, setActive] = useState("") //[1valor=>estado actual, 2do es el que hacer el cambio]
@@ -21,13 +23,13 @@ export function Login() {
         <div className="curved-shape "></div>
         <div className="curved-shape2"></div>
           <div className="form-box Login left-0 px-[40px]">
-            <h2 className="animation font-title transition delay-75">Login</h2>
+            <h2 className="animation font-title">Login</h2>
 
             {/*FORM inicio sesion*/}
 
             <form action="" className="">
 
-              <div className="input-box animation transition delay-100" >
+              <div className="input-box animation">
                 <input type="text" className="" required />
                 <label htmlFor="Username" className="">
                   Username
@@ -39,7 +41,7 @@ export function Login() {
                 />
               </div>
 
-              <div className="input-box animation transition delay-150">
+              <div className="input-box animation" >
                 <input type="text" className="" required />
                 <label htmlFor="password" className="">
                   Password
@@ -51,13 +53,13 @@ export function Login() {
                 />
               </div>
 
-              <div className="input-box animation transition delay-200" >
+              <div className="input-box animation " >
                 <button type="submit" className="btn">
                   Login
                 </button>
               </div>
 
-              <div className="regi-link animation transition delay-300" >
+              <div className="regi-link animation " >
                 <p>
                   Dont have an account ?
                   <a href="#" className="SignUpLink" onClick={ChangeActive}>
@@ -70,8 +72,7 @@ export function Login() {
             </form>
           </div>
 
-          <div className="info-content Login right-0 text-right pr-[40px] pb-[60px] pl-[150px] 
-           translate-x-0 ">
+          <div className="info-content Login " >
             <h2 className="animation">BIENVENIDO DE VUELTA!</h2>
             <p className="animation" >
               Lorem ipsum dolor sit amet consectetur, adipisicing elit. Enim,
@@ -79,13 +80,13 @@ export function Login() {
             </p>
           </div>
 
-          {/*FORM */}
+          {/*FORM registro*/}
 
-          <div className="form-box Register transition delay-100">
-            <h2 className="animation transition ease delay-[1.3s]">Register</h2>
+          <div className="form-box Register" >
+            <h2 className="animation " >Register</h2>
 
             <form action="" className="">
-            <div className="input-box animation transition delay-[1.4s]">
+            <div className="input-box animation " >
                 <input type="text" className="" required />
                 <label htmlFor="email" className="">
                   Correo electronico
@@ -97,7 +98,7 @@ export function Login() {
                 />
               </div>
 
-              <div className="input-box animation transition delay-[1.5s]">
+              <div className="input-box animation ">
                 <input type="text" className="" required />
                 <label htmlFor="Username" className="">
                   Username
@@ -109,7 +110,7 @@ export function Login() {
                 />
               </div>
 
-              <div className="input-box animation transition delay-[1.6s]">
+              <div className="input-box animation " >
                 <input type="text" className="" required />
                 <label htmlFor="password" className="">
                   Password
@@ -121,13 +122,13 @@ export function Login() {
                 />
               </div>
 
-              <div className="animation transition delay-[1.7s]">
+              <div className="animation ">
                 <button type="submit" className="btn">
                   Register
                 </button>
               </div>
 
-              <div className="regi-link animation transition delay-[1.8s]">
+              <div className="regi-link animation " >
                 <p>
                   Dont have an account ?
                   <a href="#" className="SignInLink" onClick={ChangeActive}>
@@ -138,9 +139,9 @@ export function Login() {
             </form>
           </div>
 
-          <div className="info-content Register ">
-            <h2 className="animation">BIENVENIDO DE VUELTA!</h2>
-            <p className="animation">
+          <div className="info-content Register" >
+            <h2 className="animation ">BIENVENIDO DE VUELTA!</h2>
+            <p className="animation ">
               Lorem ipsum dolor sit amet consectetur, adipisicing elit. Enim,
               ipsam non?
             </p>
