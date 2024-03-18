@@ -1,10 +1,15 @@
-import PropTypes from 'prop-types'
+<<<<<<< HEAD
+import { Layaout } from "./templates/Layaout"
 
-import { FirtsTitle } from "../../components/titles/Title.jsx"
+import { FirtsTitle } from "./titles/FirtsTitle"
+=======
+import { FirtsTitle, Titles } from "../../components/titles/Title";
+import { Layaout } from "../../components/templates/Layaout";
+>>>>>>> 5d57c32bf460894f269381074648b786ce4eb918
 
 export function Administrador({ user }) {
     return(
-        <section>
+        <Layaout>
             {/*Titulo administrador*/}
             <FirtsTitle
                 title="Administrador"
@@ -18,10 +23,7 @@ export function Administrador({ user }) {
                     </p>
                 </div>
             </section>
-        </section>
+        </Layaout>
     )
 }
 
-Administrador.propTypes = {
-    user: PropTypes.string,
-}
