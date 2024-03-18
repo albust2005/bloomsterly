@@ -19,10 +19,9 @@ export function ThemeProvider({ children }) {
     //se aplica la logica para cambiar de tema 
     //creamos un nuevo estado que luego lo agregaremos al contexto
     const [theme, setTheme] = useState(() => {
-        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-            return "dark"
-        }
-        return "light"
+        const themeStorage = localStorage.getItem('themeStorage')
+
+        return themeStorage
     })
 
     //use effect para hacer el cambio de tema al elemento html 
@@ -30,8 +29,11 @@ export function ThemeProvider({ children }) {
     useEffect(() => {
         if (theme == "dark") {
             document.querySelector("html").classList.add("dark")
+            localStorage.setItem('themeStorage', 'dark')
+
         } else {
             document.querySelector("html").classList.remove("dark")
+            localStorage.setItem('themeStorage', '')
         }
     }, [theme])
 
