@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types'
 
-import { Layaout } from "../../components/templates/Layaout.jsx"
 import { FirtsTitle } from "../../components/titles/Title.jsx"
 
 export function Administrador({ user }) {
