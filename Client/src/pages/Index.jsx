@@ -1,13 +1,14 @@
 
 import "../App.css";
 
-import { PolaroidCard } from "./templates/PolaroidCard";
-import { FirtsTitle, Titles } from "./titles/FirtsTitle";
-import { servicios } from "./db/servicios";
+import { PolaroidCard } from "../components/templates/PolaroidCard";
+import { FirtsTitle, Titles } from "../components/titles/Title";
+import { categorias } from "../db/categorias.js";
 
 
 import { PropTypes } from "prop-types"
-import { Layaout } from "./templates/Layaout";
+import { Layaout } from "../components/templates/Layaout";
+import { Flor } from "../components/Flores.jsx"
 
 
 
@@ -19,18 +20,15 @@ Titles.propTypes = {
 export function LandingPage() {
 
   return (
-    <Layaout>
-
+    <>
       {/* BloomSterly */}
       <FirtsTitle 
         title="BloomSterly"
       />
-
       {/*Seccion Nosotros*/}
-
       <div className="flex flex-col items-center gap-16 xl:gap-32">
 
-        <section className="h-full xl:flex gap-5 px-5 md:px-16 lg:px-24 2xl:px-64">
+        <section className="h-full xl:flex gap-5">
 
           <article className="w-full xl:w-3/5 2xl:w-1/2">
 
@@ -38,7 +36,8 @@ export function LandingPage() {
               title='NOSOTROS'
               subTitle='¿Que hacemos?'
             />
-
+            
+            <Flor name='blanco' positionx={200} positiony={300} size={10}/>
 
             <p className="text-white w-full pt-6 text-1xl sm:text-2xl md:text-3xl lg-text-4xl
             dark:text-black ">
@@ -61,19 +60,17 @@ export function LandingPage() {
 
 
         {/*Seccion Conoce*/}
-        <section className="flex flex-col w-full gap-5 px-5 md:px-16 lg:px-24 2xl:px-64">
+        <section className="flex flex-col w-full gap-5">
 
           <article className="w-full">
-
             <Titles
               title='CONOCE'
               subTitle='Nuestros servicios'
             />
-          
           </article>
 
-          <article className="containe mx-auto grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
-                {servicios.slice(0, 3).map(servicio => (
+          <article className="mx-auto grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+                {categorias.slice(0, 3).map(servicio => (
 
                     <div key={servicio.nombre}>
                         <PolaroidCard
@@ -88,7 +85,6 @@ export function LandingPage() {
         </section>
         
       </div>
-
-    </Layaout>
+    </>
   );
 }

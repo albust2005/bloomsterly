@@ -1,7 +1,7 @@
 //remplazar este objeto por los servicios que se encuentran en la base de datos
 //remplazar el id por un uuid generado
 
-export const servicios = [
+export const categorias = [
     {
         uuid: "s111",
         img: "../src/assets/img_servicios/servicio-musica.webp",

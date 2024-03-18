@@ -10,7 +10,7 @@ export const empresas = [
         municipio: "Medellin",
         direccion: "--",
         telefono: "3157674583",
-        servicios : [
+        categorias : [
             "s112",
             "s111",
             "s113",
@@ -20,10 +20,10 @@ export const empresas = [
         imagenes: [
 
         ],
-        redesSociales: [
+        redesSociales : [
             {
-                instagram:"@YJrecreacion",
-                facebook:"",
+                instagram: "@YJrecreacion",
+                facebook: "",
             }
         ],
     },
@@ -35,7 +35,29 @@ export const empresas = [
         municipio: "Rionegro",
         direccion: "--",
         telefono: "3014209936",
-        servicios : [
+        categorias : [
+            "s111",
+            "s117",
+        ],
+        imagenes: [
+
+        ],
+        redesSociales: [
+            {
+                instagram:"@LiriosEventos",
+                facebook:"",
+            }
+        ],
+    },
+    {
+        uuid: "e113",
+        nombre: "Las margaritas",
+        logo: "",
+        descripcion: "Hacemos que tus ocaciones espaciales sean unicos",
+        municipio: "Rionegro",
+        direccion: "--",
+        telefono: "3014209936",
+        categorias : [
             "s111",
             "s117",
         ],

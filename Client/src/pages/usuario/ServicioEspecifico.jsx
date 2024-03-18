@@ -1,43 +1,43 @@
 import { useParams } from "react-router-dom"
-
-import { servicios } from "./db/servicios.js"
-import { empresas } from "./db/empresas.js"
-import { Layaout } from "./templates/Layaout.jsx"
-import { FirtsTitle } from "./titles/FirtsTitle.jsx"
-import { EmpresaCards } from "./templates/EmpresaCard.jsx"
-import { NotFound } from "./templates/NotFound.jsx"
 import { useState, useEffect } from "react"
+
+import { categorias } from "../../db/categorias.js"
+import { empresas } from "../../db/empresas.js"
+import { FirtsTitle } from "../../components/titles/Title.jsx"
+import { EmpresaCards } from "../../components/templates/EmpresaCard.jsx"
+import { NotFound } from "../../components/templates/NotFound.jsx"
+
 
 
 export function ServicioEspecifico() {
-    const { servicioName } = useParams()
-    
-    const [empresasConServicio, setEmpresasConServicio] = useState([])
+    const { categoriaName } = useParams()
+
+    const [ empresasConServicio, setEmpresasConServicio ] = useState([])
     const [ descripcion, setDescripcion] = useState(null) 
 
     useEffect(() => {
         //encontramos la informacion del pedido seleccionado
-        const servicio = servicios.find((servicio) => servicio.nombre === servicioName)
-        setDescripcion(servicio.descripcion)
+        const categoria = categorias.find((categoria) => categoria.nombre === categoriaName)
+        setDescripcion(categoria.descripcion)
         //buscamos que empresa contiene el uuid del servicio
         //nos devuelve un array con las empresas que coinciden
         const empresasConServicioInfo = empresas.filter((empresa) => {
-            return empresa.servicios.includes(servicio.uuid)
+            return empresa.categorias.includes(categoria.uuid)
         })
         setEmpresasConServicio(empresasConServicioInfo)
-    }, [servicioName])
+    }, [categoriaName])
 
 
     //mostramos las empresas por pantalla haciendo mapenado el array que las contiene
     //y renderizamos el componente EmpresaCards que contiene la estructura
     return (
-        <Layaout>
-            <section className="flex gap-4 flex-col items-center">
+        <section>
+            <section className="flex gap-12 flex-col items-center">
                 <FirtsTitle
-                    title={servicioName}
+                    title={categoriaName}
                     descripcion={descripcion}
                 />
-                <section className="flex items-center">
+                <section className="mx-auto grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 ">
                     {
 
                         empresasConServicio.length === 0
@@ -59,7 +59,7 @@ export function ServicioEspecifico() {
                 </section>
 
             </section>
-        </Layaout >
+        </section>
 
     )
 
