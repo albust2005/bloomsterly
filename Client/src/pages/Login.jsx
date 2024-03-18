@@ -18,12 +18,12 @@ export function Login() {
   }
 
   return (
-    <div className="bodyy ">
-      <div className={`container ${active} w-[750px]`}>
-        <div className="curved-shape "></div>
-        <div className="curved-shape2"></div>
+    <div className="bodyy font-title">
+      <div className={`container ${active} w-full dark:bg-second_color_lt`} >
+        <div className="curved-shape dark:bg-light_theme"></div>
+        <div className="curved-shape2 dark:bg-second_color_lt"></div>
           <div className="form-box Login left-0 px-[40px]">
-            <h2 className="animation font-title">Login</h2>
+            <h2 className="animation font-semibold">Inicio de Sesión</h2>
 
             {/*FORM inicio sesion*/}
 
@@ -36,7 +36,7 @@ export function Login() {
                 </label>
                 <FontAwesomeIcon
                   icon={faUser}
-                  style={{ color: "190042" }}
+                  style={{ color: "FFFFEF" }}
                   className="absolute top-[50%] right-0 translate-y-[-50%] "
                 />
               </div>
@@ -48,7 +48,7 @@ export function Login() {
                 </label>
                 <FontAwesomeIcon
                   icon={faLock}
-                  style={{ color: "190042" }}
+                  style={{ color: "FFFFEF" }}
                   className="absolute top-[50%] right-0 translate-y-[-50%]"
                 />
               </div>
@@ -61,14 +61,22 @@ export function Login() {
 
               <div className="regi-link animation " >
                 <p>
-                  Dont have an account ?
-                  <a href="#" className="SignUpLink" onClick={ChangeActive}>
-                    Sign Up
+                  NO tienes una cuenta?
+                  <a href="#" className="SignUpLink dark:hover:bg-light_theme dark:hover:text-second_color_lt" onClick={ChangeActive}>
+                    Registrate
                   </a>
                 </p>
               </div>
 
-              
+              <div className="regi-link animation " >
+                <p>
+                  Eres empresario o emprendedor?
+                  <a href="#" className="SignUpLink  dark:hover:bg-light_theme dark:hover:text-second_color_lt" >
+                    Ingresa aquí
+                  </a>
+                </p>
+              </div>
+
             </form>
           </div>
 
@@ -83,7 +91,7 @@ export function Login() {
           {/*FORM registro*/}
 
           <div className="form-box Register" >
-            <h2 className="animation " >Register</h2>
+            <h2 className="animation font-semibold" >Registro</h2>
 
             <form action="" className="">
             <div className="input-box animation " >
@@ -93,7 +101,7 @@ export function Login() {
                 </label>
                 <FontAwesomeIcon
                   icon={faEnvelope}
-                  style={{ color: "190042" }}
+                  style={{ color: "FFFFEF" }}
                   className="absolute top-[50%] right-0 translate-y-[-50%] "
                 />
               </div>
@@ -101,11 +109,11 @@ export function Login() {
               <div className="input-box animation ">
                 <input type="text" className="" required />
                 <label htmlFor="Username" className="">
-                  Username
+                  Nombre de usuario
                 </label>
                 <FontAwesomeIcon
                   icon={faUser}
-                  style={{ color: "190042" }}
+                  style={{ color: "FFFFEF" }}
                   className="absolute top-[50%] right-0 translate-y-[-50%] "
                 />
               </div>
@@ -113,11 +121,23 @@ export function Login() {
               <div className="input-box animation " >
                 <input type="text" className="" required />
                 <label htmlFor="password" className="">
-                  Password
+                  Contraseña
                 </label>
                 <FontAwesomeIcon
                   icon={faLock}
-                  style={{ color: "190042" }}
+                  style={{ color: "FFFFEF" }}
+                  className="absolute top-[50%] right-0 translate-y-[-50%]"
+                />
+              </div>
+
+              <div className="input-box animation " >
+                <input type="text" className="" required />
+                <label htmlFor="confirm-password" className="">
+                  Confirma tu contraseña
+                </label>
+                <FontAwesomeIcon
+                  icon={faLock}
+                  style={{ color: "FFFFEF" }}
                   className="absolute top-[50%] right-0 translate-y-[-50%]"
                 />
               </div>
@@ -131,7 +151,7 @@ export function Login() {
               <div className="regi-link animation " >
                 <p>
                   Dont have an account ?
-                  <a href="#" className="SignInLink" onClick={ChangeActive}>
+                  <a href="#" className="SignInLink  dark:hover:bg-light_theme dark:hover:text-second_color_lt" onClick={ChangeActive}>
                     Sign In
                   </a>
                 </p>
