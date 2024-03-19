@@ -1,13 +1,11 @@
 import { useParams } from "react-router-dom"
 import { useState, useEffect } from "react"
 
-import { categorias } from "../../db/categorias.js"
-import { empresas } from "../../db/empresas.js"
+import { categorias } from "../../db/categorias.json"
+import { empresas } from "../../db/empresas.json"
 import { FirtsTitle } from "../../components/titles/Title.jsx"
 import { EmpresaCards } from "../../components/templates/EmpresaCard.jsx"
 import { NotFound } from "../../components/templates/NotFound.jsx"
-
-
 
 export function ServicioEspecifico() {
     const { categoriaName } = useParams()
@@ -26,7 +24,6 @@ export function ServicioEspecifico() {
         })
         setEmpresasConServicio(empresasConServicioInfo)
     }, [categoriaName])
-
 
     //mostramos las empresas por pantalla haciendo mapenado el array que las contiene
     //y renderizamos el componente EmpresaCards que contiene la estructura

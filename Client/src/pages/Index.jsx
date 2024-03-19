@@ -3,21 +3,12 @@ import "../App.css";
 
 import { PolaroidCard } from "../components/templates/PolaroidCard";
 import { FirtsTitle, Titles } from "../components/titles/Title";
-import { categorias } from "../db/categorias.js";
-
-
-import { PropTypes } from "prop-types"
-import { Layaout } from "../components/templates/Layaout";
 import { Flor } from "../components/Flores.jsx"
-
-
-
-Titles.propTypes = {
-  title: PropTypes.string,
-  subTitle: PropTypes.string
-}
+import { useCategoriaProvider } from "../components/providers/categoriaProvider.jsx";
 
 export function LandingPage() {
+
+  const categorias = useCategoriaProvider()
 
   return (
     <>
@@ -69,13 +60,12 @@ export function LandingPage() {
           </article>
 
           <article className="mx-auto grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
-                {categorias.slice(0, 3).map(servicio => (
-
-                    <div key={servicio.nombre}>
+                {categorias.slice(0, 3).map(categoria => (
+                    <div key={categoria.id}>
                         <PolaroidCard
-                            url={servicio.img}
-                            nombre={servicio.nombre}
-                            descripcion={servicio.descripcion}
+                            url={categoria.img}
+                            nombre={categoria.nombre}
+                            descripcion={categoria.descripcion}
                         />
                     </div>
                 ))}
