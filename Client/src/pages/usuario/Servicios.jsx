@@ -1,11 +1,11 @@
-import { Layaout } from "../../components/templates/Layaout.jsx"
+import { useCategoriaProvider } from "../../components/providers/categoriaProvider.jsx"
 import { PolaroidCard } from "../../components/templates/PolaroidCard.jsx"
+import { FirtsTitle } from "../../components/titles/Title.jsx" 
 
-
-import { categorias } from "../../db/categorias.js"
-import { FirtsTitle } from "../../components/titles/Title.jsx"
 
 export function Servicios() {
+
+    const categorias = useCategoriaProvider()
 
     return (
         <>
@@ -16,14 +16,14 @@ export function Servicios() {
 
             <section className="flex flex-col gap-5 mb-3 -mt-8">
                 <article className="containe mx-auto grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
-                    {categorias.map(servicio => (
+                    {categorias.map(categoria => (
 
-                        <div key={servicio.uuid}>
+                        <div key={categoria.uuid}>
                             <PolaroidCard
-                                url={servicio.img}
-                                nombre={servicio.nombre}
-                                descripcion={servicio.descripcion}
-                                uuid={servicio.uuid}
+                                url={categoria.img}
+                                nombre={categoria.nombre}
+                                descripcion={categoria.descripcion}
+                                uuid={categoria.uuid}
                             />
                         </div>
                     ))}
