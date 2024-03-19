@@ -15,6 +15,7 @@ import { Header } from './components/templates/Header'
 import { Footer } from './components/templates/Footer'
 import { ThemeProvider } from './components/providers/themeProvider'
 import { CategoriaProvider } from './components/providers/categoriaProvider'
+import { Empresa } from './pages/empresa/empresa'
 
 
 function App() {

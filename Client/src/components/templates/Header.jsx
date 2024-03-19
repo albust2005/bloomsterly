@@ -25,7 +25,7 @@ export function Header() {
 
 
 
-    if (location.pathname !== '/login') {
+    if (location.pathname !== '/login' && location.pathname !== '/empresa') {
         return (
             <nav className="bg-transparent flex justify-between items-center h-20 dark:bg-transparent dark:shadow-[#f7e6d5]">
                 <Link className="flex justify-between items-center" to="/">
