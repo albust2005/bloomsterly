@@ -1,90 +1,64 @@
 import { useForm } from "react-hook-form";
-import PropTypes from "prop-types";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser, faLock, faEnvelope } from "@fortawesome/free-solid-svg-icons";
-import "./Login.css";
+export function Registro() {
 
-export function Registro({ChangeActive}) {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm()
 
-    
+
+  console.log(errors)
+
+  const onSublime = handleSubmit((data) => {
+    console.log(data)
+  })
 
   return (
-    <div className="form-box Register">
-      <h2 className="animation font-semibold">Registro</h2>
+    <div className="form-box flex justify-center items-center flex-col gap-4 mt-6 w-full bg-yellow-400 relative  ">
+      <h1 className="font-semibold">Registro</h1>
 
-      <form action="" className="">
-        <div className="input-box animation ">
-          <input type="text" className="" required />
-          <label htmlFor="email" className="">
-            Correo electronico
+      <form action="" className="w-full " onSubmit={onSublime} >
+        <div className="input-box animation flex flex-col ">
+          <label htmlFor="Username" className="mb-1 font-semibold">
+            Username
           </label>
-          <FontAwesomeIcon
-            icon={faEnvelope}
-            style={{ color: "FFFFEF" }}
-            className="absolute top-[50%] right-0 translate-y-[-50%] "
-          />
+           <input type="text" 
+           className="focus:outline-none bg-transparent border-b-2 border-black " 
+          {...register("Username",{
+            required: {
+              value: true,
+              message: "Escribe tu nombre de usuario"
+            },
+            
+          })} />
+          {errors.Username && <span className="text-sm">{errors.Username.message}</span>}
         </div>
 
-        <div className="input-box animation ">
-          <input type="text" className="" required />
-          <label htmlFor="Username" className="">
-            Nombre de usuario
-          </label>
-          <FontAwesomeIcon
-            icon={faUser}
-            style={{ color: "FFFFEF" }}
-            className="absolute top-[50%] right-0 translate-y-[-50%] "
-          />
-        </div>
-
-        <div className="input-box animation ">
-          <input type="text" className="" required />
-          <label htmlFor="password" className="">
+        <div className="input-box animation flex flex-col">
+          
+          <label htmlFor="Password" className="mt-2 mb-1 font-semibold">
             Contraseña
           </label>
-          <FontAwesomeIcon
-            icon={faLock}
-            style={{ color: "FFFFEF" }}
-            className="absolute top-[50%] right-0 translate-y-[-50%]"
-          />
+          <input type="text" 
+          className="focus:outline-none bg-transparent border-b-2 border-black" 
+          {...register("Password",{
+            required: {
+              value: true,
+              message: "Escribe tu contraseña"
+            }
+          })} />
+          {errors.Password && <span className="text-sm text-black">{errors.Password.message}</span>}
         </div>
 
-        <div className="input-box animation ">
-          <input type="text" className="" required />
-          <label htmlFor="confirm-password" className="">
-            Confirma tu contraseña
-          </label>
-          <FontAwesomeIcon
-            icon={faLock}
-            style={{ color: "FFFFEF" }}
-            className="absolute top-[50%] right-0 translate-y-[-50%]"
-          />
-        </div>
-
-        <div className="animation ">
-          <button type="submit" className="btn">
-            Register
+        <div className="flex justify-center items-center w-full bg-slate-400 mt-12 ">
+          <button className="text-white mt-2 ">
+            Iniciar Sesión
           </button>
-        </div>
-
-        <div className="regi-link animation ">
-          <p>
-            Tienes una cuenta?
-            <a
-              href="#"
-              className="SignInLink  dark:hover:bg-light_theme dark:hover:text-second_color_lt"
-              onClick={ChangeActive}
-            >
-              Inicia Sesión
-            </a>
-          </p>
         </div>
       </form>
     </div>
   );
 }
 
-Registro.propTypes = {
-    ChangeActive: PropTypes.func
-}

@@ -1,5 +1,5 @@
 
-import "./Login.css";
+//import "./Login.css";
 import { useState } from "react";
 
 import { InicioSesion } from "./inicio_sesion";
@@ -7,42 +7,40 @@ import { Registro } from "./registro";
 
 export function Login() {
 
-  const [active, setActive] = useState("") //[1valor=>estado actual, 2do es el que hacer el cambio]
+  const [form, setForm] = useState("Iniciar") //[1valor=>estado actual, 2do es el que hacer el cambio]
 
-  const ChangeActive = () => {
-    setActive(
-      active === "active" ? "" : "active" 
-    )
-  }
+ 
+  
+  const formRender = form === "Iniciar" ? <InicioSesion></InicioSesion> : <Registro></Registro>
+
+
+    const Inicios = () => {
+      setForm(prevform => prevform === "Iniciar" ? "Iniciar" : "Iniciar")
+    }
+
+    const Registros = () => {
+      setForm(prevform => prevform === "Registro" ? "Registro" : "Registro")
+    }
+  
 
   return (
-    <div className="bodyy font-title">
-      <div className={`container ${active} w-full dark:bg-second_color_lt`} >
-        <div className="curved-shape dark:bg-light_theme"></div>
-        <div className="curved-shape2 dark:bg-second_color_lt"></div>
-          
-          <InicioSesion ChangeActive={ChangeActive}></InicioSesion>
+    <div className=" h-screen flex justify-center items-center bg-red-400 font-title italic text-xl">
+      <div className=" bg-dark_theme w-1/2 h-[97%] p-8 ">
+        <nav className="bg-[#6a33c2]">
+          <ul className="flex justify-center content-center cursor-pointer p-2">
+            <li className="cursor-pointer bg-[#8549e6] px-5 py-2 w-1/2 flex justify-center" onClick={Inicios}>Iniciar sesión</li>
+            <li className="cursor-pointer bg-[#8549e6] px-7 py-2 w-1/2 flex justify-center" onClick={Registros}>Registro</li>
+          </ul>
+        </nav>
 
-          <div className="info-content Login " >
-            <h2 className="animation">BIENVENIDO DE VUELTA!</h2>
-            <p className="animation" >
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Enim,
-              ipsam non?
-            </p>
-          </div>
+        {formRender}
+      </div>
 
-          {/*FORM registro*/}
 
-          <Registro ChangeActive={ChangeActive}></Registro>
-
-          <div className="info-content Register" >
-            <h2 className="animation ">BIENVENIDO DE VUELTA!</h2>
-            <p className="animation ">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Enim,
-              ipsam non?
-            </p>
-          </div>
-
+      
+      <div className="bg-yellow-200 w-1/2 h-[97%] p-6"> {/*imagen */}
+        <img src="../src/assets/img/imagenlogin.webp" alt=""
+         className=" w-full h-full  object-cover "/>
       </div>
     </div>
   );

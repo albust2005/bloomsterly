@@ -1,4 +1,5 @@
 import { useState, useEffect, createContext, useContext } from "react";
+import PropTypes from "prop-types";
 
 //creacion de los contextos 
 const themeContext = createContext()
@@ -61,3 +62,7 @@ export function ThemeProvider({ children }) {
     )
 }
 
+
+ThemeProvider.propTypes ={
+    children: PropTypes.any
+}
