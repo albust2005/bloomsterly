@@ -14,6 +14,7 @@ import { Layaout } from './components/templates/Layaout'
 import { Header } from './components/templates/Header'
 import { Footer } from './components/templates/Footer'
 import { ThemeProvider } from './components/providers/themeProvider'
+import { Empresa } from './pages/empresa/empresa'
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
           <Route path='/' element={<LandingPage />}></Route>
           <Route path='/login' element={<Login />}></Route>
           <Route path='/Administrador' element={<Administrador />}></Route>
+          <Route path='/empresa' element={<Empresa/>}></Route>
 
           <Route path='/servicios' element={<Servicios />}></Route>
           <Route path='/servicios/:categoriaName' element={<ServicioEspecifico />}></Route>
