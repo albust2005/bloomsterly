@@ -1,11 +1,6 @@
-<<<<<<< HEAD
-import { Layaout } from "./templates/Layaout"
-
-import { FirtsTitle } from "./titles/FirtsTitle"
-=======
 import { FirtsTitle, Titles } from "../../components/titles/Title";
 import { Layaout } from "../../components/templates/Layaout";
->>>>>>> 5d57c32bf460894f269381074648b786ce4eb918
+
 
 export function Administrador({ user }) {
     return(
