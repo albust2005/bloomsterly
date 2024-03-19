@@ -1,9 +1,10 @@
 import { FirtsTitle } from "../../components/titles/Title";
-import { Layaout } from "../../components/templates/Layaout";
+import { LateralMenu } from "./lateralMenu";
 
 export function Empresa(){
     return(
-        <>
-        </>
+        <section>
+        <LateralMenu/>
+        </section>
     )
 }
