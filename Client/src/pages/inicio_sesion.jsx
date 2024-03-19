@@ -1,71 +1,90 @@
-// Importación de los elementos previamente descargados
+import { useForm } from "react-hook-form";
+import PropTypes from "prop-types";
 
-import { Link } from 'react-router-dom'
-import { useForm } from "react-hook-form"; 
-//import React from "react";
-import '../App.css'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser, faLock } from "@fortawesome/free-solid-svg-icons";
+import "./Login.css";
 
-// Creación de un Hook para renderizar el formulario de ingreso
+export function InicioSesion({ChangeActive}) {
+  
 
-//Elemento encapsulado del Registro
-export function Ingresar() {
-    //Importación de funciones de la galeria useForm
-    const { register, formState : {errors}, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+    watch,
+  } = useForm();
 
-    // Verificación del envio de los datos por el formulario
-    const enviar = (data) => {
-        console.log(data);
-    }
+  return (
+    <div className="form-box Login left-0 px-[40px]">
+      <h2 className="animation font-semibold">Inicio de Sesión</h2>
+      {/*FORM inicio sesion*/}
+      <form action="" className="">
+        <div className="input-box animation">
+          <input type="text" 
+          className="" 
+          required 
+          
+          />
+          <label htmlFor="Username" className="">
+            Username
+          </label>
+          <FontAwesomeIcon
+            icon={faUser}
+            style={{ color: "FFFFEF" }}
+            className="absolute top-[50%] right-0 translate-y-[-50%] "
+          />
+        </div>
 
-    // Ingreso al aplicativo
-    return (
-        <section>
-            <section>
-                <i></i> 
-                <div className="">
-                    <h3>Crea una cuenta</h3>
-                    <input type="submit" value={'Registrate'}/>
-                </div>
-            </section>
-            <section>
-                <h1 className="font-bloomsterly text-6xl">
-                    BloomSterly
-                </h1>
-                {/*formulario Ingresar*/}
-                <form onSubmit={handleSubmit(enviar)} className='flex flex-col gap-3'>
-                    <div className='flex flex-col'>
-                        {/*Sección registro nombre*/}
-                        <label className="font-title italic">
-                            Correo Electronico
-                        </label>
-                        <input type="text" {...register('email',{
-                            required: true
-                        })}
-                        className='bg-transparent border-b-2 border-dark_theme 
-                        focus:outline-none'/>
-                        {/*Muestra de errores*/}
-                        {errors.email?.type === 'required' && <p>El campo es requerido</p>}
-                    </div>
-                    <div className='flex flex-col'>
-                        {/*Sección contraseña*/}
-                        <label className="font-title italic">Contraseña</label>
-                        <input type="password" {...register('password',{
-                            required: true
-                        })}
-                        className='bg-transparent border-b-2 border-dark_theme 
-                        focus:outline-none'/>
-                        {/*Muestra de errores*/}
-                        {errors.password?.type === 'required' && <p>El campo es requerido</p>}
-                    </div>
-                    {/*Boton de envio*/}
-                    <button  type="submit"
-                    className="bg-dark_theme text-white rounded-md mt-4 pl-2 pr-2 pt-1 pb-1 w-full">
-                        Inicia Sesión
-                    </button>
-                    <Link to="/recuperarpassword">
-                    </Link>
-                </form>
-            </section>
-        </section>
-    )
+        <div className="input-box animation">
+          <input type="text" className="" required />
+          <label htmlFor="password" className="">
+            Password
+          </label>
+          <FontAwesomeIcon
+            icon={faLock}
+            style={{ color: "FFFFEF" }}
+            className="absolute top-[50%] right-0 translate-y-[-50%]"
+          />
+        </div>
+
+        <div className="input-box animation ">
+          <button type="submit" className="btn">
+            Ingresar
+          </button>
+        </div>
+
+        <div className="regi-link animation ">
+          <p>
+            NO tienes una cuenta?
+            <a
+              href="#"
+              className="SignUpLink dark:hover:bg-light_theme dark:hover:text-second_color_lt"
+              onClick={ChangeActive}
+            >
+              Registrate
+            </a>
+          </p>
+        </div>
+
+        <div className="regi-link animation ">
+          <p>
+            Eres empresario o emprendedor?
+            <a
+              href="#"
+              className="SignUpLink  dark:hover:bg-light_theme dark:hover:text-second_color_lt"
+            >
+              Ingresa aquí
+            </a>
+          </p>
+        </div>
+      </form>
+    </div>
+  );
+}
+
+
+InicioSesion.propTypes = {
+    ChangeActive: PropTypes.func
 }

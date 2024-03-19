@@ -1,68 +1,90 @@
-//Importar elementos previamente creados
-import '../App.css'
-import { useForm } from 'react-hook-form'
+import { useForm } from "react-hook-form";
+import PropTypes from "prop-types";
 
-// Creación de un Custom Hook para renderizar el formulario
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser, faLock, faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import "./Login.css";
 
+export function Registro({ChangeActive}) {
 
-// Elemento encapsulado del Registro
-export function Registrar() {
+    
 
-    // Importanción de funciones de la galeria useForm
-    const { register, formState : { errors }, handleSubmit } = useForm();
+  return (
+    <div className="form-box Register">
+      <h2 className="animation font-semibold">Registro</h2>
 
-    // Evidencia de los elementos enviados por el formulario (provicional)
-    const enviar = (data) => {
-        console.log(data);
-    }
+      <form action="" className="">
+        <div className="input-box animation ">
+          <input type="text" className="" required />
+          <label htmlFor="email" className="">
+            Correo electronico
+          </label>
+          <FontAwesomeIcon
+            icon={faEnvelope}
+            style={{ color: "FFFFEF" }}
+            className="absolute top-[50%] right-0 translate-y-[-50%] "
+          />
+        </div>
 
-    //Registro 
-    return(
-        <section>
-            <section>
-                <h1 className="font-bloomsterly text-6xl">BloomSterly</h1>
-                {/*Formulario Registro*/}
-                <form onSubmit={handleSubmit(enviar)} className='flex flex-col gap-3'>
-                    <div className='flex flex-col'>
-                        {/*Sección registro Nombre*/}
-                        <label className="font-title italic">Nombre</label>
-                        <input type="text" {...register('nombre')}
-                        className='bg-transparent border-b-2 border-dark_theme 
-                        focus:outline-none '/>
-                    </div>
-                    <div className='flex flex-col'>
-                        {/*Sección registro Correo electronico*/}
-                        <label className="font-title italic">Correo Electronico</label>
-                        <input type="email" {...register('correo')}
-                        className='bg-transparent border-b-2 border-dark_theme 
-                        focus:outline-none'/>
-                    </div>
-                    <div className='flex flex-col'>
-                        {/*Sección contraseña*/}
-                        <label className="font-title italic">Contraseña</label>
-                        <input type="password" {...register('contrasena', {
-                            required: true
-                        })}
-                        className='bg-transparent border-b-2 border-dark_theme 
-                        focus:outline-none'/>
-                        {/*Validación de la contraseña (provicional)*/}
-                        {errors.contrasena?.type === 'required' && <p>EL campo es requerido</p>}
-                    </div >  
-                    {/*Boton de envio de datos*/}
-                    <button type='submit' 
-                    className="bg-dark_theme text-white 
-                    rounded-md mt-4 pl-2 pr-2 pt-1 pb-1 w-full dark:bg-second_color_lt ">
-                        Registrate
-                    </button>
-                </form>
-            </section>
-            <section>
-                <i></i>
-                <div>
-                    <p>Bienvenid@</p>
-                    <input type="submit" value={'Inicio Sesion'}/>
-                </div>
-            </section>
-        </section>
-    )
+        <div className="input-box animation ">
+          <input type="text" className="" required />
+          <label htmlFor="Username" className="">
+            Nombre de usuario
+          </label>
+          <FontAwesomeIcon
+            icon={faUser}
+            style={{ color: "FFFFEF" }}
+            className="absolute top-[50%] right-0 translate-y-[-50%] "
+          />
+        </div>
+
+        <div className="input-box animation ">
+          <input type="text" className="" required />
+          <label htmlFor="password" className="">
+            Contraseña
+          </label>
+          <FontAwesomeIcon
+            icon={faLock}
+            style={{ color: "FFFFEF" }}
+            className="absolute top-[50%] right-0 translate-y-[-50%]"
+          />
+        </div>
+
+        <div className="input-box animation ">
+          <input type="text" className="" required />
+          <label htmlFor="confirm-password" className="">
+            Confirma tu contraseña
+          </label>
+          <FontAwesomeIcon
+            icon={faLock}
+            style={{ color: "FFFFEF" }}
+            className="absolute top-[50%] right-0 translate-y-[-50%]"
+          />
+        </div>
+
+        <div className="animation ">
+          <button type="submit" className="btn">
+            Register
+          </button>
+        </div>
+
+        <div className="regi-link animation ">
+          <p>
+            Tienes una cuenta?
+            <a
+              href="#"
+              className="SignInLink  dark:hover:bg-light_theme dark:hover:text-second_color_lt"
+              onClick={ChangeActive}
+            >
+              Inicia Sesión
+            </a>
+          </p>
+        </div>
+      </form>
+    </div>
+  );
+}
+
+Registro.propTypes = {
+    ChangeActive: PropTypes.func
 }
