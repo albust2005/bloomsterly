@@ -3,7 +3,7 @@ import { Layaout } from "../../components/templates/Layaout";
 
 export function Administrador({ user }) {
     return(
-        <Layaout>
+        <>
             {/*Titulo administrador*/}
             <FirtsTitle
                 title="Administrador"
@@ -17,7 +17,7 @@ export function Administrador({ user }) {
                     </p>
                 </div>
             </section>
-        </Layaout>
+        </>
     )
 }
 

@@ -9,7 +9,7 @@ export function Footer() {
     const logoColor = theme === 'dark' ? '#BC0B38' : '#fff'
 
     return (
-        <footer className="flex flex-col w-full mt-auto gap-2 py-5 bg-transparent dark:bg-transparent text-white dark:text-second_color_lt">
+        <footer className="flex flex-col w-full mt-auto gap-2 py-5 bg-transparent dark:bg-transparent text-white dark:text-second_color_lt z-10">
             <article className="flex w-full justify-center gap-3 items-center">
                 <div className="bg-white dark:bg-second_color_lt *: w-full h-0.5 rounded-sm m-2"></div>
                 <div className="flex gap-3 justify-center p-2">
