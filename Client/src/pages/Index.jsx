@@ -36,11 +36,9 @@ export function LandingPage() {
               title='NOSOTROS'
               subTitle='¿Que hacemos?'
             />
-            
-            <Flor name='blanco' positionx={200} positiony={300} size={10}/>
 
             <p className="text-white w-full pt-6 text-1xl sm:text-2xl md:text-3xl lg-text-4xl
-            dark:text-black ">
+            dark:text-black z-10">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto
               vero accusantium rem quas facilis, placeat modi, distinctio
               exercitationem ipsam necessitatibus vitae enim assumenda,

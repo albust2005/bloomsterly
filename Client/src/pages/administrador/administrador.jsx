@@ -1,10 +1,10 @@
-import { FirtsTitle, Titles } from "../../components/titles/Title";
-import { Layaout } from "../../components/templates/Layaout";
+import { Layaout } from "./templates/Layaout"
 
+import { FirtsTitle, title } from "./titles/FirtsTitle"
 
 export function Administrador({ user }) {
     return(
-        <Layaout>
+        <>
             {/*Titulo administrador*/}
             <FirtsTitle
                 title="Administrador"
@@ -18,7 +18,7 @@ export function Administrador({ user }) {
                     </p>
                 </div>
             </section>
-        </Layaout>
+        </>
     )
 }
 
