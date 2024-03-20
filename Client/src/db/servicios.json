@@ -1,0 +1,42 @@
+{
+    "servicios": [
+        {
+            "id": "sv000",
+            "nombre": "Decoracion fiesta infantil",
+            "descripcion": "¡Dale vida a la celebración de tu pequeño con nuestra amplia gama de temáticas coloridas y divertidas para fiestas infantiles! Desde princesas hasta superhéroes, tenemos todo lo que necesitas para crear un ambiente mágico que hará que los niños sonrían y los adultos recuerden.",
+            "valor": "200.000",
+
+            "id_empresa": "e111",
+            "id_categoria" : "s112" 
+        },
+        {
+            "id": "sv001",
+            "nombre": "Decoracion matrimonio",
+            "descripcion": "Crea el escenario perfecto para el día más especial de tu vida con nuestra decoración de bodas elegante y personalizada. Desde arcos florales románticos hasta centros de mesa impresionantes, transformaremos tu lugar de celebración en un cuento de hadas hecho realidad. ¡Deja que cada detalle refleje el amor y la belleza de tu unión!",
+            "valor" : "300.000",
+
+            "id_empresa": "e111",
+            "id_categoria" : "s112" 
+        },
+
+        {
+            "id": "sv010",
+            "nombre": "Decoracion General",
+            "descripcion": "¡Dale vida a la celebración",
+            "valor": "200.000",
+
+            "id_empresa": "e112",
+            "id_categoria" : "s112" 
+        },
+
+        {
+            "id": "sv100",
+            "nombre": "Musica mariachis",
+            "descripcion": "¡Dale vida a la celebración de tu pequeño con nuestra amplia gama de temáticas coloridas y divertidas para fiestas infantiles! Desde princesas hasta superhéroes, tenemos todo lo que necesitas para crear un ambiente mágico que hará que los niños sonrían y los adultos recuerden.",
+            "valor": "200.000",
+
+            "id_empresa": "e113",
+            "id_categoria" : "s111" 
+        }
+    ]
+}

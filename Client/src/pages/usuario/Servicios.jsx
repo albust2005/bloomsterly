@@ -18,7 +18,7 @@ export function Servicios() {
                 <article className="containe mx-auto grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
                     {categorias.map(categoria => (
 
-                        <div key={categoria.uuid}>
+                        <div key={categoria.id}>
                             <PolaroidCard
                                 url={categoria.img}
                                 nombre={categoria.nombre}
