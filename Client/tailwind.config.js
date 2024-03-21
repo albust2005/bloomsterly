@@ -28,6 +28,7 @@ export default {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
       },
       screens: {
+        'minicel' : "250px",
         'celular' : '350px'
       },
       height: {

@@ -21,7 +21,7 @@ export function InicioSesion() {
 
   return (
     <div className="form-box flex justify-center items-center flex-col gap-4 mt-6 w-full bg-transparent relative text-white ">
-      <h1 className="font-semibold">Inicio de Sesión</h1>
+      <h1 className="font-semibold text-base sm:text-xl md:text-2xl lg:3xl">Inicio de Sesión</h1>
 
       <form action="" className="w-full " onSubmit={onSublime} >
         <div className="input-box animation flex flex-col ">
@@ -72,11 +72,9 @@ export function InicioSesion() {
           <a href="#" className="px-2 hover:bg-light_theme rounded-md">Entra aquí</a></p>
         </div>
 
-        <div className="flex justify-center items-center w-full bg-slate-400 mt-5 ">
-          <button className="text-white mt-2 ">
+          <button className="text-white mt-2 bg-color_switch_theme_dark w-full p-1 rounded-md hover:bg-[#8e5ee0]">
             Iniciar Sesión
           </button>
-        </div>
       </form>
     </div>
   );

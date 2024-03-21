@@ -21,12 +21,12 @@ export function Registro() {
 
       <form action="" className="w-full " onSubmit={onSublime} >
         <div className="input-box animation flex flex-col ">
-          <label htmlFor="Username" className="mb-1 font-semibold">
-            Username
+          <label htmlFor="Name" className="mb-1 font-semibold">
+            Nombre
           </label>
            <input type="text" 
            className="focus:outline-none bg-transparent border-b-2 border-black " 
-          {...register("Username",{
+          {...register("Name",{
             required: {
               value: true,
               message: "Escribe tu nombre de usuario"
