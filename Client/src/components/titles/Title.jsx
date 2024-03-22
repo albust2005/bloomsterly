@@ -7,7 +7,7 @@ export function FirtsTitle({title, descripcion}) {
             sm:text-9xl md:text-[160px] lg:text-[210px] xl:text-[250px] dark:text-second_color_lt ">
                 {title}
             </h1>
-            <p className="font-subTitle text-sm md:text-xl lg:text-3xl text-white dark:text-black ">
+            <p className="font-subTitle text-sm md:text-xl lg:text-3xl text-white dark:text-black text-balance">
                 {descripcion}
             </p>
         </section>

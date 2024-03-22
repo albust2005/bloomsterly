@@ -20,7 +20,7 @@ export function ServicioEspecifico() {
                     {
 
                         empresasConServicio?.length === 0
-                            ? <NotFound razon="empresas" />
+                            ? <NotFound razon="servicios para esta categoria" />
                             : empresasConServicio.map(empresa => (
                                 <div key={empresa.uuid} className=" ">
                                     <EmpresaCards

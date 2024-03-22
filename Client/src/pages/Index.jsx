@@ -3,7 +3,7 @@ import "../App.css";
 
 import { PolaroidCard } from "../components/templates/PolaroidCard";
 import { FirtsTitle, Titles } from "../components/titles/Title";
-import { Flor } from "../components/Flores.jsx"
+//import { Flor } from "../components/Flores.jsx"
 import { useCategoriaProvider } from "../components/providers/categoriaProvider.jsx";
 
 export function LandingPage() {
@@ -30,7 +30,7 @@ export function LandingPage() {
             
 
             <p className="text-white w-full pt-6 text-1xl sm:text-2xl md:text-3xl lg-text-4xl
-            dark:text-black ">
+            dark:text-black text-balance">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto
               vero accusantium rem quas facilis, placeat modi, distinctio
               exercitationem ipsam necessitatibus vitae enim assumenda,
