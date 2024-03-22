@@ -1,7 +1,5 @@
 import { useParams } from "react-router-dom"
 //import { useState, useEffect } from "react"
-
-
 import { FirtsTitle } from "../../components/titles/Title.jsx"
 import { EmpresaCards } from "../../components/templates/EmpresaCard.jsx"
 import { NotFound } from "../../components/templates/NotFound.jsx"
@@ -22,7 +20,7 @@ export function ServicioEspecifico() {
                     {
 
                         empresasConServicio?.length === 0
-                            ? <NotFound razon="empresas" />
+                            ? <NotFound razon="servicios para esta categoria" />
                             : empresasConServicio.map(empresa => (
                                 <div key={empresa.uuid} className=" ">
                                     <EmpresaCards
