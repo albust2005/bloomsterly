@@ -13,8 +13,6 @@ export function InicioSesion() {
   } = useForm()
 
 
-  console.log(errors)
-
   const onSublime = handleSubmit((data) => {
     console.log(data)
   })

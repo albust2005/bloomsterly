@@ -27,9 +27,9 @@ export function Header() {
 
     if (location.pathname !== '/login' && location.pathname !== '/empresa') {
         return (
-            <nav className="bg-transparent flex justify-between items-center h-20 dark:bg-transparent dark:shadow-[#f7e6d5]">
+            <nav className="bg-transparent flex justify-between items-center h-20 dark:bg-transparent dark:shadow-[#f7e6d5] ">
                 <Link className="flex justify-between items-center" to="/">
-                    <span className="cursor-pointer dark:text-red-600 text-white">BloomSterly</span>
+                    <span className="cursor-pointer dark:text-red-600 text-white pr-10">BloomSterly</span>
                 </Link>
 
                 <div
@@ -43,7 +43,7 @@ export function Header() {
 
                 <div className="flex justify-center items-center">
 
-                    <ButtonNav href="/login" text="Iniciar sesión" />
+                    <ButtonNav href="/login" text="Iniciar sesión"/>
 
                     <span className="text-3xl cursor-pointer md:hidden block dark:fill-black">
                         <FontAwesomeIcon
