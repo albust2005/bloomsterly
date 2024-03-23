@@ -1,4 +1,5 @@
 import { useForm } from "react-hook-form";
+import { useNewUserContext } from "../components/providers/userProvider";
 
 export function Registro() {
   const {
@@ -8,9 +9,7 @@ export function Registro() {
     watch,
   } = useForm();
 
-  const onSubmit = handleSubmit((data) => {
-    console.log(data);
-  });
+  const onSubmit = useNewUserContext()
 
   return (
     <div className="form-box flex justify-center items-center flex-col gap-4 mt-6 w-full text-white  relative  ">
@@ -21,8 +20,9 @@ export function Registro() {
       <form
         action=""
         className="w-full text-base md:text-xl "
-        onSubmit={onSubmit}
+        onSubmit={handleSubmit(onSubmit)}
       >
+
         <div className="flex w-full gap-4">
           <div className="input-box animation flex flex-col w-full">
             <label htmlFor="Name" className="mb-1 font-semibold">
@@ -63,6 +63,44 @@ export function Registro() {
               </span>
             )}
           </div>
+        </div>
+
+        <div className="input-box animation flex flex-col w-full">
+          <label htmlFor="Email" className="mb-1 font-semibold">
+            Email
+          </label>
+          <input
+            type="text"
+            className="focus:outline-none bg-transparent border-b-2 border-white text-base font-text"
+            {...register("Email", {
+              required: {
+                value: true,
+                message: "Escribe tu nombre",
+              },
+            })}
+          />
+          {errors.Email && (
+            <span className="text-sm">{errors.Email.message}</span>
+          )}
+        </div>
+
+        <div className="input-box animation flex flex-col w-full">
+          <label htmlFor="Cedula" className="mb-1 font-semibold">
+            Cedula
+          </label>
+          <input
+            type="text"
+            className="focus:outline-none bg-transparent border-b-2 border-white text-base font-text"
+            {...register("Cedula", {
+              required: {
+                value: true,
+                message: "Escribe tu numero de documento",
+              },
+            })}
+          />
+          {errors.Cedula && (
+            <span className="text-sm">{errors.Cedula.message}</span>
+          )}
         </div>
 
         <div className="input-box animation flex flex-col">
