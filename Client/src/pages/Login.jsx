@@ -7,6 +7,7 @@ import { Registro } from "./registro";
 import { Changeimgs } from "../components/hooks/useChangeimgs";
 
 export function Login() {
+  
   const [form, setForm] = useState("Iniciar"); //[1valor=>estado actual, 2do es el que hacer el cambio]
   const [inicioColor, setInicioColor] = useState("bg-[#8549e6]");
   const [registerColor, setRegisterColor] = useState("bg-transparent");
@@ -28,7 +29,7 @@ export function Login() {
 
   return (
     <div className=" h-screen flex justify-center items-center  font-title italic text-xl minicel:flex-col sm:flex-row mt-3">
-      <div className=" bg-dark_theme w-full sm:w-2/4 h-full p-8 dark:bg-second_color_lt">
+      <div className=" bg-dark_theme w-full sm:w-2/4 h-3/4 p-8 dark:bg-second_color_lt">
         <nav className="bg-[#6a33c2] w-full dark:bg-rose-600">
           <ul className="flex justify-center content-center cursor-pointer p-2  w-full ">
             <li
@@ -45,11 +46,12 @@ export function Login() {
             </li>
           </ul>
         </nav>
-
-        {formRender}
+        <div className='h-full'>
+          {formRender}
+        </div>
       </div>
 
-      <div className="bg-white w-full sm:w-2/4 lg:w-1/2 h-full p-8">
+      <div className="bg-white w-full sm:w-2/4 lg:w-1/2 h-3/4 p-8">
         {" "}
         {/*imagen */}
         <Changeimgs></Changeimgs>

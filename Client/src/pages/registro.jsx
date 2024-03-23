@@ -8,9 +8,7 @@ export function Registro() {
     watch,
   } = useForm();
 
-  console.log(errors);
-
-  const onSublime = handleSubmit((data) => {
+  const onSubmit = handleSubmit((data) => {
     console.log(data);
   });
 
@@ -23,7 +21,7 @@ export function Registro() {
       <form
         action=""
         className="w-full text-base md:text-xl "
-        onSubmit={onSublime}
+        onSubmit={onSubmit}
       >
         <div className="flex w-full gap-4">
           <div className="input-box animation flex flex-col w-full">
@@ -166,7 +164,7 @@ export function Registro() {
         </div>
 
         <div className="flex justify-center items-center w-full bg-slate-400 mt-12 ">
-          <button className="text-white mt-2 ">Iniciar Sesión</button>
+          <button className="text-white mt-2 ">Registro</button>
         </div>
       </form>
     </div>

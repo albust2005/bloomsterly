@@ -1,9 +1,6 @@
 import { useForm } from "react-hook-form";
 // import PropTypes from "prop-types";
 
-
-
-
 export function InicioSesion() {
 
   const {
@@ -13,7 +10,7 @@ export function InicioSesion() {
   } = useForm()
 
 
-  const onSublime = handleSubmit((data) => {
+  const onSubmit = handleSubmit((data) => {
     console.log(data)
   })
 
@@ -21,7 +18,7 @@ export function InicioSesion() {
     <div className="form-box flex justify-center items-center flex-col gap-4 mt-6 w-full bg-transparent relative text-white ">
       <h1 className="font-semibold text-base sm:text-xl md:text-2xl lg:3xl">Inicio de Sesión</h1>
 
-      <form action="" className="w-full " onSubmit={onSublime} >
+      <form action="" className="w-full " onSubmit={onSubmit} >
         <div className="input-box animation flex flex-col ">
           <label htmlFor="Username" className="mb-1 font-semibold">
             Username
