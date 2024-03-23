@@ -17,18 +17,18 @@ export const useNewUserContext = () => {
 }
 
 export function UserProvider({ children }) {
-
-    const URI = `http://localhost:8000/registeruser`
+    const URI = "http://localhost:8000/registeruser"
     const [user, setUser] = useState(null)
 
     const onSubmit = async (data) => {
         try {
-            const { Cedula, Name, Firstlastname, ConfirmPassword, Username } = data
+            const {Cedula, Email, Name, Firstlastname, ConfirmPassword, Username } = data
             await axios.post(URI, {
                 COD: Cedula,
+                email: Email,
                 nombre_c: Name,
                 primer_apelli: Firstlastname,
-                segundo_apelli: 'Munoz',
+                segundo_apelli: 'Cano',
                 COD_municipios: 2,
                 contrasena: ConfirmPassword,
                 username: Username
@@ -37,7 +37,7 @@ export function UserProvider({ children }) {
             console.log(data);
             setUser(data)
         } catch (error) {
-            console.log(error)
+            console.log(error.message)
         }
 
     };
