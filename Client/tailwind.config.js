@@ -22,7 +22,9 @@ export default {
         'color_font_light' : "#3c0764",
         'color_switch_theme_dark' : "#9173C4",
         'color_inicio_sesion' : "#D9C2FF",
-        'empresa_card' : "#D9C2FF"
+        'empresa_card' : "#D9C2FF",
+        'admin_card' : "rgb(160, 107, 249)",
+        'hover_boton_admin': "#5c46bc", 
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

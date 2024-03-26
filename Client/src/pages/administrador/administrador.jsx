@@ -1,24 +1,12 @@
-import { Layaout } from "./templates/Layaout"
-
-import { FirtsTitle, title } from "./titles/FirtsTitle"
-
-export function Administrador({ user }) {
-    return(
-        <>
-            {/*Titulo administrador*/}
-            <FirtsTitle
-                title="Administrador"
-                descripcion={`Buenos dias Señor ${user}`} 
-            />
-            <section>
-                <div>
-                    <p>
-                        Estamos ingresando al apartado del administrador. <br/>
-                        Tenga en cuenta los parámetros de los elementos con cuidado y actúe con responsabilidad. No tengo inspiración
-                    </p>
-                </div>
-            </section>
-        </>
-    )
+import { Layaout } from "../../components/templates/Layaout";
+import { FirtsTitle, Titles } from "../../components/titles/Title";
+import { Menuprincipal } from "./Menuprincipal";
+import { Menudiag } from "./menudiag";
+export function Administrador({ user="Silvana" }) {
+  return (
+    <>
+      <Menuprincipal />
+      <Menudiag></Menudiag>
+    </>
+  );
 }
-

@@ -12,8 +12,8 @@ export function Layaout({ children }) {
         flex flex-col min-h-screen gap-16 px-5 md:px-16 lg:px-24 2xl:px-64 -z-10"
         >
             {children}
-            <Flor name="rosa"/>
-            <Flor name="blanco-rosa" positionx={500} positiony={500}/>
+            {/* <Flor name="rosa"/>
+            <Flor name="blanco-rosa" positionx={500} positiony={500}/> */}
         </main>
     )
 
