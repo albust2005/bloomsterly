@@ -66,22 +66,6 @@ export function Header() {
     } else {
         return null
     }
-
-
-          <span className="text-3xl cursor-pointer md:hidden block dark:fill-black">
-            <FontAwesomeIcon
-              icon={menu}
-              onClick={toggleClick}
-              style={{ color: logoColor }}
-              size="xs"
-            />
-          </span>
-        </div>
-      </nav>
-    );
-  } else {
-    return null;
-  }
 }
 
 //Para evitar la redundancia se componetiza en ./buttons/buttonNav
