@@ -14,32 +14,44 @@ import { Layaout } from './components/templates/Layaout'
 import { Header } from './components/templates/Header'
 import { Footer } from './components/templates/Footer'
 import { ThemeProvider } from './components/providers/themeProvider'
+import { CategoriaProvider } from './components/providers/categoriaProvider'
+import { UserProvider } from './components/providers/userProvider'
+//import { Empresa } from './pages/empresa/empresa'
+
 
 
 function App() {
 
   return (
-    <Layaout>
-      <ThemeProvider>
-        <Header />
+    <UserProvider>
+      <Layaout>
 
-        <ThemeColor />
+        <ThemeProvider>
 
-        <Routes>
-          <Route path='/' element={<LandingPage />}></Route>
-          <Route path='/login' element={<Login />}></Route>
-          <Route path='/Administrador' element={<Administrador />}></Route>
+          <Header />
+          <ThemeColor />
 
-          <Route path='/servicios' element={<Servicios />}></Route>
-          <Route path='/servicios/:categoriaName' element={<ServicioEspecifico />}></Route>
-          <Route path='/servicios/:categoriaName/:empresa' element={<EmpresaInfo />}></Route>
 
-          <Route path='/pedidos' element={<Pedidos />} />
-        </Routes>
+          <CategoriaProvider>
+            <Routes>
+              <Route path='/' element={<LandingPage />}></Route>
+              <Route path='/login' element={<Login />}></Route>
+              <Route path='/Administrador' element={<Administrador />}></Route>
 
-        <Footer />
-      </ThemeProvider>
-    </Layaout>
+              <Route path='/servicios' element={<Servicios />}></Route>
+              <Route path='/servicios/:categoriaName' element={<ServicioEspecifico />}></Route>
+              <Route path='/servicios/:categoriaName/:empresa' element={<EmpresaInfo />}></Route>
+
+              <Route path='/pedidos' element={<Pedidos />} />
+            </Routes>
+          </CategoriaProvider>
+
+
+          <Footer />
+        </ThemeProvider>
+
+      </Layaout>
+    </UserProvider>
   )
 }
 
