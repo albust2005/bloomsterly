@@ -9,7 +9,7 @@ export function Registro() {
     watch,
   } = useForm();
 
-  const onSubmit = useNewUserContext()
+  const createUser = useNewUserContext()
 
   return (
     <div className="form-box flex justify-center items-center flex-col gap-4 mt-6 w-full text-white  relative  ">
@@ -20,7 +20,7 @@ export function Registro() {
       <form
         action=""
         className="w-full text-base md:text-xl "
-        onSubmit={handleSubmit(onSubmit)}
+        onSubmit={handleSubmit(createUser)}
       >
 
         <div className="flex w-full gap-4">
