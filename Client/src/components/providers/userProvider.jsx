@@ -20,7 +20,7 @@ export const useLoginUserContext = () => {
 }
 
 const registro = "http://localhost:8000/registeruser"
-const inicio = "http://localhost:8000/user/login/usuario"
+const inicio = "http://localhost:8000/login/usuario/"
 
 export function UserProvider({ children }) {
     const { user, createUser } = useCreateUser(registro)

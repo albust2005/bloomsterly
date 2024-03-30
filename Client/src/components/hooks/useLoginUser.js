@@ -8,6 +8,7 @@ export const useLoginUser = (URI) => {
     const loginUser = async (data) => {
         try {
             const { Username, Password } = data
+            console.log("username: ",Username,"password",Password)
             await axios.get(URI, {
                 username: Username,
                 contrasena: Password,
