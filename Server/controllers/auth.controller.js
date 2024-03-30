@@ -43,31 +43,32 @@ export const postuser = async(req,res)=>{
 //Esta parte valida la informacion del rol de usuario para iniciar sesion
 export const getuser = async(req,res)=>{
     const {username,contrasena} = req.body
+    console.log(username,contrasena)
     try {
-        const user = await Usuarios.findOne({where:{ username: username}})
+        const user = await Usuarios.findOne({where:{ username:username}})
         if (user !== null){
-            // console.log("esta es la contraseña ingresada por el usuario: ",contrasena)
-            // console.log(user.contrasena)
+            console.log("esta es la contraseña ingresada por el usuario: ",contrasena)
+            console.log(user.contrasena)
             let comparacion = bcrypt.compareSync(contrasena,user.contrasena)
             // console.log("esta es la comparacion: ",comparacion)
             if (comparacion){
                 const sancion = await Usuarios.findOne({
-                    attributes:{},
+                    attributes:['COD'],
                     where: {
                         COD: user.COD
                     },
                     include: {
                         model: Administradores,
-                        attributes: {}, // Atributos que queremos seleccionar de la tabla Administradores
+                        attributes: ['COD'], // Atributos que queremos seleccionar de la tabla Administradores
                         through: {
                             model: ControlUsuarios, // Especificamos la tabla intermedia
-                            attributes: {estado} // Atributos que queremos seleccionar de la tabla intermedia
+                            attributes: ['estado'] // Atributos que queremos seleccionar de la tabla intermedia
                         }
                     }
                 });
                 const estado=sancion.administradores[0].control_usuarios.estado
                 console.log(typeof estado)
-                if (estado=="activo"){
+                if (estado=="Activo"){
                     req.session.user = {
                     COD:user.COD,
                     nombre_c:user.nombre_c,
@@ -89,7 +90,7 @@ export const getuser = async(req,res)=>{
         }
     } catch (error) {
         console.log("Error al iniciar sesión", error)
-        res.status(401).json({message:"Error al iniciar sesión"});
+        res.status(400).json({message:"Error al iniciar sesión"});
     }
 
 }
@@ -189,14 +190,15 @@ export const getadmin = async(req,res)=>{
                     COD_municipios:user.COD_municipios,
                     username:user.username
                 }
+                console.log(req.session.userAdmin)
                 res.status(200).json({
-                    message:"Inicio de sesión exitoso"
+                    message:"Inicio de sesión exitoso administrador"
                 });
             }else{
-                res.status(401).json({menssage:"Nombre de usuario y/o contraseña incorrecta"});
+                res.status(401).json({message:"Nombre de usuario y/o contraseña incorrecta"});
             }
         }else{
-            res.status(401).json({menssage:"Nombre de usuario y/o contraseña incorrecta"});
+            res.status(401).json({message:"Nombre de usuario y/o contraseña incorrecta"});
         }
     } catch (error) {
         console.log("Error al iniciar sesión", error)

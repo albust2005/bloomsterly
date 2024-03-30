@@ -15,7 +15,7 @@ router.use((req, res, next)=>{
 })
 
 // ruta para cerrar sesion
-router.get("/loginout",getlogout);
+router.post("/loginout",getlogout);
 // ruta para editar el perfil del usuario
 router.put("/editarPerfil",editarPerfil);
 // ruta para eliminar el perfil del usuario

@@ -5,15 +5,15 @@ import { upload } from "../multer/multer.js";
 const router = express.Router()
 
 // ruta para iniciar sesion como usuario
-router.get("/login/usuario",getuser);
+router.post("/login/usuario",getuser);
 // ruta para iniciar sesion como empresa
-router.get("/login/empresa",getempresa);
+router.post("/login/empresa",getempresa);
 // ruta para registrar un usuario
 router.post("/registeruser",postuser);
 // ruta para registrar una empresa
 router.post("/registerempresa", postempresa);
 // ruta para iniciar sesion como admin
-router.get("/login/admin",getadmin);
+router.post("/login/admin",getadmin);
 // ruta de prueba para cargar las imagenes
 router.post("/imagen",upload.single('imagen'),imagen);
 export default router
