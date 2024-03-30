@@ -26,7 +26,7 @@ export const useLoginUser = (URI) => {
                         username:Username,
                         contrasena:Password
                     })
-                    console.log('sesion iniciada correctamente Administrador')
+                    console.log('Sesion iniciada correctamente Administrador')
                     alert(respuesta.data.message)
                     setSesionUser(data)            
                     navigate('/') 
