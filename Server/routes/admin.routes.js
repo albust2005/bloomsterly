@@ -17,7 +17,7 @@ router.use((req, res, next)=>{
 // ruta para crear un nuevo administrador
 router.post("/crear",postadmin);
 // ruta para cerrar sesion
-router.get("/loginout",getlogout);
+router.post("/loginout",getlogout);
 // ruta para editar el perfil del administrador
 router.put("/editarPerfil",editarPefil);
 // ruta para traer a todos los usuarios a la interfaz de administrador
@@ -29,5 +29,5 @@ router.get("/AllSolicitudes",AllSolicitudes);
 // ruta para migrar datos de la tabla solicitud_empresas a empresas
 router.post("/aceptacion",aceptacion);
 // ruta para buscar usuario
-router.post("/buscarUsuario",buscarUsuarios);
+router.get("/buscarUsuario/:username",buscarUsuarios);
 export default router

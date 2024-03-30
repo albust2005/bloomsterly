@@ -93,18 +93,20 @@ export const getAllUsuarios = async(req,res)=>{
 }
 //Esta parte permite al administrador sancionar a usuarios
 export const sancionarUsuarios= async(req,res)=>{
-    const {estado,username}=req.body
+    const {username}=req.body
     try {
         const nombreusuario=await Usuarios.findOne({where:{username:username}})
         const codusuario=nombreusuario.COD
         const usuario=await ControlUsuarios.findOne({where:{COD_usuarios:codusuario}})
         const COD=req.session.userAdmin.COD
         if (usuario.estado=="Activo"){
+            const estado="Sancionado"
             console.log(codusuario)
             await ControlUsuarios.update({COD_administrador:COD,estado,fecha_cambio:Date.now()},{where:{COD_usuarios:codusuario}})
             res.status(201).json({message:"Usuario sancionado"})
         }else{
             if(usuario.estado=="Sancionado"){
+                const estado="Activo"
                 console.log(codusuario)
                 await ControlUsuarios.update({COD_administrador:COD,estado,fecha_cambio:Date.now()},{where:{COD_usuarios:codusuario}})
                 res.status(201).json({message:"Al usuario seleccionado se le ha quitado la sanción correctamente"})
@@ -163,7 +165,7 @@ export const aceptacion= async(req,res)=>{
 }
 //Esta parte trae la informacion del buscador de usuarios por medio de una letra
 export const buscarUsuarios= async(req,res)=>{
-    const {username}=req.body
+    const username=req.params.username
     try {
         const usuarios=await Usuarios.findAll({
             attributes:['COD'],
