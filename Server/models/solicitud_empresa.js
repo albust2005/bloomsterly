@@ -20,7 +20,7 @@ const SolicitudEmpresa = db.define('solicitud_empresas',{
     type: DataTypes.INTEGER(2),
     allowNull: false
   },
-  instragram: {
+  instagram: {
     type: DataTypes.STRING(40),
     allowNull: false
   },

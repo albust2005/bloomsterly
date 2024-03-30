@@ -16,15 +16,15 @@ import AdministradorSolicitud from '../models/administrador_solicitud.js';
 //HasMany se utiliza en el modelo 1 osea que un municipio tiene muchos administradores
 //hay otra opcion para hacer la relacion 1:m pero es con belongsTo utilizandolo en el muchos osea quedaria Administradores.belongsTo(Municipios,{})
 Municipios.hasMany(Administradores, { foreignKey: 'COD_municipios', as: 'administradores' });
-Municipios.hasMany(Usuarios, { foreignKey: 'COD_municipios', as: 'usuarios' });
+Municipios.hasMany(Usuarios, { foreignKey: 'COD_municipios', as: 'usuarios_municipio' });
 Municipios.hasMany(Empresas, { foreignKey: 'COD_municipios', as: 'empresas' });
 Municipios.hasMany(SolicitudEmpresa, { foreignKey:'COD_municipios', as: 'solicitud_empresa'})
 
 //relacion muchos a muchos que tiene una tabla intermedia llamada ControlUsuarios
 // es necesarios que las dos tablas tengan un belongsToMany
 //es una buena práctica definir las asociaciones en ambos modelos para mejorar la claridad y la legibilidad del código.
-Administradores.belongsToMany(Usuarios, { through: ControlUsuarios, foreignKey: 'COD_administrador', as: 'administradores' });
-Usuarios.belongsToMany(Administradores, { through: ControlUsuarios, foreignKey: 'COD_usuarios', as: 'usuarios' });
+Administradores.belongsToMany(Usuarios, { through: ControlUsuarios, foreignKey: 'COD_administrador' });
+Usuarios.belongsToMany(Administradores, { through: ControlUsuarios, foreignKey: 'COD_usuarios' });
 
 Usuarios.hasMany(Reservas, { foreignKey: 'COD_usuarios', as: 'reservas' });
 //relacion muchos a muchos

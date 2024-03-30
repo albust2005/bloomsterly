@@ -1,6 +1,6 @@
 import express from "express";
-import { getuser, postuser, postempresa, getempresa, getadmin } from "../controllers/auth.controller.js";
-
+import { getuser, postuser, postempresa, getempresa, getadmin, imagen } from "../controllers/auth.controller.js";
+import { upload } from "../multer/multer.js";
 // esto es para poner rutas
 const router = express.Router()
 
@@ -14,5 +14,6 @@ router.post("/registeruser",postuser);
 router.post("/registerempresa", postempresa);
 // ruta para iniciar sesion como admin
 router.get("/login/admin",getadmin);
-
+// ruta de prueba para cargar las imagenes
+router.post("/imagen",upload.single('imagen'),imagen);
 export default router
