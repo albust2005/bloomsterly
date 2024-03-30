@@ -1,7 +1,9 @@
 import {Municipios,Administradores,Usuarios,Empresas,Reservas,Servicios,Categorias,ControlUsuarios,DescripcionReserva,Fechas,SolicitudEmpresa,AdministradorSolicitud} from '../models/associations.js'
 import session from "express-session";
 import bcrypt from 'bcrypt';
+import db from '../database/db.js';
 
+const numeroAdmin="1036252517"
 //Esta parte ingresa informacion del usuario a la base de datos
 export const postuser = async(req,res)=>{
     const {
@@ -26,6 +28,12 @@ export const postuser = async(req,res)=>{
             username,
             email
         })
+        await ControlUsuarios.create({
+            COD_usuarios:COD,
+            COD_administrador:numeroAdmin,
+            estado:"Activo",
+            fecha_cambio:Date.now()
+        })
         res.json({message: "Registro creado correctamente"})
     } catch (error) {
         res.status(400).json({message: `La cedula ya esta ingresada en el sistema:`, error:error})
@@ -38,12 +46,29 @@ export const getuser = async(req,res)=>{
     try {
         const user = await Usuarios.findOne({where:{ username: username}})
         if (user !== null){
-            console.log("esta es la contraseña ingresada por el usuario: ",contrasena)
+            // console.log("esta es la contraseña ingresada por el usuario: ",contrasena)
             // console.log(user.contrasena)
             let comparacion = bcrypt.compareSync(contrasena,user.contrasena)
-            console.log("esta es la comparacion: ",comparacion)
+            // console.log("esta es la comparacion: ",comparacion)
             if (comparacion){
-                req.session.user = {
+                const sancion = await Usuarios.findOne({
+                    attributes:{},
+                    where: {
+                        COD: user.COD
+                    },
+                    include: {
+                        model: Administradores,
+                        attributes: {}, // Atributos que queremos seleccionar de la tabla Administradores
+                        through: {
+                            model: ControlUsuarios, // Especificamos la tabla intermedia
+                            attributes: {estado} // Atributos que queremos seleccionar de la tabla intermedia
+                        }
+                    }
+                });
+                const estado=sancion.administradores[0].control_usuarios.estado
+                console.log(typeof estado)
+                if (estado=="activo"){
+                    req.session.user = {
                     COD:user.COD,
                     nombre_c:user.nombre_c,
                     primer_apelli: user.primer_apelli,
@@ -51,11 +76,12 @@ export const getuser = async(req,res)=>{
                     COD_municipios: user.COD_municipios,
                     username: user.username,
                     email: user.email
+                    }
+                    res.status(200).json({message:"Inicio de sesión exitoso", estado:estado})
+                }else{
+                    res.status(401).json({message:"No puede ingresar ya que esta sancionado", estado:estado})
                 }
-                res.status(200).json({
-                    message:"Inicio de sesión exitoso"
-                });
-            }else{
+                }else{
                 res.status(401).json({message:"Nombre de usuario y/o contraseña incorrecta"});
             }
         }else{
@@ -75,12 +101,12 @@ export const postempresa = async(req,res)=>{
         nombre,
         descripcion,
         COD_municipios,
-        instragram,
-        direccion,
-        telefono,
+        instagram,
         facebook,
         contrasena,
-        username,
+        username, 
+        direccion,
+        telefono,
         email
     }= req.body
     try {
@@ -90,17 +116,18 @@ export const postempresa = async(req,res)=>{
             nombre,
             descripcion,
             COD_municipios,
-            instragram,
-            direccion,
-            telefono,
+            instagram,
             facebook,
             contrasena: hashedPassword,
             username,
+            direccion,
+            telefono,
             email
         })
-        res.json({message: "Registro creado correctamente"})
+        await AdministradorSolicitud.create({COD_administradores:numeroAdmin,NIT_empresa_solicitante:NIT})
+        res.status(200).json({message: "Registro creado correctamente"})
     } catch (error) {
-        res.json({message: `Este dato ingresado ya existe: ${error.message}`})
+        res.status(400).json({message: `Error al insertar la información: ${error.message}`})
     }
 }
 
@@ -108,7 +135,8 @@ export const postempresa = async(req,res)=>{
 export const getempresa = async(req,res)=>{
     const {username,contrasena} = req.body
     try {
-        const user = await SolicitudEmpresa.findOne({where:{ username: username}})
+        // const user = await SolicitudEmpresa.findOne({where:{ username: username}})
+        const user = await Empresas.findOne({where:{ username: username}})
         if (user !== null){
             console.log("esta es la contraseña ingresada por la empresa: ",contrasena)
             // console.log(user.contrasena)
@@ -154,6 +182,12 @@ export const getadmin = async(req,res)=>{
             console.log("esta es la comparacion: ",comparacion)
             if (comparacion){
                 req.session.userAdmin = {
+                    COD:user.COD,
+                    nombre:user.nombre,
+                    primer_apelli:user.primer_apelli,
+                    segundo_apelli:user.segundo_apelli,
+                    COD_municipios:user.COD_municipios,
+                    username:user.username
                 }
                 res.status(200).json({
                     message:"Inicio de sesión exitoso"
@@ -167,5 +201,14 @@ export const getadmin = async(req,res)=>{
     } catch (error) {
         console.log("Error al iniciar sesión", error)
         res.status(401).json({message:"Error al iniciar sesión"});
+    }
+}
+
+//Esta funcion de para probar la cargada de las imagenes
+export const imagen=async(req,res)=>{
+    try {
+        res.status(201).json(req.file);
+    } catch (error) {
+        res.status(400).json({message:"Error al subir la imagen"})
     }
 }
