@@ -8,9 +8,12 @@ import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 
 import { useState } from "react";
 import { useThemeContext } from "../providers/themeProvider";
+import { useUserContext } from "../providers/userProvider";
 
 export function Header() {
     const location = useLocation()
+
+    const {sesionUser} = useUserContext()
     const [menu, setMenu] = useState(faBars);   //use stated para asignar el logo y las clases necesarias al menu responsive
     //cada click cambia el estado 
     const toggleClick = () => {
@@ -22,8 +25,6 @@ export function Header() {
     //dependiendo de este valor podemos aplicar la logica deseada
     const theme = useThemeContext()
     const logoColor = theme === 'dark' ? '#BC0B38' : '#fff'
-
-
 
     if (location.pathname !== '/login' && location.pathname !== '/empresa') {
         return (
@@ -43,7 +44,8 @@ export function Header() {
 
                 <div className="flex justify-center items-center">
 
-                    <ButtonNav href="/login" text="Iniciar sesión"/>
+                    {sesionUser === null ? <ButtonNav href="/login" text="Iniciar sesión" /> : <h1>Logout</h1>}
+
 
                     <span className="text-3xl cursor-pointer md:hidden block dark:fill-black">
                         <FontAwesomeIcon
@@ -56,11 +58,11 @@ export function Header() {
                 </div>
             </nav>
         )
-    }else if(location.pathname === "/empresa"){
-        return(
+    } else if (location.pathname === "/empresa") {
+        return (
             <nav className="flex items-center justify-between p-[3vh] h-[20%]">
                 <h1 className="dark:text-red-600 text-white font-bloomsterly text-2xl">BloomSterly</h1>
-                <ButtonNav text="Cerrar Sesion"/>
+                <ButtonNav text="Cerrar Sesion" />
             </nav>
         )
     } else {
