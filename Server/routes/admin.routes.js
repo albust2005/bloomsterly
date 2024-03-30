@@ -1,23 +1,33 @@
 import express from "express";
-import { postadmin, getlogout } from "../controllers/admin.controller.js";
+import { postadmin, getlogout, editarPefil, sancionarUsuarios, getAllUsuarios, AllSolicitudes, aceptacion, buscarUsuarios } from "../controllers/admin.controller.js";
 
 // esto es para poner rutas
-const router1 = express.Router()
+const router = express.Router()
 
 //middleware
 // rutas protegidas por sesion
-router1.use((req, res, next)=>{
+router.use((req, res, next)=>{
     if (req.session.userAdmin) {
         next(); //continuar si hay una sesion activa
     }else{
-        res.json({message: "Acceso no autorizado"})
+        res.status(401).json({message: "Acceso no autorizado"})
     }
 })
 
 // ruta para crear un nuevo administrador
-router1.post("/crear",postadmin);
-
+router.post("/crear",postadmin);
 // ruta para cerrar sesion
-router1.get("/loginout",getlogout);
-
-export default router1
+router.get("/loginout",getlogout);
+// ruta para editar el perfil del administrador
+router.put("/editarPerfil",editarPefil);
+// ruta para traer a todos los usuarios a la interfaz de administrador
+router.get("/getAllUsuarios",getAllUsuarios);
+// ruta para sancionar a un usuario
+router.put("/sancionarUsuario",sancionarUsuarios);
+// ruta para la solicitud de empresas
+router.get("/AllSolicitudes",AllSolicitudes);
+// ruta para migrar datos de la tabla solicitud_empresas a empresas
+router.post("/aceptacion",aceptacion);
+// ruta para buscar usuario
+router.post("/buscarUsuario",buscarUsuarios);
+export default router
