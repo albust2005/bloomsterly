@@ -9,28 +9,25 @@ export function Registro() {
     watch,
   } = useForm();
 
-  const createUser = useNewUserContext()
+  const createUser = useNewUserContext();
 
   return (
-    <div className="form-box flex justify-center items-center flex-col gap-4 mt-6 w-full text-white  relative  ">
-      <h1 className="font-semibold text-base sm:text-xl md:text-2xl lg:3xl">
-        Registro
-      </h1>
+    <div className="form-box flex justify-center items-center flex-col gap-4 mt-3 w-full text-white  relative  ">
 
       <form
         action=""
-        className="w-full text-base md:text-xl "
+        className="w-full text-base minicel:text-sm sm:text-lg md:text-xl "
         onSubmit={handleSubmit(createUser)}
       >
-
         <div className="flex w-full gap-4">
-          <div className="input-box animation flex flex-col w-full">
-            <label htmlFor="Name" className="mb-1 font-semibold">
+          <div className="input-box animation flex flex-col w-full ">
+            <label htmlFor="Name" className="   font-semibold">
               Nombre
             </label>
             <input
               type="text"
-              className="focus:outline-none bg-transparent border-b-2 border-white text-base font-text"
+              className="focus:outline-none bg-transparent border-b-2 border-white text-base font-text 
+              minicel:w-2/3 sm:w-full minicel:mb-1"
               {...register("Name", {
                 required: {
                   value: true,
@@ -44,12 +41,17 @@ export function Registro() {
           </div>
 
           <div className="input-box animation flex flex-col w-full">
-            <label htmlFor="Firstlastname" className=" mb-1 font-semibold">
+            <label
+              htmlFor="Firstlastname"
+              className="minicel:text-xs sm:text-lg md:text-xl  font-semibold"
+            >
               Primer Apellido
             </label>
             <input
               type="text"
-              className="focus:outline-none bg-transparent border-b-2 border-white text-base font-text"
+              className="focus:outline-none bg-transparent border-b-2 border-white 
+              minicel:text-sm sm:text-lg md:text-xl   font-text minicel:w-2/3 sm:w-full
+              minicel:mb-1"
               {...register("Firstlastname", {
                 required: {
                   value: true,
@@ -66,26 +68,10 @@ export function Registro() {
         </div>
 
         <div className="input-box animation flex flex-col w-full">
-          <label htmlFor="Email" className="mb-1 font-semibold">
-            Email
-          </label>
-          <input
-            type="text"
-            className="focus:outline-none bg-transparent border-b-2 border-white text-base font-text"
-            {...register("Email", {
-              required: {
-                value: true,
-                message: "Escribe tu nombre",
-              },
-            })}
-          />
-          {errors.Email && (
-            <span className="text-sm">{errors.Email.message}</span>
-          )}
-        </div>
-
-        <div className="input-box animation flex flex-col w-full">
-          <label htmlFor="Cedula" className="mb-1 font-semibold">
+          <label
+            htmlFor="Cedula"
+            className="minicel:text-sm sm:text-lg md:text-xl   mb-1 font-semibold"
+          >
             Cedula
           </label>
           <input
@@ -103,57 +89,106 @@ export function Registro() {
           )}
         </div>
 
-        <div className="input-box animation flex flex-col">
-          <label htmlFor="Username" className="mt-2 mb-1 font-semibold">
-            Nombre de usuario
+        <div className="input-box animation flex flex-col w-full">
+          <label
+            htmlFor="Email"
+            className="minicel:text-sm sm:text-lg md:text-xl   mb-1 font-semibold"
+          >
+            Email
           </label>
           <input
             type="text"
             className="focus:outline-none bg-transparent border-b-2 border-white text-base font-text"
-            {...register("Username", {
+            {...register("Email", {
               required: {
                 value: true,
-                message: "Escribe tu nombre de usuario",
+                message: "Escribe tu nombre",
               },
             })}
           />
-          {errors.Username && (
-            <span className="text-sm text-white ">
-              {errors.Username.message}
-            </span>
+          {errors.Email && (
+            <span className="text-sm">{errors.Email.message}</span>
           )}
         </div>
 
-        <div className="input-box animation flex flex-col">
-          <label htmlFor="Town" className="mt-2 mb-1 font-semibold">
-            Municipio
-          </label>
-          <select
-            name=""
-            id=""
-            {...register("Town")}
-            className="text-white rounded-md bg-transparent text-base font-text focus:outline-none border-b-2"
-          >
-            <option value="" disabled className="bg-dark_theme">
+        <div className="flex w-full gap-4">
+          <div className="input-box animation flex flex-col w-full">
+            <label
+              htmlFor="Username"
+              className="minicel:text-sm sm:text-lg md:text-xl  mt-2  font-semibold"
+            >
+              Nombre de usuario
+            </label>
+            <input
+              type="text"
+              className="focus:outline-none bg-transparent border-b-2 border-white text-base font-text minicel:w-2/3 sm:w-full"
+              {...register("Username", {
+                required: {
+                  value: true,
+                  message: "Escribe tu nombre de usuario",
+                },
+              })}
+            />
+            {errors.Username && (
+              <span className="text-sm text-white ">
+                {errors.Username.message}
+              </span>
+            )}
+          </div>
+
+          <div className="input-box animation flex flex-col w-full">
+            <label
+              htmlFor="Town"
+              className="minicel:text-sm sm:text-lg md:text-xl  mt-2 mb-1 font-semibold"
+            >
               Municipio
-            </option>
-            <option value="rg" className="bg-dark_theme">
-              Rionegro
-            </option>
-            <option value="ml" className="bg-dark_theme">
-              Marinilla
-            </option>
-            <option value="gr" className="bg-dark_theme">
-              Guarne
-            </option>
-            <option value="md" className="bg-dark_theme">
-              Medellin
-            </option>
-          </select>
+            </label>
+            <select
+              name=""
+              id=""
+              {...register("Town")}
+              className="text-white rounded-md bg-transparent text-base font-text focus:outline-none border-b-2"
+            >
+              <option
+                value=""
+                disabled
+                className="bg-dark_theme minicel:text-xs sm:text-lg md:text-xl  "
+              >
+                Municipio
+              </option>
+              <option
+                value="rg"
+                className="bg-dark_theme minicel:text-xs sm:text-lg md:text-xl  "
+              >
+                Rionegro
+              </option>
+              <option
+                value="ml"
+                className="bg-dark_theme minicel:text-xs sm:text-lg md:text-xl  "
+              >
+                Marinilla
+              </option>
+              <option
+                value="gr"
+                className="bg-dark_theme minicel:text-xs sm:text-lg md:text-xl  "
+              >
+                Guarne
+              </option>
+              <option
+                value="md"
+                className="bg-dark_theme minicel:text-xs sm:text-lg md:text-xl  "
+              >
+                Medellin
+              </option>
+            </select>
+          </div>
         </div>
 
         <div className="input-box animation flex flex-col">
-          <label htmlFor="Password" className="mt-2 mb-1 font-semibold">
+          <label
+            htmlFor="Password"
+            className="minicel:text-sm sm:text-lg md:text-xl  l mt-2 font-semibold"
+          >
             Contraseña
           </label>
           <input
@@ -174,7 +209,10 @@ export function Registro() {
         </div>
 
         <div className="input-box animation flex flex-col">
-          <label htmlFor="ConfirmPassword" className="mt-2 mb-1 font-semibold">
+          <label
+            htmlFor="ConfirmPassword"
+            className="minicel:text-sm sm:text-lg md:text-xl   mt-2 font-semibold"
+          >
             Confirma contraseña
           </label>
           <input
@@ -201,9 +239,13 @@ export function Registro() {
           )}
         </div>
 
-        <div className="flex justify-center items-center w-full bg-slate-400 mt-12 ">
-          <button className="text-white mt-2 ">Registro</button>
-        </div>
+        
+          <button className="text-white mt-2 bg-color_switch_theme_dark w-full p-1 rounded-md hover:bg-[#8e5ee0]
+          minicel:text-sm celular:text-base sm:text-lg md:text-xl  
+          minicel:mt-3 sm:mt-6 dark:bg-[#eb2651] dark:hover:bg-[#d61540]">
+            Registro
+          </button>
+       
       </form>
     </div>
   );
