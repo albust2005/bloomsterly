@@ -14,6 +14,13 @@ import { Layaout } from './components/templates/Layaout'
 import { Header } from './components/templates/Header'
 import { Footer } from './components/templates/Footer'
 import { ThemeProvider } from './components/providers/themeProvider'
+<<<<<<< Updated upstream
+=======
+import { CategoriaProvider } from './components/providers/categoriaProvider'
+import { UserProvider } from './components/providers/userProvider'
+import { Empresa } from './pages/empresa/empresa'
+
+>>>>>>> Stashed changes
 
 
 function App() {
@@ -34,8 +41,17 @@ function App() {
           <Route path='/servicios/:categoriaName' element={<ServicioEspecifico />}></Route>
           <Route path='/servicios/:categoriaName/:empresa' element={<EmpresaInfo />}></Route>
 
+<<<<<<< Updated upstream
           <Route path='/pedidos' element={<Pedidos />} />
         </Routes>
+=======
+          <CategoriaProvider>
+            <Routes>
+              <Route path='/' element={<LandingPage />}></Route>
+              <Route path='/login' element={<Login />}></Route>
+              <Route path='/Administrador' element={<Administrador />}></Route>
+              <Route path='/empresa' element={<Empresa />}></Route>
+>>>>>>> Stashed changes
 
         <Footer />
       </ThemeProvider>
