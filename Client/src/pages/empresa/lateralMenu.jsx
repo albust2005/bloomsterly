@@ -1,6 +1,6 @@
 // importación de los componentes cuando ya se puedan utilizar 
 import { useThemeContext } from "../../components/providers/themeProvider";
-import { IconUser } from "../administrador/iconUser";
+import { IconUser } from "../administrador/templates/iconUser";
 import { ButtonAdmin } from "../../components/buttons/buttonAdmin";
 
 
