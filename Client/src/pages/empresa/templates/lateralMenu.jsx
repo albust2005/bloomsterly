@@ -1,7 +1,7 @@
 // importación de los componentes cuando ya se puedan utilizar 
 import { useThemeContext } from "../../../components/providers/themeProvider";
 import { ButtonAdmin } from "../../../components/buttons/buttonAdmin";
-import { IconUser } from "../../../components/templates/iconUser";
+import { IconUser } from "../../administrador/templates/iconUser";
 
 
 export function LateralMenu(){

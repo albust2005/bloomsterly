@@ -1,6 +1,6 @@
 export const Solicitud = ({}) => {
   return (
-    <div>
+    <>
       <h1 className="text-white text-7xl mb-2 dark:text-second_color_lt">
         Solicitudes de Ingreso
       </h1>
@@ -22,6 +22,6 @@ export const Solicitud = ({}) => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
