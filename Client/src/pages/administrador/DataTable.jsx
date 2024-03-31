@@ -146,7 +146,7 @@ export const DataTable = () => {
           </tbody>
         </table>
       </div>
-      <div className="mt-4 md:flex place-items-center justify-around space-y-4">
+      {/* <div className="mt-4 md:flex place-items-center justify-around space-y-4">
         <div className="flex items-center gap-2">
           <button
             className="text-white bg-admin_card py-0.5 px-1 rounded border border-border_tabla dark:border text-xl font-bold hover:bg-border_tabla dark:hover:bg-second_color_lt dark:border-second_color_lt dark:bg-light_theme disabled:hover:text-admin_card dark:disabled:bg-light_theme
@@ -208,7 +208,7 @@ export const DataTable = () => {
           <option value="25">25 pág.</option>
           <option value="50">50 pág.</option>
         </select>
-      </div>
+      </div> */}
     </div>
   );
 };
