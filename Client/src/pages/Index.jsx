@@ -3,21 +3,12 @@ import "../App.css";
 
 import { PolaroidCard } from "../components/templates/PolaroidCard";
 import { FirtsTitle, Titles } from "../components/titles/Title";
-import { categorias } from "../db/categorias.js";
-
-
-import { PropTypes } from "prop-types"
-import { Layaout } from "../components/templates/Layaout";
-import { Flor } from "../components/Flores.jsx"
-
-
-
-Titles.propTypes = {
-  title: PropTypes.string,
-  subTitle: PropTypes.string
-}
+//import { Flor } from "../components/Flores.jsx"
+import { useCategoriaProvider } from "../components/providers/categoriaProvider.jsx";
 
 export function LandingPage() {
+
+  const categorias = useCategoriaProvider()
 
   return (
     <>
@@ -36,9 +27,11 @@ export function LandingPage() {
               title='NOSOTROS'
               subTitle='¿Que hacemos?'
             />
+            
+            {/* <Flor name='blanco' positionx={200} positiony={300} size={10}/> */}
 
             <p className="text-white w-full pt-6 text-1xl sm:text-2xl md:text-3xl lg-text-4xl
-            dark:text-black z-10">
+            dark:text-black text-balance">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto
               vero accusantium rem quas facilis, placeat modi, distinctio
               exercitationem ipsam necessitatibus vitae enim assumenda,
@@ -68,13 +61,12 @@ export function LandingPage() {
           </article>
 
           <article className="mx-auto grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
-                {categorias.slice(0, 3).map(servicio => (
-
-                    <div key={servicio.nombre}>
+                {categorias.slice(0, 3).map(categoria => (
+                    <div key={categoria.id}>
                         <PolaroidCard
-                            url={servicio.img}
-                            nombre={servicio.nombre}
-                            descripcion={servicio.descripcion}
+                            url={categoria.img}
+                            nombre={categoria.nombre}
+                            descripcion={categoria.descripcion}
                         />
                     </div>
                 ))}

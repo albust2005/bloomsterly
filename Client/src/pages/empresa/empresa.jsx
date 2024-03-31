@@ -4,7 +4,7 @@ import { LateralMenu } from "./lateralMenu";
 export function Empresa(){
     return(
         <section>
-            <LateralMenu/>
+        <LateralMenu/>
         </section>
     )
 }
