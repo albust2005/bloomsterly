@@ -28,7 +28,7 @@ export function LandingPage() {
               subTitle='¿Que hacemos?'
             />
             
-            <Flor name='blanco' positionx={200} positiony={300} size={10}/>
+            {/* <Flor name='blanco' positionx={200} positiony={300} size={10}/> */}
 
             <p className="text-white w-full pt-6 text-1xl sm:text-2xl md:text-3xl lg-text-4xl
             dark:text-black text-balance">

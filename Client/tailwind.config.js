@@ -25,6 +25,7 @@ export default {
         'empresa_card' : "#D9C2FF",
         'admin_card' : "rgb(160, 107, 249)",
         'hover_boton_admin': "#5c46bc", 
+        'border_tabla': "#6c1a95"
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

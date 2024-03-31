@@ -3,7 +3,7 @@ import { useCategorias } from "../hooks/useCategorias";
 
 const categoriaContext = createContext()
 
-export function useCategoriaProvider(){
+export function useCategoriaProvider() {
     return useContext(categoriaContext)
 }
 
