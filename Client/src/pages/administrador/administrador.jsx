@@ -8,7 +8,7 @@ export function Administrador({ user="Silvana" }) {
   return (
     <>
       {/* <Menudiag></Menudiag> */}
-      <div className="flex flex-row justify-between">
+      <div className="flex justify-between">
         <div>
           <Menudiag></Menudiag>
         </div>
@@ -20,7 +20,9 @@ export function Administrador({ user="Silvana" }) {
       {/* <ModalUsu></ModalUsu> */}
       {/* <Modalsol></Modalsol> */}
       {/* <DataTable/> */}
-      {/* <FirtsTitle title="Administrador" descripcion={`Bienvenid@ ${user}`} /> */}
+      {/* <div className="">
+        <FirtsTitle title="Administrador" descripcion={`Bienvenid@ ${user}`} />
+      </div> */}
     </>
   );
 }
