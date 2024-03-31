@@ -16,6 +16,7 @@ import { Footer } from './components/templates/Footer'
 import { ThemeProvider } from './components/providers/themeProvider'
 import { CategoriaProvider } from './components/providers/categoriaProvider'
 import { UserProvider } from './components/providers/userProvider'
+import { Empresa } from './pages/empresa/empresa'
 //import { Empresa } from './pages/empresa/empresa'
 
 
@@ -37,6 +38,7 @@ function App() {
               <Route path='/' element={<LandingPage />}></Route>
               <Route path='/login' element={<Login />}></Route>
               <Route path='/Administrador' element={<Administrador />}></Route>
+              <Route path='/empresa/*' element={<Empresa />}></Route>
 
               <Route path='/servicios' element={<Servicios />}></Route>
               <Route path='/servicios/:categoriaName' element={<ServicioEspecifico />}></Route>
