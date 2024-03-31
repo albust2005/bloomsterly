@@ -1,13 +1,21 @@
 import { Route, Routes } from "react-router-dom";
-import { LateralMenu } from "./lateralMenu";
-import { Index_empresa } from "./index_empresa";
+import { Index_empresa } from "./indexEmpresa";
+import { LateralMenu } from "./templates/lateralMenu";
+import { ReservasCliente } from "./reservasClientes";
 
 export function Empresa(){
+
     return(
-        <section>
-            <Routes>
-                <Route path="/" element={<Index_empresa/>}></Route>
-            </Routes>
+        <section className="flex justify-between">
+            <div className="w-[25%]">
+                <LateralMenu />
+            </div>
+            <div className="w-[70%]">
+                <Routes>
+                    <Route path="/" element={<Index_empresa />}></Route>
+                    <Route path="/reservas" element={<ReservasCliente/>}></Route>
+                </Routes>
+            </div>
         </section>
     )
 }
