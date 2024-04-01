@@ -13,7 +13,7 @@ export function Empresa(){
             <div className="w-[70%]">
                 <Routes>
                     <Route path="/" element={<Index_empresa />}></Route>
-                    <Route path="/reservas" element={<ReservasCliente/>}></Route>
+                    <Route path="/reserva" element={<ReservasCliente/>}></Route>
                 </Routes>
             </div>
         </section>

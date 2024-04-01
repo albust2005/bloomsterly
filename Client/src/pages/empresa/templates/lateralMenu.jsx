@@ -12,7 +12,7 @@ export function LateralMenu(){
                 <IconUser/>
             </div>
             <h2 className="text-white text-2xl dark:text-second_color_lt">@Empresa</h2>
-            <ButtonAdmin>Clientes</ButtonAdmin>
+            <ButtonAdmin href="/empresa/reserva">Clientes</ButtonAdmin>
             <ButtonAdmin>Servicios</ButtonAdmin>
             <ButtonAdmin>Modificar</ButtonAdmin>
         </div>

@@ -22,6 +22,20 @@ app.use(session({
     resave: false,
     saveUninitialized: true,
 }));
+// app.use((req, res, next) => {
+//     if (req.session.userAdmin){
+//         console.log('Sesión:', req.session.userAdmin);
+//         next();
+//     }else{
+//         if (req.session.user){
+//             console.log('Sesión:', req.session.user);
+//             next(); 
+//         }else{
+//             console.log('Sesión:', req.session.userEmpresa);
+//             next();
+//         }
+//     }
+//   });
 
 //rutas para la navegacion
 app.use('/', auth);
