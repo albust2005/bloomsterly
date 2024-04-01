@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types'
-import { Flor } from '../Flores'
+import PropTypes from 'prop-types';
+import { Flor } from './Flores';
 
 export function Layaout({ children }) {
 

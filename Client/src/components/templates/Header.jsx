@@ -65,7 +65,7 @@ export function Header() {
     } else if (location.pathname === "/empresa") {
         return (
             <nav className="flex items-center justify-between p-[3vh] h-[20%]">
-                <h1 className="dark:text-red-600 text-white font-bloomsterly text-2xl">BloomSterly</h1>
+                <h1 className="dark:text-red-600 text-white text-2xl">BloomSterly</h1>
                 <ButtonNav text="Cerrar Sesion" />
             </nav>
         )
