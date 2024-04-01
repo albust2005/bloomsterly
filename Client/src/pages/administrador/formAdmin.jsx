@@ -1,9 +1,7 @@
-export const formAdmin = () => {
+export const FormAdmin = () => {
   return (
     <div>
-      <form action="">
-        
-      </form>
+      <h1>Hola administradores</h1>
     </div>
   )
 }

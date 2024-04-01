@@ -1,33 +1,46 @@
-import { Layaout } from "../../components/templates/Layaout";
 import { Route, Routes } from "react-router";
-import { FirtsTitle, Titles } from "../../components/titles/Title";
-import { DataTable } from "./DataTable"
 import { Solicitud } from "./Solicitud";
-import { Modalsol } from "./modalSol";
-import { ModalUsu } from "./modalUsu";
 import { IndexAdmin } from "./indexAdmin";
 import { Menudiag } from "./menuDiag";
-export function Administrador({ user="Silvana" }) {
+import { TablaAdmin } from "./tablaAdmin";
+import { TablaClient } from "./tablaClient";
+import { TablaEmpresa } from "./tablaEmpresas";
+import { FormAdmin } from "./formAdmin";
+import { Modalsol } from "./modalSol";
+import { ModalUsu } from "./modalUsu";
+export function Administrador({ user = "Silvana" }) {
   return (
     <>
-      {/* <Menudiag></Menudiag> */}
-      <div className="flex justify-between">
+      <div className="flex justify-between minicel:flex-col sm:flex-row">
         <div className="w-[25%]">
-          <Menudiag/>
+          <Menudiag />
         </div>
         <div className="w-[70%]">
           <Routes>
-            <Route path="/" element={<IndexAdmin user={user}/>}></Route>
-            <Route path='/solicitudes' element={<Solicitud/>}></Route>
+            <Route path="/" element={<IndexAdmin user={user} />}></Route>
+            <Route
+              path="administrador/solicitudes"
+              element={<Solicitud />}
+            ></Route>
+            <Route
+              path="administrador/administradores"
+              element={<TablaAdmin />}
+            ></Route>
+            <Route
+              path="administrador/clientes"
+              element={<TablaClient />}
+            ></Route>
+            <Route
+              path="administrador/empresas"
+              element={<TablaEmpresa />}
+            ></Route>
+            <Route
+              path="administrador/crearAdmin"
+              element={<FormAdmin />}
+            ></Route>
           </Routes>
         </div>
       </div>
-      {/* <ModalUsu></ModalUsu> */}
-      {/* <Modalsol></Modalsol> */}
-      {/* <DataTable/> */}
-      {/* <div className="">
-        <FirtsTitle title="Administrador" descripcion={`Bienvenid@ ${user}`} />
-      </div> */}
     </>
   );
 }

@@ -37,7 +37,7 @@ function App() {
             <Routes>
               <Route path='/' element={<LandingPage />}></Route>
               <Route path='/login' element={<Login />}></Route>
-              <Route path='/Administrador' element={<Administrador />}></Route>
+              <Route path='/Administrador/*' element={<Administrador />}></Route>
               <Route path='/empresa/*' element={<Empresa />}></Route>
 
               <Route path='/servicios' element={<Servicios />}></Route>

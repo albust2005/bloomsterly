@@ -7,11 +7,15 @@ export function Menudiag() {
       <h2 className="text-white text-2xl dark:text-second_color_lt">
         Administrador
       </h2>
-      <ButtonAdmin href="/clientes">Clientes</ButtonAdmin>
-      <ButtonAdmin href="/empresa">Empresas</ButtonAdmin>
-      <ButtonAdmin href="/administrador/solicitudes">Solicitudes</ButtonAdmin>
-      <ButtonAdmin href="/administradores">Administradores</ButtonAdmin>
-      <ButtonAdmin href="/crearAdmin">Crear Administrador</ButtonAdmin>
+      <ButtonAdmin href="administrador/clientes">Clientes</ButtonAdmin>
+      <ButtonAdmin href="administrador/empresas">Empresas</ButtonAdmin>
+      <ButtonAdmin href="administrador/solicitudes">Solicitudes</ButtonAdmin>
+      <ButtonAdmin href="administrador/administradores">
+        Administradores
+      </ButtonAdmin>
+      <ButtonAdmin href="administrador/crearAdmin">
+        Crear Administrador
+      </ButtonAdmin>
     </div>
   );
 }
