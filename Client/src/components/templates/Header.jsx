@@ -25,8 +25,8 @@ export function Header() {
 
   if (
     location.pathname !== "/login" &&
-    location.pathname !== "/empresa/" &&
-    location.pathname !== "/administrador/"
+    location.pathname !== "/empresa" &&
+    location.pathname !== "/administrador"
   ) {
     return (
       <nav className="bg-transparent flex justify-between items-center h-20 dark:bg-transparent dark:shadow-[#f7e6d5] ">
@@ -63,7 +63,7 @@ export function Header() {
         </div>
       </nav>
     );
-  } else if (location.pathname === "/empresa/*" || location.pathname === "/administrador/*") {
+  } else if (location.pathname === "/empresa" || location.pathname === "/administrador") {
     return (
       <nav className="bg-transparent flex justify-between items-center h-20 dark:bg-transparent dark:shadow-[#f7e6d5]">
         <h1 className="cursor-pointer text-white dark:text-red-500">
