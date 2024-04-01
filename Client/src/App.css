@@ -4,3 +4,23 @@
   box-sizing: border-box;
 }
 
+/* Estilos para la barra de desplazamiento en dispositivos Android */
+::-webkit-scrollbar {
+  width: 10px; /* Ancho de la barra de desplazamiento */
+}
+
+/* Estilos para el track (el área gris detrás de la barra) */
+::-webkit-scrollbar-track {
+  background-color: #f1f1f1; /* Color de fondo */
+}
+
+/* Estilos para el thumb (el botón deslizante) */
+::-webkit-scrollbar-thumb {
+  background-color: #888; /* Color del botón deslizante */
+  border-radius: 5px; /* Borde redondeado */
+}
+
+/* Estilos para el thumb cuando está en estado hover */
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555; /* Color del botón deslizante al pasar el mouse sobre él */
+}
