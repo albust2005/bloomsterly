@@ -3,7 +3,7 @@ import { DefaultData } from "./DefaultData"
 export const TablaAdmin = () => {
   return (
     <div>
-      <DataTable titulo="Administradores" tabla={DefaultData}/>
+      <DataTable titulo="Administradores"/>
     </div>
   )
 }

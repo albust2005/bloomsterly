@@ -1,4 +1,5 @@
 //importando de la librería los hooks que necesitaremos
+import axios from "axios";
 import {
   flexRender,
   getCoreRowModel,
@@ -35,8 +36,8 @@ const DebouncedInput = ({ value: keyWord, onChange, ...props }) => {
       onChange(value);
     }, 500);
     //Esta línea de código está almacenando el id de la constante timeot
-    //Esta línea valida si el valor de value se actualiza antes de que pasen 500 milisegundos 
-    //se borrará esa temporización cuando se exceda el tiempo de pausa 
+    //Esta línea valida si el valor de value se actualiza antes de que pasen 500 milisegundos
+    //se borrará esa temporización cuando se exceda el tiempo de pausa
     return () => clearTimeout(timeout);
   }, [value]);
 
@@ -50,10 +51,19 @@ const DebouncedInput = ({ value: keyWord, onChange, ...props }) => {
   );
 };
 
-export const DataTable = ({tabla, titulo}) => {
+export const DataTable = ({ titulo }) => {
   //Es el estado inicial de la tabla, y en este importamos nuestra BD falsa
-  const [data, setData] = useState({tabla});
-
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    const obtener = async () => {
+      const datos = await axios.get(
+        "http://localhost:8000/admin/getAllUsuarios"
+      );
+      setData(datos.data);
+      console.log(datos.data);
+    };
+    obtener();
+  }, []);
   //
   const [globalFilter, setGlobalFilter] = useState("");
   console.log(globalFilter);
@@ -200,7 +210,7 @@ export const DataTable = ({tabla, titulo}) => {
               className={classNames({
                 "text-white bg-admin_card py-0.5 px-1 rounded border border-border_tabla dark:border text-xl font-bold hover:bg-border_tabla dark:border-second_color_lt dark:hover:bg-second_color_lt dark:bg-light_theme dark:text-second_color_lt dark:hover:text-white disabled:hover:text-admin_card dark:disabled:bg-light_theme": true,
                 "bg-border_tabla dark:bg-second_color_lt dark:text-white":
-                // retorna en que número depágina estamos
+                  // retorna en que número depágina estamos
                   value === table.getState().pagination.pageIndex,
               })}
               onClick={() => table.setPageIndex(value)}
