@@ -190,7 +190,7 @@ export const getadmin = async(req,res)=>{
                     COD_municipios:user.COD_municipios,
                     username:user.username
                 }
-                console.log(req.session.userAdmin)
+                // console.log(req.session.userAdmin)
                 res.status(200).json({
                     message:"Inicio de sesión exitoso administrador"
                 });
