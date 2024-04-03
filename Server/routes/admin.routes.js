@@ -1,5 +1,5 @@
 import express from "express";
-import { postadmin, getlogout, editarPefil, sancionarUsuarios, getAllUsuarios, AllSolicitudes, aceptacion, buscarUsuarios } from "../controllers/admin.controller.js";
+import { postadmin, getlogout, editarPefil, sancionarUsuarios, getAllUsuarios, AllSolicitudes, aceptacion, buscarUsuarios, sancionarEmpresa, getAllEmpresas } from "../controllers/admin.controller.js";
 
 // esto es para poner rutas
 const router = express.Router()
@@ -30,4 +30,8 @@ router.get("/AllSolicitudes",AllSolicitudes);
 router.post("/aceptacion",aceptacion);
 // ruta para buscar usuario
 router.get("/buscarUsuario/:username",buscarUsuarios);
+// ruta para sancionar a una empresa
+router.put("/sancionarEmpresa", sancionarEmpresa);
+// ruta para mostrar a todas las empresas
+router.get("/getAllEmpresas", getAllEmpresas);
 export default router
