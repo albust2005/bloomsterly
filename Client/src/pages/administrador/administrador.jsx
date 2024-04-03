@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router";
 import { Solicitud } from "./Solicitud";
 import { IndexAdmin } from "./indexAdmin";
-import { Menudiag } from "./menuDiag";
+import { Menudiag } from "../administrador/menudiag";
 import { TablaAdmin } from "./tablaAdmin";
 import { TablaClient } from "./tablaClient";
 import { TablaEmpresa } from "./tablaEmpresas";

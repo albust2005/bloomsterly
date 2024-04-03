@@ -11,6 +11,7 @@ import  DescripcionReserva from '../models/descripcion_reserva.js';
 import  Fechas from '../models/fechas.js';
 import  SolicitudEmpresa from '../models/solicitud_empresa.js';
 import AdministradorSolicitud from '../models/administrador_solicitud.js';
+import ControlEmpresas from './control_empresas.js';
 // Asociaciones
 
 //HasMany se utiliza en el modelo 1 osea que un municipio tiene muchos administradores
@@ -25,6 +26,10 @@ Municipios.hasMany(SolicitudEmpresa, { foreignKey:'COD_municipios', as: 'solicit
 //es una buena práctica definir las asociaciones en ambos modelos para mejorar la claridad y la legibilidad del código.
 Administradores.belongsToMany(Usuarios, { through: ControlUsuarios, foreignKey: 'COD_administrador' });
 Usuarios.belongsToMany(Administradores, { through: ControlUsuarios, foreignKey: 'COD_usuarios' });
+
+//relacion muchos a muchos que tiene una tabla intermedia llamada ControlEmpresas
+Administradores.belongsToMany(Empresas, {through: ControlEmpresas, foreignKey: 'COD_administrador'});
+Empresas.belongsToMany(Administradores,{through: ControlEmpresas, foreignKey: 'NIT_empresa'})
 
 Usuarios.hasMany(Reservas, { foreignKey: 'COD_usuarios', as: 'reservas' });
 //relacion muchos a muchos
@@ -49,6 +54,7 @@ export {
   Servicios,
   Categorias,
   ControlUsuarios,
+  ControlEmpresas,
   DescripcionReserva,
   Fechas,
   SolicitudEmpresa,

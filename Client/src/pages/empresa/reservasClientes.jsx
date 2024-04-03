@@ -1,10 +1,12 @@
 import { TitleAE } from "../../components/titles/titleAE";
+import { Reservas } from "./templates/reservas";
+
 
 export function ReservasCliente() {
     return (
         <>
-            <TitleAE title="Hola Jose" descripcion="Hola"/>
-            <h1>Hola</h1>
+            <TitleAE title="Reserva de los clientes"/>
+            <Reservas />
         </>
     )
 }

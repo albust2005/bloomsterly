@@ -1,4 +1,4 @@
-import {Municipios,Administradores,Usuarios,Empresas,Reservas,Servicios,Categorias,ControlUsuarios,DescripcionReserva,Fechas,SolicitudEmpresa,AdministradorSolicitud} from '../models/associations.js'
+import {Municipios,Administradores,Usuarios,Empresas,Reservas,Servicios,Categorias,ControlUsuarios, ControlEmpresas,DescripcionReserva,Fechas,SolicitudEmpresa,AdministradorSolicitud} from '../models/associations.js'
 import session from "express-session";
 import bcrypt from 'bcrypt';
 import { Op } from 'sequelize';
@@ -156,6 +156,13 @@ export const aceptacion= async(req,res)=>{
             telefono,
             email
         })
+        const estado="Activo"
+        await ControlEmpresas.create({
+            NIT_empresa:nit,
+            COD_administrador:COD_administrador,
+            estado:estado,
+            fecha_cambio: Date.now()
+        })
         await AdministradorSolicitud.destroy({where:{NIT_empresa_solicitante:NIT}})
         await SolicitudEmpresa.destroy({where:{NIT:NIT}})
         res.status(201).json({message:"Se migrarón los datos correctamente",empresas}) 
@@ -203,3 +210,47 @@ export const buscarUsuarios= async(req,res)=>{
     }
 }
 
+//Esta parte sanciona a una empresa o la desanciona
+export const sancionarEmpresa= async(req,res)=>{
+    const {username}=req.body
+    try {
+        const nombreempresa=await Empresas.findOne({where:{username:username}})
+        const NIT_empresa=nombreempresa.NIT
+        const empresa=await ControlEmpresas.findOne({where:{NIT_empresa:NIT_empresa}})
+        const COD=req.session.userAdmin.COD
+        if (empresa.estado=="Activo"){
+            const estado="Sancionado"
+            console.log(NIT_empresa)
+            await ControlEmpresas.update({COD_administrador:COD,estado,fecha_cambio:Date.now()},{where:{NIT_empresa:NIT_empresa}})
+            res.status(201).json({message:"Empresa sancionada"})
+        }else{
+            if(empresa.estado=="Sancionado"){
+                const estado="Activo"
+                console.log(NIT_empresa)
+                await ControlEmpresas.update({COD_administrador:COD,estado,fecha_cambio:Date.now()},{where:{NIT_empresa:NIT_empresa}})
+                res.status(201).json({message:"A la empresa seleccionada se le ha quitado la sanción correctamente"})
+            }
+        }
+    } catch (error) {
+        res.status(400).json({message:"Hubo un error al sancionar la empresa",error:error})
+    }
+}
+//Esta parte muestra a todas las empresas
+export const getAllEmpresas = async(req,res)=>{
+    try {
+        const empresas= await Empresas.findAll({
+            attributes:['username','email'],
+            include:[{
+                model:Administradores,
+                attributes:['COD'],
+                through:{
+                    model:ControlEmpresas,
+                    attributes:['estado']
+                }
+            }]
+        });
+        res.status(200).json(empresas)
+    } catch (error) {
+        res.status(400).json({message:"Error al traer a todas las empresas",error:error})
+    }
+}

@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 import PropTypes from "prop-types";
 import { Flor } from "./Flores";
+=======
+import PropTypes from 'prop-types';
+import { Flor } from './Flores';
+>>>>>>> 45e5e5c82915388343e88e887151e0acad655101
 
 export function Layaout({ children }) {
   return (
