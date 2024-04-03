@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import { Index_empresa } from "./indexEmpresa";
 import { LateralMenu } from "./templates/lateralMenu";
 import { ReservasCliente } from "./reservasClientes";
+import { ConoceMasEmpresa } from "../../conocemasEmpresa";
 
 export function Empresa(){
 

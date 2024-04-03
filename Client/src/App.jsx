@@ -17,6 +17,7 @@ import { ThemeProvider } from './components/providers/themeProvider'
 import { CategoriaProvider } from './components/providers/categoriaProvider'
 import { UserProvider } from './components/providers/userProvider'
 import { Empresa } from './pages/empresa/empresa'
+import { ConoceMasEmpresa } from './conocemasEmpresa'
 //import { Empresa } from './pages/empresa/empresa'
 
 
@@ -45,6 +46,8 @@ function App() {
               <Route path='/servicios/:categoriaName/:empresa' element={<EmpresaInfo />}></Route>
 
               <Route path='/pedidos' element={<Pedidos />} />
+
+              <Route path="/conocemasEmpresa" element={<ConoceMasEmpresa></ConoceMasEmpresa>}></Route>
             </Routes>
           </CategoriaProvider>
 

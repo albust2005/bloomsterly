@@ -6,6 +6,10 @@ import { Registro } from "./registro";
 
 import { Changeimgs } from "../components/hooks/useChangeimgs";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faHouse } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
+
 export function Login() {
   
   const [form, setForm] = useState("Iniciar"); //[1valor=>estado actual, 2do es el que hacer el cambio]
@@ -29,7 +33,14 @@ export function Login() {
 
   return (
     <div className=" h-screen flex justify-center items-center  font-title italic text-xl minicel:flex-col sm:flex-row mt-2">
-      <div className=" bg-dark_theme w-full sm:w-2/4 sm:h-[70%] md:h-[95%]  p-8 dark:bg-second_color_lt">
+      <div className=" bg-dark_theme w-full sm:w-2/4 sm:h-[70%] md:h-[95%]  p-8 dark:bg-second_color_lt relative">
+        <div className="absolute top-0 left-0">
+          <Link to="/">
+          <FontAwesomeIcon 
+            icon={faHouse}
+            style={{color: "fff"}}/>
+          </Link>
+        </div>
         <nav className="bg-[#6a33c2] w-full dark:bg-rose-600 ">
           <ul className="flex justify-center content-center cursor-pointer p-2  w-full ">
             <li
