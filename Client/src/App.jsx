@@ -17,7 +17,7 @@ import { ThemeProvider } from './components/providers/themeProvider'
 import { CategoriaProvider } from './components/providers/categoriaProvider'
 import { UserProvider } from './components/providers/userProvider'
 import { Empresa } from './pages/empresa/empresa'
-import { ConoceMasEmpresa } from './conocemasEmpresa'
+import { ConoceMasEmpresa } from './pages/conocemasEmpresa'
 //import { Empresa } from './pages/empresa/empresa'
 
 
