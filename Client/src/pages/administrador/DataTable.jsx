@@ -7,11 +7,12 @@ import {
   getFilteredRowModel,
   getSortedRowModel,
 } from "@tanstack/react-table";
+// import { FaPencilAlt } from 'react-icons/fa';
 import classNames from "classnames"; //Esta libreria nos permitirá dar estilo según su condicionamiento
 import { rankItem } from "@tanstack/match-sorter-utils";
 import { DefaultData } from "./DefaultData";
 import { useEffect, useState } from "react";
-
+import axios from "axios";
 const filterTable = (row, columnId, value, addMeta) => {
   // rankItem itera sobre término de búsqueda que digitamos en el input de todos los registros por cada columna
   // value es el valor del término de la consulta
@@ -54,18 +55,36 @@ export const DataTable = ({tabla, titulo}) => {
   //Es el estado inicial de la tabla, y en este importamos nuestra BD falsa
   const [data, setData] = useState({tabla});
 
+  useEffect(()=>{
+    obtener()
+  },[])
   //
+  const obtener= async()=>{
+    try {
+      const usuario=await axios.get("http://localhost:8000/admin/getAllUsuarios");
+    // console.log(usuario.data)
+    const datos=usuario.data
+    const formattedData = datos.map(user => ({
+      username: user.username,
+      email: user.email,
+      estado: user.administradores[0]?.control_usuarios.estado // Usar el estado del primer administrador si existe
+    }));
+    setData(formattedData)
+    } catch (error) {
+      alert(error.response.data)
+    }
+  }
   const [globalFilter, setGlobalFilter] = useState("");
   console.log(globalFilter);
 
   const columns = [
     {
       //este es el identificador para poder iterar
-      accessorKey: "usuario",
+      accessorKey: "username",
       header: () => <span>Usuario</span>,
     },
     {
-      accessorKey: "correo",
+      accessorKey: "email",
       header: () => <span>Correo electrónico</span>,
     },
     {
@@ -73,11 +92,31 @@ export const DataTable = ({tabla, titulo}) => {
       header: () => <span>Estado</span>,
     },
     {
-      accessorKey: "cambioestado",
-      header: () => <span>Cambiar Estado</span>,
+      accessorKey: "actions",
+      header: () => <span>Cambio de estado</span>,
+      cell: ({ row }) => (
+        <button
+          // className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          className=" uppercase py-3 px-6 text-center border border-border_tabla dark:border-second_color_lt text-white  dark:bg-light_theme  dark:text-second_color_lt bg-admin_card w-56 rounded-2xl"
+          onClick={() => handleButtonClick(row.original.username)}
+        > {row.original.estado=="Activo" ? "Sancionar" : "  Activar "}
+          {/* <FaPencilAlt /> */}
+        </button>
+      ),
     },
   ];
 
+  const handleButtonClick=async(username)=>{
+    console.log("El nombre del usuario es: ",username)
+    try {
+      const respuesta=await axios.put("http://localhost:8000/admin/sancionarUsuario",{username})
+      const mensaje=respuesta.data.message
+      alert(mensaje)
+      obtener()
+    } catch (error) {
+      alert(error.response.data)
+    }
+  }
   const getStateTable = () => {
     //Este es el total de registros que vamos a tener en cada estado
     const totalRows = table.getFilteredRowModel().rows.length;
