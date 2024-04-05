@@ -8,7 +8,7 @@ export const useEmpresaContext = () => useContext(empresaContext)
 
 export function EmpresaProvider ({children}){
 
-    const empresas = useEmpresas()
+    const { empresas } = useEmpresas()
 
     return (
         <empresaContext.Provider value={empresas}>
