@@ -1,4 +1,4 @@
-import { reservasDB } from "./reservasDB";
+import { reservasDB } from "../db/reservasDB.json";
 import { NotFound } from "../../../components/templates/NotFound";
 import { ButtonAdmin } from "../../../components/buttons/buttonAdmin";
 
@@ -20,7 +20,7 @@ export function Reservas() {
                         <div className="flex flex-col w-[45%] text-center">
                             <ButtonAdmin>Confirmar</ButtonAdmin>
                             <ButtonAdmin>Eliminar</ButtonAdmin>
-                            <ButtonAdmin>Ver pedidos</ButtonAdmin>  
+                            <ButtonAdmin href={`/empresa/reserva/reservaDescrip/${reserva.id}`}>Ver pedidos</ButtonAdmin>  
                         </div>
                     </div>
                 ))
