@@ -21,7 +21,7 @@ import { EmpresasRelacionadas } from './pages/usuario/EmpresasRelacionadas'
 import { ThemeProvider } from './components/providers/themeProvider'
 
 import { Empresa } from './pages/empresa/empresa'
-import { ConoceMasEmpresa } from './conocemasEmpresa'
+import { ConoceMasEmpresa } from './pages/conocemasEmpresa'
 
 import { UserProvider } from './components/providers/userProvider'
 import { CategoriaProvider } from './components/providers/categoriaProvider'
