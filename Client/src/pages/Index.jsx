@@ -4,11 +4,11 @@ import "../App.css";
 import { PolaroidCard } from "../components/templates/PolaroidCard";
 import { FirtsTitle, Titles } from "../components/titles/Title";
 //import { Flor } from "../components/Flores.jsx"
-import { useCategoriaProvider } from "../components/providers/categoriaProvider.jsx";
+import { useCategoriaContext } from "../components/providers/categoriaProvider.jsx";
 
 export function LandingPage() {
 
-  const categorias = useCategoriaProvider()
+  const categorias = useCategoriaContext()
 
   return (
     <>

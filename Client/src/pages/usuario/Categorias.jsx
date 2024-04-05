@@ -1,16 +1,16 @@
-import { useCategoriaProvider } from "../../components/providers/categoriaProvider.jsx"
+import { useCategoriaContext } from "../../components/providers/categoriaProvider.jsx"
 import { PolaroidCard } from "../../components/templates/PolaroidCard.jsx"
 import { FirtsTitle } from "../../components/titles/Title.jsx" 
 
 
-export function Servicios() {
+export function Categorias() {
 
-    const categorias = useCategoriaProvider()
+    const categorias = useCategoriaContext()
 
     return (
         <>
             <FirtsTitle 
-            title="Servicios" 
+            title="Categorias" 
             descripcion="Aqui podras encontrar las categorias de los servicios que ofrecemos para que crees tu evento de la mejor manera.">
             </FirtsTitle>
 

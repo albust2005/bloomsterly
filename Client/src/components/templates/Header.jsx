@@ -42,8 +42,8 @@ export function Header() {
                     }`}
         >
           <ButtonNav text="Nosotros" />
-          <ButtonNav text="Servicios" href="/servicios" />
-          <ButtonNav text="Reservas" href="/pedidos" />
+          <ButtonNav text="Servicios" href="/categorias" />
+          <ButtonNav text="Reservas" href="/reservas" />
         </div>
 
                 <div className="flex justify-center items-center">

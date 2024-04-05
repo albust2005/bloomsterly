@@ -1,15 +1,15 @@
 {
     "municipios" :[
         {
-            "id":"municipio1",
+            "id":"1",
             "nombre": "Medellin"
         },
         {
-            "id":"municipio2",
+            "id":"2",
             "nombre": "Rionegro"
         },
         {
-            "id":"municipio3",
+            "id":"3",
             "nombre": "Marinilla"
         }
     ]

@@ -1,7 +1,7 @@
 {
   "empresas": [
     {
-      "uuid": "e111",
+      "NIT": "e111",
       "nombre": "RecreacionJY",
       "logo": "../src/assets/img_servicios/musica_servicio.jpg",
       "descripcion": "Hacemos que tus ocaciones espaciales sean innolvidables, celebra con nostros",
@@ -10,15 +10,13 @@
       "imagenes": [],
       "instagram": "@YJrecreacion",
       "facebook": "YJrecreacionFace",
+      "email" : "recreacion@mail.com",
 
-      "id_municipio": "municipio1",
-      "id_servicios": [
-        "sv000",
-        "sv001"
-      ]
+      "id_municipio": "1"
+
     },
     {
-      "uuid": "e112",
+      "NIT": "e112",
       "nombre": "Los lirios",
       "logo": "",
       "descripcion": "Hacemos que tus ocaciones espaciales sean innolvidables, celebra con nostros",
@@ -28,11 +26,9 @@
       "imagenes": [],
       "instagram": "@LiriosEventos",
       "facebook": "",
+      "email" : "lirios@mail.com",
 
-      "id_municipio": "municipio1",
-      "id_servicios": [
-        "sv010"
-      ]
+      "id_municipio": "1"
     },
     {
       "uuid": "e113",
@@ -45,11 +41,10 @@
       "imagenes": [],
       "instagram": "@LiriosEventos",
       "facebook": "",
-
-      "id_municipio": "municipio3",
-      "id_servicios": [
-        "s100"
-      ]
+      "email" : "lasMargaritas@mail.com",
+      
+      "id_municipio": "3"
+   
     }
   ]
 }

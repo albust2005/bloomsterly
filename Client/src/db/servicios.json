@@ -7,7 +7,7 @@
             "valor": "200.000",
 
             "id_empresa": "e111",
-            "id_categoria" : "s112" 
+            "id_categoria" : "s2" 
         },
         {
             "id": "sv001",
@@ -16,7 +16,7 @@
             "valor" : "300.000",
 
             "id_empresa": "e111",
-            "id_categoria" : "s112" 
+            "id_subCategoria" : "s2" 
         },
 
         {
@@ -26,7 +26,7 @@
             "valor": "200.000",
 
             "id_empresa": "e112",
-            "id_categoria" : "s112" 
+            "id_subCategoria" : "s2" 
         },
 
         {
@@ -36,7 +36,7 @@
             "valor": "200.000",
 
             "id_empresa": "e113",
-            "id_categoria" : "s111" 
+            "id_subCategoria" : "s3" 
         }
     ]
 }
