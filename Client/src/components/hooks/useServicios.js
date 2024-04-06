@@ -9,7 +9,7 @@ export const useServicios = () =>{
         descripcion: servicio.descripcion,
         valor: servicio.valor,
         idEmpresa: servicio.id_empresa,
-        idCategoria: servicio.id_categoria
+        idSubCategoria: servicio.id_subCategoria
     }))
 
     return { servicios : mappedServicios }

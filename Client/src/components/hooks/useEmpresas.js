@@ -10,7 +10,7 @@ export const useEmpresas = () => {
         direccion: empresa.direccion,
         telefono: empresa.telefono,
         imagenes: empresa.imagenes,
-        instagram: empresa.imagenes,
+        instagram: empresa.instagram,
         facebook: empresa.facebook,
         email: empresa.email,
     }))
