@@ -7,7 +7,7 @@
             "valor": "200.000",
 
             "id_empresa": "e111",
-            "id_subCategoria" : "s2" 
+            "id_subCategoria" : "s1" 
         },
         {
             "id": "sv001",
@@ -37,6 +37,17 @@
 
             "id_empresa": "e113",
             "id_subCategoria" : "s3" 
+        },
+
+        
+        {
+            "id": "sv101",
+            "nombre": "Musica Electronica",
+            "descripcion": "¡Dale vida a la celebración de tu pequeño con nuestra amplia gama de temáticas coloridas y divertidas para fiestas infantiles! Desde princesas hasta superhéroes, tenemos todo lo que necesitas para crear un ambiente mágico que hará que los niños sonrían y los adultos recuerden.",
+            "valor": "200.000",
+
+            "id_empresa": "e113",
+            "id_subCategoria" : "s5" 
         }
     ]
 }

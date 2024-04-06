@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 
-export function EmpresaCards({ nombre, direccion, telefono, instagram, facebook, logo }) {
+export function EmpresaCards({subCategoria, nombre, direccion, telefono, instagram, facebook, logo }) {
 
     return (
-        <Link to={`/`} className="flex flex-col bg-empresa_card rounded-lg min-w-full w-full sm:min-h-[300px]
+        <Link to={`/servicio/${subCategoria}/${nombre}`} className="flex flex-col bg-empresa_card rounded-lg min-w-full w-full sm:min-h-[300px]
         dark:bg-second_color_lt dark:text-white">
             <article className="w-full h-full">
                 <img src={logo} alt="imagen_empresa" className="w-full h-full aspect-auto object-cover rounded-t-lg bg-black min-h-36 max-h-36" />

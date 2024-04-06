@@ -1,27 +1,67 @@
-export const Solicitud = ({}) => {
+import axios from "axios";
+import { useEffect, useState } from "react";
+
+export const Solicitud = () => {
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    obtener();
+  }, []);
+  const obtener = async () => {
+    const respuesta = await axios.get(
+      "http://localhost:8000/admin/AllSolicitudes"
+    );
+    const datos = respuesta.data;
+    setData(datos);
+    console.log(datos);
+  };
   return (
     <>
       <h1 className="text-white text-7xl mb-2 dark:text-second_color_lt">
         Solicitudes de Ingreso
       </h1>
-      <div className=" bg-admin_card w-[100vh] p-4 rounded-lg m-5 dark:bg-light_theme cursor-pointer">
-        <div className="flex">
-          <div>
+      {/* <div>
+        <table border={"2px solid"}>
+          <thead>
+            <tr>
+              <th>nombre</th>
+              <th>descripcion</th>
+            </tr>
+          </thead>
+          <tbody>
+            {console.log(data)}
+            {console.log("hola")}
+            {data.map((soli) =>(
+              <tr key={soli.NIT}>
+                <td>{soli.nombre}</td>
+                <td>{soli.descripcion}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div> */}
+      {data.map((soli) => (
+        <div
+          key={soli.COD}
+          className=" bg-admin_card w-full p-4 rounded-lg m-5 dark:bg-light_theme cursor-pointer"
+        >
+          <div className="flex h-[15vh] w-full overflow-hidden">
+            {/* <div className=" text-center"> */}
             <img
-              className="w-[18vh] rounded-lg"
-              src="https://img.europapress.es/fotoweb/fotonoticia_20191003082941_1200.jpg"
+              className="w-[50] rounded-lg"
+              src="https://www.esneca.com/wp-content/uploads/eventos-sociales.jpg"
             />
-          </div>
-          <div className="ml-5 items-center">
-            <h1 className=" text-2xl text-white dark:text-second_color_lt">
-              Logística S.A.S
-            </h1>
-            <p className=" text-white dark:text-second_color_lt">
-              Prestamos mañana hoy no, prestamos mañana hoy no
-            </p>
+            {/* </div> */}
+            <div className="ml-5">
+              <h1 className=" text-2xl text-white dark:text-second_color_lt">
+                {soli.nombre}
+              </h1>
+              <p className=" text-white dark:text-second_color_lt">
+                {soli.descripcion}
+              </p>
+            </div>
           </div>
         </div>
-      </div>
+      ))}
     </>
   );
-};
+    }

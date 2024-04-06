@@ -9,10 +9,10 @@ export function Menudiag() {
       </h2>
       <ButtonAdmin href="administrador/clientes">Clientes</ButtonAdmin>
       <ButtonAdmin href="administrador/empresas">Empresas</ButtonAdmin>
-      <ButtonAdmin href="administrador/solicitudes">Solicitudes</ButtonAdmin>
       <ButtonAdmin href="administrador/administradores">
         Administradores
       </ButtonAdmin>
+      <ButtonAdmin href="administrador/solicitudes">Solicitudes</ButtonAdmin>
       <ButtonAdmin href="administrador/crearAdmin">
         Crear Administrador
       </ButtonAdmin>

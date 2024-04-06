@@ -10,7 +10,6 @@ import {
 // import { FaPencilAlt } from 'react-icons/fa';
 import classNames from "classnames"; //Esta libreria nos permitirá dar estilo según su condicionamiento
 import { rankItem } from "@tanstack/match-sorter-utils";
-import { DefaultData } from "./DefaultData";
 import { useEffect, useState } from "react";
 import axios from "axios";
 const filterTable = (row, columnId, value, addMeta) => {
@@ -51,9 +50,9 @@ const DebouncedInput = ({ value: keyWord, onChange, ...props }) => {
   );
 };
 
-export const DataTable = ({tabla, titulo}) => {
+export const DataTable = () => {
   //Es el estado inicial de la tabla, y en este importamos nuestra BD falsa
-  const [data, setData] = useState({tabla});
+  const [data, setData] = useState([]);
 
   useEffect(()=>{
     obtener()
@@ -154,7 +153,7 @@ export const DataTable = ({tabla, titulo}) => {
   return (
     <div className="w-[110vh]">
       <h1 className="text-white text-8xl mb-4 dark:text-second_color_lt minicel:text-3xl sm:text-8xl">
-        {titulo}
+        Clientes
       </h1>
       <div className="">
         <DebouncedInput

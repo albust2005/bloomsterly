@@ -57,10 +57,10 @@ function App() {
                     <Route path='/Administrador/*' element={<Administrador />}></Route>
                     <Route path='/empresa/*' element={<Empresa />}></Route>
 
-
                     <Route path='/categorias' element={<Categorias />}></Route>
-                    <Route path='/categorias/:categoria' element={<SubCategorias />}></Route>
+                    <Route path='/categorias/:categoria?' element={<SubCategorias />}></Route>
                     <Route path='/subCategorias/:subCategoria' element={<EmpresasRelacionadas />} />
+                    <Route path='/servicio/:subCategoria/:empresa' element={<Servicios></Servicios>}></Route>
 
                     <Route path='/reservas' element={<Pedidos />} />
 
