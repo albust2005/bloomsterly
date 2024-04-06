@@ -3,7 +3,7 @@ import { DataTypes, Model } from "sequelize";
 import db from '../database/db.js';
 // import exp from "constants";
 
-const SolicitudEmpresa = db.define('solicitud_empresas',{
+const SolicitudEmpresas = db.define('solicitud_empresas',{
   NIT: {
     type: DataTypes.INTEGER(9),
     primaryKey: true
@@ -57,4 +57,4 @@ const SolicitudEmpresa = db.define('solicitud_empresas',{
 // Administradores.belongsTo(Municipios, { foreignKey: 'COD_municipios', as: 'municipio' });
 // Administradores.belongsToMany(Usuarios, { through: ControlUsuarios, foreignKey: 'COD_administrador', as: 'usuarios' });
 
-export default SolicitudEmpresa;
+export default SolicitudEmpresas;

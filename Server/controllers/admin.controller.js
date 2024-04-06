@@ -1,57 +1,46 @@
-import {
-  Municipios,
-  Administradores,
-  Usuarios,
-  Empresas,
-  Reservas,
-  Servicios,
-  Categorias,
-  ControlUsuarios,
-  ControlEmpresas,
-  DescripcionReserva,
-  Fechas,
-  SolicitudEmpresa,
-  AdministradorSolicitud,
-} from "../models/associations.js";
+import {Municipios,Administradores,Usuarios,Empresas,Reservas,Servicios,Categorias,ControlUsuarios, ControlEmpresas,DescripcionReserva,Fechas,SolicitudEmpresas,AdministradorSolicitud} from '../models/associations.js'
 import session from "express-session";
 import bcrypt from "bcrypt";
 import { Op } from "sequelize";
 
 //Esta parte ingresa informacion de un administrador a la base de datos
-export const postadmin = async (req, res) => {
-  const {
-    COD,
-    nombre,
-    primer_apelli,
-    segundo_apelli,
-    COD_municipios,
-    contrasena,
-    username,
-    email,
-  } = req.body;
-  try {
-    const hashedPassword = await bcrypt.hash(contrasena, 5);
-    await Administradores.create({
-      COD,
-      nombre,
-      primer_apelli,
-      segundo_apelli,
-      COD_municipios,
-      contrasena: hashedPassword,
-      username,
-      email,
-    });
-    res.json({ message: "Registro creado correctamente del admin" });
-  } catch (error) {
-    if ((error.message = "Validation error")) {
-      res.json({ message: "Este dato ya existe:", error });
-    } else {
-      res.json({
-        message: `Hubo un error al crear un administrador: ${error.message}`,
-      });
-    }
-  }
-};
+export const postadmin = async(req,res)=>{
+    const {
+        COD,
+        nombre,
+        primer_apelli,
+        segundo_apelli,
+        COD_municipios,
+        contrasena,
+        username,
+        email
+    }= req.body
+    try {
+        const hashedPassword = await bcrypt.hash(contrasena, 5)
+        await Administradores.create({
+            COD,
+            nombre,
+            primer_apelli,
+            segundo_apelli,
+            COD_municipios,
+            contrasena:hashedPassword,
+            username,
+            email
+        })
+        res.json({message: "Registro creado correctamente del admin"})
+    } catch (error) {
+        if (error instanceof Sequelize.UniqueConstraintError) {
+            // Manejar el error de restricción de unicidad
+            res.status(400).json({message: `Los datos ingresados ya existen en el sistema`, error:error.errors})
+          } else if (error instanceof Sequelize.DatabaseError) {
+            // Manejar el error de base de datos
+            res.status(400).json({message: `Error de base datos`, error:error.message})
+          } else {
+            // Manejar otros tipos de errores
+            res.status(400).json({message:'Hubo un error al crear un administrador', error});
+          }
+        }
+}
 //Esto cierra la sesion del administrador
 export const getlogout = async (req, res) => {
   req.session.destroy((error) => {
@@ -72,19 +61,30 @@ export const editarPefil = async (req, res) => {
     await Administradores.update(
       {
         COD_municipios,
-        contrasena: hashedPassword,
-        email,
-      },
-      { where: { COD: req.session.userAdmin.COD } }
-    );
-    res.status(201).json({ message: "Datos actualizados correctamente" });
-  } catch (error) {
-    res.status(400).json({
-      message: "Hubo un error al actualizar los datos del perfil",
-      error: error,
-    });
-  }
-};
+        contrasena,
+        email
+    }=req.body
+    try {
+        const hashedPassword=await bcrypt.hash(contrasena,5)
+        await Administradores.update({
+            COD_municipios,
+            contrasena:hashedPassword,
+            email
+        },{where:{COD:req.session.userAdmin.COD}})
+        res.status(201).json({message:"Datos actualizados correctamente"})
+    } catch (error) {
+        if (error instanceof Sequelize.UniqueConstraintError) {
+            // Manejar el error de restricción de unicidad
+            res.status(400).json({message: `Los datos ingresados ya existen en el sistema`, error:error.errors})
+          } else if (error instanceof Sequelize.DatabaseError) {
+            // Manejar el error de base de datos
+            res.status(400).json({message: `Error de base datos`, error:error.message})
+          } else {
+            // Manejar otros tipos de errores
+            res.status(400).json({message:'Hubo un error al editar perfil', error});
+          }
+        }
+}
 //Esta parte muestra a todos los usuarios en la interfaz de administrador
 export const getAllUsuarios = async (req, res) => {
   try {
@@ -155,70 +155,88 @@ export const sancionarUsuarios = async (req, res) => {
   }
 };
 //Esta parte trae todas las empresas que piden que las ingresen al aplicativo
-export const AllSolicitudes = async (req, res) => {
-  try {
-    const solicitudes = await SolicitudEmpresa.findAll({
-      attributes: { exclude: ["contrasena", "username"] },
-    });
-    res.status(200).json(solicitudes);
-  } catch (error) {
-    res.status(400).json({
-      message: "Hubo un error al traer los datos de las empresas solicitantes",
-    });
-  }
-};
+export const AllSolicitudes= async(req,res)=>{
+    try {
+        const solicitudes=await SolicitudEmpresas.findAll({attributes:{exclude:['contrasena','username']}})
+        res.status(200).json(solicitudes)
+    } catch (error) {
+        res.status(400).json({message:"Hubo un error al traer los datos de las empresas solicitantes"})
+    }
+}
+//Esta parte trae toda la informacion de la solicitud de la empresa seleccionada
+export const solicitud = async(req, res)=>{
+    const {NIT} = req.body
+    console.log(NIT)
+    try {
+        const solicitud= await SolicitudEmpresas.findOne({
+            attributes: {exclude:['contrasena','username','COD_municipios']},
+            include: [{
+              model: Municipios,
+              attributes: ['municipio']
+            }],
+            where: { NIT: NIT }
+        })
+        res.status(200).json(solicitud)
+    } catch (error) {
+        res.status(400).json({message:"Hubo un error al trae información de la solicitud de la empresa"})
+    }
+}
 //Esta parte pone lo que hay de informacion de la tabla solicitud_empresa y la pone en empresas
-export const aceptacion = async (req, res) => {
-  const { NIT } = req.body;
-  try {
-    const COD_administrador = req.session.userAdmin.COD;
-    // await AdministradorSolicitud.update(COD_administrador,{where:{NIT_empresa_solicitante:NIT}})
-    const empresas = await SolicitudEmpresa.findOne({ where: { NIT: NIT } });
-    const nit = empresas.NIT;
-    const nombre = empresas.nombre;
-    const descripcion = empresas.descripcion;
-    const COD_municipios = empresas.COD_municipios;
-    const instagram = empresas.instagram;
-    const facebook = empresas.facebook;
-    const contrasena = empresas.contrasena;
-    const username = empresas.username;
-    const direccion = empresas.direccion;
-    const telefono = empresas.telefono;
-    const email = empresas.email;
-    await Empresas.create({
-      NIT: nit,
-      nombre,
-      descripcion,
-      COD_municipios,
-      instagram,
-      facebook,
-      contrasena,
-      username,
-      direccion,
-      telefono,
-      email,
-    });
-    const estado = "Activo";
-    await ControlEmpresas.create({
-      NIT_empresa: nit,
-      COD_administrador: COD_administrador,
-      estado: estado,
-      fecha_cambio: Date.now(),
-    });
-    await AdministradorSolicitud.destroy({
-      where: { NIT_empresa_solicitante: NIT },
-    });
-    await SolicitudEmpresa.destroy({ where: { NIT: NIT } });
-    res
-      .status(201)
-      .json({ message: "Se migrarón los datos correctamente", empresas });
-  } catch (error) {
-    res.status(400).json({
-      message: "Hubo un error a la hora de migrar la informacion de la empresa",
-      error: error,
-    });
-  }
-};
+export const aceptacion= async(req,res)=>{
+    const {NIT}=req.body
+    try {
+        const COD_administrador=req.session.userAdmin.COD
+        // await AdministradorSolicitud.update(COD_administrador,{where:{NIT_empresa_solicitante:NIT}})
+        const empresas=await SolicitudEmpresas.findOne({where:{NIT:NIT}});
+        const nit=empresas.NIT
+        const nombre=empresas.nombre
+        const descripcion=empresas.descripcion
+        const COD_municipios=empresas.COD_municipios
+        const instagram=empresas.instagram
+        const facebook=empresas.facebook
+        const contrasena=empresas.contrasena
+        const username=empresas.username
+        const direccion=empresas.direccion
+        const telefono=empresas.telefono
+        const email=empresas.email
+        await Empresas.create({
+            NIT:nit,
+            nombre,
+            descripcion,
+            COD_municipios,
+            instagram,
+            facebook,
+            contrasena,
+            username,
+            direccion,
+            telefono,
+            email
+        })
+        const estado="Activo"
+        await ControlEmpresas.create({
+            NIT_empresa:nit,
+            COD_administrador:COD_administrador,
+            estado:estado,
+            fecha_cambio: Date.now()
+        })
+        await AdministradorSolicitud.destroy({where:{NIT_empresa_solicitante:NIT}})
+        await SolicitudEmpresas.destroy({where:{NIT:NIT}})
+        res.status(201).json({message:"Se migrarón los datos correctamente",empresas}) 
+    } catch (error) {
+        res.status(400).json({message:"Hubo un error a la hora de migrar la informacion de la empresa",error:error})
+    }
+}
+//Esta parte va a descartar la solicitud de la empresa al aplicativo
+export const negar= async(req, res)=>{
+    const {NIT}= req.body
+    try {
+        await AdministradorSolicitud.destroy({where:{NIT_empresa_solicitante:NIT}})
+        await SolicitudEmpresas.destroy({where:{NIT:NIT}})
+        res.status(200).json({message:"La solicitud de la empresa seleccionada fue negada"})
+    } catch (error) {
+        res.status(400).json({message:"Hubo un error al eliminar la solicitud de la empresa seleccionada"})
+    }
+}
 //Esta parte trae la informacion del buscador de usuarios por medio de una letra
 export const buscarUsuarios = async (req, res) => {
   const username = req.params.username;
