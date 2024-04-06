@@ -37,19 +37,25 @@ export function EmpresasRelacionadas() {
             </FirtsTitle>
             <section className="flex flex-col gap-5">
                 <article className="containe mx-auto grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
-                {
-                    empresas?.map(({ id, nombre, telefono, direccion, instagram, facebook, logo }) => (
-                        <EmpresaCards
-                            key={id}
-                            nombre={nombre}
-                            telefono={telefono}
-                            direccion={direccion}
-                            instagram={instagram}
-                            facebook={facebook}
-                            logo={logo}
-                        />
-                    ))
-                }
+                    {
+                        empresas.length === 0 
+                        ?
+                        <NotFound razon='empresas'></NotFound>
+                        :
+                        empresas?.map(({ id, nombre, telefono, direccion, instagram, facebook, logo }) => (
+                            <EmpresaCards
+                                subCategoria={subCategoria}
+                                key={id}
+                                id={id}
+                                nombre={nombre}
+                                telefono={telefono}
+                                direccion={direccion}
+                                instagram={instagram}
+                                facebook={facebook}
+                                logo={logo}
+                            />
+                        ))
+                    }
                 </article>
             </section>
 
