@@ -16,6 +16,7 @@ import { Administrador } from './pages/administrador/administrador'
 //INTERFAZ USUARIO
 import { Categorias } from './pages/usuario/Categorias'
 import { SubCategorias } from './pages/usuario/subCategorias'
+import { Servicios } from './pages/usuario/Servicios'
 import { EmpresasRelacionadas } from './pages/usuario/EmpresasRelacionadas'
 
 import { ThemeProvider } from './components/providers/themeProvider'
@@ -26,6 +27,8 @@ import { ConoceMasEmpresa } from './pages/conocemasEmpresa'
 import { UserProvider } from './components/providers/userProvider'
 import { CategoriaProvider } from './components/providers/categoriaProvider'
 import { SubCategoriaProvider } from './components/providers/subCategoriaProvider'
+import { ServiciosProvider } from './components/providers/serviciosProvider'
+import { EmpresaProvider } from './components/providers/empresaProvider'
 
 
 //import { Empresa } from './pages/empresa/empresa'
@@ -46,21 +49,25 @@ function App() {
 
           <CategoriaProvider>
             <SubCategoriaProvider>
-              <Routes>
-                <Route path='/' element={<LandingPage />}></Route>
-                <Route path='/login' element={<Login />}></Route>
-                <Route path='/Administrador/*' element={<Administrador />}></Route>
-                <Route path='/empresa/*' element={<Empresa />}></Route>
+              <ServiciosProvider>
+                <EmpresaProvider>
+                  <Routes>
+                    <Route path='/' element={<LandingPage />}></Route>
+                    <Route path='/login' element={<Login />}></Route>
+                    <Route path='/Administrador/*' element={<Administrador />}></Route>
+                    <Route path='/empresa/*' element={<Empresa />}></Route>
 
 
-                <Route path='/categorias' element={<Categorias />}></Route>
-                <Route path='/categorias/:categoria' element={<SubCategorias />}></Route>
-                <Route path='/subCategorias/:subCategorias' element={<EmpresasRelacionadas/>}/>
+                    <Route path='/categorias' element={<Categorias />}></Route>
+                    <Route path='/categorias/:categoria' element={<SubCategorias />}></Route>
+                    <Route path='/subCategorias/:subCategoria' element={<EmpresasRelacionadas />} />
 
-                <Route path='/reservas' element={<Pedidos />} />
+                    <Route path='/reservas' element={<Pedidos />} />
 
-                <Route path="/conocemasEmpresa" element={<ConoceMasEmpresa></ConoceMasEmpresa>}></Route>
-              </Routes>
+                    <Route path="/conocemasEmpresa" element={<ConoceMasEmpresa></ConoceMasEmpresa>}></Route>
+                  </Routes>
+                </EmpresaProvider>
+              </ServiciosProvider>
             </SubCategoriaProvider>
           </CategoriaProvider>
 
