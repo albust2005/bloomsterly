@@ -57,14 +57,6 @@ export const getlogout = async (req, res) => {
 export const editarPefil = async (req, res) => {
   const { COD_municipios, contrasena, email } = req.body;
   try {
-    const hashedPassword = await bcrypt.hash(contrasena, 5);
-    await Administradores.update(
-      {
-        COD_municipios,
-        contrasena,
-        email
-    }=req.body
-    try {
         const hashedPassword=await bcrypt.hash(contrasena,5)
         await Administradores.update({
             COD_municipios,
