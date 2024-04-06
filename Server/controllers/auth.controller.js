@@ -1,7 +1,8 @@
-import {Municipios,Administradores,Usuarios,Empresas,Reservas,Servicios,Categorias,ControlUsuarios,DescripcionReserva,Fechas,SolicitudEmpresa,AdministradorSolicitud} from '../models/associations.js'
+import {Municipios,Administradores,Usuarios,Empresas,Reservas,Servicios,Categorias,ControlUsuarios,DescripcionReserva,Fechas,SolicitudEmpresas,AdministradorSolicitud} from '../models/associations.js'
 import session from "express-session";
 import bcrypt from 'bcrypt';
 import db from '../database/db.js';
+import Sequelize from 'sequelize';
 
 const numeroAdmin="1036252517"
 //Esta parte ingresa informacion del usuario a la base de datos
@@ -36,8 +37,17 @@ export const postuser = async(req,res)=>{
         })
         res.json({message: "Registro creado correctamente"})
     } catch (error) {
-        res.status(400).json({message: `La cedula ya esta ingresada en el sistema:`, error:error})
-    }
+        if (error instanceof Sequelize.UniqueConstraintError) {
+            // Manejar el error de restricción de unicidad
+            res.status(400).json({message: `Los datos ingresados ya existen en el sistema`, error:error.errors})
+          } else if (error instanceof Sequelize.DatabaseError) {
+            // Manejar el error de base de datos
+            res.status(400).json({message: `Error de base datos`, error:error.message})
+          } else {
+            // Manejar otros tipos de errores
+            res.status(400).json({message:'Error inesperado', error});
+          }
+        }
 }
 
 //Esta parte valida la informacion del rol de usuario para iniciar sesion
@@ -112,7 +122,7 @@ export const postempresa = async(req,res)=>{
     }= req.body
     try {
         const hashedPassword = await bcrypt.hash(contrasena, 5)
-        await SolicitudEmpresa.create({
+        await SolicitudEmpresas.create({
             NIT,
             nombre,
             descripcion,
@@ -128,8 +138,17 @@ export const postempresa = async(req,res)=>{
         await AdministradorSolicitud.create({COD_administradores:numeroAdmin,NIT_empresa_solicitante:NIT})
         res.status(200).json({message: "Registro creado correctamente"})
     } catch (error) {
-        res.status(400).json({message: `Error al insertar la información: ${error.message}`})
-    }
+        if (error instanceof Sequelize.UniqueConstraintError) {
+            // Manejar el error de restricción de unicidad
+            res.status(400).json({message: `Los datos ingresados ya existen en el sistema`, error:error.errors})
+          } else if (error instanceof Sequelize.DatabaseError) {
+            // Manejar el error de base de datos
+            res.status(400).json({message: `Error de base datos`, error:error.message})
+          } else {
+            // Manejar otros tipos de errores
+            res.status(400).json({message:'Error inesperado', error});
+          }
+        }
 }
 
 //Esta parte valida la informacion del rol de empresa para iniciar sesion
@@ -166,9 +185,17 @@ export const getempresa = async(req,res)=>{
             res.status(401).json({menssage:"Nombre de usuario y/o contraseña incorrecta"});
         }
     } catch (error) {
-        console.log("Error al iniciar sesión", error)
-        res.status(401).json({message:"Error al iniciar sesión"});
-    }
+        if (error instanceof Sequelize.UniqueConstraintError) {
+            // Manejar el error de restricción de unicidad
+            res.status(400).json({message: `La cedula ya esta ingresada en el sistema:`, error:error.errors})
+          } else if (error instanceof Sequelize.DatabaseError) {
+            // Manejar el error de base de datos
+            res.status(400).json({message: `Error de base datos:`, error:error.message})
+          } else {
+            // Manejar otros tipos de errores
+            res.status(400).json({message:'Error inesperado:', error});
+          }
+        }
 }
 
 //Esta parte valida la informacion del rol de admin para iniciar sesion
@@ -212,5 +239,24 @@ export const imagen=async(req,res)=>{
         res.status(201).json(req.file);
     } catch (error) {
         res.status(400).json({message:"Error al subir la imagen"})
+    }
+}
+
+export const perfil = async(req, res)=>{
+    try {
+        if (req.session.user){
+            const sesion=req.session.user
+            res.status(200).json({message:"Hay una sesión abierta",sesion})
+        }else if (req.session.userAdmin){
+            const sesion=req.session.userAdmin
+            res.status(200).json({message:"Hay una sesión abierta",sesion})
+        }else if (req.session.userEmpresa){
+            const sesion=req.session.userEmpresa
+            res.status(200).json({message:"Hay una sesión abierta",sesion})
+        }else{
+            res.status(401).json({message:"No tiene una sesión abierta"})
+        }
+    } catch (error) {
+       res.status(400).json({message:"Hubo un error al comprobar la sesión", error}) 
     }
 }

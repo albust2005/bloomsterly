@@ -1,6 +1,7 @@
-import {Municipios,Administradores,Usuarios,Empresas,Reservas,Servicios,Categorias,ControlUsuarios,DescripcionReserva,Fechas,SolicitudEmpresa,AdministradorSolicitud} from '../models/associations.js'
+import {Municipios,Administradores,Usuarios,Empresas,Reservas,Servicios,Categorias,ControlUsuarios,DescripcionReserva,Fechas,SolicitudEmpresas,AdministradorSolicitud} from '../models/associations.js'
 import session from "express-session";
 import bcrypt from 'bcrypt';
+import Sequelize from 'sequelize';
 
 //Esto cierra la sesion de la empresa
 export const getlogout = async(req,res)=>{
@@ -42,8 +43,17 @@ export const editarPerfil = async(req,res)=>{
         },{where:{NIT:req.session.userEmpresa.NIT}})
         res.status(201).json({message:"Datos del perfil actualizados"})
     } catch (error) {
-        res.status(400).json({message:"Hubo un error al actualizar los datos del perfil", error:error})
-    }
+        if (error instanceof Sequelize.UniqueConstraintError) {
+            // Manejar el error de restricción de unicidad
+            res.status(400).json({message: `Los datos ingresados ya existen en el sistema`, error:error.errors})
+          } else if (error instanceof Sequelize.DatabaseError) {
+            // Manejar el error de base de datos
+            res.status(400).json({message: `Error de base datos`, error:error.message})
+          } else {
+            // Manejar otros tipos de errores
+            res.status(400).json({message:'Hubo un error al editar perfil', error});
+          }
+        }
 }
 // Esta funcion es para eliminar el perfil de la empresa
 export const eliminarPerfil = async(req,res)=>{
