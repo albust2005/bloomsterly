@@ -23,7 +23,7 @@ export function PerfilEmpresa() {
                     <IconUser/>
                     <h2 className="text-white text-xl">{empresaSelec.nombre}</h2>
                 </div>
-                <div className="w-[100%] bg-color_font_dark text-center p-[3vh] rounded-[2vh]">
+                <div className="w-[100%] bg-color_font_dark text-center p-[3vh] rounded-[2vh] dark:bg-light_theme">
                     <p className="text-white">{empresaSelec.descripcion}</p>
                 </div>
             </section>
