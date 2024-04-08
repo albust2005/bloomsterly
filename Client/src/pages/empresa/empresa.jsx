@@ -5,6 +5,8 @@ import { ReservasCliente } from "./reservasClientes";
 import { ConoceMasEmpresa } from "../conocemasEmpresa";
 import { ReservaDescrip } from "./reservaDescrip";
 import { ReservasProvider } from "./provider/reservasProvider";
+import { ServiciosEmpresa } from "./serviciosEmpresa";
+import { PerfilEmpresa } from "./perfilEmpresa";
 
 export function Empresa(){
 
@@ -19,6 +21,10 @@ export function Empresa(){
                         <Route path="/" element={<Index_empresa />}></Route>
                         <Route path="/reserva" element={<ReservasCliente/>}></Route>
                         <Route path="/reserva/reservaDescrip/:id" element={<ReservaDescrip />}></Route>
+
+                        <Route path="/servicios" element={<ServiciosEmpresa/>}></Route>
+
+                        <Route path="/perfil" element={<PerfilEmpresa/>}></Route>
                     </Routes>
                 </ReservasProvider>
             </div>

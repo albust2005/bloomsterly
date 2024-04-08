@@ -5,28 +5,32 @@
             "username": "Andres",
             "email": "andres@mail.com",
             "telefono": "+57 3106104903",
-            "dirección": "Cr 46A #28-78 Bariloche"
+            "dirección": "Cr 46A #28-78 Bariloche",
+            "servicios": ["sv000","sv101"]
         },
         {
             "id": "000002",
             "username": "Henao",
-            "email": "andres@mail.com",
-            "telefono": "+57 3106104903",
-            "dirección": "Cr 46A #28-78 Bariloche"
+            "email": "Henao@mail.com",
+            "telefono": "+57 3117919452",
+            "dirección": "Cr 46A #28-78 Bariloche",
+            "servicios": ["sv001","sv100"]
         },
         {
             "id": "000003",
             "username": "Silvana",
-            "email": "andres@mail.com",
-            "telefono": "+57 3106104903",
-            "dirección": "Cr 46A #28-78 Bariloche"
+            "email": "silvana@mail.com",
+            "telefono": "+57 3504663360",
+            "dirección": "Cr 46A #28-78 Bariloche",
+            "servicios": ["sv010", "sv000"]        
         },
         {
             "id": "000004",
             "username": "David",
-            "email": "andres@mail.com",
-            "telefono": "+57 3106104903",
-            "dirección": "Cr 46A #28-78 Bariloche"
+            "email": "David@mail.com",
+            "telefono": "+57 3054297332",
+            "dirección": "Cr 46A #28-78 Bariloche",
+            "servicios": ["sv101", "sv100", "sv001"]
         }
     ]
 }
