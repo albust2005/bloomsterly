@@ -176,15 +176,15 @@ export const TablaEmpresa = () => {
       <h1 className="text-white text-8xl mb-4 dark:text-second_color_lt minicel:text-3xl sm:text-8xl">
         Empresas
       </h1>
-        <DebouncedInput
-          type="text"
-          //En caso de que globalFilter no esté definido vamos a pasar un string vacío
-          value={globalFilter ?? ""}
-          // El filtro está resiviendo un valor String
-          onChange={(value) => setGlobalFilter(String(value))}
-          className="w-full text-border_tabla  dark:text-second_color_lt rounded p-3 border border-admin_card dark:border-second_color_lt outline-none mb-5"
-          placeholder="Nombre de la empresa"
-        />
+      <DebouncedInput
+        type="text"
+        //En caso de que globalFilter no esté definido vamos a pasar un string vacío
+        value={globalFilter ?? ""}
+        // El filtro está resiviendo un valor String
+        onChange={(value) => setGlobalFilter(String(value))}
+        className="w-full text-border_tabla  dark:text-second_color_lt rounded p-3 border border-admin_card dark:border-second_color_lt outline-none mb-5"
+        placeholder="Nombre de la empresa"
+      />
       <div className="overflow-auto">
         <table className="shadow-lg shadow-admin_card/25 dark:shadow-second_color_lt/15 w-full">
           {/* Esta es la cabezera de nuestra tabla */}
@@ -200,7 +200,7 @@ export const TablaEmpresa = () => {
                 {headerGroup.headers.map((header) => (
                   <th
                     key={header.id}
-                    className=" uppercase py-3 px-12 text-center border border-border_tabla dark:border-second_color_lt"
+                    className=" uppercase py-3  text-center border border-border_tabla dark:border-second_color_lt"
                   >
                     {/* isPlaceholder valida si es verdadero o falso, entonces en caso de que no 
                     halla una cabecera no se retornará nada*/}

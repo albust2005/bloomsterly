@@ -200,7 +200,7 @@ export const TablaClient = () => {
                 {headerGroup.headers.map((header) => (
                   <th
                     key={header.id}
-                    className=" uppercase py-3 px-12 text-center border border-border_tabla dark:border-second_color_lt"
+                    className=" uppercase py-3  text-center border border-border_tabla dark:border-second_color_lt"
                   >
                     {/* isPlaceholder valida si es verdadero o falso, entonces en caso de que no 
                     halla una cabecera no se retornará nada*/}

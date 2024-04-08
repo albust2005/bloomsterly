@@ -7,8 +7,6 @@ import { TablaClient } from "./tablaClient";
 import { TablaEmpresa } from "./tablaEmpresas";
 import { DataTable } from "./DataTable";
 import { FormAdmin } from "./formAdmin";
-import { Modalsol } from "./modalSol";
-import { ModalUsu } from "./modalUsu";
 export function Administrador({ user = "Silvana" }) {
   return (
     <>
@@ -42,8 +40,6 @@ export function Administrador({ user = "Silvana" }) {
           </Routes>
         </div>
       </div>
-      {/* <Modalsol></Modalsol> */}
-    {/* <ModalUsu></ModalUsu> */}
     </>
   );
 }
