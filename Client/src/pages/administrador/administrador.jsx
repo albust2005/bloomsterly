@@ -7,6 +7,7 @@ import { TablaClient } from "./tablaClient";
 import { TablaEmpresa } from "./tablaEmpresas";
 import { DataTable } from "./DataTable";
 import { FormAdmin } from "./formAdmin";
+import { Denegar } from "./denegar";
 export function Administrador({ user = "Silvana" }) {
   return (
     <>
