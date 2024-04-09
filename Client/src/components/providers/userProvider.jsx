@@ -24,12 +24,12 @@ const inicio = "http://localhost:8000/login/usuario/"
 
 export function UserProvider({ children }) {
     const { user, createUser } = useCreateUser(registro)
-    const { sesionUser, loginUser } = useLoginUser(inicio)
+    const { sesionUser, loginUser, logout } = useLoginUser(inicio)
 
     return (
         <userContext.Provider value={{ sesionUser, user }}>
             <newUserContext.Provider value={createUser}>
-                <loginUserContext.Provider value={loginUser}>
+                <loginUserContext.Provider value={{loginUser, logout}}>
                     {children}
                 </loginUserContext.Provider>
             </newUserContext.Provider>

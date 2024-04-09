@@ -1,10 +1,14 @@
 import axios from 'axios'
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 
 export const useLoginUser = (URI) => {
     const [sesionUser, setSesionUser] = useState(null)
     const navigate = useNavigate()
+    const location = useLocation()
+    console.log(location.state?.location.pathname)
+
+
     //funcion para el inicio de sesion del usuario
     const loginUser = async (data) => {
         try {
@@ -20,7 +24,7 @@ export const useLoginUser = (URI) => {
                 alert(respuesta.data.message)
                 alert(respuesta.data.estado)
                 setSesionUser(data)
-                navigate('/')
+                navigate(location.state.location.pathname)
             } else {
                 if (Rol == "Administrador") {
                     const respuesta = await axios.post("http://localhost:8000/login/admin/", {
@@ -49,5 +53,10 @@ export const useLoginUser = (URI) => {
         }
     }
 
-    return { sesionUser, loginUser }
+    const logout = () =>{
+        setSesionUser(null)
+        navigate('/')
+    }
+
+    return { sesionUser, loginUser, logout}
 } 

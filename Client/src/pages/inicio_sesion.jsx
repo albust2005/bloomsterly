@@ -11,7 +11,7 @@ export function InicioSesion() {
     formState: { errors },
   } = useForm()
 
-  const loginUser = useLoginUserContext()
+  const {loginUser} = useLoginUserContext()
 
   return (
     <div className="form-box flex justify-center items-center flex-col gap-4 mt-6 w-full bg-transparent relative text-white ">

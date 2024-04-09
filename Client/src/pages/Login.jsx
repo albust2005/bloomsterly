@@ -8,7 +8,8 @@ import { Changeimgs } from "../components/hooks/useChangeimgs";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faHouse } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
+import { useUserContext } from "../components/providers/userProvider";
 
 export function Login() {
   

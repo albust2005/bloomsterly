@@ -8,12 +8,14 @@ import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 
 import { useState } from "react";
 import { useThemeContext } from "../providers/themeProvider";
-import { useUserContext } from "../providers/userProvider";
+import { useLoginUserContext, useUserContext } from "../providers/userProvider";
 
 export function Header() {
     const location = useLocation()
 
     const { sesionUser } = useUserContext()
+    const { logout } = useLoginUserContext()
+
     const [menu, setMenu] = useState(faBars);   //use stated para asignar el logo y las clases necesarias al menu responsive
     //cada click cambia el estado 
     const toggleClick = () => {
@@ -47,7 +49,7 @@ export function Header() {
 
                 <div className="flex flex-row-reverse w-full">
 
-                    {sesionUser === null ? <ButtonNav href="/login" text="Iniciar sesión" /> : <h1>Logout</h1>}
+                    {sesionUser === null ? <ButtonNav href="/login" text="Iniciar sesión" /> : <button onClick={logout}><ButtonNav text='Cerrar sesion'></ButtonNav></button>}
 
 
                     <span className="text-3xl cursor-pointer md:hidden block dark:fill-black">
