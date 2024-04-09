@@ -46,7 +46,7 @@ export const Solicitud = () => {
             />
             {/* </div> */}
             <div className="ml-5">
-              <h1 className="text-2xl">{soli.nombre}</h1>
+              <h1 className="text-3xl mb-1">{soli.nombre}</h1>
               <p>{soli.descripcion}</p>
             </div>
           </div>

@@ -1,42 +1,171 @@
+import { useForm } from "react-hook-form";
 export const FormAdmin = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+
+  } = useForm();
+     const onSubmit = handleSubmit((data) => {
+       console.log(data);
+       alert("enviando datos");
+
+     });
   return (
     <>
-      <h1>Hola administradores</h1>
-      <div className="flex justify-center items-center h-screen">
-        <div className="w-[350px] font-poppins">
-          <div className="inputDiv mb-6 flex flex-col relative">
-            <input className="inputBox bg-transparent border-[1px] border-slate-500 p-3 rounded-md outline-none text-white capitalize" type="text" required />
-            <span className="absolute text-slate-500 p-[15px] uppercase tracking-[3px] pointer-events-none">Nombre </span>
-          </div>
-        </div>
-      </div>
-      {/* <div className="flex items-center justify-center h-screen">
-        <div className=" relative">
-        <input type="text" id="username" className=" border-b py-1 focus:outline-none bg-transparent focus:border-admin_card focus:border-b-2 transition-colors peer" autoComplete="off" />
-        <label for="username"  className="absolute text-white left-0 top-1 cursor-text peer-focus:text-xs peer-focus:-top-4 transition-all peer-focus:text-admin_card duration-1000 tracking-wide">Primer Nombre</label>
-        </div>
-        <div className=" relative">
-        <input type="text" id="username" className=" border-b py-1 focus:outline-none bg-transparent focus:border-admin_card focus:border-b-2 transition-colors peer " autoComplete="off" />
-        <label for="username"  className="absolute text-white left-0 top-1 cursor-text peer-focus:text-xs peer-focus:-top-4 transition-all peer-focus:text-admin_card duration-1000">Nombre</label>
-        </div>
-      </div> */}
-
-      {/* <div class="flex items-center justify-center h-screen">
-        <div class="relative">
+      <div className="flex justify-center  flex-col gap-3 mt-3 w-full relative  p-5 rounded-lg">
+        <form
+          className="w-full  flex flex-col gap-2 text-white dark:text-second_color_lt"
+          onSubmit={onSubmit}
+        >
+          <label htmlFor="nombre" className="font-bold">
+            Nombre
+          </label>
           <input
             type="text"
-            id="username"
-            className=" border-b py-1 focus:outline-none bg-transparent focus:border-admin_card focus:border-b-2 transition-colors peer"
-            autoComplete="off"
+            className="focus:outline-none bg-transparent border-b-2 border-white text-base font-text dark:border-second_color_lt"
+            {...register("nombre", {
+              required: {
+                value: true,
+                message: "Este campo es requerido",
+              },
+              minLength: {
+                value: 4,
+                message: "Este campo debe contar con al menos 4 carácteres",
+              },
+              maxLength: {
+                value: 18,
+                message: "Este campo tiene máximo para 18 carécteres",
+              },
+            })}
           />
-          <label
-            for="username"
-            class="absolute left-0 top-1 text-gray-600 cursor-text peer-focus:text-xs peer-focus:-top-4 peer-focus:text-purple-600 transition-all"
-          >
-            Username
+          {errors.nombre && <span>{errors.nombre.message}</span>}
+          <label htmlFor="apellido" className="font-bold">
+            Apellido
           </label>
-        </div>
-      </div> */}
+          <input
+            type="text"
+            className="focus:outline-none bg-transparent border-b-2 border-white text-base font-text dark:border-second_color_lt"
+            {...register("apellido", {
+              required: {
+                value: true,
+                message: "Este campo es requerido",
+              }
+            })}
+          />
+          {errors.apellido && <span>{errors.apellido.message}</span>}
+          <label htmlFor="Cedula" className="font-bold">
+            Cédula
+          </label>
+          <input
+            type="text"
+            className="focus:outline-none bg-transparent border-b-2 border-white text-base font-text dark:border-second_color_lt"
+            {...register("Cedula", {
+              required: {
+                value: true,
+                message: "Este campo es requerido",
+              },
+            })}
+          />
+          {errors.Cedula && (
+            <span className="text-sm">{errors.Cedula.message}</span>
+          )}
+          <label htmlFor="Email" className="font-bold">
+            Email
+          </label>
+          <input
+            type="text"
+            className="focus:outline-none bg-transparent border-b-2 border-white text-base font-text dark:border-second_color_lt"
+            {...register("Email", {
+              required: {
+                value: true,
+                message: "Este campo es requerido",
+              },
+              pattern: {
+                value: /\S+@\S+\.\S+/,
+                message: "Correo no es válido",
+              },
+            })}
+          />
+          {errors.Email && (
+            <span className="text-sm">{errors.Email.message}</span>
+          )}
+          <label htmlFor="password" className="font-bold">
+            Contraseña
+          </label>
+          <input
+            type="password"
+            className="focus:outline-none bg-transparent border-b-2 border-white text-base font-text dark:border-second_color_lt"
+            {...register("password", {
+              required: {
+                value: true,
+                message: "Contraseña es requerida",
+              },
+              minLength: {
+                value: 6,
+                message: "la contraseña debe tener al menos 6 carácteres",
+              },
+            })}
+          />
+          {errors.password && (
+            <span className="text-sm">{errors.password.message}</span>
+          )}
+          <label htmlFor="Username" className="font-bold">
+            Nombre de usuario
+          </label>
+          <input
+            type="text"
+            className="focus:outline-none bg-transparent border-b-2 border-white dark:border-second_color_lt"
+            {...register("Username", {
+              required: {
+                value: true,
+                message: "Este campo es requerido",
+              },
+            })}
+          />
+          {errors.Username && (
+            <span className="text-sm text-white ">
+              {errors.Username.message}
+            </span>
+          )}
+          <label htmlFor="municipio" className="font-bold">
+            Municipio
+          </label>
+          <select
+            name=""
+            id=""
+            className="text-white rounded-md bg-transparent text-base font-text focus:outline-none border-b-2 dark:border-second_color_lt dark:text-second_color_lt"
+            {...register("municipio")}
+          >
+            <option
+              value=""
+              disabled
+              className="bg-dark_theme dark:bg-light_theme"
+            >
+              Municipio
+            </option>
+            <option value="rg" className="bg-dark_theme dark:bg-light_theme">
+              Rionegro
+            </option>
+            <option value="ml" className="bg-dark_theme dark:bg-light_theme">
+              Marinilla
+            </option>
+            <option value="gr" className="bg-dark_theme dark:bg-light_theme">
+              Guarne
+            </option>
+            <option value="md" className="bg-dark_theme dark:bg-light_theme">
+              Medellín
+            </option>
+          </select>
+          <button
+            type="submit"
+            className="text-white mt-2 bg-color_switch_theme_dark w-full p-1 rounded-md hover:bg-[#8e5ee0]
+             dark:bg-[#eb2651] dark:hover:bg-[#d61540]"
+          >
+            Registro
+          </button>
+        </form>
+      </div>
     </>
   );
-} 
+};
