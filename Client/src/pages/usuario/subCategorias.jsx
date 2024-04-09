@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom"
 //import { useState, useEffect } from "react"
-import { FirtsTitle } from "../../components/titles/Title.jsx"
+import { TitleSubCategoria } from "../../components/titles/subCategoriaTitle.jsx"
 import { NotFound } from "../../components/templates/NotFound.jsx"
 import { useSubCategoriaContext } from "../../components/providers/subCategoriaProvider.jsx"
 import { useCategoriaContext } from "../../components/providers/categoriaProvider.jsx"
@@ -26,10 +26,10 @@ export function SubCategorias() {
     return (
         <section>
             <section className="flex gap-12 flex-col items-center">
-                <FirtsTitle
+                <TitleSubCategoria
                     title={categoria}
                 />
-                <section className="flex flex-wrap justify-center w-full ">
+                <section className="grid grid-cols-1 sm:grid-cols-2  w-full gap-6">
                     {/*grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6*/}
                     {
                         subCategorias?.length === 0

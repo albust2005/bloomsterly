@@ -3,6 +3,7 @@ import { useEmpresaContext } from "../../components/providers/empresaProvider"
 import { useServiciosContext } from "../../components/providers/serviciosProvider"
 import { useSubCategoriaContext } from "../../components/providers/subCategoriaProvider"
 import { ServiciosCard } from "../../components/templates/ServiciosCard"
+import { TitleSubCategoria } from "../../components/titles/subCategoriaTitle"
 
 
 const useFoundServiciosRelacionados = () => {
@@ -35,17 +36,20 @@ export function Servicios() {
 
     return (
         <section>
-            <h1>{empresa}</h1>
-            <h1>{subCategoria}</h1>
+            <TitleSubCategoria
+                title={empresa}
+                subtitle={subCategoria}
+            />
             <section>
                 {
-                    servicios?.map(({ id, nombre, descripcion, valor }) => (
+                    servicios?.map(({ id, nombre, descripcion, valor, img }) => (
                         <ServiciosCard
                             key={id}
                             id={id}
                             nombre={nombre}
                             descripcion={descripcion}
                             valor={valor}
+                            img ={img}
                         >
                         </ServiciosCard>
                     ))
