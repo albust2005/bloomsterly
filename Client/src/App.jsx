@@ -9,7 +9,7 @@ import { LandingPage } from './pages/Index'
 
 import { ThemeColor } from './components/buttons/buttonThemeColor'
 import { Login } from './pages/Login'
-import { Pedidos } from './pages/usuario/Pedidos'
+import { ReservasUser } from './pages/usuario/ReservasUser'
 
 import { Administrador } from './pages/administrador/administrador'
 
@@ -64,7 +64,7 @@ function App() {
 
                     <Route element={<ProtectedRoute redirectPath='/login' />}>
                       <Route path='/servicio/:subCategoria/:empresa' element={<Servicios></Servicios>}></Route>
-                      <Route path='/reservas' element={<Pedidos />} />
+                      <Route path='/reservas' element={<ReservasUser />} />
                       
                     </Route>
 
