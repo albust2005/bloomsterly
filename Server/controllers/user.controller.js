@@ -93,3 +93,45 @@ export const subcategorias = async (req, res) => {
     }
   }
 };
+// esto sirve para extraer todos los servicios 
+export const servicios = async(req,res)=>{
+  try {
+    const servicio= await Servicios.findAll()
+    res.status(200).json(servicio)
+  } catch (error) {
+    if (error instanceof Sequelize.DatabaseError) {
+      // Manejar el error de base de datos
+      res
+        .status(400)
+        .json({ message: `Error de base datos`, error: error.message });
+    } else {
+      // Manejar otros tipos de errores
+      res.status(400).json({
+        message: "Hubo error al traer la información de servicios",
+        error,
+      });
+    }
+  }
+}
+export const getAllEmpresas = async (req, res) => {
+  try {
+    const empresas = await Empresas.findAll({
+      attributes: ["username", "email"],
+      include: [
+        {
+          model: Administradores,
+          attributes: ["COD"],
+          through: {
+            model: ControlEmpresas,
+            attributes: ["estado"],
+          },
+        },
+      ],
+    });
+    res.status(200).json(empresas);
+  } catch (error) {
+    res
+      .status(400)
+      .json({ message: "Error al traer a todas las empresas", error: error });
+  }
+};

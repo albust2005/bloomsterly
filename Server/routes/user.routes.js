@@ -10,6 +10,8 @@ import {
   editarPerfil,
   eliminacionPerfil,
   subcategorias,
+  servicios,
+  getAllEmpresas,
 } from "../controllers/user.controller.js";
 
 // esto es para poner rutas
@@ -32,4 +34,7 @@ router.put("/editarPerfil", editarPerfil);
 router.delete("/eliminarPerfil", eliminacionPerfil);
 // ruta para obtener la subcategorias de la categoria seleccionada
 router.get("/subcategorias", subcategorias);
+// ruta para obtener empresa depende de la subcategoria
+router.get("/servicios",servicios)
+router.get("/getAllEmpresas",getAllEmpresas);
 export default router;
