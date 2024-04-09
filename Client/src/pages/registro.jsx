@@ -157,25 +157,25 @@ export function Registro() {
                 Municipio
               </option>
               <option
-                value="rg"
+                value="1"
                 className="bg-dark_theme minicel:text-xs sm:text-lg md:text-xl  "
               >
                 Rionegro
               </option>
               <option
-                value="ml"
+                value="2"
                 className="bg-dark_theme minicel:text-xs sm:text-lg md:text-xl  "
               >
                 Marinilla
               </option>
               <option
-                value="gr"
+                value="3"
                 className="bg-dark_theme minicel:text-xs sm:text-lg md:text-xl  "
               >
                 Guarne
               </option>
               <option
-                value="md"
+                value="4"
                 className="bg-dark_theme minicel:text-xs sm:text-lg md:text-xl  "
               >
                 Medellin
