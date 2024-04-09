@@ -16,7 +16,6 @@ const useFoundSubCategorias = () =>{
 
     const currentCategoria = categorias.find(cat => cat.nombre === categoria)
     const currentSubCategorias = subCategorias.filter(sub => sub.idCategoria === currentCategoria.id)
-
     return { categoria : currentCategoria.nombre , subCategorias : currentSubCategorias }
 }
 

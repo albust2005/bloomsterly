@@ -75,9 +75,8 @@ export const eliminacionPerfil = async (req, res) => {
 };
 // esto sirve para obtener las subcategorias
 export const subcategorias = async (req, res) => {
-  const { id } = req.body;
   try {
-    const subcategoria = await Categorias.findAll({ where: { categoria: id } });
+    const subcategoria = await Categorias.findAll();
     res.status(200).json(subcategoria);
   } catch (error) {
     if (error instanceof Sequelize.DatabaseError) {

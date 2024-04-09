@@ -31,5 +31,5 @@ router.put("/editarPerfil", editarPerfil);
 // ruta para eliminar el perfil del usuario
 router.delete("/eliminarPerfil", eliminacionPerfil);
 // ruta para obtener la subcategorias de la categoria seleccionada
-router.post("/subcategorias", subcategorias);
+router.get("/subcategorias", subcategorias);
 export default router;
