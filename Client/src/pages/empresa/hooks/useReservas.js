@@ -7,7 +7,8 @@ export const useReservas = () => {
         username: reserva.username,
         email: reserva.email,
         direccion: reserva.dirección,
-        telefono: reserva.telefono
+        telefono: reserva.telefono,
+        servicios: reserva.servicios
     }))
 
     return { reservas: mappedReservas}

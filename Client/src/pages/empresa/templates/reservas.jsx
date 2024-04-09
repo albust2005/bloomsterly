@@ -9,8 +9,8 @@ export function Reservas() {
                 reservasDB?.length === 0 
                 ? <NotFound />
                 : reservasDB.map(reserva => (
-                    <div className="flex bg-color_font_dark mb-[2vh] border-[0.4vh] border-solid border-color_font_dark rounded-[1vh]" key={reserva.id}>
-                        <div className="w-[55%] flex flex-col justify-center bg-[#190042] text-white p-[3vh] rounded-[1vh]">
+                    <div className="flex bg-color_font_dark mb-[2vh] border-[0.4vh] border-solid border-color_font_dark rounded-[1vh] dark:bg-light_theme dark:border-light_theme" key={reserva.id}>
+                        <div className="w-[55%] flex flex-col justify-center bg-[#190042] text-white p-[3vh] rounded-[1vh] dark:bg-second_color_lt">
                             <h3>Contrato de servicios</h3>
                             <p>Nombre de Usuario: {reserva.username}</p>
                             <p>Correo: {reserva.email}</p>
