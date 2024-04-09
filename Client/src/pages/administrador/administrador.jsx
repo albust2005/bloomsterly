@@ -5,9 +5,10 @@ import { Menudiag } from "../administrador/menudiag";
 import { TablaAdmin } from "./tablaAdmin";
 import { TablaClient } from "./tablaClient";
 import { TablaEmpresa } from "./tablaEmpresas";
-import { DataTable } from "./DataTable";
+// import { DataTable } from "./DataTable";
 import { FormAdmin } from "./formAdmin";
 import { Denegar } from "./denegar";
+
 export function Administrador({ user = "Silvana" }) {
   return (
     <>
