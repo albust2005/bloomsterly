@@ -62,10 +62,8 @@ export function InicioSesion() {
 
         <div className="text-xs md:text-base">
           <p className="flex justify-end mt-2 ">Tienes una empresa o emprendimiento?
-            <Link to="/conocemasEmpresa">
-              <a href="#" className="px-0  md:px-2 hover:bg-light_theme rounded-md hover:text-dark_theme">
-                Entra aquí
-              </a>
+            <Link to="/conocemasEmpresa" className="px-0  md:px-2 hover:bg-light_theme rounded-md hover:text-dark_theme">
+              Entra aquí
             </Link>
           </p>
         </div>

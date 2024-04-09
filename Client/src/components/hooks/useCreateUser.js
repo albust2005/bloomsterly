@@ -26,6 +26,5 @@ export const useCreateUser = (URI) =>{
             console.log(error.message)
         }
     };
-
     return { createUser, user }
 }
