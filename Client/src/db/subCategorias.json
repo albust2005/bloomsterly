@@ -4,55 +4,55 @@
             "id" : "s1", 
             "idCategoria" : "s112",
             "nombre" : "Decoracion Infantil",
-            "imagen" : ""
+            "imagen" : "/src/assets/img_subcat/decoracionInfant.webp"
         },
         {
             "id" : "s2", 
             "idCategoria" : "s112",
             "nombre" : "Decoracion Matrimonial",
-            "imagen" : ""
+            "imagen" : "/src/assets/img_subcat/decoracionBoda.webp"
         },
         {
             "id" : "s3", 
             "idCategoria" : "s111",
             "nombre" : "Mariachis",
-            "imagen" : ""
+            "imagen" : "/src/assets/img_subcat/mariachis.webp"
         },
         {
             "id" : "s4", 
             "idCategoria" : "s112",
             "nombre" : "Decoracion de Quinces",
-            "imagen" : ""
+            "imagen" : "/src/assets/img_subcat/decoracionQuinces.webp"
         },
         {
             "id" : "s5", 
             "idCategoria" : "s111",
             "nombre" : "Musica Electronica",
-            "imagen" : ""
+            "imagen" : "/src/assets/img_subcat/electronica.webp"
         },
         {
             "id" : "s6", 
             "idCategoria" : "s113",
             "nombre" : "Buffet Mexicano",
-            "imagen" : ""
+            "imagen" : "/src/assets/img_subcat/mexicano.webp"
         },
         {
             "id" : "s7", 
             "idCategoria" : "s113",
             "nombre" : "Catering Gourmet",
-            "imagen" : ""
+            "imagen" : "/src/assets/img_subcat/cateringgourmet.webp"
         },
         {
             "id" : "s8", 
             "idCategoria" : "s114",
             "nombre" : "Cocteles Clásicos",
-            "imagen" : ""
+            "imagen" : "/src/assets/img_subcat/coctelesclasicos.webp"
         },
         {
             "id" : "s9", 
             "idCategoria" : "s114",
             "nombre" : "Cocteles Exóticos",
-            "imagen" : ""
+            "imagen" : "/src/assets/img_subcat/coctelesexoticos.webp"
         }
     ]
 }

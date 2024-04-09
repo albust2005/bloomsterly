@@ -4,8 +4,8 @@ import { useServiciosContext } from "../../components/providers/serviciosProvide
 import { useSubCategoriaContext } from "../../components/providers/subCategoriaProvider"
 import { useEmpresaContext } from "../../components/providers/empresaProvider"
 import { NotFound } from "../../components/templates/NotFound"
-import { FirtsTitle, Titles } from "../../components/titles/Title"
 import { EmpresaCards } from "../../components/templates/EmpresaCard"
+import { TitleSubCategoria } from "../../components/titles/subCategoriaTitle"
 
 const useFoundEmpresasRelacionadas = () => {
     const { subCategoria } = useParams()
@@ -30,13 +30,11 @@ export function EmpresasRelacionadas() {
 
     return (
         <section className="flex flex-col items-center gap-12">
-            <FirtsTitle
+            <TitleSubCategoria
                 title={subCategoria}
-                descripcion={`las siguientes empresas ofrecen servicios de ${subCategoria}`}
-            >
-            </FirtsTitle>
-            <section className="flex flex-col gap-5">
-                <article className="containe mx-auto grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+                descripcion={`Las siguientes empresas ofrecen servicios de ${subCategoria}.`}
+            />
+            <section className="gap-5 grid grid-cols-1 sm:grid-cols-2  w-full">
                     {
                         empresas.length === 0 
                         ?
@@ -56,7 +54,6 @@ export function EmpresasRelacionadas() {
                             />
                         ))
                     }
-                </article>
             </section>
 
         </section>
