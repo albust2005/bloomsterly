@@ -13,7 +13,7 @@ import { useUserContext } from "../providers/userProvider";
 export function Header() {
     const location = useLocation()
 
-    const {sesionUser} = useUserContext()
+    const { sesionUser } = useUserContext()
     const [menu, setMenu] = useState(faBars);   //use stated para asignar el logo y las clases necesarias al menu responsive
     //cada click cambia el estado 
     const toggleClick = () => {
@@ -29,24 +29,23 @@ export function Header() {
     if (location.pathname !== '/login' && location.pathname !== '/empresa') {
         return (
             <nav className="bg-transparent flex justify-between items-center h-20 dark:bg-transparent dark:shadow-[#f7e6d5] ">
-                <Link className="flex justify-between items-center" to="/">
-                    <span className="cursor-pointer dark:text-red-600 text-white pr-10">BloomSterly</span>
+                <Link className="flex justify-between w-full items-center" to="/">
+                    <span className="cursor-pointer dark:text-red-600 text-white">BloomSterly</span>
                 </Link>
 
-        <div
-          className={`dark:bg-nav_light_theme md:dark:bg-transparent bg-color_font_dark md:bg-transparent flex flex-col px-4 md:flex-row md:px-0 md:z-auto md:static absolute w-full left-0 md:w-auto md:py-0 md:pl-0 pl-7 md:opacity-100 duration-75 md:duration-0
-                    ${
-                      menu === faBars
-                        ? "top-[-400px] opacity-0"
-                        : "top-[80px] opacity-100"
-                    }`}
-        >
-          <ButtonNav text="Nosotros" />
-          <ButtonNav text="Servicios" href="/categorias" />
-          <ButtonNav text="Reservas" href="/reservas" />
-        </div>
+                <div
+                    className={`dark:bg-nav_light_theme md:dark:bg-transparent bg-color_font_dark md:bg-transparent flex flex-col px-4 md:flex-row md:px-0 md:z-auto md:static absolute w-full left-0 md:w-auto md:py-0 md:pl-0 pl-7 md:opacity-100 duration-75 md:duration-0
+                    ${menu === faBars
+                            ? "top-[-400px] opacity-0"
+                            : "top-[80px] opacity-100"
+                        }`}
+                >
+                    <ButtonNav text="Nosotros" />
+                    <ButtonNav text="Servicios" href="/categorias" />
+                    <ButtonNav text="Reservas" href="/reservas" />
+                </div>
 
-                <div className="flex justify-center items-center">
+                <div className="flex flex-row-reverse w-full">
 
                     {sesionUser === null ? <ButtonNav href="/login" text="Iniciar sesión" /> : <h1>Logout</h1>}
 

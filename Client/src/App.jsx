@@ -9,7 +9,7 @@ import { LandingPage } from './pages/Index'
 
 import { ThemeColor } from './components/buttons/buttonThemeColor'
 import { Login } from './pages/Login'
-import { Pedidos } from './pages/usuario/Pedidos'
+import { ReservasUser } from './pages/usuario/ReservasUser'
 
 import { Administrador } from './pages/administrador/administrador'
 
@@ -24,11 +24,13 @@ import { ThemeProvider } from './components/providers/themeProvider'
 import { Empresa } from './pages/empresa/empresa'
 import { ConoceMasEmpresa } from './pages/conocemasEmpresa'
 
-import { UserProvider } from './components/providers/userProvider'
+import { UserProvider, useUserContext } from './components/providers/userProvider'
 import { CategoriaProvider } from './components/providers/categoriaProvider'
 import { SubCategoriaProvider } from './components/providers/subCategoriaProvider'
 import { ServiciosProvider } from './components/providers/serviciosProvider'
 import { EmpresaProvider } from './components/providers/empresaProvider'
+
+import { ProtectedRoute } from './components/providers/ProtectedRoute'
 
 
 //import { Empresa } from './pages/empresa/empresa'
@@ -36,7 +38,6 @@ import { EmpresaProvider } from './components/providers/empresaProvider'
 
 
 function App() {
-
   return (
     <UserProvider>
       <Layaout>
@@ -60,9 +61,12 @@ function App() {
                     <Route path='/categorias' element={<Categorias />}></Route>
                     <Route path='/categorias/:categoria?' element={<SubCategorias />}></Route>
                     <Route path='/subCategorias/:subCategoria' element={<EmpresasRelacionadas />} />
-                    <Route path='/servicio/:subCategoria/:empresa' element={<Servicios></Servicios>}></Route>
 
-                    <Route path='/reservas' element={<Pedidos />} />
+                    <Route element={<ProtectedRoute redirectPath='/login' />}>
+                      <Route path='/servicio/:subCategoria/:empresa' element={<Servicios></Servicios>}></Route>
+                      <Route path='/reservas' element={<ReservasUser />} />
+                      
+                    </Route>
 
                     <Route path="/conocemasEmpresa" element={<ConoceMasEmpresa></ConoceMasEmpresa>}></Route>
                   </Routes>

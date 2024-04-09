@@ -16,10 +16,6 @@ const Administradores = db.define('administradores',{
     type: DataTypes.STRING(30),
     allowNull: false
   },
-  segundo_apelli: {
-    type: DataTypes.STRING(30),
-    allowNull: false
-  },
   COD_municipios: {
     type: DataTypes.INTEGER(2),
     allowNull: false

@@ -7,18 +7,18 @@ export const useCreateUser = (URI) =>{
     //funcion para el registro del usuario
     const createUser = async (data) => {
         try {
-            const { Cedula, Email, Name, Firstlastname, ConfirmPassword, Username } = data
-            await axios.post(URI, {
+            const { Cedula, Email, Name, Firstlastname, ConfirmPassword, Town, Username } = data
+            const respuesta= await axios.post(URI, {
                 COD: Cedula,
                 email: Email,
                 nombre_c: Name,
                 primer_apelli: Firstlastname,
-                segundo_apelli: '',
-                COD_municipios: 2,
+                COD_municipios: Town,
                 contrasena: ConfirmPassword,
                 username: Username
             })
-            
+            const r=respuesta.data.message
+            alert(r)
             console.log(data);
             setUser(data)
 
@@ -26,6 +26,5 @@ export const useCreateUser = (URI) =>{
             console.log(error.message)
         }
     };
-
     return { createUser, user }
 }
