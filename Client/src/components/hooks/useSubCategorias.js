@@ -1,20 +1,23 @@
 import axios from 'axios'
-import withSubCategorias from '../../db/subCategorias.json'
+//import withSubCategorias from '../../db/subCategorias.json'
 import { useEffect, useState } from 'react'
 
 export const useSubCategorias = () =>{
-    const [subCategorias,setsubCategoria]=useState([])
-    const obtener= async()=>{
+    const [subCategorias,setSubCategoria]=useState([])
+
+    const obtenerSubCategoria = async()=>{
         try {
-            const respuesta=await axios.get("http://localhost:8000/user/subcategorias")
-            setsubCategoria(respuesta.data)   
+            const respuesta = await axios.get("http://localhost:8000/user/subcategorias")
+            setSubCategoria(respuesta.data)   
         } catch (error) {
-            alert(error.response.message)
+            alert(error.response.message) 
         }
     }
+
     useEffect(()=>{
-        obtener()
+        obtenerSubCategoria()
     },[])
+
     const mappedSubCategorias = subCategorias?.map(subCategoria =>({
         id: subCategoria.COD,
         idCategoria: subCategoria.categoria,

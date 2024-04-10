@@ -115,19 +115,7 @@ export const servicios = async(req,res)=>{
 }
 export const getAllEmpresas = async (req, res) => {
   try {
-    const empresas = await Empresas.findAll({
-      attributes: ["username", "email"],
-      include: [
-        {
-          model: Administradores,
-          attributes: ["COD"],
-          through: {
-            model: ControlEmpresas,
-            attributes: ["estado"],
-          },
-        },
-      ],
-    });
+    const empresas = await Empresas.findAll();
     res.status(200).json(empresas);
   } catch (error) {
     res
