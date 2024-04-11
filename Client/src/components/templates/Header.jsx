@@ -84,7 +84,7 @@ export function Header() {
 
             <div className="flex flex-row-reverse w-full">
 
-                {sesionUser === null ? <ButtonNav href="/login" text="Iniciar sesión" /> : <button onClick={logout}><ButtonNav text='Cerrar sesion'></ButtonNav></button>}
+                {sesionUser === null ? <ButtonNav href="/login" text="Iniciar sesión" /> : <button onClick={logout}><ButtonNav text='Cerrar sesión'></ButtonNav></button>}
 
 
                 <span className="text-3xl cursor-pointer md:hidden block dark:fill-black">

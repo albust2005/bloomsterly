@@ -4,56 +4,56 @@
       {
         "uuid": "s111",
         "img": "../src/assets/img_servicios/servicio-musica.webp",
-        "nombre": "Musica",
-        "descripcion": "Ofrecemos distintos servicios de musica"
+        "nombre": "Música",
+        "descripcion": "Disfruta de nuestros servicios musicales perfectos para ambientar tu evento"
       },
       {
         "uuid": "s112",
         "img": "../src/assets/img_servicios/servicio-decoracion.webp",
-        "nombre": "Decoracion",
-        "descripcion": "Ofrecemos distintos estilos de decoracion de tu evento"
+        "nombre": "Decoración",
+        "descripcion": "Descubre nuestras exclusivas decoraciones, perfectas para añadir elegancia y estilo a tu evento"
       },
       {
         "uuid": "s113",
         "img": "../src/assets/img_servicios/servicio-comida.webp",
-        "nombre": "Alimentacion",
-        "descripcion": "Ofrecemos distintos de comida para tu evento"
+        "nombre": "Alimentación",
+        "descripcion": "Disfruta de nuestra exquisita variedad de platos"
       },
       {
         "uuid": "s114",
         "img": "../src/assets/img_servicios/servicio-cocteleria.webp",
-        "nombre": "Cocteleria",
-        "descripcion": "Ofrecemos distintos de comida para tu evento"
+        "nombre": "Coctelería",
+        "descripcion": "Sorpréndete con nuestros deliciosos cócteles"
       },
       {
         "uuid": "s115",
         "img": "../src/assets/img_servicios/servicio-mobiliario.webp",
         "nombre": "Mobiliario",
-        "descripcion": "Ofrecemos distintos de comida para tu evento"
+        "descripcion": "Transforma tu espacio con nuestro mobiliario, y añade un toque único a tu celebración"
       },
       {
         "uuid": "s116",
         "img": "../src/assets/img_servicios/servicio-personal.webp",
         "nombre": "Personal",
-        "descripcion": "Ofrecemos distintos de comida para tu evento"
+        "descripcion": "Conoce nuestro equipo profesional para atender cada detalle de tu evento"
       },
       {
         "uuid": "s117",
         "img": "../src/assets/img_servicios/servicio-entretenimiento.webp",
         "nombre": "Entretenimiento",
-        "descripcion": "Ofrecemos distintos de comida para tu evento"
+        "descripcion": "Agrega emoción a tu evento con nuestro entretenimiento"
       },
       {
         "uuid": "s118",
         "img": "../src/assets/img_servicios/servicio-fotografia.webp",
-        "nombre": "Fotografia",
-        "descripcion": "Ofrecemos distintos de comida para tu evento"
+        "nombre": "Fotografía",
+        "descripcion": "Preserva tus recuerdos con nuestro servicio de fotografía"
       },
       {
         "uuid": "s119",
         "img": "../src/assets/img_servicios/servicio-espacio.webp",
         "nombre": "Espacios",
-        "descripcion": "Ofrecemos distintos de comida para tu evento"
+        "descripcion": "Conoce nuestros espacios únicos, perfectos para tu evento"
       }
     ]
   }

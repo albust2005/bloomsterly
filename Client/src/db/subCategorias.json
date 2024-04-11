@@ -3,13 +3,13 @@
         {
             "id" : "s1", 
             "idCategoria" : "s112",
-            "nombre" : "Decoracion Infantil",
+            "nombre" : "Decoración Infantil",
             "imagen" : "/src/assets/img_subcat/decoracionInfant.webp"
         },
         {
             "id" : "s2", 
             "idCategoria" : "s112",
-            "nombre" : "Decoracion Matrimonial",
+            "nombre" : "Decoración Matrimonial",
             "imagen" : "/src/assets/img_subcat/decoracionBoda.webp"
         },
         {
@@ -21,13 +21,13 @@
         {
             "id" : "s4", 
             "idCategoria" : "s112",
-            "nombre" : "Decoracion de Quinces",
+            "nombre" : "Decoración de Quinces",
             "imagen" : "/src/assets/img_subcat/decoracionQuinces.webp"
         },
         {
             "id" : "s5", 
             "idCategoria" : "s111",
-            "nombre" : "Musica Electronica",
+            "nombre" : "Música Electrónica",
             "imagen" : "/src/assets/img_subcat/electronica.webp"
         },
         {
@@ -45,13 +45,13 @@
         {
             "id" : "s8", 
             "idCategoria" : "s114",
-            "nombre" : "Cocteles Clásicos",
+            "nombre" : "Cócteles Clásicos",
             "imagen" : "/src/assets/img_subcat/coctelesclasicos.webp"
         },
         {
             "id" : "s9", 
             "idCategoria" : "s114",
-            "nombre" : "Cocteles Exóticos",
+            "nombre" : "Cócteles Exóticos",
             "imagen" : "/src/assets/img_subcat/coctelesexoticos.webp"
         }
     ]
