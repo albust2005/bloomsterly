@@ -22,7 +22,7 @@ export const useLoginUser = (URI) => {
                     contrasena: Password
                 })
                 console.log('sesion iniciada correctamente usuario')
-                showToastMessage(respuesta.data.message)
+                showToastMessage('sesion iniciada correctamente')
                 //alert(respuesta.data.estado)
                 setSesionUser(data)
                 navigate(location ? '/' : location.state.location.pathname )
