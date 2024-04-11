@@ -2,7 +2,7 @@
 import { ButtonNav } from "../buttons/buttonNav";
 
 //importaciones de dependencias
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 
@@ -11,7 +11,6 @@ import { useThemeContext } from "../providers/themeProvider";
 import { useLoginUserContext, useUserContext } from "../providers/userProvider";
 
 export function Header() {
-    const location = useLocation()
 
     const { sesionUser } = useUserContext()
     const { logout } = useLoginUserContext()
@@ -28,46 +27,48 @@ export function Header() {
     const theme = useThemeContext()
     const logoColor = theme === 'dark' ? '#BC0B38' : '#fff'
 
-    if (location.pathname !== '/login' && location.pathname !== '/empresa') {
-        return (
+    return (
             <nav className="bg-transparent flex justify-between items-center h-20 dark:bg-transparent dark:shadow-[#f7e6d5] ">
                 <Link className="flex justify-between w-full items-center" to="/">
                     <span className="cursor-pointer dark:text-red-600 text-white">BloomSterly</span>
                 </Link>
 
                 <div
-                    className={`dark:bg-nav_light_theme md:dark:bg-transparent bg-color_font_dark md:bg-transparent flex flex-col px-4 md:flex-row md:px-0 md:z-auto md:static absolute w-full left-0 md:w-auto md:py-0 md:pl-0 pl-7 md:opacity-100 duration-75 md:duration-0
+                    className={`dark:bg-nav_light_theme md:dark:bg-transparent bg-color_font_dark md:bg-transparent 
+                    flex flex-col px-4 md:flex-row md:px-0 md:z-auto md:static absolute w-full left-0 md:w-auto md:py-0 
+                    md:pl-0 pl-7 md:opacity-100 duration-75 md:duration-0 z-10
                     ${menu === faBars
                             ? "top-[-400px] opacity-0"
                             : "top-[80px] opacity-100"
                         }`}
                 >
                     {!sesionUser &&(
-                        <div>
+                        <div className="flex flex-col md:flex-row">
                             <ButtonNav text="Nosotros" />
                             <ButtonNav text="Servicios" href="/categorias" />
                             <ButtonNav text="Reservas" href="/reservas" />
                         </div>
                     )}
                     {sesionUser?.Rol === "Cliente" && (
-                       <div>
+                       <div className="flex flex-col md:flex-row">
                             <ButtonNav text="Nosotros" />
                             <ButtonNav text="Servicios" href="/categorias" />
                             <ButtonNav text="Reservas" href="/reservas" />
                        </div>
                     )}
                     {sesionUser?.Rol === "empresa" && (
-                       <div>
+                       <div className="flex flex-col md:flex-row">
                             <ButtonNav text="Clientes" />
                             <ButtonNav text="Servicios" href="/categorias" />
                             <ButtonNav text="Modificar" href="/reservas" />
                        </div>
                     )}
                     {sesionUser?.Rol === "Administrador" && (
-                       <div>
-                            <ButtonNav text="Nosotros" />
-                            <ButtonNav text="Servicios" href="/categorias" />
-                            <ButtonNav text="Reservas" href="/reservas" />
+                       <div className="flex flex-col md:flex-row">
+                            <ButtonNav text="Clientes" />
+                            <ButtonNav text="Empresas" href="/categorias" />
+                            <ButtonNav text="Administradores" href="/reservas" />
+                            <ButtonNav text="Solicitudes" href="/reservas" />
                        </div>
                     )}
                 </div>
@@ -87,17 +88,7 @@ export function Header() {
                     </span>
                 </div>
             </nav>
-        )
-    } else if (location.pathname === "/empresa") {
-        return (
-            <nav className="flex items-center justify-between p-[3vh] h-[20%]">
-                <h1 className="dark:text-red-600 text-white text-2xl">BloomSterly</h1>
-                <ButtonNav text="Cerrar Sesion" />
-            </nav>
-        )
-    } else {
-        return null
-    }
+    )
 
 
 }

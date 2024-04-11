@@ -1,6 +1,8 @@
 import { useForm } from "react-hook-form";
 import { useLoginUserContext } from "../components/providers/userProvider";
 import { Link } from "react-router-dom";
+import { useToastify } from "../components/hooks/useToastify";
+import { ToastContainer } from "react-toastify";
 // import PropTypes from "prop-types";
 
 export function InicioSesion() {
@@ -12,6 +14,7 @@ export function InicioSesion() {
   } = useForm()
 
   const {loginUser} = useLoginUserContext()
+  const {showToastMessage} = useToastify()
 
   return (
     <div className="form-box flex justify-center items-center flex-col gap-4 mt-6 w-full bg-transparent relative text-white ">
@@ -70,10 +73,12 @@ export function InicioSesion() {
 
         <button className="text-white mt-2 bg-color_switch_theme_dark w-full p-1 rounded-md hover:bg-[#8e5ee0]
           minicel:text-sm celular:text-base sm:text-lg md:text-xl 
-          dark:bg-[#eb2651] dark:hover:bg-[#d61540]">
+          dark:bg-[#eb2651] dark:hover:bg-[#d61540]" onClick={showToastMessage()}>
           Iniciar Sesión
         </button>
+        <ToastContainer position="top-center"/>
       </form>
+      
     </div>
   );
 }
