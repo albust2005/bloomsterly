@@ -1,12 +1,10 @@
 import { Link } from "react-router-dom"
 import { useUserContext } from '../providers/userProvider'
+import { useReservaUserCrudContext } from "../providers/reservasUserProvider"
 
 
 export function ServiciosCard({ id, nombre, descripcion, valor, img }) {
-
-    const { sesionUser } = useUserContext()
-    console.log(sesionUser)
-
+    const { addServicioSeleccionado } = useReservaUserCrudContext()
 
     return (
         <article className="flex  p-3 text-white w-full gap-2">
@@ -21,11 +19,11 @@ export function ServiciosCard({ id, nombre, descripcion, valor, img }) {
                 </div>
                 <div className="flex justify-end">
 
-                    <Link
-                        to={`/reserva/${sesionUser.Username}`}
-                        className="text-center  w-1/4 rounded-sm bg-purple-700 border-2 border-transparent
-                    hover:bg-transparent hover:border-purple-700 dark:bg-second_color_lt dark:text-white dark:hover:bg-transparent dark:hover:text-second_color_lt  
-                    dark:border-2 dark:border-transparent dark:hover:border-second_color_lt">Reservar</Link>
+                    <button
+                        onClick={() => addServicioSeleccionado(id)}
+                        className="text-center  w-1/4 rounded-sm bg-purple-700 border-2 border-transparent hover:bg-transparent hover:border-purple-700 dark:bg-second_color_lt dark:text-white dark:hover:bg-transparent dark:hover:text-second_color_lt dark:border-2 dark:border-transparent dark:hover:border-second_color_lt">
+                        Reservar
+                    </button>
                 </div>
             </div>
         </article>

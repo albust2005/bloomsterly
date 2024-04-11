@@ -8,7 +8,7 @@ export function NotFound ({razon}){
                 No se encontraron {razon}
             </h1>
             <div className='w-full flex justify-center '>
-                <img src="/src/assets/img/notFound.webp" alt="" className='w-[25%]'/>
+                <img src="/src/assets/img/notFound.webp" alt="" className='w-72'/>
             </div>
         </div>
     )
