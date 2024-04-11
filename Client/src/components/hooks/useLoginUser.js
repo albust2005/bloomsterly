@@ -39,8 +39,8 @@ export const useLoginUser = (URI) => {
                         username: Username,
                         contrasena: Password
                     })
-                    console.log('Sesion iniciada correctamente Administrador')
-                    alert(respuesta.data.message)
+                
+                    showToastMessage(`Bienvenido administrador ${Username}`)
                     setSesionUser(data)
                     navigate('/administrador')
                 }
@@ -53,7 +53,7 @@ export const useLoginUser = (URI) => {
                 // La solicitud fue realizada pero no se recibió respuesta
                 console.error('No se recibió respuesta del servidor');
             } else {
-                alert(error.message)
+                showToastMessage(error.message)
             }
         }
     }

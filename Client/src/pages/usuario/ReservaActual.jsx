@@ -1,12 +1,36 @@
-function ServicioCardReserva () {
+import { Link } from "react-router-dom"
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faCirclePlus } from "@fortawesome/free-solid-svg-icons"
+import { useReservaUserContext } from "../../components/providers/reservasUserProvider"
+import { useEmpresaContext } from "../../components/providers/empresaProvider"
+
+function AgregarServiciosReserva() {
+    return (
+        <div className="">
+            <Link
+                to='/categorias'
+            >
+                <FontAwesomeIcon
+                    icon={faCirclePlus}
+                />
+            </Link>
+        </div>
+    )
+
+}
+
+
+function ServicioCardReserva({ empresa, nombre, valor }) {
     return (
         <article>
             <div>
                 <img src="" alt="" />
             </div>
             <div>
-                <h2>Nombre empresa</h2>
-                <h1>Nombre servicio</h1>
+                <h2>Nombre empresa: {empresa}</h2>
+                <h1>Nombre servicio: {nombre}</h1>
+                <p>Valor: {valor}</p>
             </div>
             <div>
                 <button>eliminar</button>
@@ -16,8 +40,11 @@ function ServicioCardReserva () {
 }
 
 
-export function ReservaActual () {
-    return(
+export function ReservaActual() {
+    const servicioSeleccionados = useReservaUserContext()
+    const empresas = useEmpresaContext()
+
+    return (
         <section>
             <div>
                 <h1>Reserva</h1>
@@ -32,7 +59,17 @@ export function ReservaActual () {
                     <p>Servicios:</p>
                 </div>
                 <div className="bg-white">
-                    
+                    {
+                        servicioSeleccionados?.map(({ id, idEmpresa, nombre, valor }) => (
+                            <ServicioCardReserva
+                                key={id}
+                                empresa={empresas.find(em => em.id == idEmpresa)?.nombre}
+                                nombre={nombre}
+                                valor={valor}
+                            />
+                        ))
+                    }
+                    <AgregarServiciosReserva />
                 </div>
             </article>
         </section>

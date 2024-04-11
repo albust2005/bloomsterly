@@ -35,6 +35,7 @@ import { NotFound } from './components/templates/NotFound'
 
 import { ToastContainer } from "react-toastify";
 import { ReservaActual } from './pages/usuario/ReservaActual'
+import { ReservasUserProvider } from './components/providers/reservasUserProvider'
 
 //import { Empresa } from './pages/empresa/empresa'
 
@@ -50,12 +51,14 @@ function App() {
           <Header />
           <ThemeColor />
 
-
+          {/* Providers y contextos para poder acceder a los valores de cada uno*/}
           <CategoriaProvider>
             <SubCategoriaProvider>
               <ServiciosProvider>
                 <EmpresaProvider>
-                  <RoutesPage></RoutesPage>
+                  <ReservasUserProvider>
+                    <RoutesPage></RoutesPage>
+                  </ReservasUserProvider>
                 </EmpresaProvider>
               </ServiciosProvider>
             </SubCategoriaProvider>
