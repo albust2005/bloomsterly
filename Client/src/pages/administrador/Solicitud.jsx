@@ -27,7 +27,7 @@ export const Solicitud = () => {
   };
   return (
     <>
-      <h1 className="text-white text-7xl mb-2 dark:text-second_color_lt">
+      <h1 className="text-white text-8xl dark:text-second_color_lt">
         Solicitudes de Ingreso
       </h1>
       {data.map((soli) => (

@@ -173,7 +173,7 @@ export const TablaEmpresa = () => {
 
   return (
     <>
-      <h1 className="text-white text-8xl mb-4 dark:text-second_color_lt minicel:text-3xl sm:text-8xl">
+      <h1 className="text-white text-8xl  dark:text-second_color_lt minicel:text-3xl sm:text-8xl">
         Empresas
       </h1>
       <DebouncedInput
@@ -182,7 +182,7 @@ export const TablaEmpresa = () => {
         value={globalFilter ?? ""}
         // El filtro está resiviendo un valor String
         onChange={(value) => setGlobalFilter(String(value))}
-        className="w-full text-border_tabla  dark:text-second_color_lt rounded p-3 border border-admin_card dark:border-second_color_lt outline-none mb-5"
+        className="w-full text-border_tabla  dark:text-second_color_lt rounded p-3 border border-admin_card dark:border-second_color_lt outline-none"
         placeholder="Nombre de la empresa"
       />
       <div className="overflow-auto">

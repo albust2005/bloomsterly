@@ -5,7 +5,6 @@ import { Menudiag } from "../administrador/menudiag";
 import { TablaAdmin } from "./tablaAdmin";
 import { TablaClient } from "./tablaClient";
 import { TablaEmpresa } from "./tablaEmpresas";
-// import { DataTable } from "./DataTable";
 import { FormAdmin } from "./formAdmin";
 import { Denegar } from "./denegar";
 import { ProtectedRoute } from "../../components/providers/ProtectedRoute";
@@ -18,11 +17,11 @@ export function Administrador({ user = "Silvana" }) {
 
   return (
     <>
-      <div className="flex justify-between minicel:flex-col sm:flex-row">
+      {/* <div className="flex justify-between minicel:flex-col sm:flex-row">
         <div className="w-[25%]">
           <Menudiag />
         </div>
-        <div className="w-[70%]">
+        <div className="w-[70%]"> */}
           <Routes>
             <Route path="/" element={<IndexAdmin user={user} />}></Route>
             <Route
@@ -51,8 +50,8 @@ export function Administrador({ user = "Silvana" }) {
             >  
             </Route>
           </Routes>
-        </div>
-      </div>
+        {/* </div>
+      </div> */}
     </>
   );
 }
