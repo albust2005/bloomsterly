@@ -25,7 +25,7 @@ export const useLoginUser = (URI) => {
                 showToastMessage('sesion iniciada correctamente')
                 //alert(respuesta.data.estado)
                 setSesionUser(data)
-                navigate(location ? '/' : location.state.location.pathname )
+                navigate(location ? location.state.location.pathname : '/'  )
             } else {
                 if (Rol == "Administrador") {
                     const respuesta = await axios.post("http://localhost:8000/login/admin/", {
