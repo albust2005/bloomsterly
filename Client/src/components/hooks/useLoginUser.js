@@ -1,11 +1,13 @@
 import axios from 'axios'
 import { useState } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
+import { useToastify } from './useToastify'
 
 export const useLoginUser = (URI) => {
     const [sesionUser, setSesionUser] = useState(null)
     const navigate = useNavigate()
     const location = useLocation()
+    const {showToastMessage} = useToastify()
     console.log(location.state?.location.pathname)
 
     //funcion para el inicio de sesion del usuario
@@ -20,8 +22,8 @@ export const useLoginUser = (URI) => {
                     contrasena: Password
                 })
                 console.log('sesion iniciada correctamente usuario')
-                alert(respuesta.data.message)
-                alert(respuesta.data.estado)
+                showToastMessage(respuesta.data.message)
+                //alert(respuesta.data.estado)
                 setSesionUser(data)
                 navigate(location ? '/' : location.state.location.pathname )
             } else {
@@ -41,7 +43,8 @@ export const useLoginUser = (URI) => {
 
         } catch (error) {
             if (error.response) {
-                alert(error.response.data.message)
+                showToastMessage(error.response.data.message)
+                
 
             } else if (error.request) {
                 // La solicitud fue realizada pero no se recibió respuesta
@@ -58,4 +61,5 @@ export const useLoginUser = (URI) => {
     }
 
     return { sesionUser, loginUser, logout}
+
 } 

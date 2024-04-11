@@ -22,7 +22,8 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.51.1",
-    "react-router-dom": "^6.22.1"
+    "react-router-dom": "^6.22.1",
+    "react-toastify": "^10.0.5"
   },
   "devDependencies": {
     "@swc/cli": "^0.3.10",
