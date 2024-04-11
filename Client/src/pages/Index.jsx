@@ -25,7 +25,7 @@ export function LandingPage() {
 
             <Titles
               title='NOSOTROS'
-              subTitle='¿Que hacemos?'
+              subTitle='¿Qué hacemos?'
             />
             
             {/* <Flor name='blanco' positionx={200} positiony={300} size={10}/> */}

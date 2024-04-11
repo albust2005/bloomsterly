@@ -72,7 +72,7 @@ export function Registro() {
             htmlFor="Cedula"
             className="minicel:text-sm sm:text-lg md:text-xl   mb-1 font-semibold"
           >
-            Cedula
+            Cédula
           </label>
           <input
             type="text"
@@ -178,7 +178,7 @@ export function Registro() {
                 value="4"
                 className="bg-dark_theme minicel:text-xs sm:text-lg md:text-xl  "
               >
-                Medellin
+                Medellín
               </option>
             </select>
           </div>

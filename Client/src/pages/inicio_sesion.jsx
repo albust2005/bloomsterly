@@ -57,11 +57,11 @@ export function InicioSesion() {
             <option value="Cliente" className="text-black">Cliente</option>
             <option value="Administrador" className="text-black">Administrador</option>
           </select>
-          <p className="flex justify-end mt-2 text-xs md:text-base">Se te olvido la contraseña?</p>
+          <p className="flex justify-end mt-2 text-xs md:text-base">¿Olvidaste la contraseña?</p>
         </div>
 
         <div className="text-xs md:text-base">
-          <p className="flex justify-end mt-2 ">Tienes una empresa o emprendimiento?
+          <p className="flex justify-end mt-2 ">¿Tienes una empresa o emprendimiento?
             <Link to="/conocemasEmpresa" className="px-0  md:px-2 hover:bg-light_theme rounded-md hover:text-dark_theme">
               Entra aquí
             </Link>
