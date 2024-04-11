@@ -8,7 +8,7 @@ export function TitleSubCategoria({title, descripcion, subtitle}) {
                 {title}
             </h1>
             <strong className='flex text-center text-white font-title text-2xl celular:text-3xl
-            sm:text-4xl md:text-5xl  '>
+            sm:text-4xl md:text-5xl dark:text-second_color_lt '>
                 {subtitle}
             </strong>
             <p className="font-subTitle text-sm md:text-xl lg:text-3xl text-white dark:text-black text-balance">
