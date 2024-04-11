@@ -42,9 +42,34 @@ export function Header() {
                             : "top-[80px] opacity-100"
                         }`}
                 >
-                    <ButtonNav text="Nosotros" />
-                    <ButtonNav text="Servicios" href="/categorias" />
-                    <ButtonNav text="Reservas" href="/reservas" />
+                    {!sesionUser &&(
+                        <div>
+                            <ButtonNav text="Nosotros" />
+                            <ButtonNav text="Servicios" href="/categorias" />
+                            <ButtonNav text="Reservas" href="/reservas" />
+                        </div>
+                    )}
+                    {sesionUser?.Rol === "Cliente" && (
+                       <div>
+                            <ButtonNav text="Nosotros" />
+                            <ButtonNav text="Servicios" href="/categorias" />
+                            <ButtonNav text="Reservas" href="/reservas" />
+                       </div>
+                    )}
+                    {sesionUser?.Rol === "empresa" && (
+                       <div>
+                            <ButtonNav text="Clientes" />
+                            <ButtonNav text="Servicios" href="/categorias" />
+                            <ButtonNav text="Modificar" href="/reservas" />
+                       </div>
+                    )}
+                    {sesionUser?.Rol === "Administrador" && (
+                       <div>
+                            <ButtonNav text="Nosotros" />
+                            <ButtonNav text="Servicios" href="/categorias" />
+                            <ButtonNav text="Reservas" href="/reservas" />
+                       </div>
+                    )}
                 </div>
 
                 <div className="flex flex-row-reverse w-full">
