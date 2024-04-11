@@ -10,6 +10,7 @@ import { FormAdmin } from "./formAdmin";
 import { Denegar } from "./denegar";
 import { ProtectedRoute } from "../../components/providers/ProtectedRoute";
 import { useUserContext } from "../../components/providers/userProvider";
+import { NotFound } from "../../components/templates/NotFound";
 
 export function Administrador({ user = "Silvana" }) {
 
@@ -44,6 +45,11 @@ export function Administrador({ user = "Silvana" }) {
               path="/crearAdmin"
               element={<FormAdmin />}
             ></Route>
+            <Route
+              path="*"
+              element={<NotFound razon='resultados'></NotFound>}
+            >  
+            </Route>
           </Routes>
         </div>
       </div>

@@ -74,10 +74,10 @@ export function Header() {
                 )}
                 {sesionUser?.Rol === "Administrador" && (
                     <div className="flex flex-col md:flex-row">
-                        <ButtonNav text="Clientes" />
-                        <ButtonNav text="Empresas" href="/categorias" />
-                        <ButtonNav text="Administradores" href="/reservas" />
-                        <ButtonNav text="Solicitudes" href="/reservas" />
+                        <ButtonNav text="Clientes" href="/administrador/clientes" />
+                        <ButtonNav text="Empresas" href="/administrador/empresas" />
+                        <ButtonNav text="Administradores" href="/administrador/administradores" />
+                        <ButtonNav text="Solicitudes" href="/administrador/solicitudes" />
                     </div>
                 )}
             </div>
