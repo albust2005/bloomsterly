@@ -34,7 +34,7 @@ export function Login() {
   return (
     <div className=" h-screen flex justify-center items-center  font-title italic text-xl minicel:flex-col sm:flex-row mt-2">
       <div className=" bg-dark_theme w-full sm:w-2/4 sm:h-[70%] md:h-[95%]  p-8 dark:bg-second_color_lt relative">
-        <div className="absolute top-0 left-0">
+        <div className="absolute top-[5px] left-[5px]">
           <Link to="/">
           <FontAwesomeIcon 
             icon={faHouse}
