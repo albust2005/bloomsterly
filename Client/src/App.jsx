@@ -52,24 +52,7 @@ function App() {
             <SubCategoriaProvider>
               <ServiciosProvider>
                 <EmpresaProvider>
-                  <Routes>
-                    <Route path='/' element={<LandingPage />}></Route>
-                    <Route path='/login' element={<Login />}></Route>
-                    <Route path='/Administrador/*' element={<Administrador />}></Route>
-                    <Route path='/empresa/*' element={<Empresa />}></Route>
-
-                    <Route path='/categorias' element={<Categorias />}></Route>
-                    <Route path='/categorias/:categoria?' element={<SubCategorias />}></Route>
-                    <Route path='/subCategorias/:subCategoria' element={<EmpresasRelacionadas />} />
-
-                    <Route element={<ProtectedRoute redirectPath='/login' />}>
-                      <Route path='/servicio/:subCategoria/:empresa' element={<Servicios></Servicios>}></Route>
-                      <Route path='/reservas' element={<ReservasUser />} />
-                      
-                    </Route>
-
-                    <Route path="/conocemasEmpresa" element={<ConoceMasEmpresa></ConoceMasEmpresa>}></Route>
-                  </Routes>
+                  <RoutesPage></RoutesPage>
                 </EmpresaProvider>
               </ServiciosProvider>
             </SubCategoriaProvider>
@@ -83,6 +66,39 @@ function App() {
       </Layaout>
     </UserProvider>
   )
+}
+
+function RoutesPage() {
+  const { sesionUser } = useUserContext()
+
+  return (
+    <Routes>
+      <Route path='/' element={<LandingPage />}></Route>
+      <Route path='/login' element={<Login />}></Route>
+
+      <Route element={<ProtectedRoute
+        isAuth={!!sesionUser && sesionUser.Rol === 'Administrador'}
+      />}>
+        <Route path='/administrador/*' element={<Administrador />}></Route>
+      </Route>
+
+      <Route path='/empresa/*' element={<Empresa />}></Route>
+
+      <Route path='/categorias' element={<Categorias />}></Route>
+      <Route path='/categorias/:categoria?' element={<SubCategorias />}></Route>
+      <Route path='/subCategorias/:subCategoria' element={<EmpresasRelacionadas />} />
+
+      <Route element={<ProtectedRoute
+        isAuth={!!sesionUser && sesionUser.Rol === 'Cliente'}
+      />}>
+        <Route path='/servicio/:subCategoria/:empresa' element={<Servicios></Servicios>}></Route>
+        <Route path='/reservas' element={<ReservasUser />} />
+      </Route>
+
+      <Route path="/conocemasEmpresa" element={<ConoceMasEmpresa></ConoceMasEmpresa>}></Route>
+    </Routes>
+  )
+
 }
 
 export default App

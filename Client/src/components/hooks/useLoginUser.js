@@ -8,7 +8,6 @@ export const useLoginUser = (URI) => {
     const location = useLocation()
     console.log(location.state?.location.pathname)
 
-
     //funcion para el inicio de sesion del usuario
     const loginUser = async (data) => {
         try {
@@ -24,7 +23,7 @@ export const useLoginUser = (URI) => {
                 alert(respuesta.data.message)
                 alert(respuesta.data.estado)
                 setSesionUser(data)
-                navigate(location.state.location.pathname)
+                navigate(location ? '/' : location.state.location.pathname )
             } else {
                 if (Rol == "Administrador") {
                     const respuesta = await axios.post("http://localhost:8000/login/admin/", {
@@ -34,7 +33,7 @@ export const useLoginUser = (URI) => {
                     console.log('Sesion iniciada correctamente Administrador')
                     alert(respuesta.data.message)
                     setSesionUser(data)
-                    navigate('/')
+                    navigate('/administrador')
                 }
             }
 

@@ -8,8 +8,13 @@ import { TablaEmpresa } from "./tablaEmpresas";
 // import { DataTable } from "./DataTable";
 import { FormAdmin } from "./formAdmin";
 import { Denegar } from "./denegar";
+import { ProtectedRoute } from "../../components/providers/ProtectedRoute";
+import { useUserContext } from "../../components/providers/userProvider";
 
 export function Administrador({ user = "Silvana" }) {
+
+  const { sesionUser } = useUserContext()
+
   return (
     <>
       <div className="flex justify-between minicel:flex-col sm:flex-row">
@@ -20,23 +25,23 @@ export function Administrador({ user = "Silvana" }) {
           <Routes>
             <Route path="/" element={<IndexAdmin user={user} />}></Route>
             <Route
-              path="administrador/solicitudes"
+              path="/solicitudes"
               element={<Solicitud />}
             ></Route>
             <Route
-              path="administrador/administradores"
+              path="/administradores"
               element={<TablaAdmin />}
             ></Route>
             <Route
-              path="administrador/clientes"
+              path="/clientes"
               element={<TablaClient />}
             ></Route>
             <Route
-              path="administrador/empresas"
+              path="/empresas"
               element={<TablaEmpresa />}
             ></Route>
             <Route
-              path="administrador/crearAdmin"
+              path="/crearAdmin"
               element={<FormAdmin />}
             ></Route>
           </Routes>
