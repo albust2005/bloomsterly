@@ -8,8 +8,10 @@ export function ReservasUser() {
             {reservas.length === 0
                 ?
                 <div className="w-full flex flex-col text-center gap-10">
+                    <p className="text-wrap text-4xl font-text text-white ">
+                        Realiza tu primera reserva <Link to='/categorias' 
+                        className="hover:bg-purple-600 p-1 rounded-sm">aqui</Link></p>
                     <NotFound razon='reservas' />
-                    <p className="text-wrap text-4xl font-title">Realiza tu primera reserva <Link to='/categorias'>aqui</Link></p>
                 </div>
                 :
                 <h1>reservas</h1>
