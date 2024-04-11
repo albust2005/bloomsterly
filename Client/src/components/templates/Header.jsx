@@ -34,8 +34,12 @@ export function Header() {
 
     return (
         <nav className="bg-transparent flex justify-between items-center h-20 dark:bg-transparent dark:shadow-[#f7e6d5] ">
-            <Link className="flex justify-between w-full items-center" to="/">
-                <span className="cursor-pointer dark:text-red-600 text-white">BloomSterly</span>
+            <Link className="flex w-full items-center" to="/">
+                <div className="flex w-full h-full items-end gap-1">
+                    <span className="cursor-pointer dark:text-red-600 text-white font-bloomsterly text-3xl">BloomSterly</span>
+                    <img src="../src/assets/flor_img/lirioblanco.webp" alt="" className="h-10 aspect-auto object-cover rotate-180"/>
+                </div>
+                
             </Link>
 
             <div
