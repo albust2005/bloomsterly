@@ -1,14 +1,21 @@
 import axios from 'axios'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { useToastify } from './useToastify'
 
 export const useLoginUser = (URI) => {
-    const [sesionUser, setSesionUser] = useState(null)
+    const [sesionUser, setSesionUser] = useState(()=>{
+        const user = localStorage.getItem('user')
+        return user ? JSON.parse(user) : null
+    })
+
+    useEffect(()=>{
+        localStorage.setItem('user', JSON.stringify(sesionUser))
+    },[sesionUser])
+
+
     const navigate = useNavigate()
     const location = useLocation()
-    console.log(location?.state?.location.pathname)
-    
     const { showToastMessage } = useToastify()
 
     //funcion para el inicio de sesion del usuario
@@ -39,8 +46,6 @@ export const useLoginUser = (URI) => {
                 }
             }
 
-
-
         } catch (error) {
             if (error.response) {
                 showToastMessage("Revisa tu usuario o contraseña")
@@ -54,6 +59,9 @@ export const useLoginUser = (URI) => {
     }
 
     const logout = () => {
+        localStorage.removeItem('user')
+
+        showToastMessage("Sesion cerrada correctamente")
         setSesionUser(null)
         navigate('/')
     }
