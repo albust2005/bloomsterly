@@ -1,11 +1,11 @@
-import { toast,  Zoom, } from "react-toastify";
+import { toast, Zoom, } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 
 export const useToastify = () => {
 
     const showToastMessage = (message) => {
-        toast({message} ,{
+        toast(message, {
             className: "foo-bar",
             theme: "dark",
             transition: Zoom,
@@ -13,5 +13,5 @@ export const useToastify = () => {
         });
     }
 
-    return {showToastMessage}
+    return { showToastMessage }
 }

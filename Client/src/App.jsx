@@ -33,6 +33,7 @@ import { EmpresaProvider } from './components/providers/empresaProvider'
 import { ProtectedRoute } from './components/providers/ProtectedRoute'
 import { NotFound } from './components/templates/NotFound'
 
+import { ToastContainer } from "react-toastify";
 
 //import { Empresa } from './pages/empresa/empresa'
 
@@ -63,7 +64,7 @@ function App() {
 
           <Footer />
         </ThemeProvider>
-
+        <ToastContainer position="top-center" />
       </Layaout>
     </UserProvider>
   )

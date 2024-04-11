@@ -7,8 +7,9 @@ export const useLoginUser = (URI) => {
     const [sesionUser, setSesionUser] = useState(null)
     const navigate = useNavigate()
     const location = useLocation()
-    const {showToastMessage} = useToastify()
-    console.log(location.state?.location.pathname)
+    console.log(location?.state?.location.pathname)
+    
+    const { showToastMessage } = useToastify()
 
     //funcion para el inicio de sesion del usuario
     const loginUser = async (data) => {
@@ -21,11 +22,10 @@ export const useLoginUser = (URI) => {
                     username: Username,
                     contrasena: Password
                 })
-                console.log('sesion iniciada correctamente usuario')
-                showToastMessage('sesion iniciada correctamente')
-                //alert(respuesta.data.estado)
+                
+                showToastMessage(`Bienvenido de nuevo ${Username}`)
                 setSesionUser(data)
-                navigate(location ? location.state.location.pathname : '/'  )
+                navigate(!!location.state ? location.state.location.pathname : '/')
             } else {
                 if (Rol == "Administrador") {
                     const respuesta = await axios.post("http://localhost:8000/login/admin/", {
@@ -44,8 +44,6 @@ export const useLoginUser = (URI) => {
         } catch (error) {
             if (error.response) {
                 showToastMessage(error.response.data.message)
-                
-
             } else if (error.request) {
                 // La solicitud fue realizada pero no se recibió respuesta
                 console.error('No se recibió respuesta del servidor');
@@ -55,11 +53,11 @@ export const useLoginUser = (URI) => {
         }
     }
 
-    const logout = () =>{
+    const logout = () => {
         setSesionUser(null)
         navigate('/')
     }
 
-    return { sesionUser, loginUser, logout}
+    return { sesionUser, loginUser, logout }
 
 } 
