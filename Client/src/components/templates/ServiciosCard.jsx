@@ -1,4 +1,7 @@
-export function ServiciosCard({id, descripcion, valor, img }) {
+
+
+
+export function ServiciosCard({id, nombre, descripcion, valor, img }) {
 
     console.log(id)
     
@@ -9,6 +12,7 @@ export function ServiciosCard({id, descripcion, valor, img }) {
             </div>
             <div className="flex flex-col font-text font-medium bg-black w-2/3 ">
                 <div>
+                    <h1>{nombre}</h1>
                     <p className="text-xl ">{descripcion}</p>
                     <h2 className="text-lg">{valor}</h2>
                 </div>
