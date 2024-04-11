@@ -31,6 +31,7 @@ import { ServiciosProvider } from './components/providers/serviciosProvider'
 import { EmpresaProvider } from './components/providers/empresaProvider'
 
 import { ProtectedRoute } from './components/providers/ProtectedRoute'
+import { NotFound } from './components/templates/NotFound'
 
 
 //import { Empresa } from './pages/empresa/empresa'
@@ -75,18 +76,18 @@ function RoutesPage() {
     <Routes>
       <Route path='/' element={<LandingPage />}></Route>
       <Route path='/login' element={<Login />}></Route>
+      <Route path='/empresa/*' element={<Empresa />}></Route>
+      <Route path='/categorias' element={<Categorias />}></Route>
+      <Route path='/categorias/:categoria?' element={<SubCategorias />}></Route>
+      <Route path='/subCategorias/:subCategoria' element={<EmpresasRelacionadas />} />
+      <Route path="/conocemasEmpresa" element={<ConoceMasEmpresa></ConoceMasEmpresa>}></Route>
+      <Route path='*' element={<NotFound razon={'resultados'}></NotFound>}></Route>
 
       <Route element={<ProtectedRoute
         isAuth={!!sesionUser && sesionUser.Rol === 'Administrador'}
       />}>
         <Route path='/administrador/*' element={<Administrador />}></Route>
       </Route>
-
-      <Route path='/empresa/*' element={<Empresa />}></Route>
-
-      <Route path='/categorias' element={<Categorias />}></Route>
-      <Route path='/categorias/:categoria?' element={<SubCategorias />}></Route>
-      <Route path='/subCategorias/:subCategoria' element={<EmpresasRelacionadas />} />
 
       <Route element={<ProtectedRoute
         isAuth={!!sesionUser && sesionUser.Rol === 'Cliente'}
@@ -95,7 +96,6 @@ function RoutesPage() {
         <Route path='/reservas' element={<ReservasUser />} />
       </Route>
 
-      <Route path="/conocemasEmpresa" element={<ConoceMasEmpresa></ConoceMasEmpresa>}></Route>
     </Routes>
   )
 
