@@ -34,6 +34,7 @@ import { ProtectedRoute } from './components/providers/ProtectedRoute'
 import { NotFound } from './components/templates/NotFound'
 
 import { ToastContainer } from "react-toastify";
+import { ReservaActual } from './pages/usuario/ReservaActual'
 
 //import { Empresa } from './pages/empresa/empresa'
 
@@ -95,6 +96,7 @@ function RoutesPage() {
       />}>
         <Route path='/servicio/:subCategoria/:empresa' element={<Servicios></Servicios>}></Route>
         <Route path='/reservas' element={<ReservasUser />} />
+        <Route path='/reserva/:user' element={<ReservaActual />}></Route>
       </Route>
 
     </Routes>

@@ -1,8 +1,17 @@
 function ServicioCardReserva () {
     return (
-        <section>
-            
-        </section>
+        <article>
+            <div>
+                <img src="" alt="" />
+            </div>
+            <div>
+                <h2>Nombre empresa</h2>
+                <h1>Nombre servicio</h1>
+            </div>
+            <div>
+                <button>eliminar</button>
+            </div>
+        </article>
     )
 }
 

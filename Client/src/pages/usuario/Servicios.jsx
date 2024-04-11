@@ -17,7 +17,7 @@ const useFoundServiciosRelacionados = () => {
     const empresaRelacionada = empresas.find(em => em.nombre === empresa)
     const subCategoriaRelacionada = subCategorias.find(sub => sub.nombre === subCategoria)
 
-    const serviciosRelacionados = servicios.filter(servicio =>
+    const serviciosRelacionados = servicios?.filter(servicio =>
         servicio.idEmpresa === empresaRelacionada.id &&
         servicio.idSubCategoria === subCategoriaRelacionada.id
     )

@@ -1,13 +1,16 @@
-
+import { Link } from "react-router-dom"
+import { useUserContext } from '../providers/userProvider'
 
 
 export function ServiciosCard({id, nombre, descripcion, valor, img }) {
 
-    console.log(id)
-    
+    const { sesionUser } = useUserContext()
+    console.log(sesionUser)
+
+
     return (
         <article className="flex flex-col p-3 text-white w-full bg-red-300">
-            <div className="bg-slate-600 w-1/3 flex " >
+            <div className="bg-slate-600 w-1/3 flex">
                 <img src={img} alt="" />
             </div>
             <div className="flex flex-col font-text font-medium bg-black w-2/3 ">
@@ -17,7 +20,7 @@ export function ServiciosCard({id, nombre, descripcion, valor, img }) {
                     <h2 className="text-lg">{valor}</h2>
                 </div>
                 <div className="flex justify-end">
-                    <button className="text-center  w-1/4 border-2">Reservar</button>
+                    <Link to={`/reserva/${sesionUser.Username}`} className="text-center  w-1/4 border-2">Reservar</Link>
                 </div>
             </div>
         </article>
