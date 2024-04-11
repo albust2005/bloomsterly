@@ -1,8 +1,11 @@
 import axios from 'axios';
 import { useState } from 'react'
+import { useToastify } from './useToastify'
 
 export const useCreateUser = (URI) =>{
     const [user, setUser] = useState(null)
+
+    const { showToastMessage } = useToastify()
 
     //funcion para el registro del usuario
     const createUser = async (data) => {
@@ -17,13 +20,13 @@ export const useCreateUser = (URI) =>{
                 contrasena: ConfirmPassword,
                 username: Username
             })
-            const r=respuesta.data.message
-            alert(r)
+            showToastMessage(`Bienvenido a BloomSterly ${Username}`)
             console.log(data);
             setUser(data)
 
         } catch (error) {
             console.log(error.message)
+            showToastMessage(`Revisa tus datos`)
         }
     };
     return { createUser, user }

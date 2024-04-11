@@ -4,7 +4,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 export const useToastify = () => {
 
-    const showToastMessage = (message) => {
+    const showToastMessage = (message, ) => {
         toast(message, {
             className: "foo-bar",
             theme: "dark",
