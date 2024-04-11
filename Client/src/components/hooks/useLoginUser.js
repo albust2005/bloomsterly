@@ -43,7 +43,7 @@ export const useLoginUser = (URI) => {
 
         } catch (error) {
             if (error.response) {
-                showToastMessage(error.response.data.message)
+                showToastMessage("Revisa tu usuario o contraseña")
             } else if (error.request) {
                 // La solicitud fue realizada pero no se recibió respuesta
                 console.error('No se recibió respuesta del servidor');
