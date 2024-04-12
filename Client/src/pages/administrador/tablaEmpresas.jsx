@@ -173,7 +173,7 @@ export const TablaEmpresa = () => {
 
   return (
     <>
-      <h1 className="text-white text-8xl  dark:text-second_color_lt minicel:text-3xl sm:text-8xl">
+      <h1 className="text-white text-xl font-title italic dark:text-second_color_lt minicel:text-3xl sm:text-6xl md:text-8xl">
         Empresas
       </h1>
       <DebouncedInput
@@ -207,10 +207,10 @@ export const TablaEmpresa = () => {
                     {header.isPlaceholder
                       ? null
                       : // FlexRender recibe dos propiedades del header
-                        flexRender(
-                          header.column.columnDef.header,
-                          header.getContext()
-                        )}
+                      flexRender(
+                        header.column.columnDef.header,
+                        header.getContext()
+                      )}
                   </th>
                 ))}
               </tr>

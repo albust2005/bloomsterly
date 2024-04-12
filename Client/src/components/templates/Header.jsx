@@ -30,20 +30,27 @@ export function Header() {
     if (location?.pathname === '/login') {
         return null
     }
-    
+
     if (location?.pathname === '/registroEmpresa') {
         return null
     }
 
+    let route = "/"
+    if (sesionUser?.Rol === "Empresa") {
+        route = "/empresa"
+    }
+    if (sesionUser?.Rol === "Administrador") {
+        route = "/administrador"
+    }
 
     return (
         <nav className="bg-transparent flex justify-between items-center h-20 dark:bg-transparent dark:shadow-[#f7e6d5] ">
-            <Link className="flex w-full items-center" to="/">
+            <Link className="flex w-full items-center" to={route}>
                 <div className="flex w-full h-full items-end gap-1">
                     <span className="cursor-pointer dark:text-red-600 text-white font-bloomsterly text-3xl">BloomSterly</span>
-                    <img src="../src/assets/flor_img/lirioblanco.webp" alt="" className="h-10 aspect-auto object-cover rotate-180"/>
+                    <img src="../src/assets/flor_img/lirioblanco.webp" alt="" className="h-10 aspect-auto object-cover rotate-180" />
                 </div>
-                
+
             </Link>
 
             <div
@@ -71,7 +78,7 @@ export function Header() {
                 )}
                 {sesionUser?.Rol === "Empresa" && (
                     <div className="flex flex-col md:flex-row">
-                        <ButtonNav text="Clientes" href={"empresa/reserva"}/>
+                        <ButtonNav text="Clientes" href={"empresa/reserva"} />
                         <ButtonNav text="Servicios" href="empresa/servicios" />
                         <ButtonNav text="Perfil" href="empresa/perfil" />
                     </div>
