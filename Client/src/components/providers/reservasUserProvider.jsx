@@ -22,7 +22,7 @@ export function ReservasUserProvider({ children }) {
     const createReserva = (data) => {
         console.log(data)
         const newItem = {
-            nombreEvento: data.nombre_evento,
+            nombreEvento: data.evento,
             fecha: data.fecha,
             direccion: data.direccion,
             telefono: data.telefono,
