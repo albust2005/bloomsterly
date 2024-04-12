@@ -18,8 +18,8 @@ const ReservaDetalleCard = ({
   
 
   return (
-    <article className="flex  p-2 text-white flex-col ">
-      <div className="w-full  h-full p-2 bg-dark_theme dark:bg-second_color_lt">
+    <article className="flex text-white flex-col ">
+      <div className="w-full  h-full p-5 bg-dark_theme dark:bg-second_color_lt rounded-sm">
         <div className="flex flex-col ">
           <h1 className="font-title font-semibold text-3xl">
             Cliente {sesionUser.Username}
