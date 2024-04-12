@@ -173,7 +173,7 @@ export const TablaClient = () => {
 
   return (
     <>
-      <h1 className="text-white text-8xl dark:text-second_color_lt minicel:text-3xl sm:text-8xl">
+      <h1 className="text-white text-xl font-title italic dark:text-second_color_lt minicel:text-3xl sm:text-6xl md:text-8xl">
         Clientes
       </h1>
         <DebouncedInput

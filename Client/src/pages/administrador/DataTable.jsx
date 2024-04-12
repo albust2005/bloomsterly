@@ -10,6 +10,7 @@ import {
 // import { FaPencilAlt } from 'react-icons/fa';
 import classNames from "classnames"; //Esta libreria nos permitirá dar estilo según su condicionamiento
 import { rankItem } from "@tanstack/match-sorter-utils";
+import { DefaultData } from "./DefaultData";
 import { useEffect, useState } from "react";
 import axios from "axios";
 const filterTable = (row, columnId, value, addMeta) => {
@@ -35,8 +36,8 @@ const DebouncedInput = ({ value: keyWord, onChange, ...props }) => {
       onChange(value);
     }, 500);
     //Esta línea de código está almacenando el id de la constante timeot
-    //Esta línea valida si el valor de value se actualiza antes de que pasen 500 milisegundos
-    //se borrará esa temporización cuando se exceda el tiempo de pausa
+    //Esta línea valida si el valor de value se actualiza antes de que pasen 500 milisegundos 
+    //se borrará esa temporización cuando se exceda el tiempo de pausa 
     return () => clearTimeout(timeout);
   }, [value]);
 
@@ -50,38 +51,29 @@ const DebouncedInput = ({ value: keyWord, onChange, ...props }) => {
   );
 };
 
-export const TablaEmpresa = () => {
+export const DataTable = ({tabla, titulo}) => {
   //Es el estado inicial de la tabla, y en este importamos nuestra BD falsa
-  const [data, setData] = useState([]);
+  const [data, setData] = useState({tabla});
 
-  useEffect(() => {
-    obtener();
-  }, []);
+  useEffect(()=>{
+    obtener()
+  },[])
   //
-  const obtener = async () => {
+  const obtener= async()=>{
     try {
-      const usuario = await axios.get(
-        "http://localhost:8000/admin/getAllEmpresas"
-      );
-      // console.log(usuario.data)
-      const datos = usuario.data;
-      const formattedData = datos.map((user) => ({
-        username: user.username,
-        email: user.email,
-        estado: user.administradores[0]?.control_empresas.estado, // Usar el estado del primer administrador si existe
-      }));
-      setData(formattedData);
+      const usuario=await axios.get("http://localhost:8000/admin/getAllUsuarios");
+    // console.log(usuario.data)
+    const datos=usuario.data
+    const formattedData = datos.map(user => ({
+      username: user.username,
+      email: user.email,
+      estado: user.administradores[0]?.control_usuarios.estado // Usar el estado del primer administrador si existe
+    }));
+    setData(formattedData)
     } catch (error) {
-      if (error.response) {
-        alert(error.response.data.message);
-      } else if (error.request) {
-        // La solicitud fue realizada pero no se recibió respuesta
-        console.error("No se recibió respuesta del servidor");
-      } else {
-        alert(error.message);
-      }
+      alert(error.response.data)
     }
-  };
+  }
   const [globalFilter, setGlobalFilter] = useState("");
   console.log(globalFilter);
 
@@ -105,38 +97,26 @@ export const TablaEmpresa = () => {
       cell: ({ row }) => (
         <button
           // className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-          className=" uppercase text-center  w-40 border border-border_tabla dark:border-second_color_lt text-white  dark:bg-light_theme  dark:text-second_color_lt bg-admin_card  rounded-2xl hover:bg-hover_boton_admin dark:hover:bg-second_color_lt dark:hover:text-white"
+          className=" uppercase py-3 px-6 text-center border border-border_tabla dark:border-second_color_lt text-white  dark:bg-light_theme  dark:text-second_color_lt bg-admin_card w-56 rounded-2xl"
           onClick={() => handleButtonClick(row.original.username)}
-        >
-          {" "}
-          {row.original.estado == "Activo" ? "Sancionar" : "  Activar "}
+        > {row.original.estado=="Activo" ? "Sancionar" : "  Activar "}
           {/* <FaPencilAlt /> */}
         </button>
       ),
     },
   ];
 
-  const handleButtonClick = async (username) => {
-    console.log("El nombre de la empresa es: ", username);
+  const handleButtonClick=async(username)=>{
+    console.log("El nombre del usuario es: ",username)
     try {
-      const respuesta = await axios.put(
-        "http://localhost:8000/admin/sancionarEmpresa",
-        { username }
-      );
-      const mensaje = respuesta.data.message;
-      alert(mensaje);
-      obtener();
+      const respuesta=await axios.put("http://localhost:8000/admin/sancionarUsuario",{username})
+      const mensaje=respuesta.data.message
+      alert(mensaje)
+      obtener()
     } catch (error) {
-      if (error.response) {
-        alert(error.response.data.message);
-      } else if (error.request) {
-        // La solicitud fue realizada pero no se recibió respuesta
-        console.error("No se recibió respuesta del servidor");
-      } else {
-        alert(error.message);
-      }
+      alert(error.response.data)
     }
-  };
+  }
   const getStateTable = () => {
     //Este es el total de registros que vamos a tener en cada estado
     const totalRows = table.getFilteredRowModel().rows.length;
@@ -172,21 +152,23 @@ export const TablaEmpresa = () => {
   });
 
   return (
-    <>
-      <h1 className="text-white text-xl font-title italic dark:text-second_color_lt minicel:text-3xl sm:text-6xl md:text-8xl">
-        Empresas
+    <div className="w-[110vh]">
+      <h1 className="text-white text-8xl mb-4 dark:text-second_color_lt minicel:text-3xl sm:text-8xl">
+        {titulo}
       </h1>
-      <DebouncedInput
-        type="text"
-        //En caso de que globalFilter no esté definido vamos a pasar un string vacío
-        value={globalFilter ?? ""}
-        // El filtro está resiviendo un valor String
-        onChange={(value) => setGlobalFilter(String(value))}
-        className="w-full text-border_tabla  dark:text-second_color_lt rounded p-3 border border-admin_card dark:border-second_color_lt outline-none"
-        placeholder="Nombre de la empresa"
-      />
+      <div className="">
+        <DebouncedInput
+          type="text"
+          //En caso de que globalFilter no esté definido vamos a pasar un string vacío
+          value={globalFilter ?? ""}
+          // El filtro está resiviendo un valor String
+          onChange={(value) => setGlobalFilter(String(value))}
+          className="w-[107vh] text-border_tabla  dark:text-second_color_lt rounded p-3 border border-admin_card dark:border-second_color_lt outline-none mb-5"
+          placeholder="Nombre del cliente"
+        />
+      </div>
       <div className="overflow-auto">
-        <table className="shadow-lg shadow-admin_card/25 dark:shadow-second_color_lt/15 w-full">
+        <table className="shadow-lg shadow-admin_card/25 dark:shadow-second_color_lt/15 min-w-[560px]">
           {/* Esta es la cabezera de nuestra tabla */}
           <thead>
             {/* headerGroup es el nombre que le estamos dando a las propiedades que
@@ -200,17 +182,17 @@ export const TablaEmpresa = () => {
                 {headerGroup.headers.map((header) => (
                   <th
                     key={header.id}
-                    className=" uppercase py-3  text-center border border-border_tabla dark:border-second_color_lt"
+                    className=" uppercase py-3 px-12 text-center border border-border_tabla dark:border-second_color_lt"
                   >
                     {/* isPlaceholder valida si es verdadero o falso, entonces en caso de que no 
                     halla una cabecera no se retornará nada*/}
                     {header.isPlaceholder
                       ? null
                       : // FlexRender recibe dos propiedades del header
-                      flexRender(
-                        header.column.columnDef.header,
-                        header.getContext()
-                      )}
+                        flexRender(
+                          header.column.columnDef.header,
+                          header.getContext()
+                        )}
                   </th>
                 ))}
               </tr>
@@ -257,7 +239,7 @@ export const TablaEmpresa = () => {
               className={classNames({
                 "text-white bg-admin_card py-0.5 px-1 rounded border border-border_tabla dark:border text-xl font-bold hover:bg-border_tabla dark:border-second_color_lt dark:hover:bg-second_color_lt dark:bg-light_theme dark:text-second_color_lt dark:hover:text-white disabled:hover:text-admin_card dark:disabled:bg-light_theme": true,
                 "bg-border_tabla dark:bg-second_color_lt dark:text-white":
-                  // retorna en que número depágina estamos
+                // retorna en que número depágina estamos
                   value === table.getState().pagination.pageIndex,
               })}
               onClick={() => table.setPageIndex(value)}
@@ -298,6 +280,6 @@ export const TablaEmpresa = () => {
           <option value="50">50 pág.</option>
         </select>
       </div>
-    </>
+    </div>
   );
 };

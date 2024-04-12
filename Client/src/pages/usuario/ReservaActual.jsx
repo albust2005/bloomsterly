@@ -1,141 +1,240 @@
-import { Link } from "react-router-dom"
-import { useForm } from 'react-hook-form'
+import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faCirclePlus } from "@fortawesome/free-solid-svg-icons"
-import { useReservaUserContext, useReservaUserCrudContext } from "../../components/providers/reservasUserProvider"
-import { useEmpresaContext } from "../../components/providers/empresaProvider"
-import { useUserContext } from "../../components/providers/userProvider"
-import { useState } from "react"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCirclePlus } from "@fortawesome/free-solid-svg-icons";
+import {
+  useReservaUserContext,
+  useReservaUserCrudContext,
+} from "../../components/providers/reservasUserProvider";
+import { useEmpresaContext } from "../../components/providers/empresaProvider";
+import { useUserContext } from "../../components/providers/userProvider";
+import { useThemeContext}  from "../../components/providers/themeProvider"
+import { useState } from "react";
 
+{
+  /*agregar el servicio  */
+}
 function AgregarServiciosReserva() {
-    return (
-        <div className="">
-            <Link
-                to='/categorias'
-            >
-                <FontAwesomeIcon
-                    icon={faCirclePlus}
-                />
-            </Link>
-        </div>
-    )
+    const theme = useThemeContext()
+    const logoColor = theme === "dark" ? "#BC0B38" : "#fff"
 
+  return (
+    <div className="bg-color_switch_theme_dark w-1/5 min-h-[200px] max-h-[200px] flex justify-center items-center 
+    rounded-sm dark:bg-[#FFFFDD]">
+      <Link to="/categorias">
+        <FontAwesomeIcon icon={faCirclePlus} size="2x" 
+        style={{color: logoColor}}/>
+      </Link>
+    </div>
+  );
 }
 
-
+{
+  /*renderiza el servicio seleccionado */
+}
 function ServicioCardReserva({ empresa, nombre, valor }) {
-    return (
-        <article>
-            <div>
-                <img src="" alt="" />
-            </div>
-            <div>
-                <h2>Nombre empresa: {empresa}</h2>
-                <h1>Nombre servicio: {nombre}</h1>
-                <p>Valor: {valor}</p>
-            </div>
-            <div>
-                <button>eliminar</button>
-            </div>
-        </article>
-    )
+  return (
+    <article className="bg-color_switch_theme_dark w-1/5 min-h-[200px] max-h-[200px] p-2 relative rounded-sm
+    dark:bg-[#FFFFDD] dark:text-second_color_lt">
+      <div>
+        <img src="" alt="" />
+      </div>
+      <div className="flex flex-col gap-1">
+        <h2 className="font-title text-xl font-semibold"> {empresa}</h2>
+        <h2 className="font-title font-semibold">Nombre servicio:</h2>
+        <h2 className="font-text"> {nombre}</h2>
+        <h2 className="font-title font-semibold">Valor:</h2>
+        <p>{valor}</p>
+      </div>
+      <div className="flex flex-row-reverse">
+        <button className="w-1/2 bg-dark_theme absolute bottom-2 dark:bg-second_color_lt dark:text-light_theme">
+            Eliminar
+        </button>
+      </div>
+    </article>
+  );
 }
-
 
 export function ReservaActual() {
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-        reset
-    } = useForm()
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm();
 
-    const [servicioSeleccionadoID, setServicioSeleccionadoID] = useState([])
-    const { servicioSeleccionados } = useReservaUserContext()
-    console.log(servicioSeleccionados)
-    const { createReserva } = useReservaUserCrudContext()
-    const empresas = useEmpresaContext()
+  const [servicioSeleccionadoID, setServicioSeleccionadoID] = useState([]);
+  const { servicioSeleccionados } = useReservaUserContext();
+  console.log(servicioSeleccionados);
+  const { createReserva } = useReservaUserCrudContext();
+  const empresas = useEmpresaContext();
 
-    useState(() => {
-        const servicioID = servicioSeleccionados?.find(servicio => servicio.id)?.id
-        setServicioSeleccionadoID([...servicioSeleccionadoID, servicioID])
-    }, [servicioSeleccionados])
+  useState(() => {
+    const servicioID = servicioSeleccionados?.find(
+      (servicio) => servicio.id
+    )?.id;
+    setServicioSeleccionadoID([...servicioSeleccionadoID, servicioID]);
+  }, [servicioSeleccionados]);
 
-    const onSubmit = (data) => {
-        data.servicios = servicioSeleccionadoID
-        createReserva(data)
-        setServicioSeleccionadoID([])
-    }
+  const onSubmit = (data) => {
+    data.servicios = servicioSeleccionadoID;
+    createReserva(data);
+    setServicioSeleccionadoID([]);
+  };
 
-    const { sesionUser } = useUserContext()
+  const { sesionUser } = useUserContext();
 
-    return (
-        <section>
-            <div>
-                <h1>Reserva</h1>
+  return (
+    <section className=" bg-dark_theme dark:bg-second_color_lt p-9 flex flex-col gap-4">
+      <div>
+        <h1 className="font-bloomsterly text-8xl text-center text-white">
+          Reserva
+        </h1>
+      </div>
+
+      <div className="flex justify-center items-center ">
+        <form
+          action=""
+          id="my-form"
+          onSubmit={handleSubmit(onSubmit)}
+          className=" w-[90%] text-white flex flex-col gap-5" 
+        >
+          <div className="flex">
+            <div className="flex justify-start items-center w-1/3">
+              <label
+                htmlFor="cliente"
+                {...register("cliente")}
+                className="font-title font-semibold text-xl"
+              >
+                Cliente: {sesionUser?.Username}
+              </label>
             </div>
 
-            <form action="" id="my-form" onSubmit={handleSubmit(onSubmit)} className="bg-color_switch_theme_dark">
-                <div>
-                    <div>
-                        <h1>Nombre del evento: </h1>
-                        <input type="text"
-                            defaultValue='evento 1'
-                            {...register("nombre_evento", {
-                                required: {
-                                    value: true,
-                                    message: "Escribe un nombre para tu evento",
-                                },
-                            })}
-                        />
-                    </div>
+            <div className="flex flex-col w-2/3">
+              <label
+                htmlFor="evento"
+                className="font-title font-semibold text-xl"
+              >
+                Nombre del evento
+              </label>
+              <input
+                type="text"
+                {...register("evento", {
+                  required: {
+                    value: true,
+                    message: "Escribe un nombre para tu evento",
+                  },
+                })}
+                className="focus:outline-none bg-transparent border-b-2 border-white text-base font-text"
+              />
+              {errors.evento && (
+                <span className="text-sm">{errors.evento.message}</span>
+              )}
+            </div>
+          </div>
 
-                    <p>Cliente: {sesionUser?.Username}</p>
+          <div className="flex flex-col">
+            <label
+              htmlFor="direccion"
+              className="font-title font-semibold text-xl"
+            >
+              Direccion{" "}
+            </label>
+            <input
+              type="text"
+              {...register("direccion", {
+                required: {
+                  value: true,
+                  message: "Escribe la direccion del evento",
+                },
+              })}
+              className="focus:outline-none bg-transparent border-b-2 border-white text-base font-text"
+            />
+            {errors.direccion && (
+              <span className="text-sm">{errors.direccion.message}</span>
+            )}
+          </div>
 
-                    <div>
-                        <h1>Direccion: </h1>
-                        <input type="text"
-                            {...register("direccion", {
-                                required: {
-                                    value: true,
-                                    message: "Escribe la direccion del evento",
-                                },
-                            })}
-                        />
-                    </div>
+          <div className="flex gap-5">
+            <div className="flex flex-col w-1/2">
+              <label
+                htmlFor="fecha"
+                className="font-title font-semibold text-xl"
+              >
+                Fecha
+              </label>
+              <input
+                type="date"
+                {...register("fecha", {
+                  required: {
+                    value: true,
+                    message: "Es obligatoria la fecha",
+                  },
+                  // validate: (value) => {
+                  //     const selectedDate = new Date(value); // Convertir el valor del campo a un objeto Date
+                  //     const currentDate = new Date();
 
-                    <div className="">
-                        <h1>Fecha: </h1>
-                        <input type="date"
-                            {...register("fecha")}
-                        />
-                    </div>
+                  // }
+                })}
+                className="focus:outline-none bg-transparent border-b-2 border-white text-base font-text"
+              />
+              {errors.fecha && (
+                <span className="text-sm">{errors.fecha.message}</span>
+              )}
+            </div>
 
-                    <label htmlFor="">Telefono: </label>
-                    <input type="text"
-                        {...register("telefono")}
-                    />
-                </div>
+            <div className="flex flex-col w-1/2">
+              <label
+                htmlFor="telefono"
+                className="font-title font-semibold text-xl"
+              >
+                Telefono:
+              </label>
+              <input
+                type="tel"
+                {...register("telefono", {
+                  required: {
+                    value: true,
+                    message: "Debes poner tu telefono",
+                  },
+                })}
+                className="focus:outline-none bg-transparent border-b-2 border-white text-base font-text"
+              />
+              {errors.telefono && (
+                <span className="text-sm">{errors.telefono.message}</span>
+              )}
+            </div>
+          </div>
 
-                <div className="bg-white">
-                    <h1>Servicios: </h1>
-                    {
-                        servicioSeleccionados?.map(({ id, idEmpresa, nombre, valor }) => (
-                            <ServicioCardReserva
-                                key={id}
-                                empresa={empresas.find(em => em.id == idEmpresa)?.nombre}
-                                nombre={nombre}
-                                valor={valor}
-                            />
-                        ))
-                    }
-                    <AgregarServiciosReserva />
-                </div>
-                <div>
-                    <button type="submit">confirmar</button>
-                </div>
-            </form>
-        </section>
-    )
+          <div className="">
+            <label
+              htmlFor="servicios"
+              className="font-title font-semibold text-xl"
+            >
+              Servicios
+            </label>
+            <div className="flex gap-3">
+            {servicioSeleccionados?.map(({ id, idEmpresa, nombre, valor }) => (
+              <ServicioCardReserva
+                key={id}
+                empresa={empresas.find((em) => em.id == idEmpresa)?.nombre}
+                nombre={nombre}
+                valor={valor}
+              />
+            ))}
+            <AgregarServiciosReserva />
+            </div>
+          </div>
+          <div>
+            <button type="submit" className="w-full bg-transparent border-2 border-[#451693] rounded-sm 
+             hover:bg-[#451693] font-title p-1 transition-all ease-in-out
+             dark:border-light_theme dark:hover:text-second_color_lt dark:hover:bg-light_theme">
+                Confirmar
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+  );
 }
