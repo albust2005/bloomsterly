@@ -22,7 +22,6 @@ import { EmpresasRelacionadas } from './pages/usuario/EmpresasRelacionadas'
 import { ThemeProvider } from './components/providers/themeProvider'
 
 import { Empresa } from './pages/empresa/empresa'
-import { ConoceMasEmpresa } from './pages/conocemasEmpresa'
 
 import { UserProvider, useUserContext } from './components/providers/userProvider'
 import { CategoriaProvider } from './components/providers/categoriaProvider'
@@ -36,6 +35,7 @@ import { NotFound } from './components/templates/NotFound'
 import { ToastContainer } from 'react-toastify';
 import { ReservaActual } from './pages/usuario/ReservaActual'
 import { ReservasUserProvider } from './components/providers/reservasUserProvider'
+import { RegistroEmpresa } from './pages/empresa/registroEmpresa'
 
 //import { Empresa } from './pages/empresa/empresa'
 
@@ -81,12 +81,20 @@ function RoutesPage() {
     <Routes>
       <Route path='/' element={<LandingPage />}></Route>
       <Route path='/login' element={<Login />}></Route>
-      <Route path='/empresa/*' element={<Empresa />}></Route>
       <Route path='/categorias' element={<Categorias />}></Route>
       <Route path='/categorias/:categoria?' element={<SubCategorias />}></Route>
       <Route path='/subCategorias/:subCategoria' element={<EmpresasRelacionadas />} />
-      <Route path="/conocemasEmpresa" element={<ConoceMasEmpresa></ConoceMasEmpresa>}></Route>
+      <Route path="/registroEmpresa" element={<RegistroEmpresa></RegistroEmpresa>}></Route>
       <Route path='*' element={<NotFound razon={'resultados'}></NotFound>}></Route>
+
+
+      <Route element={
+        <ProtectedRoute 
+          isAuth={!!sesionUser && sesionUser.Rol === 'Empresa'}
+        />
+      }>
+        <Route path='/empresa/*' element={<Empresa />}></Route>
+      </Route>
 
       <Route element={<ProtectedRoute
         isAuth={!!sesionUser && sesionUser.Rol === 'Administrador'}

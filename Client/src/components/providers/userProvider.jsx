@@ -23,11 +23,11 @@ const registro = "http://localhost:8000/registeruser"
 const inicio = "http://localhost:8000/login/usuario/"
 
 export function UserProvider({ children }) {
-    const { user, createUser } = useCreateUser(registro)
+    const { createUser } = useCreateUser(registro)
     const { sesionUser, loginUser, logout } = useLoginUser(inicio)
 
     return (
-        <userContext.Provider value={{ sesionUser, user }}>
+        <userContext.Provider value={{ sesionUser }}>
             <newUserContext.Provider value={createUser}>
                 <loginUserContext.Provider value={{loginUser, logout}}>
                     {children}

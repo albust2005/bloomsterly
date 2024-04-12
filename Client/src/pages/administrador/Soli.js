@@ -1,0 +1,32 @@
+export const Soli = [
+  {
+    nombre: "SAS",
+    img: "https://img.europapress.es/fotoweb/fotonoticia_20191003082941_1200.jpg",
+    descripcion: "Prestamos mañana hoy no, prestamos mañana hoy no",
+    direccion: "num 234",
+    telefono: "3232323232",
+    instagram: "000000000",
+    facebook: "1234526788",
+    municipio: "Rionegro-Antioquia",
+  },
+  {
+    nombre: "SAS",
+    img: "https://img.europapress.es/fotoweb/fotonoticia_20191003082941_1200.jpg",
+    descripcion: "Prestamos mañana hoy no, prestamos mañana hoy no",
+    direccion: "num 234",
+    telefono: "3232323232",
+    instagram: "000000000",
+    facebook: "1234526788",
+    municipio: "Rionegro-Antioquia",
+  },
+  {
+    nombre: "SAS",
+    img: "https://img.europapress.es/fotoweb/fotonoticia_20191003082941_1200.jpg",
+    descripcion: "Prestamos mañana hoy no, prestamos mañana hoy no",
+    direccion: "num 234",
+    telefono: "3232323232",
+    instagram: "000000000",
+    facebook: "1234526788",
+    municipio: "Rionegro-Antioquia",
+  },
+];

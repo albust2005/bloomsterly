@@ -17,11 +17,31 @@ export function ReservasUserProvider({ children }) {
 
     const servicios = useServiciosContext()
     const [servicioSeleccionado, setServicioSeleccionado] = useState([])
+    const [reservaItem, setReservaItem ] = useState([])
+
+    const createReserva = (data) => {
+        console.log(data)
+        const newItem = {
+            nombreEvento: data.evento,
+            fecha: data.fecha,
+            direccion: data.direccion,
+            telefono: data.telefono,
+            servicios: data.servicios
+        }
+
+        console.log(newItem)
+        setReservaItem([...reservaItem, newItem])
+        
+        navigate('/reservas')
+
+        document.getElementById('my-form').reset()
+    }
 
     const addServicioSeleccionado = async (id) => {
         const servicioExistente = servicioSeleccionado.find(servicio => servicio.id === id);
         if (servicioExistente) {
             showToastMessage('¡Este servicio ya ha sido seleccionado!');
+            navigate(`/reserva/${sesionUser?.Username}`)
             return;
         }
 
@@ -32,11 +52,9 @@ export function ReservasUserProvider({ children }) {
         navigate(`/reserva/${sesionUser?.Username}`)
     }
 
-    console.log(servicioSeleccionado)
-
     return (
-        <reservasUserContext.Provider value={servicioSeleccionado}>
-            <reservasUserCrudContext.Provider value={{ addServicioSeleccionado }}>
+        <reservasUserContext.Provider value={{servicioSeleccionados: servicioSeleccionado, reservaItem: reservaItem}}>
+            <reservasUserCrudContext.Provider value={{ addServicioSeleccionado, createReserva }}>
                 {children}
             </reservasUserCrudContext.Provider>
         </reservasUserContext.Provider>

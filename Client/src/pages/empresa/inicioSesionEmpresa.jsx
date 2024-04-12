@@ -1,9 +1,9 @@
 import { useForm } from "react-hook-form";
-import { useLoginUserContext } from "../components/providers/userProvider";
+import { useLoginUserContext } from "../../components/providers/userProvider";
 import { Link } from "react-router-dom";
 // import PropTypes from "prop-types";
 
-export function InicioSesion() {
+export function InicioSesionEmpresa() {
 
   const {
     register,
@@ -37,7 +37,7 @@ export function InicioSesion() {
           <label htmlFor="Password" className="mt-2 mb-1 font-semibold">
             Contraseña
           </label>
-          <input type="password"
+          <input type="text"
             className="focus:outline-none bg-transparent border-b-2 border-white text-base font-text"
             {...register("Password", {
               required: {
@@ -49,20 +49,12 @@ export function InicioSesion() {
         </div>
 
         <div className="flex flex-col mt-3">
-          <label htmlFor="Rol" className="font-semibold mb-1">Rol</label>
-          <select name="Rol" id="" {...register("Rol")}
-            className="focus:outline-none bg-transparent border-b-2 border-white text-base font-text">
-            <option value="rol" disabled className="text-black">Rol</option>
-            <option value="Cliente" className="text-black">Cliente</option>
-            <option value="Empresa" className="text-black">Empresa</option>
-            <option value="Administrador" className="text-black">Administrador</option>
-          </select>
-          <p className="flex justify-end mt-2 text-xs md:text-base">¿Olvidaste la contraseña?</p>
+          <label htmlFor="Rol" {...register("Rol")} className="font-semibold mb-1">Rol</label>
         </div>
 
         <div className="text-xs md:text-base">
           <p className="flex justify-end mt-2 ">¿Tienes una empresa o emprendimiento?
-            <Link to="/registroEmpresa" className="px-0  md:px-2 hover:bg-light_theme rounded-md hover:text-dark_theme">
+            <Link to="/conocemasEmpresa" className="px-0  md:px-2 hover:bg-light_theme rounded-md hover:text-dark_theme">
               Entra aquí
             </Link>
           </p>

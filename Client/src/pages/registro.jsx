@@ -216,7 +216,7 @@ export function Registro() {
             Confirma contraseña
           </label>
           <input
-            type="text"
+            type="password"
             className="focus:outline-none bg-transparent border-b-2 border-white text-base font-text"
             {...register("ConfirmPassword", {
               required: {

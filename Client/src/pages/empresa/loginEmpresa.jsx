@@ -1,23 +1,21 @@
 //import "./Login.css";
 import { useState } from "react";
 
-import { InicioSesion } from "./inicio_sesion";
-import { Registro } from "./registro";
-
-import { Changeimgs } from "../components/hooks/useChangeimgs";
+import { InicioSesionEmpresa } from "./inicioSesionEmpresa";
+import { RegistroEmpresa } from "./registroEmpresa";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faHouse } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
-export const useChangeLogin = () => {
-
+export function LoginEmpresa() {
+  
   const [form, setForm] = useState("Iniciar"); //[1valor=>estado actual, 2do es el que hacer el cambio]
   const [inicioColor, setInicioColor] = useState("bg-[#FBFBDC]");
   const [registerColor, setRegisterColor] = useState("bg-transparent");
 
   const formRender =
-    form === "Iniciar" ? <InicioSesion></InicioSesion> : <Registro></Registro>;
+    form === "Iniciar" ? <InicioSesionEmpresa></InicioSesionEmpresa> : <RegistroEmpresa></RegistroEmpresa>;
 
   const Inicios = () => {
     setForm((prevform) => (prevform === "Iniciar" ? "Iniciar" : "Iniciar"));
@@ -31,22 +29,14 @@ export const useChangeLogin = () => {
     setInicioColor("bg-transparent");
   };
 
-
-  return { formRender, Inicios, Registros, registerColor, inicioColor}
-}
-
-export function Login() {
-
-  const {formRender, Inicios, Registros, registerColor, inicioColor} = useChangeLogin()
-
   return (
-    <div className=" h-screen flex justify-center items-center  font-title italic text-xl minicel:flex-col sm:flex-row mt-2">
-      <div className=" bg-dark_theme w-full sm:w-2/4 sm:h-[70%] md:h-[95%]  p-8 dark:bg-second_color_lt relative">
-        <div className="absolute top-[5px] left-[5px]">
+    <div className=" h-screen flex justify-center items-center  font-title italic text-xl minicel:flex-col sm:flex-row mt-2 ">
+      <div className=" bg-dark_theme w-[80%] sm:h-[70%] md:h-[95%]  p-8 dark:bg-second_color_lt relative">
+        <div className="absolute top-[5px] left-[5px] p-1">
           <Link to="/">
-            <FontAwesomeIcon
-              icon={faHouse}
-              style={{ color: "fff" }} />
+          <FontAwesomeIcon 
+            icon={faHouse}
+            style={{color: "fff"}}/>
           </Link>
         </div>
         <nav className="bg-[#6a33c2] w-full dark:bg-rose-600 ">
@@ -70,11 +60,6 @@ export function Login() {
         </div>
       </div>
 
-      <div className="bg-white w-full minicel:hidden sm:flex sm:w-2/4 lg:w-1/2 h-[95%] p-8">
-        {" "}
-        {/*imagen */}
-        <Changeimgs></Changeimgs>
-      </div>
     </div>
   );
 }
