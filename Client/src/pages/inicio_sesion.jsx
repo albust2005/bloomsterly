@@ -1,7 +1,6 @@
 import { useForm } from "react-hook-form";
 import { useLoginUserContext } from "../components/providers/userProvider";
 import { Link } from "react-router-dom";
-import { useToastify } from "../components/hooks/useToastify";
 // import PropTypes from "prop-types";
 
 export function InicioSesion() {
@@ -38,7 +37,7 @@ export function InicioSesion() {
           <label htmlFor="Password" className="mt-2 mb-1 font-semibold">
             Contraseña
           </label>
-          <input type="text"
+          <input type="password"
             className="focus:outline-none bg-transparent border-b-2 border-white text-base font-text"
             {...register("Password", {
               required: {
@@ -55,6 +54,7 @@ export function InicioSesion() {
             className="focus:outline-none bg-transparent border-b-2 border-white text-base font-text">
             <option value="rol" disabled className="text-black">Rol</option>
             <option value="Cliente" className="text-black">Cliente</option>
+            <option value="Empresa" className="text-black">Empresa</option>
             <option value="Administrador" className="text-black">Administrador</option>
           </select>
           <p className="flex justify-end mt-2 text-xs md:text-base">¿Olvidaste la contraseña?</p>
@@ -62,7 +62,7 @@ export function InicioSesion() {
 
         <div className="text-xs md:text-base">
           <p className="flex justify-end mt-2 ">¿Tienes una empresa o emprendimiento?
-            <Link to="/conocemasEmpresa" className="px-0  md:px-2 hover:bg-light_theme rounded-md hover:text-dark_theme">
+            <Link to="/registroEmpresa" className="px-0  md:px-2 hover:bg-light_theme rounded-md hover:text-dark_theme">
               Entra aquí
             </Link>
           </p>

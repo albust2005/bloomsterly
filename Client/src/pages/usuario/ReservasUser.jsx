@@ -11,7 +11,7 @@ export function ReservasUser() {
             {reservas.length === 0
                 ?
                 <div className="w-full flex flex-col text-center gap-10">
-                    <p className="text-wrap text-4xl font-text text-white">
+                    <p className="text-wrap text-4xl font-text text-white dark:text-black">
                         Realiza tu primera reserva
                         <Link
                             to={`/reserva/${sesionUser?.Username}`}
