@@ -81,12 +81,20 @@ function RoutesPage() {
     <Routes>
       <Route path='/' element={<LandingPage />}></Route>
       <Route path='/login' element={<Login />}></Route>
-      <Route path='/empresa/*' element={<Empresa />}></Route>
       <Route path='/categorias' element={<Categorias />}></Route>
       <Route path='/categorias/:categoria?' element={<SubCategorias />}></Route>
       <Route path='/subCategorias/:subCategoria' element={<EmpresasRelacionadas />} />
       <Route path="/registroEmpresa" element={<RegistroEmpresa></RegistroEmpresa>}></Route>
       <Route path='*' element={<NotFound razon={'resultados'}></NotFound>}></Route>
+
+
+      <Route element={
+        <ProtectedRoute 
+          isAuth={!!sesionUser && sesionUser.Rol === 'Empresa'}
+        />
+      }>
+        <Route path='/empresa/*' element={<Empresa />}></Route>
+      </Route>
 
       <Route element={<ProtectedRoute
         isAuth={!!sesionUser && sesionUser.Rol === 'Administrador'}

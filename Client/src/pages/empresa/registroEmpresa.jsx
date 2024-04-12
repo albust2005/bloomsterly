@@ -1,4 +1,5 @@
 import { useForm } from "react-hook-form";
+import { useCreateEmpresa } from "../../components/hooks/useCreateEmpresa";
 
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 // import { faEyeSlash } from "@fortawesome/free-solid-svg-icons";
@@ -11,15 +12,17 @@ export function RegistroEmpresa() {
     watch,
   } = useForm();
 
+  const { createEmpresa } = useCreateEmpresa()
+
   return (
     <>
       <div className="h-full w-full bg-dark_theme dark:bg-second_color_lt text-white  p-10 shadow-xl shadow-[#4e1ba1]
-      flex flex-col gap-9 dark:shadow-[#d91e4e]">
+      flex flex-col gap-9 mt-10 dark:shadow-[#d91e4e]">
         <div>
           <h1 className="font-bloomsterly text-white text-9xl text-center ">
             Empresa
           </h1>
-          <p className="text-center font-text text-xl ">
+          <p className="text-balance text-center font-text text-xl ">
             Envia este formulario para poder ser parte de BloomSterly y ayudar a crear una noche inolvidable a tus clientes!
           </p>
         </div>
@@ -28,12 +31,12 @@ export function RegistroEmpresa() {
           <form
             action=""
             className="w-[90%] text-base minicel:text-sm sm:text-lg md:text-xl  "
-            onSubmit={handleSubmit()}
+            onSubmit={handleSubmit(createEmpresa)}
           >
             <div className="flex w-full gap-4">
               <div className="input-box animation flex flex-col w-full ">
                 <label htmlFor="Nit" className="   font-semibold">
-                  Nit
+                  NIT
                 </label>
                 <input
                   type="text"
@@ -86,8 +89,6 @@ export function RegistroEmpresa() {
                 Descripcion
               </label>
               <textarea
-                name=""
-                id=""
                 cols="2"
                 rows="4"
                 {...register("descripcion", {
@@ -110,6 +111,31 @@ export function RegistroEmpresa() {
                 <span className="text-sm">{errors.descripcion.message}</span>
               )}
             </div>
+
+            <div className="input-box animation flex flex-col w-full">
+              <label
+                htmlFor="email"
+                className="minicel:text-sm sm:text-lg md:text-xl  mt-2  font-semibold"
+              >
+                Email
+              </label>
+              <input
+                type="tel"
+                className="focus:outline-none bg-transparent border-b-2 border-white text-base font-text minicel:w-2/3 sm:w-full"
+                {...register("email", {
+                  required: {
+                    value: true,
+                    message: "Escribe tu email",
+                  },
+                })}
+              />
+              {errors.telefono && (
+                <span className="text-sm text-white ">
+                  {errors.telefono.email}
+                </span>
+              )}
+            </div>
+
 
             <div className="flex w-full gap-4">
               <div className="input-box animation flex flex-col w-full">
@@ -168,15 +194,13 @@ export function RegistroEmpresa() {
 
               <div className="input-box animation flex flex-col w-full">
                 <label
-                  htmlFor="Town"
+                  htmlFor="municipio"
                   className="minicel:text-sm sm:text-lg md:text-xl  mt-2 mb-1 font-semibold"
                 >
                   Municipio
                 </label>
                 <select
-                  name=""
-                  id=""
-                  {...register("Town")}
+                  {...register("municipio")}
                   className="text-white rounded-md bg-transparent text-base font-text focus:outline-none border-b-2"
                 >
                   <option
@@ -297,8 +321,9 @@ export function RegistroEmpresa() {
               className="text-white mt-2 bg-color_switch_theme_dark w-full p-1 rounded-md hover:bg-[#8e5ee0]
           minicel:text-sm celular:text-base sm:text-lg md:text-xl  
           minicel:mt-3 sm:mt-6 dark:bg-[#eb2651] dark:hover:bg-[#d61540]"
+              type="submit"
             >
-              Registrarse
+              Enviar solicitud
             </button>
           </form>
         </div>

@@ -30,6 +30,10 @@ export function Header() {
     if (location?.pathname === '/login') {
         return null
     }
+    
+    if (location?.pathname === '/registroEmpresa') {
+        return null
+    }
 
 
     return (
@@ -65,11 +69,11 @@ export function Header() {
                         <ButtonNav text="Reservas" href="/reservas" />
                     </div>
                 )}
-                {sesionUser?.Rol === "empresa" && (
+                {sesionUser?.Rol === "Empresa" && (
                     <div className="flex flex-col md:flex-row">
-                        <ButtonNav text="Clientes" />
-                        <ButtonNav text="Servicios" href="/categorias" />
-                        <ButtonNav text="Modificar" href="/reservas" />
+                        <ButtonNav text="Clientes" href={"empresa/reserva"}/>
+                        <ButtonNav text="Servicios" href="empresa/servicios" />
+                        <ButtonNav text="Perfil" href="empresa/perfil" />
                     </div>
                 )}
                 {sesionUser?.Rol === "Administrador" && (

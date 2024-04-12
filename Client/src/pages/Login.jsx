@@ -10,8 +10,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faHouse } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
-export function Login() {
-  
+export const useChangeLogin = () => {
+
   const [form, setForm] = useState("Iniciar"); //[1valor=>estado actual, 2do es el que hacer el cambio]
   const [inicioColor, setInicioColor] = useState("bg-[#FBFBDC]");
   const [registerColor, setRegisterColor] = useState("bg-transparent");
@@ -31,14 +31,22 @@ export function Login() {
     setInicioColor("bg-transparent");
   };
 
+
+  return { formRender, Inicios, Registros, registerColor, inicioColor}
+}
+
+export function Login() {
+
+  const {formRender, Inicios, Registros, registerColor, inicioColor} = useChangeLogin()
+
   return (
     <div className=" h-screen flex justify-center items-center  font-title italic text-xl minicel:flex-col sm:flex-row mt-2">
       <div className=" bg-dark_theme w-full sm:w-2/4 sm:h-[70%] md:h-[95%]  p-8 dark:bg-second_color_lt relative">
         <div className="absolute top-[5px] left-[5px]">
           <Link to="/">
-          <FontAwesomeIcon 
-            icon={faHouse}
-            style={{color: "fff"}}/>
+            <FontAwesomeIcon
+              icon={faHouse}
+              style={{ color: "fff" }} />
           </Link>
         </div>
         <nav className="bg-[#6a33c2] w-full dark:bg-rose-600 ">
