@@ -5,6 +5,7 @@ import { PolaroidCard } from "../components/templates/PolaroidCard";
 import { FirtsTitle, Titles } from "../components/titles/Title";
 //import { Flor } from "../components/Flores.jsx"
 import { useCategoriaContext } from "../components/providers/categoriaProvider.jsx";
+import { Link } from "react-router-dom";
 
 export function LandingPage() {
 
@@ -45,7 +46,9 @@ export function LandingPage() {
         {/*Seccion Conoce*/}
         <section className="flex flex-col w-full gap-5">
           <article className="w-full">
-            <Titles title="CONOCE" subTitle="Nuestros servicios" />
+            <Link to="/categorias">
+              <Titles title="CONOCE" subTitle="Nuestros servicios" />
+            </Link>
           </article>
 
           <article className="mx-auto grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">

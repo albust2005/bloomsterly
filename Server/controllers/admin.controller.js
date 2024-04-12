@@ -175,7 +175,8 @@ export const solicitud = async(req, res)=>{
 export const aceptacion= async(req,res)=>{
     const {NIT}=req.body
     try {
-        const COD_administrador=req.session.userAdmin.COD
+        // const COD_administrador=req.session.userAdmin.COD
+        const COD_administrador=1035262718
         // await AdministradorSolicitud.update(COD_administrador,{where:{NIT_empresa_solicitante:NIT}})
         const empresas=await SolicitudEmpresas.findOne({where:{NIT:NIT}});
         const nit=empresas.NIT

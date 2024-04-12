@@ -12,6 +12,7 @@ import classNames from "classnames"; //Esta libreria nos permitirá dar estilo s
 import { rankItem } from "@tanstack/match-sorter-utils";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useToastify } from "../../components/hooks/useToastify";
 const filterTable = (row, columnId, value, addMeta) => {
   // rankItem itera sobre término de búsqueda que digitamos en el input de todos los registros por cada columna
   // value es el valor del término de la consulta
@@ -53,6 +54,7 @@ const DebouncedInput = ({ value: keyWord, onChange, ...props }) => {
 export const TablaEmpresa = () => {
   //Es el estado inicial de la tabla, y en este importamos nuestra BD falsa
   const [data, setData] = useState([]);
+  const { showToastMessage } = useToastify()
 
   useEffect(() => {
     obtener();
@@ -73,12 +75,12 @@ export const TablaEmpresa = () => {
       setData(formattedData);
     } catch (error) {
       if (error.response) {
-        alert(error.response.data.message);
+        showToastMessage(error.response.data.message)
       } else if (error.request) {
         // La solicitud fue realizada pero no se recibió respuesta
         console.error("No se recibió respuesta del servidor");
       } else {
-        alert(error.message);
+        showToastMessage(error.message);
       }
     }
   };
@@ -124,16 +126,16 @@ export const TablaEmpresa = () => {
         { username }
       );
       const mensaje = respuesta.data.message;
-      alert(mensaje);
+      showToastMessage(mensaje)
       obtener();
     } catch (error) {
       if (error.response) {
-        alert(error.response.data.message);
+        showToastMessage(error.response.data.message)
       } else if (error.request) {
         // La solicitud fue realizada pero no se recibió respuesta
         console.error("No se recibió respuesta del servidor");
       } else {
-        alert(error.message);
+        showToastMessage(error.message)
       }
     }
   };

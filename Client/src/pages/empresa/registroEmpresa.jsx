@@ -1,8 +1,9 @@
 import { useForm } from "react-hook-form";
 import { useCreateEmpresa } from "../../components/hooks/useCreateEmpresa";
 
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-// import { faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+ import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 export function RegistroEmpresa() {
   const {
@@ -19,6 +20,9 @@ export function RegistroEmpresa() {
       <div className="h-full w-full bg-dark_theme dark:bg-second_color_lt text-white  p-10 shadow-xl shadow-[#4e1ba1]
       flex flex-col gap-9 mt-10 dark:shadow-[#d91e4e]">
         <div>
+          <Link to="/login">
+          <FontAwesomeIcon icon={faArrowLeft} size="xl"/>
+          </Link>
           <h1 className="font-bloomsterly text-white text-9xl text-center ">
             Empresa
           </h1>
