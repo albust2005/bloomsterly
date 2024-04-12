@@ -14,9 +14,9 @@ export function EmpresaCards({
     <Link
       to={`/servicio/${subCategoria}/${nombre}`}
       className="flex flex-col bg-empresa_card rounded-lg w-full   
-        dark:bg-second_color_lt dark:text-white relative overflow-hidden transition-all]"
+        dark:bg-second_color_lt dark:text-white relative overflow-hidden transition-all ease-in-out]"
     >
-      <article className="w-full h-full max-h-[350px]">
+      <article className="w-full h-full max-h-[360px] min-h-[360px]">
         <img
           src={logo}
           alt="imagen_empresa"
