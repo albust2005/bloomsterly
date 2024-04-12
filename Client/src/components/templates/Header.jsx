@@ -50,7 +50,6 @@ export function Header() {
                     <span className="cursor-pointer dark:text-red-600 text-white font-bloomsterly text-3xl">BloomSterly</span>
                     <img src="../src/assets/flor_img/lirioblanco.webp" alt="" className="h-10 aspect-auto object-cover rotate-180" />
                 </div>
-
             </Link>
 
             <div
