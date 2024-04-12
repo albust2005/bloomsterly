@@ -1,14 +1,14 @@
 import { Link } from "react-router-dom"
 import { NotFound } from "../../components/templates/NotFound"
 import { useUserContext } from "../../components/providers/userProvider"
+import { useReservaUserContext } from "../../components/providers/reservasUserProvider"
 
 export function ReservasUser() {
     const { sesionUser } = useUserContext()
-
-    const reservas = []
+    const { reservaItem } = useReservaUserContext()
     return (
         <section>
-            {reservas.length === 0
+            {reservaItem?.length === 0
                 ?
                 <div className="w-full flex flex-col text-center gap-10">
                     <p className="text-wrap text-4xl font-text text-white">
@@ -22,7 +22,9 @@ export function ReservasUser() {
                     <NotFound razon='reservas' />
                 </div>
                 :
-                <h1>reservas</h1>
+                reservaItem?.map(reserva => (
+                    <h1 key={reserva.nombreEvento}>{reserva.nombreEvento}</h1>
+                ))
             }
         </section>
     )
