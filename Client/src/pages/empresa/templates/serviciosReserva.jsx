@@ -1,19 +1,35 @@
 import { useEmpresaContext } from "../../../components/providers/empresaProvider";
 import { useServiciosContext } from "../../../components/providers/serviciosProvider";
+import { useUserContext } from "../../../components/providers/userProvider"
+
 import { NotFound } from "../../../components/templates/NotFound";
 
-export function ServiciosReserva() {
+
+export const useFoundServiciosEmpresa = () => {
   const servicios = useServiciosContext();
-  //const empresas = useEmpresaContext()
+  const empresas = useEmpresaContext();
+  const { sesionUser } = useUserContext();
+
+  const empresaIngresada = empresas?.find(empresa => empresa.username === sesionUser.Username);
+  const serviciosEmpresa = servicios?.filter(servicio => servicio.idEmpresa === empresaIngresada.id);
+
+  console.log(empresaIngresada);
+  return { serviciosEmpresa };
+}
+
+export function ServiciosReserva() {
+
+  const { serviciosEmpresa } = useFoundServiciosEmpresa()
+  console.log(serviciosEmpresa)
 
   return (
     <section>
       {
-        servicios?.lenght === 0
+        serviciosEmpresa?.length === 0
           ?
           <NotFound razon='servicios'></NotFound>
           :
-          servicios?.map((servicio) => {
+          serviciosEmpresa?.map((servicio) => {
             return (
               <div
                 key={servicio.id}

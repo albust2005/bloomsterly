@@ -2,32 +2,34 @@ import { ButtonAdmin } from "../../components/buttons/buttonAdmin";
 import { IconUser } from "../administrador/templates/iconUser";
 import { useEmpresaContext } from "../../components/providers/empresaProvider";
 import { ServiciosReserva } from "./templates/serviciosReserva";
+import { useUserContext } from "../../components/providers/userProvider";
 
 export function PerfilEmpresa() {
 
-    const empresas = useEmpresaContext()
+    const empresas = useEmpresaContext()    
+    const { sesionUser } = useUserContext()
+    const empresaIngresada = empresas?.find(empresa => empresa.username === sesionUser.Username);
 
-    const NIT = "e111";
-    const empresaSelec = empresas.find(empresa => empresa.id === NIT)
-    console.log(empresaSelec)
-
-    const servicios = ["sv001", "sv100", "sv010"]
-
+    console.log(empresaIngresada)
     return (
         <>
             <div>
                 <ButtonAdmin>Editar Datos</ButtonAdmin>
             </div>
-            <section className="flex flex-col w-[97.5%] items-center mb-[2vh]">
-                <div className="mb-[3vh]">
+            <section className="flex flex-col w-full items-center gap-4">
+                <div className="w-full flex flex-col justify-center items-center font-title font-bold">
                     <IconUser/>
-                    <h2 className="text-white text-2xl dark:text-second_color_lt">{empresaSelec.nombre}</h2>
+                    <h2 className="text-white text-4xl dark:text-second_color_lt">{empresaIngresada?.nombre}</h2>
                 </div>
-                <div className="w-[100%] bg-color_font_dark text-center p-[3vh] rounded-[2vh] dark:bg-light_theme">
-                    <p className="text-white dark:text-second_color_lt">{empresaSelec.descripcion}</p>
+                <div className="w-[100%] bg-color_font_dark rounded-md p-5 dark:bg-light_theme text-xl font-text">
+                    <p className="text-white dark:text-second_color_lt"><span className="font-bold">Descripcion:</span> {empresaIngresada?.descripcion}</p>
+                    <p className="text-white dark:text-second_color_lt"><span className="font-bold">Direccion: </span> {empresaIngresada?.direccion}</p>
+                    <p className="text-white dark:text-second_color_lt"><span className="font-bold">Telefono: </span> {empresaIngresada?.telefono}</p>
+                    <p className="text-white dark:text-second_color_lt"><span className="font-bold">Instagram: </span> {empresaIngresada?.instagram}</p>
+                    <p className="text-white dark:text-second_color_lt"><span className="font-bold">Facebook: </span> {empresaIngresada?.facebook}</p>
+                    <p className="text-white dark:text-second_color_lt"><span className="font-bold">Email: </span> {empresaIngresada?.email}</p>
                 </div>
             </section>
-            <ServiciosReserva servicios={servicios}/>
         </>
     )
 }

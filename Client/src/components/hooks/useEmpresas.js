@@ -30,6 +30,7 @@ export const useEmpresas = () => {
         imagenes: empresa.imagenes,
         instagram: empresa.instagram,
         facebook: empresa.facebook,
+        username: empresa.username,
         email: empresa.email,
     }))
 
