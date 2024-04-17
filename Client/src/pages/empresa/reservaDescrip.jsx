@@ -5,26 +5,35 @@ import { useReservasContext } from "./provider/reservasProvider";
 import { ServiciosReserva } from "./templates/serviciosReserva";
 
 export function ReservaDescrip() {
+  const { id } = useParams();
 
-    const { id } = useParams();
+  const reservas = useReservasContext();
+  const reserva = reservas.find((reserva) => reserva.id === id);
 
-    const reservas = useReservasContext()
-    const reserva = reservas.find(reserva => reserva.id === id)
+  return (
+    <>
+      <TitleAE title="Reservación" descripcion="" />
+      <div className="p-[1.5vh] flex gap-4 ">
+        <div className="bg-[#190042]  dark:bg-light_theme p-[1.5vh] 
+        rounded-sm h-full text-white dark:text-second_color_lt w-full ">
+          <p className=" font-title font-semibold text-2xl">N° de contrato: {reserva.id}</p>
 
-    return <>
-        <TitleAE title="Reservación" descripcion=""/>
-        <div className="p-[1.5vh]">
-            <div className="bg-color_font_dark mb-[1vh] dark:bg-light_theme p-[1.5vh] rounded-[2vh] h-[28vh] text-white dark:text-second_color_lt">
-                <p className="float-end">N° de contrato: {reserva.id}</p>
-                <p className="mb-[1.5vh]">Contrato de servicios</p>
-                <p className="mb-[1vh]">Nombre de Usuario: {reserva.username}</p>
-                <p className="mb-[1.5vh]">Correo: {reserva.email}</p>
-                <p className="mb-[1.5vh]">Telefono: {reserva.telefono}</p>
-                <p className="mb-[1.5vh]">Dirección: {reserva.direccion}</p>   
-            </div>
-            <div>
-               <ServiciosReserva servicios={reserva.servicios}/> 
-            </div>
+          <p className="font-title font-semibold text-lg mt-2">Nombre de Usuario: </p>
+          <p className="font-title">{reserva.username}</p>
+
+          <p className="font-title font-semibold text-lg mt-2">Correo: </p>
+          <p className="font-title">{reserva.email}</p>
+
+          <p className="font-title font-semibold text-lg mt-2">Telefono: </p>
+          <p className="font-title">{reserva.telefono}</p>
+
+          <p className="font-title font-semibold text-lg mt-2">Dirección: </p>
+          <p className="font-title">{reserva.direccion}</p>
         </div>
+          <div>
+            <ServiciosReserva servicios={reserva.servicios} />
+          </div>
+      </div>
     </>
+  );
 }
