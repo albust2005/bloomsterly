@@ -6,7 +6,9 @@ export function ReservasCliente() {
     return (
         <>
             <TitleAE title="Reserva de los clientes"/>
-            <Reservas />
+            <div className="mx-auto grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+                <Reservas />
+            </div>
         </>
     )
 }
