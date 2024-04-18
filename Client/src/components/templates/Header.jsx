@@ -15,6 +15,11 @@ export function Header() {
     const { sesionUser } = useUserContext()
     const { logout } = useLoginUserContext()
 
+    const scrollToSection = () => {
+        const elemento = document.getElementById('nosotros');
+        elemento.scrollIntoView({ behavior: 'smooth' });
+    }
+
     const [menu, setMenu] = useState(faBars);   //use stated para asignar el logo y las clases necesarias al menu responsive
     //cada click cambia el estado 
     const toggleClick = () => {
@@ -63,7 +68,8 @@ export function Header() {
             >
                 {!sesionUser && (
                     <div className="flex flex-col md:flex-row">
-                        <ButtonNav text="Nosotros" />
+                        
+                        <button onClick={scrollToSection}><ButtonNav text="Nosotros" /></button>
                         <ButtonNav text="Servicios" href="/categorias" />
                         <ButtonNav text="Reservas" href="/reservas" />
                     </div>

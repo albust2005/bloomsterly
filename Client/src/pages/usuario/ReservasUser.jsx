@@ -4,7 +4,7 @@ import { useUserContext } from "../../components/providers/userProvider";
 import { useReservaUserContext } from "../../components/providers/reservasUserProvider";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCreditCard, faMoneyBill } from "@fortawesome/free-solid-svg-icons";
+import { faCreditCard, faMoneyBill, faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 
 const ReservaDetalleCard = ({
   nombre,
@@ -15,7 +15,7 @@ const ReservaDetalleCard = ({
 }) => {
   const { sesionUser } = useUserContext();
 
-  
+
 
   return (
     <article className="flex text-white flex-col ">
@@ -49,15 +49,15 @@ const ReservaDetalleCard = ({
               Metodos de pago:
             </p>
             <div className="flex gap-5">
-              <FontAwesomeIcon 
-              icon={faCreditCard} 
-              size="xl" 
-              style={{cursor: "pointer"}}
+              <FontAwesomeIcon
+                icon={faCreditCard}
+                size="xl"
+                style={{ cursor: "pointer" }}
               />
-              <FontAwesomeIcon 
-              icon={faMoneyBill} 
-              size="xl" 
-              style={{cursor: "pointer"}}
+              <FontAwesomeIcon
+                icon={faMoneyBill}
+                size="xl"
+                style={{ cursor: "pointer" }}
               />
             </div>
 
@@ -65,7 +65,7 @@ const ReservaDetalleCard = ({
               Estado:
             </p>
             <p className="font-text">
-                Pendiente
+              Pendiente
             </p>
           </div>
         </div>
@@ -73,6 +73,22 @@ const ReservaDetalleCard = ({
     </article>
   );
 };
+
+
+const ReservaAddCard = () => {
+  return (
+    <article className="flex text-white flex-col items-center justify-center bg-dark_theme">
+      <FontAwesomeIcon
+        icon={faPlusCircle}
+        size="2x"
+      >
+      </FontAwesomeIcon>
+    </article>
+  )
+
+}
+
+
 
 export function ReservasUser() {
   const { sesionUser } = useUserContext();
@@ -110,6 +126,7 @@ export function ReservasUser() {
                 />
               )
             )}
+            <ReservaAddCard />
           </div>
         </div>
       )}

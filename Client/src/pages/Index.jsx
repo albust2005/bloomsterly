@@ -18,7 +18,7 @@ export function LandingPage() {
       {/*Seccion Nosotros*/}
       <div className="flex flex-col items-center gap-16 xl:gap-32">
         <section className="h-full xl:flex gap-5">
-          <article className="w-full xl:w-3/5 2xl:w-1/2">
+          <article className="w-full xl:w-3/5 2xl:w-1/2" id="nosotros">
             <Titles title="NOSOTROS" subTitle="¿Qué hacemos?" />
 
             {/* <Flor name='blanco' positionx={200} positiony={300} size={10}/> */}
