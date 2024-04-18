@@ -31,7 +31,7 @@ export const editarPerfil = async (req, res) => {
   const { email, contrasena, COD_municipios } = req.body;
 
   try {
-    console.log(req.session.user.COD);
+    console.log(req.userCOD);
     const hashedPassword = await bcrypt.hash(contrasena, 5);
     await Usuarios.update(
       {
@@ -39,7 +39,7 @@ export const editarPerfil = async (req, res) => {
         contrasena: hashedPassword,
         email,
       },
-      { where: { COD: req.session.user.COD } }
+      { where: { COD: req.userCOD } }
     );
 
     res.status(201).json({ message: "Perfil actualizado" });
@@ -65,7 +65,7 @@ export const editarPerfil = async (req, res) => {
 };
 export const eliminacionPerfil = async (req, res) => {
   try {
-    await Usuarios.destroy({ where: { COD: req.session.user.COD } });
+    await Usuarios.destroy({ where: { COD: req.userCOD } });
     res.status(200).json({ message: "Perfil eliminado correctamente" });
   } catch (error) {
     res

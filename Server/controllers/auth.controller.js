@@ -3,6 +3,7 @@ import session from "express-session";
 import bcrypt from 'bcrypt';
 import db from '../database/db.js';
 import Sequelize from 'sequelize';
+import jwt from 'jsonwebtoken';
 
 const numeroAdmin="1036252517"
 //Esta parte ingresa informacion del usuario a la base de datos
@@ -77,16 +78,8 @@ export const getuser = async(req,res)=>{
                 const estado=sancion.administradores[0].control_usuarios.estado
                 console.log(typeof estado)
                 if (estado=="Activo"){
-                    req.session.user = {
-                    COD:user.COD,
-                    nombre_c:user.nombre_c,
-                    primer_apelli: user.primer_apelli,
-                    segundo_apelli: user.segundo_apelli,
-                    COD_municipios: user.COD_municipios,
-                    username: user.username,
-                    email: user.email
-                    }
-                    res.status(200).json({message:"Inicio de sesión exitoso", estado:estado})
+                    const token = jwt.sign({userCOD:user.COD, rol:"usuario"}, 'secreto', {expiresIn: '7d'})
+                    res.status(200).json({message:"Inicio de sesión exitoso", token:token})
                 }else{
                     res.status(401).json({message:"No puede ingresar ya que esta sancionado", estado:estado})
                 }
@@ -161,20 +154,10 @@ export const getempresa = async(req,res)=>{
             let comparacion = bcrypt.compareSync(contrasena,user.contrasena)
             console.log("esta es la comparacion: ",comparacion)
             if (comparacion){
-                req.session.userEmpresa = {
-                    NIT: user.NIT,
-                    nombre: user.nombre,
-                    descripcion: user.descripcion,
-                    COD_municipios: user.COD_municipios,
-                    instragram: user.instragram,
-                    direccion: user.direccion,
-                    telefono: user.telefono,
-                    facebook: user.facebook,
-                    username: user.username,
-                    email: user.email
-                }
+                const token = jwt.sign({userCOD:user.NIT, rol:"empresa"}, 'secreto', {expiresIn: '7d'})
                 res.status(200).json({
-                    message:"Inicio de sesión exitoso"
+                    message:"Inicio de sesión exitoso",
+                    token:token
                 });
             }else{
                 res.status(401).json({message:"Nombre de usuario y/o contraseña incorrecta"});
@@ -207,17 +190,11 @@ export const getadmin = async(req,res)=>{
             let comparacion = bcrypt.compareSync(contrasena,user.contrasena)
             console.log("esta es la comparacion: ",comparacion)
             if (comparacion){
-                req.session.userAdmin = {
-                    COD:user.COD,
-                    nombre:user.nombre,
-                    primer_apelli:user.primer_apelli,
-                    segundo_apelli:user.segundo_apelli,
-                    COD_municipios:user.COD_municipios,
-                    username:user.username
-                }
                 // console.log(req.session.userAdmin)
+                const token = jwt.sign({userCOD:user.COD, rol:"admin"}, 'secreto', {expiresIn: '7d'})
                 res.status(200).json({
-                    message:"Inicio de sesión exitoso administrador"
+                    message:"Inicio de sesión exitoso administrador",
+                    token:token
                 });
             }else{
                 res.status(401).json({message:"Nombre de usuario y/o contraseña incorrecta"});

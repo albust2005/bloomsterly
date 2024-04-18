@@ -40,7 +40,7 @@ export const editarPerfil = async(req,res)=>{
             direccion,
             telefono,
             email
-        },{where:{NIT:req.session.userEmpresa.NIT}})
+        },{where:{NIT:req.userCOD}})
         res.status(201).json({message:"Datos del perfil actualizados"})
     } catch (error) {
         if (error instanceof Sequelize.UniqueConstraintError) {
@@ -58,7 +58,7 @@ export const editarPerfil = async(req,res)=>{
 // Esta funcion es para eliminar el perfil de la empresa
 export const eliminarPerfil = async(req,res)=>{
     try {
-        await Empresas.destroy({where:{NIT:req.session.userEmpresa.NIT}})
+        await Empresas.destroy({where:{NIT:req.userCOD}})
         res.status(200).json({message:"Perfil eliminado correctamente"})
     } catch (error) {
         res.status(400).json({message:"Hubo un error al eliminar el perfil", error:error})
