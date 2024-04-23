@@ -4,10 +4,16 @@ import axios from 'axios'
 
 export const useServicios = () => {
     const [servicios, setServicios] = useState()
+    const token = localStorage.getItem('token')
+
 
     const obtenerServicios = async () => {
         try {
-            const response = await axios.get('http://localhost:8000/user/servicios')
+            const response = await axios.get('http://localhost:8000/user/servicios', {
+                headers: {
+                    Authorization: token
+                } 
+            })
             setServicios(response.data)
         } catch (error) {
             console.log(error.response.message)

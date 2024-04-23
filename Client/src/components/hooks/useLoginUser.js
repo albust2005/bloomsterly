@@ -3,6 +3,12 @@ import { useEffect, useState } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { useToastify } from './useToastify'
 
+
+export const updateToken = token => {
+    console.log(token)
+    localStorage.setItem('token', token)
+}
+
 export const useLoginUser = (URI) => {
     const [sesionUser, setSesionUser] = useState(() => {
         const user = localStorage.getItem('user')
@@ -30,8 +36,12 @@ export const useLoginUser = (URI) => {
                     contrasena: Password
                 })
 
+                const token = respuesta.data.token
+
+                updateToken(token)
                 showToastMessage(`Bienvenido de nuevo ${Username}`)
                 setSesionUser(data)
+
                 navigate(!!location.state ? location.state.location.pathname : '/')
             } else {
                 if (Rol == "Administrador") {
@@ -40,14 +50,22 @@ export const useLoginUser = (URI) => {
                         contrasena: Password
                     })
 
+                    const token = respuesta.data.token
+
+                    updateToken(token)
                     showToastMessage(`Bienvenido administrador ${Username}`)
                     setSesionUser(data)
                     navigate('/administrador')
+
                 } else if (Rol == 'Empresa') {
                     const respuesta = await axios.post("http://localhost:8000/login/empresa/", {
                         username: Username,
                         contrasena: Password
                     })
+
+                    const token = respuesta.data.token
+
+                    updateToken(token)
 
                     showToastMessage(`Bienvenida empresa ${Username}`)
                     setSesionUser(data)

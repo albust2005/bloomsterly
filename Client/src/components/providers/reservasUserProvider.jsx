@@ -37,7 +37,7 @@ export function ReservasUserProvider({ children }) {
         document.getElementById('my-form').reset()
     }
 
-    const addServicioSeleccionado = async (id) => {
+    const addServicioSeleccionado = (id) => {
         const servicioExistente = servicioSeleccionado.find(servicio => servicio.id === id);
         if (servicioExistente) {
             showToastMessage('¡Este servicio ya ha sido seleccionado!');
@@ -45,16 +45,22 @@ export function ReservasUserProvider({ children }) {
             return;
         }
 
-        const nuevoServicioSeleccionado = await servicios.find(servicio => servicio.id === id)
+        const nuevoServicioSeleccionado = servicios.find(servicio => servicio.id === id)
         setServicioSeleccionado([...servicioSeleccionado, nuevoServicioSeleccionado])
 
         showToastMessage('Servicio agregado correctamente')
         navigate(`/reserva/${sesionUser?.Username}`)
     }
 
+    const removeServicioSeleccionado = (product) => {
+        const { id } = product
+        setReservaItem(prevItem => prevItem.filter(item => item.id !== id))
+    }
+
+
     return (
         <reservasUserContext.Provider value={{servicioSeleccionados: servicioSeleccionado, reservaItem: reservaItem}}>
-            <reservasUserCrudContext.Provider value={{ addServicioSeleccionado, createReserva }}>
+            <reservasUserCrudContext.Provider value={{ addServicioSeleccionado, removeServicioSeleccionado, createReserva }}>
                 {children}
             </reservasUserCrudContext.Provider>
         </reservasUserContext.Provider>
