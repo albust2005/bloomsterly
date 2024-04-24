@@ -3,8 +3,7 @@ import { useUserContext } from '../providers/userProvider'
 import { useReservaUserCrudContext } from "../providers/reservasUserProvider"
 
 
-export function ServiciosCard({ id, nombre, descripcion, valor, img }) {
-    const { addServicioSeleccionado } = useReservaUserCrudContext()
+export function ServiciosCard({ nombre, descripcion, valor, img, addServicioSeleccionado }) {
 
     return (
         <article className="flex  p-3 text-white w-full gap-2">
@@ -20,7 +19,7 @@ export function ServiciosCard({ id, nombre, descripcion, valor, img }) {
                 <div className="flex justify-end">
 
                     <button
-                        onClick={() => addServicioSeleccionado(id)}
+                        onClick={addServicioSeleccionado}
                         className="text-center  w-1/4 rounded-sm bg-purple-700 border-2 border-transparent hover:bg-transparent hover:border-purple-700 dark:bg-second_color_lt dark:text-white dark:hover:bg-transparent dark:hover:text-second_color_lt dark:border-2 dark:border-transparent dark:hover:border-second_color_lt">
                         Reservar
                     </button>

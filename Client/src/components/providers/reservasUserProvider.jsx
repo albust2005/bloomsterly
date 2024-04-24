@@ -12,12 +12,10 @@ export const useReservaUserCrudContext = () => useContext(reservasUserCrudContex
 
 export function ReservasUserProvider({ children }) {
     const navigate = useNavigate()
-    const { sesionUser } = useUserContext()
     const { showToastMessage } = useToastify()
 
-    const servicios = useServiciosContext()
-    const [servicioSeleccionado, setServicioSeleccionado] = useState([])
-    const [reservaItem, setReservaItem ] = useState([])
+    const [servicios, setServicios] = useState([])
+    const [reservaItem, setReservaItem] = useState([])
 
     const createReserva = (data) => {
         console.log(data)
@@ -31,36 +29,49 @@ export function ReservasUserProvider({ children }) {
 
         console.log(newItem)
         setReservaItem([...reservaItem, newItem])
-        
-        navigate('/reservas')
 
+        navigate('/reservas')
+        showToastMessage('¡Reserva creada correctamente!')
         document.getElementById('my-form').reset()
     }
 
-    const addServicioSeleccionado = (id) => {
-        const servicioExistente = servicioSeleccionado.find(servicio => servicio.id === id);
+    const addServicioSeleccionado = servicio => {
+        const { id } = servicio
+        const servicioExistente = servicios.find(servicio => servicio.id === id);
         if (servicioExistente) {
             showToastMessage('¡Este servicio ya ha sido seleccionado!');
-            navigate(`/reserva/${sesionUser?.Username}`)
+            navigate(`/reserva/crear`)
             return;
         }
 
-        const nuevoServicioSeleccionado = servicios.find(servicio => servicio.id === id)
-        setServicioSeleccionado([...servicioSeleccionado, nuevoServicioSeleccionado])
 
-        showToastMessage('Servicio agregado correctamente')
-        navigate(`/reserva/${sesionUser?.Username}`)
+        setServicios(prevItem => [
+            ...prevItem,
+            {
+                ...servicio
+            }
+        ])
+
+        showToastMessage('¡Servicio agregado a la reserva!')
+        navigate(`/reserva/crear`)
     }
 
-    const removeServicioSeleccionado = (product) => {
-        const { id } = product
-        setReservaItem(prevItem => prevItem.filter(item => item.id !== id))
+    const removeServicioSeleccionado = servicio => {
+        const { id } = servicio
+        setServicios(prevItem => prevItem.filter(item => item.id !== id))
     }
 
 
     return (
-        <reservasUserContext.Provider value={{servicioSeleccionados: servicioSeleccionado, reservaItem: reservaItem}}>
-            <reservasUserCrudContext.Provider value={{ addServicioSeleccionado, removeServicioSeleccionado, createReserva }}>
+        <reservasUserContext.Provider value={{
+            servicioSeleccionados: servicios,
+            reservaItem: reservaItem
+        }}>
+            <reservasUserCrudContext.Provider value={{
+                addServicioSeleccionado,
+                removeServicioSeleccionado,
+                createReserva
+            }}>
                 {children}
             </reservasUserCrudContext.Provider>
         </reservasUserContext.Provider>

@@ -110,7 +110,7 @@ function RoutesPage() {
       />}>
         <Route path='/servicio/:subCategoria/:empresa' element={<Servicios></Servicios>}></Route>
         <Route path='/reservas' element={<ReservasUser />} />
-        <Route path='/reserva/:user' element={<ReservaActual />}></Route>
+        <Route path='/reserva/crear' element={<ReservaActual />}></Route>
       </Route>
 
     </Routes>

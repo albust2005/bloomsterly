@@ -4,6 +4,7 @@ import { useServiciosContext } from "../../components/providers/serviciosProvide
 import { useSubCategoriaContext } from "../../components/providers/subCategoriaProvider"
 import { ServiciosCard } from "../../components/templates/ServiciosCard"
 import { TitleSubCategoria } from "../../components/titles/subCategoriaTitle"
+import { useReservaUserCrudContext } from "../../components/providers/reservasUserProvider"
 
 
 const useFoundServiciosRelacionados = () => {
@@ -31,9 +32,8 @@ const useFoundServiciosRelacionados = () => {
 
 export function Servicios() {
     const { empresa, servicios, subCategoria } = useFoundServiciosRelacionados()
-
-    console.log(servicios)
-
+    const { addServicioSeleccionado } = useReservaUserCrudContext()
+    
     return (
         <section>
             <TitleSubCategoria
@@ -42,14 +42,14 @@ export function Servicios() {
             />
             <section>
                 {
-                    servicios?.map(({ id, nombre, descripcion, valor, img }) => (
+                    servicios?.map(servicio => (
                         <ServiciosCard
-                            key={id}
-                            id={id}
-                            nombre={nombre}
-                            descripcion={descripcion}
-                            valor={valor}
-                            img ={img}
+                            key={servicio.id}
+                            nombre={servicio.nombre}
+                            descripcion={servicio.descripcion}
+                            valor={servicio.valor}
+                            img={servicio.img}
+                            addServicioSeleccionado={() => addServicioSeleccionado(servicio)}
                         >
                         </ServiciosCard>
                     ))
