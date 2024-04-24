@@ -37,8 +37,8 @@ export function LandingPage() {
             {/* <Flor name='blanco' positionx={200} positiony={300} size={10}/> */}
 
             <p
-              className="text-white w-full pt-6 text-xl sm:text-2xl md:text-4xl lg-text-5xl
-            dark:text-black  text-justify"
+              className="text-white text-balance w-full pt-6 text-xl sm:text-2xl md:text-4xl lg-text-5xl
+            dark:text-black "
             >
               Explora todos los servicios que te ofrecemos, para que puedas
               diseñar y personalizar tu evento desde la comodidad de tu hogar.
@@ -52,7 +52,7 @@ export function LandingPage() {
             className="flex xl:w-2/5 2xl:w-1/2 justify-center"
           >
             <img
-              className="aspect-auto w-full object-cover xl:scale-125"
+              className="aspect-auto w-full object-cover object-center scale-75 xl:scale-110"
               src="../src/assets/img/nosotros_imagen_mesas.webp"
               alt=""
             />

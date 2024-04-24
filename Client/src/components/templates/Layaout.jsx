@@ -19,23 +19,8 @@ export function Layaout({ children }) {
         from-[#451693] from-40% via-[#370d7d] via-60% to-[#190042] 
         to-90%  dark:bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))]
         dark:from-[#ffffff] dark:via-[#ffffec] dark:to-[#ffffd2] 
-        flex flex-col min-h-screen gap-48 px-5 md:px-16 lg:px-24 2xl:px-64"
+        flex flex-col h-full gap-48 px-5 md:px-16 lg:px-24 2xl:px-64"
     >
-      {children}
-      {/*<Flor name="blanco-rosa" positionx={0} positiony={0}/> */}
-
-      {/*<Flor
-            name="amarillo"
-            positionx="1000"
-            positiony="1000"
-            width="100"
-        >
-  </Flor> */}
-
-      {/*FLORES */}
-
-      {/*BLOOMSTERLY */}
-
       {/*AMARILLAS */}
       <ScrollAnimatedSection
         className="absolute top-[60px] w-[150px] left-[120px] -rotate-12 opacity-0"
@@ -221,6 +206,7 @@ export function Layaout({ children }) {
         <img src="../../../src/assets/flor_img/lirioblanco-rosa.webp" alt="" />
       </ScrollAnimatedSection>
 
+      {children}
     </main>
   );
 }
