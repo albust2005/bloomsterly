@@ -22,8 +22,10 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.51.1",
+    "react-intersection-observer": "^9.8.2",
     "react-router-dom": "^6.22.1",
-    "react-toastify": "^10.0.5"
+    "react-toastify": "^10.0.5",
+    "tailwindcss-animatecss": "^3.0.5"
   },
   "devDependencies": {
     "@swc/cli": "^0.3.10",
@@ -38,6 +40,7 @@
     "eslint-plugin-react-refresh": "^0.4.5",
     "postcss": "^8.4.35",
     "tailwindcss": "^3.4.1",
+    "tailwindcss-animated": "^1.0.1",
     "vite": "^5.1.4"
   }
 }
