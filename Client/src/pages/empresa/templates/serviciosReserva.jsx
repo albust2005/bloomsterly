@@ -13,7 +13,7 @@ export const useFoundServiciosEmpresa = () => {
     (empresa) => empresa.username === sesionUser.Username
   );
   const serviciosEmpresa = servicios?.filter(
-    (servicio) => servicio.idEmpresa === empresaIngresada.id
+    (servicio) => servicio.idEmpresa === empresaIngresada?.id
   );
 
   console.log(empresaIngresada);
