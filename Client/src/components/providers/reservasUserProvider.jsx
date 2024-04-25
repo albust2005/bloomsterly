@@ -1,7 +1,5 @@
 import { createContext, useContext, useState } from "react";
 import { useNavigate } from 'react-router-dom'
-import { useServiciosContext } from "./serviciosProvider";
-import { useUserContext } from "./userProvider";
 import { useToastify } from "../hooks/useToastify";
 
 const reservasUserContext = createContext()
@@ -15,7 +13,7 @@ export function ReservasUserProvider({ children }) {
     const { showToastMessage } = useToastify()
 
     const [servicios, setServicios] = useState([])
-    const [reservaItem, setReservaItem] = useState([])
+    const [reservas, setReserva] = useState([])
 
     const createReserva = (data) => {
         console.log(data)
@@ -28,12 +26,15 @@ export function ReservasUserProvider({ children }) {
         }
 
         console.log(newItem)
-        setReservaItem([...reservaItem, newItem])
+        setReserva([...reservas, newItem])
 
         navigate('/reservas')
         showToastMessage('¡Reserva creada correctamente!')
         document.getElementById('my-form').reset()
     }
+
+
+
 
     const addServicioSeleccionado = servicio => {
         const { id } = servicio
@@ -65,7 +66,7 @@ export function ReservasUserProvider({ children }) {
     return (
         <reservasUserContext.Provider value={{
             servicioSeleccionados: servicios,
-            reservaItem: reservaItem
+            reservaItem: reservas
         }}>
             <reservasUserCrudContext.Provider value={{
                 addServicioSeleccionado,
