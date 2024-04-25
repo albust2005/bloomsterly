@@ -3,6 +3,7 @@ import { useServiciosContext } from "../../../components/providers/serviciosProv
 import { useUserContext } from "../../../components/providers/userProvider";
 
 import { NotFound } from "../../../components/templates/NotFound";
+import { useServiciosEmpresaContext } from "../provider/serviciosEmpresaProvider";
 
 export const useFoundServiciosEmpresa = () => {
   const servicios = useServiciosContext();
@@ -22,6 +23,8 @@ export const useFoundServiciosEmpresa = () => {
 
 export function ServiciosReserva() {
   const { serviciosEmpresa } = useFoundServiciosEmpresa();
+  const { elimarServicio } = useServiciosEmpresaContext()
+
   console.log(serviciosEmpresa);
 
   return (
@@ -54,7 +57,9 @@ export function ServiciosReserva() {
                     p-1">
                       Editar
                     </button>
-                    <button className="w-full h-full bg-hover_boton_admin border-2 border-transparent hover:bg-transparent
+                    <button 
+                    onClick={() => elimarServicio()}
+                    className="w-full h-full bg-hover_boton_admin border-2 border-transparent hover:bg-transparent
                     hover:border-hover_boton_admin dark:bg-second_color_lt dark:border-2 dark:border-transparent
                     dark:hover:bg-transparent dark:hover:border-second_color_lt dark:text-light_theme dark:hover:text-second_color_lt
                     p-1 ">
