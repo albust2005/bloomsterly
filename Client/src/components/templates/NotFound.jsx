@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 export function NotFound ({razon}){
     return (
-        <div className="w-full text-center col-span-3">
+        <div className="w-full text-center col-span-3 z-10">
             <h1 className=" text-white  dark:text-black text-xs celular:text-xl sm:text-3xl text-balance
             font-text">
                 No se encontraron {razon}
