@@ -40,7 +40,7 @@ router.put("/editarPerfil", verificarToken ,editarPerfil);
 // ruta para eliminar el perfil del usuario
 router.delete("/eliminarPerfil", verificarToken, eliminacionPerfil);
 // ruta para obtener la subcategorias de la categoria seleccionada
-router.get("/subcategorias",verificarToken, subcategorias);
+router.get("/subcategorias", subcategorias);
 // ruta para obtener empresa depende de la subcategoria
 router.get("/servicios",verificarToken, servicios)
 router.get("/getAllEmpresas",verificarToken, getAllEmpresas);

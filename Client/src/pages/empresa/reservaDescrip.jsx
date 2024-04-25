@@ -13,7 +13,7 @@ export function ReservaDescrip() {
   return (
     <>
       <TitleAE title="Reservación" descripcion="" />
-      <div className="p-[1.5vh] flex gap-4 ">
+      <div className="p-[1.5vh] flex gap-4 z-10">
         <div className="bg-[#190042]  dark:bg-light_theme p-[1.5vh] 
         rounded-sm h-full text-white dark:text-second_color_lt w-full ">
           <p className=" font-title font-semibold text-2xl">N° de contrato: {reserva.id}</p>

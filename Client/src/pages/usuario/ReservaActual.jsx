@@ -9,37 +9,33 @@ import {
 } from "../../components/providers/reservasUserProvider";
 import { useEmpresaContext } from "../../components/providers/empresaProvider";
 import { useUserContext } from "../../components/providers/userProvider";
-import { useThemeContext}  from "../../components/providers/themeProvider"
+import { useThemeContext } from "../../components/providers/themeProvider"
 import { useState } from "react";
 
 {
   /*agregar el servicio  */
 }
 function AgregarServiciosReserva() {
-    const theme = useThemeContext()
-    const logoColor = theme === "dark" ? "#BC0B38" : "#fff"
+  const theme = useThemeContext()
+  const logoColor = theme === "dark" ? "#BC0B38" : "#fff"
 
   return (
     <div className="bg-color_switch_theme_dark w-1/5 min-h-[200px] max-h-[200px] flex justify-center items-center 
     rounded-sm dark:bg-[#FFFFDD]">
       <Link to="/categorias">
-        <FontAwesomeIcon icon={faCirclePlus} size="2x" 
-        style={{color: logoColor}}/>
+        <FontAwesomeIcon icon={faCirclePlus} size="2x"
+          style={{ color: logoColor }} />
       </Link>
     </div>
   );
 }
 
-{
-  /*renderiza el servicio seleccionado */
-}
-function ServicioCardReserva({ empresa, nombre, valor }) {
+
+/*renderiza el servicio seleccionado */
+function ServicioCardReserva({ empresa, nombre, valor, removeServicioSeleccionado }) {
   return (
     <article className="bg-color_switch_theme_dark w-1/5 min-h-[200px] max-h-[200px] p-2 relative rounded-sm
     dark:bg-[#FFFFDD] dark:text-second_color_lt">
-      <div>
-        <img src="" alt="" />
-      </div>
       <div className="flex flex-col gap-1">
         <h2 className="font-title text-xl font-semibold"> {empresa}</h2>
         <h2 className="font-title font-semibold">Nombre servicio:</h2>
@@ -48,8 +44,11 @@ function ServicioCardReserva({ empresa, nombre, valor }) {
         <p>{valor}</p>
       </div>
       <div className="flex flex-row-reverse">
-        <button className="w-1/2 bg-dark_theme absolute bottom-2 dark:bg-second_color_lt dark:text-light_theme">
-            Eliminar
+        <button
+          type="button"
+          onClick={removeServicioSeleccionado}
+          className="w-1/2 bg-dark_theme absolute bottom-2 dark:bg-second_color_lt dark:text-light_theme ">
+          Eliminar
         </button>
       </div>
     </article>
@@ -64,23 +63,24 @@ export function ReservaActual() {
     reset,
   } = useForm();
 
-  const [servicioSeleccionadoID, setServicioSeleccionadoID] = useState([]);
+  const [servicioSeleccionadoNombre, setServicioSeleccionadoNombre] = useState([]);
   const { servicioSeleccionados } = useReservaUserContext();
-  console.log(servicioSeleccionados);
+  const { removeServicioSeleccionado } = useReservaUserCrudContext()
   const { createReserva } = useReservaUserCrudContext();
+
   const empresas = useEmpresaContext();
 
   useState(() => {
-    const servicioID = servicioSeleccionados?.find(
+    const servicioNombre = servicioSeleccionados?.find(
       (servicio) => servicio.id
-    )?.id;
-    setServicioSeleccionadoID([...servicioSeleccionadoID, servicioID]);
+    )?.nombre;
+    setServicioSeleccionadoNombre([...servicioSeleccionadoNombre, servicioNombre]);
   }, [servicioSeleccionados]);
 
   const onSubmit = (data) => {
-    data.servicios = servicioSeleccionadoID;
+    data.servicios = servicioSeleccionadoNombre;
     createReserva(data);
-    setServicioSeleccionadoID([]);
+    setServicioSeleccionadoNombre([]);
   };
 
   const { sesionUser } = useUserContext();
@@ -98,7 +98,7 @@ export function ReservaActual() {
           action=""
           id="my-form"
           onSubmit={handleSubmit(onSubmit)}
-          className=" w-[90%] text-white flex flex-col gap-5" 
+          className=" w-[90%] text-white flex flex-col gap-5"
         >
           <div className="flex">
             <div className="flex justify-start items-center w-1/3">
@@ -215,22 +215,25 @@ export function ReservaActual() {
               Servicios
             </label>
             <div className="flex gap-3">
-            {servicioSeleccionados?.map(({ id, idEmpresa, nombre, valor }) => (
-              <ServicioCardReserva
-                key={id}
-                empresa={empresas.find((em) => em.id == idEmpresa)?.nombre}
-                nombre={nombre}
-                valor={valor}
-              />
-            ))}
-            <AgregarServiciosReserva />
+              {servicioSeleccionados?.map(servicio => (
+                <ServicioCardReserva
+                  key={servicio.id}
+                  empresa={empresas.find((em) => em.id == servicio.idEmpresa)?.nombre}
+                  nombre={servicio.nombre}
+                  valor={servicio.valor}
+                  removeServicioSeleccionado={() => removeServicioSeleccionado(servicio)}
+                />
+              ))}
+              <AgregarServiciosReserva />
             </div>
           </div>
           <div>
-            <button type="submit" className="w-full bg-transparent border-2 border-[#451693] rounded-sm 
+            <button 
+              type="submit"
+              className="w-full bg-transparent border-2 border-[#451693] rounded-sm 
              hover:bg-[#451693] font-title p-1 transition-all ease-in-out
              dark:border-light_theme dark:hover:text-second_color_lt dark:hover:bg-light_theme">
-                Confirmar
+              Confirmar
             </button>
           </div>
         </form>

@@ -34,7 +34,7 @@ export function ServiciosReserva() {
             <div
               key={servicio.id}
               className="flex bg-[#190042] mb-[1vh] dark:bg-light_theme w-full h-full p-3 rounded-sm 
-              items-center justify-between gap-2"
+              items-center justify-between gap-2 z-10"
             >
               <div
                 className="min-h-full w-[30vh]  bg-color_switch_theme_dark rounded-sm

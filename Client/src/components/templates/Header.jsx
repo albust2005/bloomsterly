@@ -48,8 +48,10 @@ export function Header() {
         route = "/administrador"
     }
 
+    
+
     return (
-        <nav className="bg-transparent flex justify-between items-center h-20 dark:bg-transparent dark:shadow-[#f7e6d5] ">
+        <nav className="bg-transparent flex justify-between items-center h-20 dark:bg-transparent dark:shadow-[#f7e6d5] z-10 ">
             <Link className="flex w-full items-center" to={route}>
                 <div className="flex w-full h-full items-end gap-1">
                     <span className="cursor-pointer dark:text-red-600 text-white font-bloomsterly text-3xl">BloomSterly</span>
@@ -76,7 +78,7 @@ export function Header() {
                 )}
                 {sesionUser?.Rol === "Cliente" && (
                     <div className="flex flex-col md:flex-row">
-                        <ButtonNav text="Nosotros" />
+                        <ButtonNav text="Nosotros" href="#nosotros"/>
                         <ButtonNav text="Servicios" href="/categorias" />
                         <ButtonNav text="Reservas" href="/reservas" />
                     </div>

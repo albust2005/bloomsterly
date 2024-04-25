@@ -14,7 +14,7 @@ export function PerfilEmpresa() {
   console.log(empresaIngresada);
   return (
     <>
-      <section className="flex  w-full justify-center gap-4 ">
+      <section className="flex  w-full justify-center gap-4 z-10">
         <div className="flex w-full">
           <div className="w-full flex flex-col justify-center items-center font-title font-bold 
           bg-hover_boton_admin">

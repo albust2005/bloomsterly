@@ -44,32 +44,35 @@ import { RegistroEmpresa } from './pages/empresa/registroEmpresa'
 function App() {
   return (
     <UserProvider>
-      <Layaout>
 
-        <ThemeProvider>
 
-          <Header />
-          <ThemeColor />
+      <ThemeProvider>
 
-          {/* Providers y contextos para poder acceder a los valores de cada uno*/}
-          <CategoriaProvider>
-            <SubCategoriaProvider>
-              <ServiciosProvider>
-                <EmpresaProvider>
-                  <ReservasUserProvider>
+
+        <ThemeColor />
+
+        {/* Providers y contextos para poder acceder a los valores de cada uno*/}
+        <CategoriaProvider>
+          <SubCategoriaProvider>
+            <ServiciosProvider>
+              <EmpresaProvider>
+                <ReservasUserProvider>
+                  <Layaout>
+                    <Header />
                     <RoutesPage></RoutesPage>
-                  </ReservasUserProvider>
-                </EmpresaProvider>
-              </ServiciosProvider>
-            </SubCategoriaProvider>
-          </CategoriaProvider>
+                    <Footer />
+                  </Layaout>
+                </ReservasUserProvider>
+              </EmpresaProvider>
+            </ServiciosProvider>
+          </SubCategoriaProvider>
+        </CategoriaProvider>
 
 
 
-          <Footer />
-        </ThemeProvider>
-        <ToastContainer position="top-center" />
-      </Layaout>
+      </ThemeProvider>
+      <ToastContainer position="top-center" />
+
     </UserProvider>
   )
 }
@@ -89,7 +92,7 @@ function RoutesPage() {
 
 
       <Route element={
-        <ProtectedRoute 
+        <ProtectedRoute
           isAuth={!!sesionUser && sesionUser.Rol === 'Empresa'}
         />
       }>
@@ -107,7 +110,7 @@ function RoutesPage() {
       />}>
         <Route path='/servicio/:subCategoria/:empresa' element={<Servicios></Servicios>}></Route>
         <Route path='/reservas' element={<ReservasUser />} />
-        <Route path='/reserva/:user' element={<ReservaActual />}></Route>
+        <Route path='/reserva/crear' element={<ReservaActual />}></Route>
       </Route>
 
     </Routes>

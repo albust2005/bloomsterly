@@ -15,8 +15,6 @@ const ReservaDetalleCard = ({
 }) => {
   const { sesionUser } = useUserContext();
 
-
-
   return (
     <article className="flex text-white flex-col ">
       <div className="w-full  h-full p-5 bg-dark_theme dark:bg-second_color_lt rounded-sm">
@@ -77,12 +75,18 @@ const ReservaDetalleCard = ({
 
 const ReservaAddCard = () => {
   return (
-    <article className="flex text-white flex-col items-center justify-center bg-dark_theme">
-      <FontAwesomeIcon
-        icon={faPlusCircle}
-        size="2x"
+    <article
+      className="flex text-white flex-col items-center justify-center bg-dark_theme z-10">
+      <Link
+        to='/reserva/crear'
+        className="cursor-pointer"
       >
-      </FontAwesomeIcon>
+        <FontAwesomeIcon
+          icon={faPlusCircle}
+          size="2x"
+        >
+        </FontAwesomeIcon>
+      </Link>
     </article>
   )
 
@@ -100,7 +104,7 @@ export function ReservasUser() {
           <p className="text-wrap text-4xl font-text text-white dark:text-black">
             Realiza tu primera reserva
             <Link
-              to={`/reserva/${sesionUser?.Username}`}
+              to={`/reserva/crear`}
               className="font-text font-extrabold text-color_font_dark text-4xl animate-pulse hover:text-yellow-300 cursor-pointer transition ease-in-out duration-300 dark:text-second_color_lt dark:hover:text-color_font_light px-2 "
             >
               aquí

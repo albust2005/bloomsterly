@@ -5,11 +5,15 @@ import withEmpresas from '../../db/empresas.json'
 export const useEmpresas = () => {
     const [ empresas, setEmpresas ] = useState([])
     console.log(empresas)
-
+    const token = localStorage.getItem('token')
 
     const obtenerEmpresas = async() =>{
         try {
-            const response = await axios.get('http://localhost:8000/user/getAllEmpresas')
+            const response = await axios.get('http://localhost:8000/user/getAllEmpresas',{
+                headers: {
+                    Authorization: token
+                }
+            })
             setEmpresas(response.data)
         } catch (error) {
             console.log(error.response.message)
