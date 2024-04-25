@@ -11,7 +11,7 @@ import { PerfilEmpresa } from "./perfilEmpresa";
 export function Empresa(){
 
     return(
-        <section className="flex justify-between">
+        <section className="flex justify-between z-10">
             <div className="w-full">
                 <ReservasProvider>
                     <Routes>
