@@ -21,192 +21,241 @@ export function Layaout({ children }) {
         dark:from-[#ffffff] dark:via-[#ffffec] dark:to-[#ffffd2] 
         flex flex-col h-full gap-48 px-5 md:px-16 lg:px-24 2xl:px-64"
     >
-      {/*AMARILLAS */}
-      <ScrollAnimatedSection
-        className="absolute top-[60px] w-[150px] left-[120px] -rotate-12 opacity-0"
-        animation="animate-fade-right"
-      >
-        <img src="../../../src/assets/flor_img/lirioamarillo.webp" alt="" />
-      </ScrollAnimatedSection>
-
-      <ScrollAnimatedSection
-        className="absolute top-[190px] w-[95px] left-[255px] -rotate-12 opacity-0 z-10"
-        animation="animate-fade-right"
-      >
-        <img src="../../../src/assets/flor_img/lirioamarillo.webp" alt="" />
-      </ScrollAnimatedSection>
-
-      <ScrollAnimatedSection
-        className="absolute top-[108px] right-[350px] w-[70px] z-10 opacity-0"
-        animation="animate-fade-down"
-      >
-        <img src="../../../src/assets/flor_img/lirioamarillo.webp" alt="" />
-      </ScrollAnimatedSection>
-
-      <ScrollAnimatedSection
-        className="absolute top-[440px] left-[130px] w-[70px] z-10 opacity-0"
-        animation="animate-fade-right"
-      >
-        <img src="../../../src/assets/flor_img/lirioamarillo.webp" alt="" />
-      </ScrollAnimatedSection>
-
-      <ScrollAnimatedSection
-        className="absolute top-[480px] right-[500px] w-[60px] z-0 opacity-0"
-        animation="animate-fade-left"
-      >
-        <img src="../../../src/assets/flor_img/lirioamarillo.webp" alt="" />
-      </ScrollAnimatedSection>
-
-      <ScrollAnimatedSection
-        className="absolute top-[500px] right-[90px] w-[150px] z-0 opacity-0"
-        animation="animate-fade-left"
-      >
-        <img src="../../../src/assets/flor_img/lirioamarillo.webp" alt="" />
-      </ScrollAnimatedSection>
-
-      <ScrollAnimatedSection
-        className="absolute top-[570px] left-[350px] w-[45px] z-10 opacity-0"
-        animation="animate-fade-right"
-      >
-        <img src="../../../src/assets/flor_img/lirioamarillo.webp" alt="" />
-      </ScrollAnimatedSection>
-
-
-      {/*ROSA */}
-
-      <ScrollAnimatedSection
-        className=" absolute w-[80px] left-[450px] top-[150px] opacity-0"
-        animation="animate-fade-right"
-      >
-        <img src="../../../src/assets/flor_img/liriorosa.webp" alt="" />
-      </ScrollAnimatedSection>
-
-      <ScrollAnimatedSection
-        className="absolute top-[308px] left-[97px] w-[110px] z-10 opacity-0"
-        animation="animate-fade-up"
-      >
-        <img src="../../../src/assets/flor_img/liriorosa.webp" alt="" />
-      </ScrollAnimatedSection>
-
-      <ScrollAnimatedSection
-        className=" absolute w-[120px] left-[615px] top-[210px]"
-        animation="animate-fade-up"
-      >
-        <img src="../../../src/assets/flor_img/liriorosa.webp" alt="" />
-      </ScrollAnimatedSection>
-
-      <ScrollAnimatedSection
-        className="absolute top-56 right-[220px] w-[70px] opacity-0"
-        animation="animate-fade-left"
-      >
-        <img src="../../../src/assets/flor_img/liriorosa.webp" alt="" />
-      </ScrollAnimatedSection>
-
-      <ScrollAnimatedSection
-        className="absolute top-[440px] left-[150px] w-[110px] z-10 opacity-0"
-        animation="animate-fade-up"
-      >
-        <img src="../../../src/assets/flor_img/liriorosa.webp" alt="" />
-      </ScrollAnimatedSection>
-
-      <ScrollAnimatedSection
-        className=" absolute w-[220px] left-[580px] top-[550px] opacity-0"
-        animation="animate-fade-down"
-      >
-        <img src="../../../src/assets/flor_img/liriorosa.webp" alt="" />
-      </ScrollAnimatedSection>
-
-      <ScrollAnimatedSection
-        className="absolute top-[320px] right-[65px] w-[90px] z-10 opacity-0"
-        animation="animate-fade-down"
-      >
-        <img src="../../../src/assets/flor_img/liriorosa.webp" alt="" />
-      </ScrollAnimatedSection>
-
-
-      {/*BLANCO */}
-
-      <ScrollAnimatedSection
-        className=" absolute w-[98px] left-[625px] top-[60px]"
-        animation="animate-fade-down"
-      >
-        <img src="../../../src/assets/flor_img/lirioblanco.webp" alt="" />
-      </ScrollAnimatedSection>
-
-      <ScrollAnimatedSection
-        className="absolute top-[440px] left-[200px] w-[85px] z-10 opacity-0"
-        animation="animate-fade-left"
-      >
-        <img src="../../../src/assets/flor_img/lirioblanco.webp" alt="" />
-      </ScrollAnimatedSection>
-
-      <ScrollAnimatedSection
-        className="absolute top-[500px] left-[350px] w-[130px] z-0 opacity-0"
-        animation="animate-fade-left"
-      >
-        <img src="../../../src/assets/flor_img/lirioblanco.webp" alt="" />
-      </ScrollAnimatedSection>
-
-      <ScrollAnimatedSection
-        className="absolute top-[310px] right-[30px] w-[70px] z-0 opacity-0"
-        animation="animate-fade-left"
-      >
-        <img src="../../../src/assets/flor_img/lirioblanco.webp" alt="" />
-      </ScrollAnimatedSection>
-
-
-      {/*BLANCO-ROSA */}
-
-      <ScrollAnimatedSection
-        className=" absolute w-[100px] right-[80px] top-[60px] opacity-0"
-        animation="animate-fade-left"
-      >
-        <img src="../../../src/assets/flor_img/lirioblanco-rosa.webp" alt="" />
-      </ScrollAnimatedSection>
-
-      <ScrollAnimatedSection
-        className="absolute top-56 left-[50px] w-[70px] opacity-0"
-        animation="animate-fade-right"
-      >
-        <img src="../../../src/assets/flor_img/lirioblanco-rosa.webp" alt="" />
-      </ScrollAnimatedSection>
-
-      <ScrollAnimatedSection
-        className="absolute top-[540px] left-[50px] w-[130px] z-10 opacity-0"
-        animation="animate-fade-right"
-      >
-        <img src="../../../src/assets/flor_img/lirioblanco-rosa.webp" alt="" />
-      </ScrollAnimatedSection>
-
-
-      {/*NOSOTROS */}
-
-      {/*AMARILLAS */}
-      <ScrollAnimatedSection
-        className="absolute top-[1000px] left-[2px] w-[100px] z-0 opacity-0"
-        animation="animate-fade-right"
-      >
-        <img src="../../../src/assets/flor_img/lirioamarillo.webp" alt="" />
-      </ScrollAnimatedSection>
-
-      {/*ROSA */}
-      <ScrollAnimatedSection
-        className="absolute top-[745px] left-[310px] w-[65px] z-10 opacity-0"
-        animation="animate-fade-down"
-      >
-        <img src="../../../src/assets/flor_img/liriorosa.webp" alt="" />
-      </ScrollAnimatedSection>
-
-
-      {/*BLANCO-ROSA */}
-      <ScrollAnimatedSection
-        className="absolute top-[815px] left-[50px] w-[70px] z-10 opacity-0"
-        animation="animate-fade-right"
-      >
-        <img src="../../../src/assets/flor_img/lirioblanco-rosa.webp" alt="" />
-      </ScrollAnimatedSection>
-
       {children}
+
+      {/*IZQUIERDA */}
+      <ScrollAnimatedSection 
+        className=" 
+        absolute
+        z-0 opacity-0
+        top-[10%]
+        left-[2%]
+        minicel:w-[75px] sm:w-[100px]
+        "
+        animation="animate-fade-right"
+      >
+        <img src="../../../src/assets/flor_img/liriorosa.webp" alt="" />
+      </ScrollAnimatedSection>
+
+
+      <ScrollAnimatedSection 
+        className="
+        absolute
+        z-0 opacity-0
+        top-[21%]
+        left-[0%]
+        minicel:w-[15px] sm:w-[30px]
+        "
+        animation="animate-fade-right"
+      >
+        <img src="../../../src/assets/flor_img/lirioamarillo.webp" alt="" />
+      </ScrollAnimatedSection>
+
+
+      <ScrollAnimatedSection 
+        className="
+        absolute
+        z-0 opacity-0
+        top-[30%]
+        left-[2%]
+        minicel:w-[75px] sm:w-[100px]
+        "
+        animation="animate-fade-right"
+      >
+        <img src="../../../src/assets/flor_img/lirioblanco-rosa.webp" alt="" />
+      </ScrollAnimatedSection>
+
+      <ScrollAnimatedSection 
+        className="
+        absolute
+        z-0 opacity-0
+        top-[50%]
+        left-[0%]
+        minicel:w-[75px] sm:w-[100px]
+        "
+        animation="animate-fade-right"
+      >
+        <img src="../../../src/assets/flor_img/lirioblanco.webp" alt="" />
+      </ScrollAnimatedSection>
+
+      <ScrollAnimatedSection 
+        className="
+        absolute
+        z-0 opacity-0
+        top-[70%]
+        left-[0%]
+        minicel:w-[50px] sm:w-[90px]
+        "
+        animation="animate-fade-up"
+      >
+        <img src="../../../src/assets/flor_img/lirioamarillo.webp" alt="" />
+      </ScrollAnimatedSection>
+
+      
+
+      <ScrollAnimatedSection
+        className="absolute 
+        top-[85%] 
+        left-[6%] 
+        w-[130px] 
+        z-10 opacity-0"
+        animation="animate-fade-up"
+      >
+        <img src="../../../src/assets/flor_img/lirioblanco-rosa.webp" alt="" />
+      </ScrollAnimatedSection>
+
+      {/*CENTRO */}
+      <ScrollAnimatedSection
+        className="absolute 
+        top-[5%] minicel:top-[10%] lg:top-[12%] xl:top-[11%] 2xl:top-[8%] 
+        minicel:left-[10%] lg:left-[15%] 
+        minicel:w-[95px] sm:w-[120px] 
+        -rotate-12 opacity-0"
+        animation="animate-fade-right"
+      >
+        <img src="../../../src/assets/flor_img/lirioamarillo.webp" alt="" />
+      </ScrollAnimatedSection>
+
+
+      <ScrollAnimatedSection
+        className=" absolute 
+        w-[80px] 
+        left-[25%] 
+        top-[30%] 
+        opacity-0"
+        animation="animate-fade-right"
+      >
+        <img src="../../../src/assets/flor_img/liriorosa.webp" alt="" />
+      </ScrollAnimatedSection>
+
+      <ScrollAnimatedSection
+        className=" absolute 
+        w-[70px] 
+        left-[34%] 
+        top-[17%] 
+        opacity-0"
+        animation="animate-fade-down"
+      >
+        <img src="../../../src/assets/flor_img/lirioblanco-rosa.webp" alt="" />
+      </ScrollAnimatedSection>
+
+
+      <ScrollAnimatedSection
+        className="absolute 
+        top-[50%] 
+        left-[25%]
+         w-[100px] 
+        opacity-0"
+        animation="animate-fade-up"
+      >
+        <img src="../../../src/assets/flor_img/liriorosa.webp" alt="" />
+      </ScrollAnimatedSection>
+
+      <ScrollAnimatedSection
+        className=" absolute w-[110px] left-[46%] top-[30%] opacity-0"
+        animation="animate-fade-up"
+      >
+        <img src="../../../src/assets/flor_img/liriorosa.webp" alt="" />
+      </ScrollAnimatedSection>
+
+      <ScrollAnimatedSection
+        className="absolute 
+        top-[20%] 
+        right-[30%]
+         w-[70px] 
+         z-10 opacity-0"
+        animation="animate-fade-down"
+      >
+        <img src="../../../src/assets/flor_img/lirioamarillo.webp" alt="" />
+      </ScrollAnimatedSection>
+
+      <ScrollAnimatedSection
+        className="absolute 
+        top-[5%] minicel:top-[30%] lg:top-[35%] xl:top-[40%] 2xl:top-[45%] 
+        minicel:left-[10%] lg:left-[37%] 
+        minicel:w-[15px] sm:w-[45px] 
+        -rotate-12 opacity-0"
+        animation="animate-fade-down"
+      >
+        <img src="../../../src/assets/flor_img/lirioamarillo.webp" alt="" />
+      </ScrollAnimatedSection>
+
+      <ScrollAnimatedSection
+        className=" absolute w-[85px] left-[54%] top-[10%] opacity-0"
+        animation="animate-fade-down"
+      >
+        <img src="../../../src/assets/flor_img/lirioblanco.webp" alt="" />
+      </ScrollAnimatedSection>
+
+      {/*DERECHA */}
+      <ScrollAnimatedSection
+        className=" absolute 
+        w-[100px] 
+        right-[10%] 
+        top-[10%] 
+        opacity-0"
+        animation="animate-fade-left"
+      >
+        <img src="../../../src/assets/flor_img/lirioblanco-rosa.webp" alt="" />
+      </ScrollAnimatedSection>
+
+      <ScrollAnimatedSection
+        className="absolute 
+        top-[48%] 
+        right-[3%]
+        w-[70px]  
+        opacity-0"
+        animation="animate-fade-left"
+      >
+        <img src="../../../src/assets/flor_img/lirioblanco.webp" alt="" />
+      </ScrollAnimatedSection>
+
+      <ScrollAnimatedSection
+        className="absolute 
+        top-[50%] 
+        right-[5%] 
+        w-[90px] 
+        opacity-0"
+        animation="animate-fade-down"
+      >
+        <img src="../../../src/assets/flor_img/liriorosa.webp" alt="" />
+      </ScrollAnimatedSection>
+
+      <ScrollAnimatedSection 
+        className="
+        absolute
+        z-0 opacity-0
+        top-[70%]
+        right-[1%]
+        minicel:w-[30px] sm:w-[60px]
+        "
+        animation="animate-fade-up"
+      >
+        <img src="../../../src/assets/flor_img/lirioamarillo.webp" alt="" />
+      </ScrollAnimatedSection>
+
+      <ScrollAnimatedSection
+        className="absolute 
+        top-[5%] minicel:top-[20%] lg:top-[25%] xl:top-[30%] 2xl:top-[35%] 
+        minicel:right-[3%] lg:right-[6%] 
+        minicel:w-[15px] sm:w-[45px] 
+        -rotate-12 opacity-0"
+        animation="animate-fade-left"
+      >
+        <img src="../../../src/assets/flor_img/lirioamarillo.webp" alt="" />
+      </ScrollAnimatedSection>
+
+      <ScrollAnimatedSection
+        className="absolute 
+        top-[5%] minicel:top-[5%] lg:top-[10%] xl:top-[25%] 2xl:top-[30%] 
+        minicel:right-[1%] lg:right-[1%] 
+        minicel:w-[15px] sm:w-[45px] 
+        -rotate-12 opacity-0"
+        animation="animate-fade-left"
+      >
+        <img src="../../../src/assets/flor_img/liriorosa.webp" alt="" />
+      </ScrollAnimatedSection>
+
     </main>
   );
 }
