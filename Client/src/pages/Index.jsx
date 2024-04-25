@@ -7,12 +7,14 @@ import { FirtsTitle, Titles } from "../components/titles/Title";
 //import { Flor } from "../components/Flores.jsx"
 import { useCategoriaContext } from "../components/providers/categoriaProvider.jsx";
 import { Link } from "react-router-dom";
+import { FloresIndex } from "../components/templates/layoutFloresIndex.jsx";
 
 export function LandingPage() {
   const categorias = useCategoriaContext();
 
   return (
     <>
+      <FloresIndex></FloresIndex>
       {/* BloomSterly */}
       <div className="z-10 ">
         <ScrollAnimatedSection

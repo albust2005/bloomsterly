@@ -18,7 +18,7 @@ export function RegistroEmpresa() {
   return (
     <>
       <div className="h-full w-full bg-dark_theme dark:bg-second_color_lt text-white  p-10 shadow-xl shadow-[#4e1ba1]
-      flex flex-col gap-9 mt-10 dark:shadow-[#d91e4e]">
+      flex flex-col gap-9 mt-10 dark:shadow-[#d91e4e] z-10">
         <div>
           <Link to="/login">
           <FontAwesomeIcon icon={faArrowLeft} size="xl"/>

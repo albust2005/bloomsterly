@@ -17,7 +17,7 @@ export const useChangeLogin = () => {
   const [registerColor, setRegisterColor] = useState("bg-transparent");
 
   const formRender =
-    form === "Iniciar" ? <InicioSesion></InicioSesion> : <Registro></Registro>;
+    form === "Iniciar" ? <InicioSesion></InicioSesion> : <Registro></Registro>; 
 
   const Inicios = () => {
     setForm((prevform) => (prevform === "Iniciar" ? "Iniciar" : "Iniciar"));
@@ -40,7 +40,7 @@ export function Login() {
   const {formRender, Inicios, Registros, registerColor, inicioColor} = useChangeLogin()
 
   return (
-    <div className=" h-screen flex justify-center items-center  font-title italic text-xl minicel:flex-col sm:flex-row mt-2">
+    <div className=" h-screen flex justify-center items-center  font-title italic text-xl minicel:flex-col sm:flex-row mt-2 z-10">
       <div className=" bg-dark_theme w-full sm:w-2/4 sm:h-[70%] md:h-[95%]  p-8 dark:bg-second_color_lt relative">
         <div className="absolute top-[5px] left-[5px]">
           <Link to="/">
