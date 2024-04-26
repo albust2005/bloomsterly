@@ -1,18 +1,8 @@
 import express from "express";
-import { postadmin, getlogout, editarPefil, sancionarUsuarios, getAllUsuarios, AllSolicitudes, aceptacion, buscarUsuarios, sancionarEmpresa, getAllEmpresas, solicitud, negar, getAllAdministradores } from "../controllers/admin.controller.js";
-
+import { postadmin, getlogout, editarPefil, sancionarUsuarios, getAllUsuarios, AllSolicitudes, aceptacion, buscarUsuarios, sancionarEmpresa, getAllEmpresas, solicitud, negar, getAllAdministradores, getadmin } from "../controllers/admin.controller.js";
+import jwt from 'jsonwebtoken'
 // esto es para poner rutas
 const router = express.Router();
-
-//middleware
-// rutas protegidas por sesion
-// router.use((req, res, next)=>{
-//     if (req.session.userAdmin) {
-//         next(); //continuar si hay una sesion activa
-//     }else{
-//         res.status(401).json({message: "Acceso no autorizado"})
-//     }
-// })
 
 const verificarToken=(req,res, next)=>{
     const token = req.headers['authorization'];
@@ -54,5 +44,8 @@ router.get("/getAllEmpresas", getAllEmpresas);
 router.post("/solicitud",solicitud);
 // ruta para negar acceso a una solicitud de una empresa
 router.post("/negar",negar);
+// ruta para obtener todos los administradores
 router.get("/getAllAdministradores",getAllAdministradores)
+// ruta para obtener la informacion del administrador
+router.get("/getadmin",verificarToken,getadmin)
 export default router;

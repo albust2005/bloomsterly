@@ -123,3 +123,19 @@ export const getAllEmpresas = async (req, res) => {
       .json({ message: "Error al traer a todas las empresas", error: error });
   }
 };
+// Esta parte trae la informacion del usuario con el token
+export const getuser = async(req,res)=>{
+  try {
+    const dato=req.userCOD
+    const datos=await Usuarios.findOne({where:{COD:dato}})
+    res.status(200).json(datos)
+  } catch (error) {
+    if (error instanceof Sequelize.DatabaseError) {
+      // Manejar el error de base de datos
+      res.status(400).json({message: `Error de base datos`, error:error.message})
+    } else {
+        // Manejar otros tipos de errores
+        res.status(400).json({message:'Hubo un error al obtener informacion del usuario', error});
+    }
+  }
+}

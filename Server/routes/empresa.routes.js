@@ -1,19 +1,9 @@
 import express from "express";
-import { getuser, postuser, postempresa, getempresa } from "../controllers/auth.controller.js";
-import { getlogout, editarPerfil, eliminarPerfil } from "../controllers/empresa.controller.js";
+import { getlogout, editarPerfil, eliminarPerfil, getempresa } from "../controllers/empresa.controller.js";
+import jwt from 'jsonwebtoken'
 
 // esto es para poner rutas
 const router = express.Router()
-
-// rutas protegidas por sesion
-// router.use((req, res, next)=>{
-//     if (req.session.userEmpresa) {
-//         next(); //continuar si hay una sesion activa
-//     }else{
-//         res.status(401).json({message: "Acceso no autorizado"})
-//     }
-// })
-
 const verificarToken=(req,res, next)=>{
     const token = req.headers['authorization'];
     if (!token){
@@ -35,5 +25,6 @@ router.post("/loginout",getlogout);
 router.put("/editarPerfil", verificarToken, editarPerfil);
 // ruta para eliminar el perfil de la empresa
 router.delete("/eliminarPerfil", verificarToken, eliminarPerfil);
-
+// ruta para obtener la informacion de la empresa por el token
+router.get("/getempresa",verificarToken,getempresa)
 export default router

@@ -1,17 +1,12 @@
 import express from "express";
 import {
-  getuser,
-  postuser,
-  postempresa,
-  getempresa,
-} from "../controllers/auth.controller.js";
-import {
   getlogout,
   editarPerfil,
   eliminacionPerfil,
   subcategorias,
   servicios,
   getAllEmpresas,
+  getuser,
 } from "../controllers/user.controller.js";
 import jwt from 'jsonwebtoken'
 
@@ -43,5 +38,9 @@ router.delete("/eliminarPerfil", verificarToken, eliminacionPerfil);
 router.get("/subcategorias", subcategorias);
 // ruta para obtener empresa depende de la subcategoria
 router.get("/servicios",verificarToken, servicios)
+// ruta para obtener a todas las empresas
 router.get("/getAllEmpresas",verificarToken, getAllEmpresas);
+// ruta para obtener la informacion del usuario con el token
+router.get("/getusuario",verificarToken,getuser);
+// ruta para crear una reserva
 export default router;
