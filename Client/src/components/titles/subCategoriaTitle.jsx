@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 
 export function TitleSubCategoria({title, descripcion, subtitle}) {
     return (
-        <section className="flex flex-col items-center text-center w-full">
+        <section className="flex flex-col items-center text-center w-full z-10">
             <h1 className="font-bloomsterly flex justify-center text-white text-6xl celular:text-7xl
             sm:text-9xl md:text-[160px] lg:text-[200px]  dark:text-second_color_lt z-0 mb-[3vh]">
                 {title}

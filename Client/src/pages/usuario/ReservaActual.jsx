@@ -86,7 +86,7 @@ export function ReservaActual() {
   const { sesionUser } = useUserContext();
 
   return (
-    <section className=" bg-dark_theme dark:bg-second_color_lt p-9 flex flex-col gap-4">
+    <section className=" bg-dark_theme dark:bg-second_color_lt p-9 flex flex-col gap-4 z-10">
       <div>
         <h1 className="font-bloomsterly text-8xl text-center text-white">
           Reserva

@@ -18,10 +18,10 @@ const ReservaDetalleCard = ({
 
 
   return (
-    <article className="flex text-white flex-col ">
-      <div className="w-full  h-full p-5 bg-dark_theme dark:bg-second_color_lt rounded-sm">
+    <article className="flex text-white flex-col z-10">
+      <div className="w-full  h-full p-5 bg-dark_theme dark:bg-second_color_lt rounded-sm z-10">
         <div className="flex flex-col ">
-          <h1 className="font-title font-semibold text-3xl">
+          <h1 className="font-title font-semibold text-3xl z-10">
             Cliente {sesionUser.Username}
           </h1>
 
@@ -77,7 +77,7 @@ const ReservaDetalleCard = ({
 
 const ReservaAddCard = () => {
   return (
-    <article className="flex text-white flex-col items-center justify-center bg-dark_theme">
+    <article className="flex text-white flex-col items-center justify-center bg-dark_theme z-10">
       <FontAwesomeIcon
         icon={faPlusCircle}
         size="2x"
@@ -96,8 +96,8 @@ export function ReservasUser() {
   return (
     <section>
       {reservaItem?.length === 0 ? (
-        <div className="w-full flex flex-col text-center gap-10">
-          <p className="text-wrap text-4xl font-text text-white dark:text-black">
+        <div className="w-full flex flex-col text-center gap-10 z-10">
+          <p className="text-wrap text-4xl font-text text-white dark:text-black z-10">
             Realiza tu primera reserva
             <Link
               to={`/reserva/${sesionUser?.Username}`}
@@ -109,11 +109,11 @@ export function ReservasUser() {
           <NotFound razon="reservas" />
         </div>
       ) : (
-        <div>
-          <h1 className="text-white font-bloomsterly text-9xl text-center">
+        <div className="z-10">
+          <h1 className="text-white font-bloomsterly text-9xl text-center z-10">
             Reservas
           </h1>
-          <div className="mx-auto grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+          <div className="mx-auto grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 z-10">
             {reservaItem?.map(
               ({ nombreEvento, fecha, direccion, telefono, servicios }) => (
                 <ReservaDetalleCard

@@ -35,12 +35,12 @@ export function Servicios() {
     console.log(servicios)
 
     return (
-        <section>
+        <section className="z-10">
             <TitleSubCategoria
                 title={empresa}
                 subtitle={subCategoria}
             />
-            <section>
+            <section className="z-10">
                 {
                     servicios?.map(({ id, nombre, descripcion, valor, img }) => (
                         <ServiciosCard
