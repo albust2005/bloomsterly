@@ -64,3 +64,19 @@ export const eliminarPerfil = async(req,res)=>{
         res.status(400).json({message:"Hubo un error al eliminar el perfil", error:error})
     }
 }
+// Esta funcion es para obtener la informacion de la empresa por el token
+export const getempresa = async(req,res)=>{
+    try {
+      const dato=req.userCOD
+      const datos=await Empresas.findOne({where:{NIT:dato}})
+      res.status(200).json(datos)
+    } catch (error) {
+      if (error instanceof Sequelize.DatabaseError) {
+        // Manejar el error de base de datos
+        res.status(400).json({message: `Error de base datos`, error:error.message})
+      } else {
+          // Manejar otros tipos de errores
+          res.status(400).json({message:'Hubo un error al obtener informacion de la empresa', error});
+      }
+    }
+  }
