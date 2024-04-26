@@ -7,24 +7,29 @@ import { ReservaDescrip } from "./reservaDescrip";
 import { ReservasProvider } from "./provider/reservasProvider";
 import { ServiciosEmpresa } from "./serviciosEmpresa";
 import { PerfilEmpresa } from "./perfilEmpresa";
+import { ServiciosEmpresaProvider } from "./provider/serviciosEmpresaProvider";
 
-export function Empresa(){
+export function Empresa() {
+  return (
+    <section className="flex justify-between z-10">
+      <div className="w-full">
+        <ServiciosEmpresaProvider>
+          <ReservasProvider>
+            <Routes>
+              <Route path="/" element={<Index_empresa />}></Route>
+              <Route path="/reserva" element={<ReservasCliente />}></Route>
+              <Route
+                path="/reserva/reservaDescrip/:id"
+                element={<ReservaDescrip />}
+              ></Route>
 
-    return(
-        <section className="flex justify-between z-10">
-            <div className="w-full">
-                <ReservasProvider>
-                    <Routes>
-                        <Route path="/" element={<Index_empresa />}></Route>
-                        <Route path="/reserva" element={<ReservasCliente/>}></Route>
-                        <Route path="/reserva/reservaDescrip/:id" element={<ReservaDescrip />}></Route>
+              <Route path="/servicios" element={<ServiciosEmpresa />}></Route>
 
-                        <Route path="/servicios" element={<ServiciosEmpresa/>}></Route>
-
-                        <Route path="/perfil" element={<PerfilEmpresa/>}></Route>
-                    </Routes>
-                </ReservasProvider>
-            </div>
-        </section>
-    )
+              <Route path="/perfil" element={<PerfilEmpresa />}></Route>
+            </Routes>
+          </ReservasProvider>
+        </ServiciosEmpresaProvider>
+      </div>
+    </section>
+  );
 }

@@ -6,8 +6,8 @@ import { useReservaUserCrudContext } from "../providers/reservasUserProvider"
 export function ServiciosCard({ nombre, descripcion, valor, img, addServicioSeleccionado }) {
 
     return (
-        <article className="flex  p-3 text-white w-full gap-2">
-            <div className="bg-purple-700 w-1/3 flex dark:bg-second_color_lt" >
+        <article className="flex  p-3 text-white w-full gap-2 z-10">
+            <div className="bg-purple-700 w-1/3 flex dark:bg-second_color_lt " >
                 <img src={img} alt="" />
             </div>
             <div className="flex flex-col font-text font-medium  w-2/3 dark:text-black">

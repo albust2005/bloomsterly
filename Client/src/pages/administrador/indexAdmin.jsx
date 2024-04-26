@@ -1,11 +1,18 @@
 import { useUserContext } from "../../components/providers/userProvider";
-import { TitleAE } from "../../components/titles/titleAE"
+import { TitleAE } from "../../components/titles/titleAE";
+import { ScrollAnimatedSection } from "../../components/templates/ScrollAnimatedSection";
+
 export const IndexAdmin = () => {
-  const { sesionUser } = useUserContext()
-  
+  const { sesionUser } = useUserContext();
+
   return (
-    <div className="flex justify-center items-center text-center">
-      <TitleAE title="Administrador" descripcion={`Bienvenido a tu espacio ${sesionUser?.Username}`} />
-    </div>
+    <ScrollAnimatedSection animation="animate-fade-up" className="opacity-0">
+      <div className="flex justify-center items-center text-center">
+        <TitleAE
+          title="Administrador"
+          descripcion={`Bienvenido a tu espacio ${sesionUser?.Username}`}
+        />
+      </div>
+    </ScrollAnimatedSection>
   );
-}
+};

@@ -1,4 +1,5 @@
 import { useForm } from "react-hook-form";
+import axios from 'axios'
 export const FormAdmin = () => {
   const {
     register,
@@ -6,10 +7,24 @@ export const FormAdmin = () => {
     formState: { errors },
 
   } = useForm();
-     const onSubmit = handleSubmit((data) => {
+     const onSubmit = handleSubmit( async(data) => {
        console.log(data);
        alert("enviando datos");
-
+       const {nombre,apellido,Cedula,Email,password,Username,municipio} = data
+       try {
+          const respuesta = await axios.post("http://localhost:8000/admin/crear",{
+            COD:Cedula,
+            nombre:nombre,
+            primer_apelli:apellido,
+            COD_municipios:municipio,
+            contrasena:password,
+            username:Username,
+            email:Email
+          })
+          alert(respuesta.data.message)
+       } catch (error) {
+         alert(error)
+       }
      });
   return (
     <>
@@ -144,16 +159,16 @@ export const FormAdmin = () => {
             >
               Municipio
             </option>
-            <option value="rg" className="bg-dark_theme dark:bg-light_theme">
+            <option value="1" className="bg-dark_theme dark:bg-light_theme">
               Rionegro
             </option>
-            <option value="ml" className="bg-dark_theme dark:bg-light_theme">
+            <option value="2" className="bg-dark_theme dark:bg-light_theme">
               Marinilla
             </option>
-            <option value="gr" className="bg-dark_theme dark:bg-light_theme">
+            <option value="3" className="bg-dark_theme dark:bg-light_theme">
               Guarne
             </option>
-            <option value="md" className="bg-dark_theme dark:bg-light_theme">
+            <option value="4" className="bg-dark_theme dark:bg-light_theme">
               Medellín
             </option>
           </select>

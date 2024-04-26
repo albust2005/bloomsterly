@@ -18,7 +18,7 @@ export function Layaout({ children }) {
       className="bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))]
         from-[#451693] from-40% via-[#370d7d] via-60% to-[#190042] 
         to-90%  dark:bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))]
-        dark:from-[#ffffff] dark:via-[#ffffec] dark:to-[#ffffd2] 
+        dark:from-[#ffffff] dark:via-[#ffffff] dark:to-[#ffffff] 
         flex flex-col h-full gap-48 px-5 md:px-16 lg:px-24 2xl:px-64 z-0"
     >
       {children}
@@ -183,7 +183,7 @@ export function Layaout({ children }) {
       </ScrollAnimatedSection>
 
       <ScrollAnimatedSection
-        className=" absolute w-[220px] left-[42%] top-[93%] opacity-0"
+        className=" absolute w-[220px] left-[42%] top-[93%] opacity-0 z-0"
         animation="animate-fade-down"
       >
         <img src="../../../src/assets/flor_img/liriorosa.webp" alt="" />
@@ -235,7 +235,7 @@ export function Layaout({ children }) {
         absolute
         z-0 opacity-0
         top-[70%]
-        right-[1%]
+        right-[3%]
         minicel:w-[30px] sm:w-[60px]
         "
         animation="animate-fade-up"
@@ -257,7 +257,7 @@ export function Layaout({ children }) {
       <ScrollAnimatedSection
         className="absolute 
         top-[5%] minicel:top-[5%] lg:top-[10%] xl:top-[25%] 2xl:top-[30%] 
-        minicel:right-[1%] lg:right-[1%] 
+        minicel:right-[3%] lg:right-[3%] 
         minicel:w-[15px] sm:w-[45px] 
         z-0 opacity-0"
         animation="animate-fade-left"

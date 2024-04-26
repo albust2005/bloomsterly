@@ -1,5 +1,3 @@
-
-
 //importando de la librería los hooks que necesitaremos
 import {
   flexRender,
@@ -15,6 +13,7 @@ import { rankItem } from "@tanstack/match-sorter-utils";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useToastify } from "../../components/hooks/useToastify";
+import { ScrollAnimatedSection } from "../../components/templates/ScrollAnimatedSection";
 const filterTable = (row, columnId, value, addMeta) => {
   // rankItem itera sobre término de búsqueda que digitamos en el input de todos los registros por cada columna
   // value es el valor del término de la consulta
@@ -56,7 +55,7 @@ const DebouncedInput = ({ value: keyWord, onChange, ...props }) => {
 export const TablaClient = () => {
   //Es el estado inicial de la tabla, y en este importamos nuestra BD falsa
   const [data, setData] = useState([]);
-  const { showToastMessage } = useToastify()
+  const { showToastMessage } = useToastify();
 
   useEffect(() => {
     obtener();
@@ -82,7 +81,7 @@ export const TablaClient = () => {
         // La solicitud fue realizada pero no se recibió respuesta
         console.error("No se recibió respuesta del servidor");
       } else {
-        showToastMessage(error.message)
+        showToastMessage(error.message);
       }
     }
   };
@@ -109,7 +108,7 @@ export const TablaClient = () => {
       cell: ({ row }) => (
         <button
           // className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-          className="uppercase text-center  w-40 border border-border_tabla dark:border-second_color_lt text-white  dark:bg-light_theme  dark:text-second_color_lt bg-admin_card  rounded-2xl hover:bg-hover_boton_admin dark:hover:bg-second_color_lt dark:hover:text-white"
+          className="uppercase text-center  w-40 border border-border_tabla dark:border-second_color_lt text-white  dark:bg-light_theme  dark:text-second_color_lt bg-admin_card  rounded-2xl hover:bg-hover_boton_admin dark:hover:bg-second_color_lt dark:hover:text-white z-10"
           onClick={() => handleButtonClick(row.original.username)}
         >
           {" "}
@@ -128,16 +127,16 @@ export const TablaClient = () => {
         { username }
       );
       const mensaje = respuesta.data.message;
-      showToastMessage(mensaje)
+      showToastMessage(mensaje);
       obtener();
     } catch (error) {
       if (error.response) {
-        showToastMessage(error.response.data.message)
+        showToastMessage(error.response.data.message);
       } else if (error.request) {
         // La solicitud fue realizada pero no se recibió respuesta
         console.error("No se recibió respuesta del servidor");
       } else {
-        showToastMessage(error.message)
+        showToastMessage(error.message);
       }
     }
   };
@@ -177,130 +176,140 @@ export const TablaClient = () => {
 
   return (
     <>
-      <h1 className="text-white text-xl font-title italic dark:text-second_color_lt minicel:text-3xl sm:text-6xl md:text-8xl">
-        Clientes
-      </h1>
+      <div className="flex flex-col gap-20">
+        <ScrollAnimatedSection className="opacity-0" animation="animate-fade-up">
+          <h1 className="text-white text-xl font-title italic dark:text-second_color_lt minicel:text-3xl sm:text-6xl md:text-8xl z-10">
+            Clientes
+          </h1>
+        </ScrollAnimatedSection>
         <DebouncedInput
           type="text"
           //En caso de que globalFilter no esté definido vamos a pasar un string vacío
           value={globalFilter ?? ""}
           // El filtro está resiviendo un valor String
           onChange={(value) => setGlobalFilter(String(value))}
-          className="w-full text-border_tabla  dark:text-second_color_lt rounded p-3 border border-admin_card dark:border-second_color_lt outline-none "
+          className="w-full text-border_tabla  dark:text-second_color_lt rounded p-3 border border-admin_card dark:border-second_color_lt outline-none z-10"
           placeholder="Nombre del cliente"
         />
-      <div className="overflow-auto">
-        <table className="shadow-lg shadow-admin_card/25 dark:shadow-second_color_lt/15 w-full">
-          {/* Esta es la cabezera de nuestra tabla */}
-          <thead>
-            {/* headerGroup es el nombre que le estamos dando a las propiedades que
+        <div className="overflow-auto z-10">
+          <table className="shadow-lg shadow-admin_card/25 dark:shadow-second_color_lt/15 w-full z-10">
+            {/* Esta es la cabezera de nuestra tabla */}
+            <thead>
+              {/* headerGroup es el nombre que le estamos dando a las propiedades que
             se están iterando */}
-            {table.getHeaderGroups().map((headerGroup) => (
-              <tr
-                key={headerGroup.id}
-                className="text-white  dark:bg-light_theme  dark:text-second_color_lt bg-admin_card"
-              >
-                {/* estamos iterando las columnas  */}
-                {headerGroup.headers.map((header) => (
-                  <th
-                    key={header.id}
-                    className=" uppercase py-3  text-center border border-border_tabla dark:border-second_color_lt"
-                  >
-                    {/* isPlaceholder valida si es verdadero o falso, entonces en caso de que no 
+              {table.getHeaderGroups().map((headerGroup) => (
+                <tr
+                  key={headerGroup.id}
+                  className="text-white  dark:bg-light_theme  dark:text-second_color_lt bg-admin_card z-10"
+                >
+                  {/* estamos iterando las columnas  */}
+                  {headerGroup.headers.map((header) => (
+                    <th
+                      key={header.id}
+                      className=" uppercase py-3  text-center border border-border_tabla dark:border-second_color_lt z-10"
+                    >
+                      {/* isPlaceholder valida si es verdadero o falso, entonces en caso de que no 
                     halla una cabecera no se retornará nada*/}
-                    {header.isPlaceholder
-                      ? null
-                      : // FlexRender recibe dos propiedades del header
-                        flexRender(
-                          header.column.columnDef.header,
-                          header.getContext()
-                        )}
-                  </th>
-                ))}
-              </tr>
-            ))}
-          </thead>
-          <tbody>
-            {/* Renderizamos las columnas */}
-            {table.getRowModel().rows.map((row) => (
-              <tr key={row.id} className="text-white dark:text-second_color_lt">
-                {row.getVisibleCells().map((cell) => (
-                  <td
-                    key={cell.id}
-                    className="py-2 text-center border border-border_tabla dark:border-second_color_lt"
-                  >
-                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                  </td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-      <div className="md:flex place-items-center justify-around space-y-4">
-        <div className="flex items-center gap-2">
-          <button
-            className="text-white bg-admin_card py-0.5 px-1 rounded border border-border_tabla dark:border text-xl font-bold hover:bg-border_tabla dark:hover:bg-second_color_lt dark:border-second_color_lt dark:bg-light_theme disabled:hover:text-admin_card dark:disabled:bg-light_theme
-          dark:text-second_color_lt dark:hover:text-white"
-            onClick={() => table.setPageIndex(0)}
-            // Esta propiedad nos retorna si existe una siguiente página (true  o false)
-            disabled={!table.getCanPreviousPage()}
-          >
-            {"<<"}
-          </button>
-          <button
-            className="text-white bg-admin_card py-0.5 px-1 rounded border border-border_tabla dark:border text-xl font-bold hover:bg-border_tabla dark:border-second_color_lt dark:hover:bg-second_color_lt dark:bg-light_theme dark:text-second_color_lt dark:hover:text-white disabled:hover:text-admin_card dark:disabled:bg-light_theme"
-            onClick={() => table.previousPage()}
-            disabled={!table.getCanPreviousPage()}
-          >
-            {"<"}
-          </button>
-          {table.getPageOptions().map((value, key) => (
+                      {header.isPlaceholder
+                        ? null
+                        : // FlexRender recibe dos propiedades del header
+                          flexRender(
+                            header.column.columnDef.header,
+                            header.getContext()
+                          )}
+                    </th>
+                  ))}
+                </tr>
+              ))}
+            </thead>
+            <tbody>
+              {/* Renderizamos las columnas */}
+              {table.getRowModel().rows.map((row) => (
+                <tr
+                  key={row.id}
+                  className="text-white dark:text-second_color_lt z-10"
+                >
+                  {row.getVisibleCells().map((cell) => (
+                    <td
+                      key={cell.id}
+                      className="py-2 text-center border border-border_tabla dark:border-second_color_lt z-10"
+                    >
+                      {flexRender(
+                        cell.column.columnDef.cell,
+                        cell.getContext()
+                      )}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <div className="md:flex place-items-center justify-around space-y-4 z-10">
+          <div className="flex items-center gap-2 z-10">
             <button
-              key={key}
-              className={classNames({
-                "text-white bg-admin_card py-0.5 px-1 rounded border border-border_tabla dark:border text-xl font-bold hover:bg-border_tabla dark:border-second_color_lt dark:hover:bg-second_color_lt dark:bg-light_theme dark:text-second_color_lt dark:hover:text-white disabled:hover:text-admin_card dark:disabled:bg-light_theme": true,
-                "bg-border_tabla dark:bg-second_color_lt dark:text-white":
-                  // retorna en que número depágina estamos
-                  value === table.getState().pagination.pageIndex,
-              })}
-              onClick={() => table.setPageIndex(value)}
+              className="text-white bg-admin_card py-0.5 px-1 rounded border border-border_tabla dark:border text-xl font-bold hover:bg-border_tabla dark:hover:bg-second_color_lt dark:border-second_color_lt dark:bg-light_theme disabled:hover:text-admin_card dark:disabled:bg-light_theme z-10
+          dark:text-second_color_lt dark:hover:text-white"
+              onClick={() => table.setPageIndex(0)}
+              // Esta propiedad nos retorna si existe una siguiente página (true  o false)
+              disabled={!table.getCanPreviousPage()}
             >
-              {value + 1}
+              {"<<"}
             </button>
-          ))}
-          <button
-            className="text-white bg-admin_card py-0.5 px-1 rounded border border-border_tabla dark:border text-xl font-bold hover:bg-border_tabla dark:border-second_color_lt dark:hover:bg-second_color_lt dark:bg-light_theme dark:text-second_color_lt dark:hover:text-white disabled:hover:text-admin_card dark:disabled:bg-light_theme"
-            onClick={() => table.nextPage()}
-            disabled={!table.getCanNextPage()}
+            <button
+              className="text-white bg-admin_card py-0.5 px-1 rounded border border-border_tabla dark:border text-xl font-bold hover:bg-border_tabla dark:border-second_color_lt dark:hover:bg-second_color_lt dark:bg-light_theme dark:text-second_color_lt dark:hover:text-white disabled:hover:text-admin_card dark:disabled:bg-light_theme z-10"
+              onClick={() => table.previousPage()}
+              disabled={!table.getCanPreviousPage()}
+            >
+              {"<"}
+            </button>
+            {table.getPageOptions().map((value, key) => (
+              <button
+                key={key}
+                className={classNames({
+                  "text-white bg-admin_card py-0.5 px-1 rounded border border-border_tabla dark:border text-xl font-bold hover:bg-border_tabla dark:border-second_color_lt dark:hover:bg-second_color_lt dark:bg-light_theme dark:text-second_color_lt dark:hover:text-white disabled:hover:text-admin_card z-10 dark:disabled:bg-light_theme": true,
+                  "bg-border_tabla dark:bg-second_color_lt dark:text-white":
+                    // retorna en que número depágina estamos
+                    value === table.getState().pagination.pageIndex,
+                })}
+                onClick={() => table.setPageIndex(value)}
+              >
+                {value + 1}
+              </button>
+            ))}
+            <button
+              className="text-white bg-admin_card py-0.5 px-1 rounded border border-border_tabla dark:border text-xl font-bold hover:bg-border_tabla dark:border-second_color_lt dark:hover:bg-second_color_lt dark:bg-light_theme dark:text-second_color_lt dark:hover:text-white disabled:hover:text-admin_card dark:disabled:bg-light_theme z-10"
+              onClick={() => table.nextPage()}
+              disabled={!table.getCanNextPage()}
+            >
+              {">"}
+            </button>
+            <button
+              className="text-white bg-admin_card py-0.5 px-1 rounded border border-border_tabla dark:border text-xl font-bold hover:bg-border_tabla dark:border-second_color_lt dark:hover:bg-second_color_lt dark:bg-light_theme dark:text-second_color_lt dark:hover:text-white disabled:hover:text-admin_card dark:disabled:bg-light_theme z-10"
+              onClick={() => table.setPageIndex(table.getPageCount() - 1)}
+              disabled={!table.getCanNextPage()}
+            >
+              {">>"}
+            </button>
+          </div>
+          <div className=" text-white font-semibold dark:text-second_color_lt z-10">
+            Mostrando de {getStateTable().firstIndex}&nbsp; a &nbsp;
+            {getStateTable().lastIndex}&nbsp; del total de &nbsp;
+            {getStateTable().totalRows} registros
+          </div>
+          <select
+            className=" text-border_tabla  dark:text-second_color_lt rounded p-2 border border-admin_card dark:border-second_color_lt  outline-indigo-700 z-10"
+            onChange={(e) => {
+              table.setPageSize(Number(e.target.value));
+            }}
           >
-            {">"}
-          </button>
-          <button
-            className="text-white bg-admin_card py-0.5 px-1 rounded border border-border_tabla dark:border text-xl font-bold hover:bg-border_tabla dark:border-second_color_lt dark:hover:bg-second_color_lt dark:bg-light_theme dark:text-second_color_lt dark:hover:text-white disabled:hover:text-admin_card dark:disabled:bg-light_theme"
-            onClick={() => table.setPageIndex(table.getPageCount() - 1)}
-            disabled={!table.getCanNextPage()}
-          >
-            {">>"}
-          </button>
+            <option value="5">5 pág.</option>
+            <option value="10">10 pág.</option>
+            <option value="20">20 pág.</option>
+            <option value="25">25 pág.</option>
+            <option value="50">50 pág.</option>
+          </select>
         </div>
-        <div className=" text-white font-semibold dark:text-second_color_lt">
-          Mostrando de {getStateTable().firstIndex}&nbsp; a &nbsp;
-          {getStateTable().lastIndex}&nbsp; del total de &nbsp;
-          {getStateTable().totalRows} registros
-        </div>
-        <select
-          className=" text-border_tabla  dark:text-second_color_lt rounded p-2 border border-admin_card dark:border-second_color_lt  outline-indigo-700"
-          onChange={(e) => {
-            table.setPageSize(Number(e.target.value));
-          }}
-        >
-          <option value="5">5 pág.</option>
-          <option value="10">10 pág.</option>
-          <option value="20">20 pág.</option>
-          <option value="25">25 pág.</option>
-          <option value="50">50 pág.</option>
-        </select>
       </div>
     </>
   );
