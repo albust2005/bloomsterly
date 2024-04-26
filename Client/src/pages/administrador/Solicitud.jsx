@@ -28,7 +28,7 @@ export const Solicitud = () => {
   };
   return (
     <>
-      <div className="flex flex-col gap-20">
+      <div className="flex flex-col gap-5">
         <ScrollAnimatedSection animation="animate-fade-up" className="opacity-0">
           <h1 className="text-white text-xl font-title italic dark:text-second_color_lt minicel:text-3xl sm:text-6xl md:text-8xl z-10">
             Solicitudes de Ingreso

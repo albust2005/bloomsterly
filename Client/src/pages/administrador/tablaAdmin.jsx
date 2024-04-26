@@ -138,7 +138,7 @@ export const TablaAdmin = () => {
 
   return (
     <>
-      <div className="flex flex-col gap-20">
+      <div className="flex flex-col gap-10">
         <ScrollAnimatedSection
           animation="animate-fade-up"
           className="opacity-0"
