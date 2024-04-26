@@ -27,23 +27,21 @@ export function ReservasUserProvider({ children }) {
 
         console.log(newItem)
         setReserva([...reservas, newItem])
+        setServicios([])
 
         navigate('/reservas')
         showToastMessage('¡Reserva creada correctamente!')
         document.getElementById('my-form').reset()
     }
 
-
-
-
     const addServicioSeleccionado = servicio => {
         const { id } = servicio
-        const servicioExistente = servicios.find(servicio => servicio.id === id);
-        if (servicioExistente) {
-            showToastMessage('¡Este servicio ya ha sido seleccionado!');
-            navigate(`/reserva/crear`)
-            return;
-        }
+        // const servicioExistente = servicios.find(servicio => servicio.id === id);
+        // if (servicioExistente) {
+        //     showToastMessage('¡Este servicio ya ha sido seleccionado!');
+        //     navigate(`/reserva/crear`)
+        //     return;
+        // }
 
 
         setServicios(prevItem => [

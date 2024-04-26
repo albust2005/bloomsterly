@@ -10,7 +10,7 @@ import {
 import { useEmpresaContext } from "../../components/providers/empresaProvider";
 import { useUserContext } from "../../components/providers/userProvider";
 import { useThemeContext } from "../../components/providers/themeProvider"
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 {
   /*agregar el servicio  */
@@ -20,7 +20,7 @@ function AgregarServiciosReserva() {
   const logoColor = theme === "dark" ? "#BC0B38" : "#fff"
 
   return (
-    <div className="bg-color_switch_theme_dark w-1/5 min-h-full  flex justify-center items-center 
+    <div className="bg-color_switch_theme_dark w-1/5 min-h-48 flex justify-center items-center 
     rounded-sm dark:bg-[#FFFFDD]">
       <Link to="/categorias">
         <FontAwesomeIcon icon={faCirclePlus} size="2x"
@@ -62,15 +62,17 @@ export function ReservaActual() {
     register,
     handleSubmit,
     formState: { errors },
-    reset,
+    watch 
   } = useForm();
 
   const [servicioSeleccionadoNombre, setServicioSeleccionadoNombre] = useState([]);
   const { servicioSeleccionados } = useReservaUserContext();
-  const { removeServicioSeleccionado } = useReservaUserCrudContext()
-  const { createReserva } = useReservaUserCrudContext();
+  const { removeServicioSeleccionado, createReserva } = useReservaUserCrudContext()
 
   const empresas = useEmpresaContext();
+
+
+  const eventoValue = watch('evento')
 
   useState(() => {
     const servicioNombre = servicioSeleccionados?.find(
@@ -88,7 +90,7 @@ export function ReservaActual() {
   const { sesionUser } = useUserContext();
 
   return (
-    <section className=" bg-dark_theme dark:bg-second_color_lt p-9 flex flex-col gap-4">
+    <section className=" bg-dark_theme dark:bg-second_color_lt p-9 flex flex-col gap-4 z-20">
       <div>
         <h1 className="font-bloomsterly text-8xl text-center text-white">
           Reserva
@@ -121,7 +123,7 @@ export function ReservaActual() {
                 Nombre del evento
               </label>
               <input
-                type="text"
+                type="text"        
                 {...register("evento", {
                   required: {
                     value: true,

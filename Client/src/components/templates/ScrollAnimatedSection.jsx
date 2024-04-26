@@ -2,7 +2,6 @@ import {  useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 
 export const ScrollAnimatedSection = ({ children, animation, className, delay}) => {
-    console.log(animation)
   const [ref, inView] = useInView();
   const [animated, setAnimated] = useState(false);
   const [prevScrollY, setPrevScrollY] = useState(0);
