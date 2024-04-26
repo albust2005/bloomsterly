@@ -15,8 +15,6 @@ const ReservaDetalleCard = ({
 }) => {
   const { sesionUser } = useUserContext();
 
-
-
   return (
     <article className="flex text-white flex-col z-10">
       <div className="w-full  h-full p-5 bg-dark_theme dark:bg-second_color_lt rounded-sm z-10">
@@ -68,6 +66,15 @@ const ReservaDetalleCard = ({
               Pendiente
             </p>
           </div>
+
+          <div className="w-full flex flex-row-reverse font-semibold font-text gap-3">
+            <button className="bg-color_font_dark hover:bg-violet-700 transition-all dark:bg-rose-400 dark:hover:bg-rose-600  px-2 rounded-sm">
+              Editar
+            </button>
+            <button className="bg-color_font_dark hover:bg-violet-700 transition-all dark:bg-rose-400 dark:hover:bg-rose-600  px-2 rounded-sm">
+              Eliminar
+            </button>
+          </div>
         </div>
       </div>
     </article>
@@ -77,12 +84,18 @@ const ReservaDetalleCard = ({
 
 const ReservaAddCard = () => {
   return (
-    <article className="flex text-white flex-col items-center justify-center bg-dark_theme z-10">
-      <FontAwesomeIcon
-        icon={faPlusCircle}
-        size="2x"
+    <article
+      className="flex text-white flex-col items-center justify-center bg-dark_theme  dark:bg-second_color_lt z-10 min-h-56">
+      <Link
+        to='/reserva/crear'
+        className="cursor-pointer"
       >
-      </FontAwesomeIcon>
+        <FontAwesomeIcon
+          icon={faPlusCircle}
+          size="2x"
+        >
+        </FontAwesomeIcon>
+      </Link>
     </article>
   )
 
@@ -100,7 +113,7 @@ export function ReservasUser() {
           <p className="text-wrap text-4xl font-text text-white dark:text-black z-10">
             Realiza tu primera reserva
             <Link
-              to={`/reserva/${sesionUser?.Username}`}
+              to={`/reserva/crear`}
               className="font-text font-extrabold text-color_font_dark text-4xl animate-pulse hover:text-yellow-300 cursor-pointer transition ease-in-out duration-300 dark:text-second_color_lt dark:hover:text-color_font_light px-2 "
             >
               aquí
@@ -110,7 +123,7 @@ export function ReservasUser() {
         </div>
       ) : (
         <div className="z-10">
-          <h1 className="text-white font-bloomsterly text-9xl text-center z-10">
+          <h1 className="text-white font-bloomsterly text-9xl text-center z-10 dark:text-second_color_lt">
             Reservas
           </h1>
           <div className="mx-auto grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 z-10">
