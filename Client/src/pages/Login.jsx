@@ -17,7 +17,7 @@ export const useChangeLogin = () => {
   const [registerColor, setRegisterColor] = useState("bg-transparent");
 
   const formRender =
-    form === "Iniciar" ? <InicioSesion></InicioSesion> : <Registro></Registro>;
+    form === "Iniciar" ? <InicioSesion></InicioSesion> : <Registro></Registro>; 
 
   const Inicios = () => {
     setForm((prevform) => (prevform === "Iniciar" ? "Iniciar" : "Iniciar"));

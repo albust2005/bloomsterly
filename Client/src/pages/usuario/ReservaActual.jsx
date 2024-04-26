@@ -20,7 +20,7 @@ function AgregarServiciosReserva() {
   const logoColor = theme === "dark" ? "#BC0B38" : "#fff"
 
   return (
-    <div className="bg-color_switch_theme_dark w-1/5 min-h-[200px] max-h-[200px] flex justify-center items-center 
+    <div className="bg-color_switch_theme_dark w-1/5 min-h-full  flex justify-center items-center 
     rounded-sm dark:bg-[#FFFFDD]">
       <Link to="/categorias">
         <FontAwesomeIcon icon={faCirclePlus} size="2x"
@@ -34,7 +34,7 @@ function AgregarServiciosReserva() {
 /*renderiza el servicio seleccionado */
 function ServicioCardReserva({ empresa, nombre, valor, removeServicioSeleccionado }) {
   return (
-    <article className="bg-color_switch_theme_dark w-1/5 min-h-[200px] max-h-[200px] p-2 relative rounded-sm
+    <article className="bg-color_switch_theme_dark w-1/5 h-full p-2 rounded-sm
     dark:bg-[#FFFFDD] dark:text-second_color_lt">
       <div className="flex flex-col gap-1">
         <h2 className="font-title text-xl font-semibold"> {empresa}</h2>
@@ -42,15 +42,17 @@ function ServicioCardReserva({ empresa, nombre, valor, removeServicioSeleccionad
         <h2 className="font-text"> {nombre}</h2>
         <h2 className="font-title font-semibold">Valor:</h2>
         <p>{valor}</p>
+
+        <div className="flex flex-row-reverse items-center mt-auto">
+          <button
+            type="button"
+            onClick={removeServicioSeleccionado}
+            className="bg-dark_theme px-2 rounded-sm dark:bg-second_color_lt dark:text-light_theme ">
+            Eliminar
+          </button>
+        </div>
       </div>
-      <div className="flex flex-row-reverse">
-        <button
-          type="button"
-          onClick={removeServicioSeleccionado}
-          className="w-1/2 bg-dark_theme absolute bottom-2 dark:bg-second_color_lt dark:text-light_theme ">
-          Eliminar
-        </button>
-      </div>
+
     </article>
   );
 }
@@ -228,7 +230,7 @@ export function ReservaActual() {
             </div>
           </div>
           <div>
-            <button 
+            <button
               type="submit"
               className="w-full bg-transparent border-2 border-[#451693] rounded-sm 
              hover:bg-[#451693] font-title p-1 transition-all ease-in-out

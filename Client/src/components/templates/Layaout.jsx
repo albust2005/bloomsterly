@@ -19,7 +19,7 @@ export function Layaout({ children }) {
         from-[#451693] from-40% via-[#370d7d] via-60% to-[#190042] 
         to-90%  dark:bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))]
         dark:from-[#ffffff] dark:via-[#ffffec] dark:to-[#ffffd2] 
-        flex flex-col h-full gap-48 px-5 md:px-16 lg:px-24 2xl:px-64"
+        flex flex-col h-full gap-48 px-5 md:px-16 lg:px-24 2xl:px-64 z-0"
     >
       {children}
 
@@ -43,7 +43,7 @@ export function Layaout({ children }) {
         absolute
         z-0 opacity-0
         top-[21%]
-        left-[0%]
+        left-[2%]
         minicel:w-[15px] sm:w-[30px]
         "
         animation="animate-fade-right"
@@ -98,7 +98,7 @@ export function Layaout({ children }) {
         top-[85%] 
         left-[6%] 
         w-[130px] 
-        z-10 opacity-0"
+        z-0 opacity-0"
         animation="animate-fade-up"
       >
         <img src="../../../src/assets/flor_img/lirioblanco-rosa.webp" alt="" />
@@ -133,22 +133,10 @@ export function Layaout({ children }) {
         w-[70px] 
         left-[34%] 
         top-[17%] 
-        opacity-0"
+        opacity-0 z-0"
         animation="animate-fade-down"
       >
         <img src="../../../src/assets/flor_img/lirioblanco-rosa.webp" alt="" />
-      </ScrollAnimatedSection>
-
-
-      <ScrollAnimatedSection
-        className="absolute 
-        top-[50%] 
-        left-[25%]
-         w-[100px] 
-        opacity-0"
-        animation="animate-fade-up"
-      >
-        <img src="../../../src/assets/flor_img/liriorosa.webp" alt="" />
       </ScrollAnimatedSection>
 
       <ScrollAnimatedSection
@@ -163,7 +151,7 @@ export function Layaout({ children }) {
         top-[20%] 
         right-[30%]
          w-[70px] 
-         z-10 opacity-0"
+         z-0 opacity-0"
         animation="animate-fade-down"
       >
         <img src="../../../src/assets/flor_img/lirioamarillo.webp" alt="" />
@@ -174,17 +162,38 @@ export function Layaout({ children }) {
         top-[5%] minicel:top-[30%] lg:top-[35%] xl:top-[40%] 2xl:top-[45%] 
         minicel:left-[10%] lg:left-[37%] 
         minicel:w-[15px] sm:w-[45px] 
-        -rotate-12 opacity-0"
+        z-0 opacity-0"
         animation="animate-fade-down"
       >
         <img src="../../../src/assets/flor_img/lirioamarillo.webp" alt="" />
       </ScrollAnimatedSection>
 
       <ScrollAnimatedSection
-        className=" absolute w-[85px] left-[54%] top-[10%] opacity-0"
+        className=" absolute w-[85px] left-[54%] top-[10%] opacity-0 z-0"
         animation="animate-fade-down"
       >
         <img src="../../../src/assets/flor_img/lirioblanco.webp" alt="" />
+      </ScrollAnimatedSection>
+
+      <ScrollAnimatedSection
+        className="absolute top-56 right-[220px] w-[70px] opacity-0"
+        animation="animate-fade-left"
+      >
+        <img src="../../../src/assets/flor_img/liriorosa.webp" alt="" />
+      </ScrollAnimatedSection>
+
+      <ScrollAnimatedSection
+        className=" absolute w-[220px] left-[42%] top-[93%] opacity-0"
+        animation="animate-fade-down"
+      >
+        <img src="../../../src/assets/flor_img/liriorosa.webp" alt="" />
+      </ScrollAnimatedSection>
+
+      <ScrollAnimatedSection
+        className="absolute top-[108%] left-[28%] w-[65px]  opacity-0"
+        animation="animate-fade-down"
+      >
+        <img src="../../../src/assets/flor_img/liriorosa.webp" alt="" />
       </ScrollAnimatedSection>
 
       {/*DERECHA */}
@@ -193,7 +202,7 @@ export function Layaout({ children }) {
         w-[100px] 
         right-[10%] 
         top-[10%] 
-        opacity-0"
+        opacity-0 z-0" 
         animation="animate-fade-left"
       >
         <img src="../../../src/assets/flor_img/lirioblanco-rosa.webp" alt="" />
@@ -204,7 +213,7 @@ export function Layaout({ children }) {
         top-[48%] 
         right-[3%]
         w-[70px]  
-        opacity-0"
+        opacity-0 z-0"
         animation="animate-fade-left"
       >
         <img src="../../../src/assets/flor_img/lirioblanco.webp" alt="" />
@@ -215,7 +224,7 @@ export function Layaout({ children }) {
         top-[50%] 
         right-[5%] 
         w-[90px] 
-        opacity-0"
+        opacity-0 z-0"
         animation="animate-fade-down"
       >
         <img src="../../../src/assets/flor_img/liriorosa.webp" alt="" />
@@ -239,7 +248,7 @@ export function Layaout({ children }) {
         top-[5%] minicel:top-[20%] lg:top-[25%] xl:top-[30%] 2xl:top-[35%] 
         minicel:right-[3%] lg:right-[6%] 
         minicel:w-[15px] sm:w-[45px] 
-        -rotate-12 opacity-0"
+        z-0 opacity-0"
         animation="animate-fade-left"
       >
         <img src="../../../src/assets/flor_img/lirioamarillo.webp" alt="" />
@@ -250,11 +259,13 @@ export function Layaout({ children }) {
         top-[5%] minicel:top-[5%] lg:top-[10%] xl:top-[25%] 2xl:top-[30%] 
         minicel:right-[1%] lg:right-[1%] 
         minicel:w-[15px] sm:w-[45px] 
-        -rotate-12 opacity-0"
+        z-0 opacity-0"
         animation="animate-fade-left"
       >
         <img src="../../../src/assets/flor_img/liriorosa.webp" alt="" />
       </ScrollAnimatedSection>
+
+      
 
     </main>
   );

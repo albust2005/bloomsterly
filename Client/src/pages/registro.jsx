@@ -55,7 +55,7 @@ export function Registro() {
               {...register("Firstlastname", {
                 required: {
                   value: true,
-                  message: "Escribe tu Primer aperllido",
+                  message: "Escribe tu Primer aperllido", 
                 },
               })}
             />
