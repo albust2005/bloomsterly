@@ -12,7 +12,7 @@ export function Registro() {
   const createUser = useNewUserContext();
 
   return (
-    <div className="form-box flex justify-center items-center flex-col gap-4 mt-3 w-full text-white  relative  ">
+    <div className="form-box flex justify-center items-center flex-col gap-4 mt-3 w-full text-white  relative">
 
       <form
         action=""
@@ -111,7 +111,7 @@ export function Registro() {
           )}
         </div>
 
-        <div className="flex w-full gap-4">
+        <div className="flex w-full gap-10">
           <div className="input-box animation flex flex-col w-full">
             <label
               htmlFor="Username"

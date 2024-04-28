@@ -12,8 +12,7 @@ export const Aceptar = ({ NIT, nombre, cambiarEstado }) => {
       const respuesta = await axios.post("http://localhost:8000/admin/aceptacion", {
         NIT: currentNit
       })
-
-
+      
       const mensaje = respuesta.data.message
       showToastMessage(mensaje)
 
@@ -28,8 +27,6 @@ export const Aceptar = ({ NIT, nombre, cambiarEstado }) => {
       }
     }
   }
-
-
   return (
     <>
       <div className="fixed inset-0 bg-slate-600 bg-opacity-60 backdrop-blur-sm  flex justify-center items-center  text-center z-30">

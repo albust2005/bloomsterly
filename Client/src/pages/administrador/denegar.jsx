@@ -11,7 +11,6 @@ export const Denegar = ({ NIT, nombre, cambiarEstado }) => {
         NIT: currentNit
       })
 
-
       const mensaje = respuesta.data.message
       showToastMessage(mensaje)
 

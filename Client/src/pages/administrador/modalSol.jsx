@@ -32,7 +32,7 @@ export const ModalSol = ({ estado, cambiarEstado, NIT }) => {
   return (
     <>
       <div className="fixed inset-0 bg-slate-600 bg-opacity-60 backdrop-blur-sm  flex justify-center items-center  text-center z-30">
-        <div className=" bg-dark_theme dark:bg-second_color_lt w-[50%]  rounded-2xl p-8 flex flex-col items-center  text-center gap-3 text-white h-auto">
+        <div className=" bg-dark_theme dark:bg-second_color_lt w-[50%] rounded-2xl p-8 flex flex-col items-center  text-center gap-3 text-white">
           <h1 className=" text-6xl text-white mb-5">{data.nombre}</h1>
           <img
             className="w-[30vh] rounded-2xl"

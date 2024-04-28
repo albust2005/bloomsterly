@@ -1,44 +1,24 @@
 import { useForm } from "react-hook-form";
-import axios from 'axios'
 import { IconUser } from "./templates/iconUser";
-export const FormAdmin = () => {
+export const EdiarForm = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-     const onSubmit = handleSubmit( async(data) => {
-       console.log(data);
-       alert("enviando datos");
-       const {nombre,apellido,Cedula,Email,password,Username,municipio} = data
-       try {
-          const respuesta = await axios.post("http://localhost:8000/admin/crear",{
-            COD:Cedula,
-            nombre:nombre,
-            primer_apelli:apellido,
-            COD_municipios:municipio,
-            contrasena:password,
-            username:Username,
-            email:Email
-          })
-          alert(respuesta.data.message)
-       } catch (error) {
-         alert(error)
-       }
-     });
   return (
     <>
       <div className="z-10 border-2 dark:bg-white  dark:border-second_color_lt shadow-lg bg-dark_theme rounded-2xl">
-        <div className="flex flex-col justify-center text-center dark:bg-light_theme bg-admin_card p-4 gap-3 rounded-2xl">
+        <div className="flex flex-col justify-center text-center dark:bg-light_theme bg-admin_card p-4 gap-3 rounded-xl">
           <IconUser clasName="h-32" />
           <h2 className="dark:text-second_color_lt text-white font-semibold text-3xl">
-            Crear Administrador
+            Editar Mi Perfil
           </h2>
         </div>
         <div className="flex justify-center  flex-col gap-3 mt-3 w-full relative  p-5 rounded-lg">
           <form
             className="w-full  flex flex-col gap-2 text-white dark:text-second_color_lt"
-            onSubmit={onSubmit}
+            // onSubmit={onSubmit}
           >
             <div className="flex  w-full gap-4">
               <div className="flex flex-col w-full ">
