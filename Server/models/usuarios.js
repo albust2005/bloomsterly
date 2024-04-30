@@ -43,8 +43,4 @@ const Usuarios = db.define('usuarios',{
   }
 })
 
-// Usuarios.belongsTo(Municipios, { foreignKey: 'COD_municipios', as: 'municipio' });
-// Usuarios.hasMany(Reservas, { foreignKey: 'COD_usuarios', as: 'reservas' });
-// Usuarios.belongsToMany(Administradores, { through: ControlUsuarios, foreignKey: 'COD_usuarios', as: 'administradores' });
-
 export default Usuarios;

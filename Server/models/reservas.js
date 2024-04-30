@@ -23,13 +23,17 @@ const Reservas = db.define('reservas',{
   valor_total: {
     type: DataTypes.INTEGER(12),
     allowNull: false
+  },
+  nombre: {
+    type: DataTypes.STRING(100),
+    allowNull: false
+  },
+  estado: {
+    type: DataTypes.STRING(20),
+    allowNull: false
   }
 },{
   timestamps: false
 })
-
-
-// Reservas.belongsTo(Usuarios, { foreignKey: 'COD_usuarios', as: 'usuario' });
-// Reservas.belongsToMany(Servicios, { through: 'DescripcionReserva', foreignKey: 'COD_reservas', as: 'servicios' });
 
 export default Reservas;

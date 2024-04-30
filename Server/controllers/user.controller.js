@@ -139,3 +139,13 @@ export const getuser = async(req,res)=>{
     }
   }
 }
+// Esta funcion sirve para hacer una reserva el cliente
+export const reserva = async(req,res)=>{
+  const {
+    nombre,
+    direccion,
+    fecha,
+    telefono
+  }=req.body
+  
+}

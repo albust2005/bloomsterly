@@ -20,7 +20,7 @@ const Servicios = db.define('servicios',{
     type: DataTypes.INTEGER(14),
     allowNull: false
   },
-  COD_categorias: {
+  COD_subCategoria: {
     type: DataTypes.INTEGER(4),
     allowNull: false
   },
@@ -36,9 +36,5 @@ const Servicios = db.define('servicios',{
     type: DataTypes.DATE
   }
 })
-
-// Servicios.belongsTo(Categorias, { foreignKey: 'COD_categorias', as: 'categoria' });
-// Servicios.belongsTo(Empresas, { foreignKey: 'NIT_empresas', as: 'empresa' });
-// Servicios.hasMany(Fechas, { foreignKey: 'ID_servicios', as: 'fechas' });
 
 export default Servicios;
