@@ -79,4 +79,4 @@ export const getempresa = async(req,res)=>{
           res.status(400).json({message:'Hubo un error al obtener informacion de la empresa', error});
       }
     }
-  }
+}
