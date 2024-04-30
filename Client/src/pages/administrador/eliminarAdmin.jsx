@@ -1,4 +1,4 @@
-export const EliminarAdmin = ({ estado,cambiarEstado}) => {
+export const EliminarAdmin = ({cambiarEstado}) => {
   return (
     <div className="fixed inset-0 bg-slate-600 bg-opacity-60 backdrop-blur-sm  flex justify-center items-center  text-center z-30">
       <div className=" bg-dark_theme dark:bg-second_color_lt w-[50%] h-[25vh] rounded-2xl p-8 flex flex-col items-center  text-center gap-7 text-white ">
