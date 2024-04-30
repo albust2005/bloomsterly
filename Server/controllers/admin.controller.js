@@ -54,12 +54,14 @@ export const getlogout = async (req, res) => {
 };
 //Esta parte editar el perfil del administrador
 export const editarPefil = async (req, res) => {
-  const { COD_municipios, contrasena, email } = req.body;
+  const { nombre, username ,COD_municipios, contrasena, email } = req.body;
   try {
         const hashedPassword=await bcrypt.hash(contrasena,5)
         await Administradores.update({
+            nombre,
             COD_municipios,
             contrasena:hashedPassword,
+            username,
             email
         },{where:{COD:req.userCOD}})
         res.status(201).json({message:"Datos actualizados correctamente"})
@@ -359,7 +361,16 @@ export const getAllAdministradores = async (req, res) => {
 export const getadmin = async(req,res)=>{
   try {
     const dato=req.userCOD
-    const datos=await Administradores.findOne({where:{COD:dato}})
+    const datos=await Administradores.findOne({
+      where:{COD:dato},
+      include: [
+        {
+          model: Municipios,
+          attributes: ["municipio"]
+        },
+      ],
+    })
+    // const municipio= await Municipios.findOne({where:{COD:datos.COD_municipios}})
     res.status(200).json(datos)
   } catch (error) {
     if (error instanceof Sequelize.DatabaseError) {

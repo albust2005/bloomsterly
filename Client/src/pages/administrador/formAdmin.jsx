@@ -1,7 +1,9 @@
 import { useForm } from "react-hook-form";
 import axios from 'axios'
 import { IconUser } from "./templates/iconUser";
+import { useNavigate } from "react-router-dom";
 export const FormAdmin = () => {
+  const navegate = useNavigate()
   const {
     register,
     handleSubmit,
@@ -22,6 +24,7 @@ export const FormAdmin = () => {
             email:Email
           })
           alert(respuesta.data.message)
+          navegate("/administrador/perfil")
        } catch (error) {
          alert(error)
        }

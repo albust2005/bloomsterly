@@ -1,12 +1,14 @@
 import { ButtonAdmin } from "../../components/buttons/buttonAdmin";
 import { IconUser } from "../administrador/templates/iconUser";
 import { useEmpresaContext } from "../../components/providers/empresaProvider";
-import { ServiciosReserva } from "./templates/serviciosReserva";
+// import { ServiciosReserva } from "./templates/serviciosReserva";
 import { useUserContext } from "../../components/providers/userProvider";
 import { EliminarAdmin } from "../administrador/eliminarAdmin";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 export function PerfilEmpresa() {
   const [cambiar, setCambiar] = useState(false);
+  const [dato, setdato] = useState([])
   const eliminar = () => {
     setCambiar(true); 
   };
@@ -19,6 +21,22 @@ export function PerfilEmpresa() {
 
 
   console.log(empresaIngresada);
+  const token=localStorage.getItem("token")
+  useEffect(()=>{
+    obtener()
+  },[])
+  const obtener=async()=>{
+    try {
+      const respuesta = await axios.get("http://localhost:8000/admin/getadmin",{
+        headers:{
+          Authorization:token
+        }
+      })
+      setdato(respuesta.data)
+    } catch (error) {
+      alert(error)
+    }
+  }
   return (
     <>
       <section className="flex  w-full justify-center gap-4 z-10">
@@ -30,7 +48,7 @@ export function PerfilEmpresa() {
             <IconUser clasName="h-20" />
             {sesionUser?.Rol === "Administrador" ? (
               <h2 className="text-white text-4xl dark:text-second_color_lt">
-                Juan carlos
+                {dato.nombre}
               </h2>
             ) : (
               <h2 className="text-white text-4xl dark:text-second_color_lt">
@@ -42,17 +60,17 @@ export function PerfilEmpresa() {
             {sesionUser?.Rol === "Administrador" ? (
               <>
                 <p className="font-semibold text-2xl">Cédula</p>
-                <p className="text-lg">12345</p>
+                <p className="text-lg">{dato.COD}</p>
                 <p className="font-semibold text-2xl">Nombre</p>
-                <p className="text-lg">12345</p>
+                <p className="text-lg">{dato.nombre}</p>
                 <p className="font-semibold text-2xl">Primer Apellido</p>
-                <p className="text-lg">12345</p>
-                <p className="font-semibold text-2xl">Username</p>
-                <p className="text-lg">12345</p>
+                <p className="text-lg">{dato.primer_apelli}</p>
+                <p className="font-semibold text-2xl">Nombre de usuario</p>
+                <p className="text-lg">{dato.username}</p>
                 <p className="font-semibold text-2xl">Gmail</p>
-                <p className="text-lg">12345</p>
+                <p className="text-lg">{dato.email}</p>
                 <p className="font-semibold text-2xl">Municipio</p>
-                <p className="text-lg">Marinilla</p>
+                <p className="text-lg">{dato.municipio?.municipio}</p>
               </>
             ) : (
               <>
