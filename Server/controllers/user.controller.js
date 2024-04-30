@@ -16,6 +16,7 @@ import {
 } from "../models/associations.js";
 import session from "express-session";
 import bcrypt from "bcrypt";
+import { Sequelize } from "sequelize";
 
 //Esto cierra la sesion del usuario
 export const getlogout = async (req, res) => {
@@ -78,7 +79,7 @@ export const eliminacionPerfil = async (req, res) => {
 // esto sirve para obtener las subcategorias
 export const subcategorias = async (req, res) => {
   try {
-    const subcategoria = await Categorias.findAll();
+    const subcategoria = await Subcategorias.findAll();
     res.status(200).json(subcategoria);
   } catch (error) {
     if (error instanceof Sequelize.DatabaseError) {
@@ -142,12 +143,12 @@ export const getuser = async(req,res)=>{
   }
 }
 // Esta funcion sirve para hacer una reserva el cliente
-export const reserva = async(req,res)=>{
-  const {
-    nombre,
-    direccion,
-    fecha,
-    telefono
-  }=req.body
+// export const reserva = async(req,res)=>{
+//   const {
+//     nombre,
+//     direccion,
+//     fecha,
+//     telefono
+//   }=req.body
   
-}
+// }

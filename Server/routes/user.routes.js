@@ -7,7 +7,6 @@ import {
   servicios,
   getAllEmpresas,
   getuser,
-  reserva,
 } from "../controllers/user.controller.js";
 import jwt from 'jsonwebtoken'
 
@@ -44,5 +43,5 @@ router.get("/getAllEmpresas",verificarToken, getAllEmpresas);
 // ruta para obtener la informacion del usuario con el token
 router.get("/getusuario",verificarToken,getuser);
 // ruta para crear una reserva
-router.post("reserva",verificarToken, reserva)
+// router.post("reserva",verificarToken, reserva)
 export default router;
