@@ -84,5 +84,7 @@ export {
   DescripcionReserva,
   Fechas,
   SolicitudEmpresas,
-  AdministradorSolicitud
+  AdministradorSolicitud,
+  Subcategorias,
+  ImagesServicios
 };

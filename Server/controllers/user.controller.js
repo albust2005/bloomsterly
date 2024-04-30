@@ -11,6 +11,8 @@ import {
   Fechas,
   SolicitudEmpresas,
   AdministradorSolicitud,
+  Subcategorias,
+  ImagesServicios
 } from "../models/associations.js";
 import session from "express-session";
 import bcrypt from "bcrypt";
