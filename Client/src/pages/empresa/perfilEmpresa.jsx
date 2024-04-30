@@ -3,15 +3,13 @@ import { IconUser } from "../administrador/templates/iconUser";
 import { useEmpresaContext } from "../../components/providers/empresaProvider";
 import { ServiciosReserva } from "./templates/serviciosReserva";
 import { useUserContext } from "../../components/providers/userProvider";
-import {EliminarAdmin} from "../administrador/eliminarAdmin";
+import { EliminarAdmin } from "../administrador/eliminarAdmin";
 import { useState } from "react";
 export function PerfilEmpresa() {
-    const [cambiar, setcambiar] = useState(false);
-    const eliminar = () => {
-      return (
-      <EliminarAdmin estado={cambiar} cambiarEstado={setcambiar}></EliminarAdmin>
-      );
-    };
+  const [cambiar, setCambiar] = useState(false);
+  const eliminar = () => {
+    setCambiar(true); 
+  };
   // const location = useLocation();
   const empresas = useEmpresaContext();
   const { sesionUser } = useUserContext();
@@ -83,7 +81,7 @@ export function PerfilEmpresa() {
                 <>
                   <ButtonAdmin
                     // href="/administrador/eliminar"
-                    onClick={() => (eliminar(), setcambiar(!cambiar))}
+                    onClick={eliminar}
                   >
                     Eliminar
                   </ButtonAdmin>
@@ -101,7 +99,7 @@ export function PerfilEmpresa() {
           </div>
         </div>
       </section>
-      {cambiar ? eliminar() : <div></div>}
+      {cambiar && <EliminarAdmin cambiarEstado={setCambiar} />}
     </>
   );
 }
