@@ -27,7 +27,7 @@ router.post("/loginout", getlogout);
 // ruta para editar el perfil del administrador
 router.put("/editarPerfil", verificarToken, editarPefil);
 // ruta para traer a todos los usuarios a la interfaz de administrador
-router.get("/getAllUsuarios", getAllUsuarios);
+router.get("/getAllUsuarios", verificarToken, getAllUsuarios);
 // ruta para sancionar a un usuario
 router.put("/sancionarUsuario", verificarToken, sancionarUsuarios);
 // ruta para la solicitud de empresas
@@ -39,7 +39,7 @@ router.get("/buscarUsuario/:username", buscarUsuarios);
 // ruta para sancionar a una empresa
 router.put("/sancionarEmpresa", verificarToken, sancionarEmpresa);
 // ruta para mostrar a todas las empresas
-router.get("/getAllEmpresas", getAllEmpresas);
+router.get("/getAllEmpresas", verificarToken, getAllEmpresas);
 // ruta para mostrar la solicitud de la empresa
 router.post("/solicitud",solicitud);
 // ruta para negar acceso a una solicitud de una empresa
