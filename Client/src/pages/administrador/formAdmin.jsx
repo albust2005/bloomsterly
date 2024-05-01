@@ -225,7 +225,7 @@ export const FormAdmin = () => {
               className="text-white mt-2 bg-color_switch_theme_dark w-full p-2 font-bold  rounded-md hover:bg-[#8e5ee0]
              dark:bg-[#eb2651] dark:hover:bg-[#d61540]"
             >
-              Registro
+             Crear
             </button>
           </form>
         </div>

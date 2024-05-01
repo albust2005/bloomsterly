@@ -64,7 +64,7 @@ export function PerfilEmpresa() {
                 <p className="text-lg">{dato.nombre}</p>
                 <p className="font-semibold text-2xl">Primer Apellido</p>
                 <p className="text-lg">{dato.primer_apelli}</p>
-                <p className="font-semibold text-2xl">Nombre de usuario</p>
+                <p className="font-semibold text-2xl">Nombre De Usuario</p>
                 <p className="text-lg">{dato.username}</p>
                 <p className="font-semibold text-2xl">Gmail</p>
                 <p className="text-lg">{dato.email}</p>
