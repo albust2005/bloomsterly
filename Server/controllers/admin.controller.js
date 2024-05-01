@@ -3,6 +3,7 @@ import {Municipios,Administradores,Usuarios,Empresas,Reservas,Servicios,Categori
 import session from "express-session";
 import bcrypt from "bcrypt";
 import { Op } from "sequelize";
+import Sequelize from 'sequelize';
 
 //Esta parte ingresa informacion de un administrador a la base de datos
 export const postadmin = async(req,res)=>{

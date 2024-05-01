@@ -29,6 +29,7 @@ const verificarToken=(req,res, next)=>{
   });
 }
 router.use("/categorias", express.static('imagenes'));
+router.use("/subcategorias", express.static('imagenes'));
 // ruta para cerrar sesion
 // router.post("/loginout",getlogout);
 // ruta para editar el perfil del usuario

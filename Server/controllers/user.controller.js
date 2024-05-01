@@ -16,7 +16,7 @@ import {
 } from "../models/associations.js";
 import session from "express-session";
 import bcrypt from "bcrypt";
-import { Sequelize } from "sequelize";
+import Sequelize from 'sequelize';
 
 //Esto cierra la sesion del usuario
 export const getlogout = async (req, res) => {

@@ -26,7 +26,7 @@ export const useSubCategorias = () =>{
         id: subCategoria.COD,
         idCategoria: subCategoria.uuid_categoria,
         nombre: subCategoria.nombre,
-        imagen: subCategoria.imagen
+        imagen: subCategoria.image
     }))
 
     return { subCategorias: mappedSubCategorias }
