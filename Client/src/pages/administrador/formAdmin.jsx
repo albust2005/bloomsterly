@@ -1,41 +1,43 @@
+import { useToastify } from "../../components/hooks/useToastify";
 import { useForm } from "react-hook-form";
-import axios from 'axios'
+import axios from "axios";
 import { IconUser } from "./templates/iconUser";
 import { IconPass } from "./templates/iconPass";
 import { IconPassO } from "./templates/iconPassO";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 export const FormAdmin = () => {
-  const navegate = useNavigate()
+  const { showToastMessage } = useToastify();
+  const navegate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-    const visibilidad = () => {
-      setShowPassword(!showPassword);
-    };
-     const onSubmit = handleSubmit( async(data) => {
-       console.log(data);
-       alert("enviando datos");
-       const {nombre,apellido,Cedula,Email,password,Username,municipio} = data
-       try {
-          const respuesta = await axios.post("http://localhost:8000/admin/crear",{
-            COD:Cedula,
-            nombre:nombre,
-            primer_apelli:apellido,
-            COD_municipios:municipio,
-            contrasena:password,
-            username:Username,
-            email:Email
-          })
-          alert(respuesta.data.message)
-          navegate("/administrador/perfil")
-       } catch (error) {
-         alert(error)
-       }
-     });
+  const visibilidad = () => {
+    setShowPassword(!showPassword);
+  };
+  const onSubmit = handleSubmit(async (data) => {
+    console.log(data);
+    const { nombre, apellido, Cedula, Email, password, Username, municipio } =
+      data;
+    try {
+      const respuesta = await axios.post("http://localhost:8000/admin/crear", {
+        COD: Cedula,
+        nombre: nombre,
+        primer_apelli: apellido,
+        COD_municipios: municipio,
+        contrasena: password,
+        username: Username,
+        email: Email,
+      });
+      showToastMessage(respuesta.data.message);
+      navegate("/administrador/perfil");
+    } catch (error) {
+      alert(error);
+    }
+  });
   return (
     <>
       <div className="z-10 border-2 dark:bg-white  dark:border-second_color_lt shadow-lg bg-dark_theme rounded-2xl">
@@ -225,7 +227,7 @@ export const FormAdmin = () => {
               className="text-white mt-2 bg-color_switch_theme_dark w-full p-2 font-bold  rounded-md hover:bg-[#8e5ee0]
              dark:bg-[#eb2651] dark:hover:bg-[#d61540]"
             >
-             Crear
+              Crear
             </button>
           </form>
         </div>
