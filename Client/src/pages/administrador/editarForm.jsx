@@ -1,3 +1,4 @@
+import { useToastify } from "../../components/hooks/useToastify";
 import { useForm } from "react-hook-form";
 import { IconUser } from "./templates/iconUser";
 import { IconPass } from "./templates/iconPass";
@@ -6,85 +7,93 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 export const EdiarForm = () => {
-  const [dato, setdato] = useState([])
-  const [showPassword, setShowPassword] = useState(false)
-  const navegate= useNavigate()
+  const [dato, setdato] = useState([]);
+  const [showPassword, setShowPassword] = useState(false);
+  const navegate = useNavigate();
+  const { showToastMessage } = useToastify();
   useEffect(() => {
-    obtener()
-  }, [])
-  const token = localStorage.getItem("token")
+    obtener();
+  }, []);
+  const token = localStorage.getItem("token");
   const obtener = async () => {
     try {
-      const respuesta = await axios.get("http://localhost:8000/admin/getadmin", {
-        headers: {
-          Authorization: token
+      const respuesta = await axios.get(
+        "http://localhost:8000/admin/getadmin",
+        {
+          headers: {
+            Authorization: token,
+          },
         }
-      })
-      setdato(respuesta.data)
+      );
+      setdato(respuesta.data);
     } catch (error) {
-      alert(error)
+      showToastMessage(error);
     }
-  }
+  };
   const visibilidad = () => {
-    setShowPassword(!showPassword)
-  }
+    setShowPassword(!showPassword);
+  };
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
   const onsubmit = async (data) => {
-    let nombre,email, username, COD_municipios, contrasena
+    let nombre, email, username, COD_municipios, contrasena;
     if (data.nombre === "") {
-        nombre = dato.nombre
+      nombre = dato.nombre;
     } else {
-        nombre = data.nombre
+      nombre = data.nombre;
     }
     if (data.Email === "") {
-        email = dato.email
+      email = dato.email;
     } else {
-        email = data.Email
+      email = data.Email;
     }
     if (data.Username === "") {
-        username = dato.username
+      username = dato.username;
     } else {
-        username = data.Username
+      username = data.Username;
     }
     if (data.municipio === "") {
-        COD_municipios = dato.COD_municipios
+      COD_municipios = dato.COD_municipios;
     } else {
-        COD_municipios = data.municipio
+      COD_municipios = data.municipio;
     }
     if (data.password === "") {
-       contrasena = dato.contrasena
+      contrasena = dato.contrasena;
     } else {
-       contrasena = data.password
+      contrasena = data.password;
     }
     try {
-        const respuesta = await axios.put("http://localhost:8000/admin/editarPerfil", {
+      const respuesta = await axios.put(
+        "http://localhost:8000/admin/editarPerfil",
+        {
           nombre,
           email,
           username,
           COD_municipios,
-          contrasena
-        }, {
-            headers: {
-                Authorization: token
-            }
-        });
-        alert(respuesta.data.message)
-        navegate(`/administrador/perfil`)
-    } catch (error) {
-        if (error.response) {
-            alert("Hubo un error al editar perfil de administrador")
-        } else if (error.request) {
-            // La solicitud fue realizada pero no se recibió respuesta
-            console.error('No se recibió respuesta del servidor');
-        } else {
-            alert(error.message)
+          contrasena,
+        },
+        {
+          headers: {
+            Authorization: token,
+          },
         }
+      );
+      showToastMessage(respuesta.data.message);
+      navegate(`/administrador/perfil`);
+    } catch (error) {
+      if (error.response) {
+        showToastMessage("Hubo un error al editar perfil de administrador");
+      } else if (error.request) {
+        // La solicitud fue realizada pero no se recibió respuesta
+        console.error("No se recibió respuesta del servidor");
+      } else {
+      showToastMessage(error.message);
+      }
     }
-}
+  };
   return (
     <>
       <div className="z-10 border-2 dark:bg-white  dark:border-second_color_lt shadow-lg bg-dark_theme rounded-2xl">
@@ -237,7 +246,7 @@ export const EdiarForm = () => {
                 className="absolute right-[1vh] pt-3 cursor-pointer"
                 onClick={visibilidad}
               >
-                {showPassword ? <IconPass/> : <IconPassO/>}
+                {showPassword ? <IconPass /> : <IconPassO />}
               </div>
             </div>
             {errors.password && (

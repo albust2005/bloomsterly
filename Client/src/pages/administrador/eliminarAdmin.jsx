@@ -1,31 +1,34 @@
+import { useToastify } from "../../components/hooks/useToastify";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useLoginUserContext } from "../../components/providers/userProvider";
-export const EliminarAdmin = ({cambiarEstado}) => {
-  const navegate = useNavigate()
-  const { logout } = useLoginUserContext()
-  const token = localStorage.getItem("token")
-  const eliminar = async()=>{
+export const EliminarAdmin = ({ cambiarEstado }) => {
+  const { showToastMessage } = useToastify();
+  const navegate = useNavigate();
+  const { logout } = useLoginUserContext();
+  const token = localStorage.getItem("token");
+  const eliminar = async () => {
     try {
       const respuesta = await axios.get(
-        "http://localhost:8000/admin/eliminarPerfil",{
+        "http://localhost:8000/admin/eliminarPerfil",
+        {
           headers: {
-            Authorization:token
-          }
+            Authorization: token,
+          },
         }
       );
       const mensaje = respuesta.data.message;
-      alert(mensaje);
-      logout
-      navegate("/")
+      showToastMessage(mensaje);
+      logout;
+      navegate("/");
     } catch (error) {
       if (error.response) {
-        alert(error.response.data.message);
+        showToastMessage(error.response.data.message);
       } else if (error.request) {
         // La solicitud fue realizada pero no se recibió respuesta
         console.error("No se recibió respuesta del servidor");
       } else {
-        alert(error.message);
+        showToastMessage(error.message);
       }
     }
   };
@@ -46,11 +49,16 @@ export const EliminarAdmin = ({cambiarEstado}) => {
           >
             Cancelar
           </button>
-          <button onClick={()=>{eliminar()}} className="bg-admin_card dark:bg-light_theme hover:bg-dark_theme dark:text-second_color_lt px-4 py-1 rounded-lg hover:dark:bg-second_color_lt hover:dark:text-white hover:border hover:border-light_theme">
+          <button
+            onClick={() => {
+              eliminar();
+            }}
+            className="bg-admin_card dark:bg-light_theme hover:bg-dark_theme dark:text-second_color_lt px-4 py-1 rounded-lg hover:dark:bg-second_color_lt hover:dark:text-white hover:border hover:border-light_theme"
+          >
             Aceptar
           </button>
         </div>
       </div>
     </div>
   );
-}
+};

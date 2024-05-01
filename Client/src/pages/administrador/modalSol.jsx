@@ -8,8 +8,8 @@ export const ModalSol = ({ estado, cambiarEstado, NIT }) => {
   const [cambiar, setcambiar] = useState(false);
   const [cambiar1, setcambiar1] = useState(false);
   useEffect(() => {
-    console.log(NIT);
-    console.log(estado);
+    // console.log(NIT);
+    // console.log(estado);
     obtener();
   }, []);
   const obtener = async () => {
@@ -83,14 +83,6 @@ export const ModalSol = ({ estado, cambiarEstado, NIT }) => {
             >
               Cancelar
             </button>
-            {/* <ButtonModal
-                onClick={() => {
-                  {console.log("Dí click")}
-                  cambiarEstado(false);
-                }}
-              >
-                cancelar
-              </ButtonModal> */}
           </div>
         </div>
       </div>

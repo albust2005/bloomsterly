@@ -19,7 +19,7 @@ export const FormAdmin = () => {
     setShowPassword(!showPassword);
   };
   const onSubmit = handleSubmit(async (data) => {
-    console.log(data);
+    // console.log(data);
     const { nombre, apellido, Cedula, Email, password, Username, municipio } =
       data;
     try {
@@ -35,7 +35,7 @@ export const FormAdmin = () => {
       showToastMessage(respuesta.data.message);
       navegate("/administrador/perfil");
     } catch (error) {
-      alert(error);
+      showToastMessage(error);
     }
   });
   return (
