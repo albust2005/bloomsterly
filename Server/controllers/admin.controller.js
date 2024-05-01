@@ -4,6 +4,7 @@ import session from "express-session";
 import Sequelize from 'sequelize';
 import bcrypt from "bcrypt";
 import { Op } from "sequelize";
+import Sequelize from 'sequelize';
 
 //Esta parte ingresa informacion de un administrador a la base de datos
 export const postadmin = async(req,res)=>{
