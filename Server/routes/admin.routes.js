@@ -1,5 +1,5 @@
 import express from "express";
-import { postadmin, getlogout, editarPefil, sancionarUsuarios, getAllUsuarios, AllSolicitudes, aceptacion, buscarUsuarios, sancionarEmpresa, getAllEmpresas, solicitud, negar, getAllAdministradores, getadmin } from "../controllers/admin.controller.js";
+import { postadmin, getlogout, editarPefil, sancionarUsuarios, getAllUsuarios, AllSolicitudes, aceptacion, buscarUsuarios, sancionarEmpresa, getAllEmpresas, solicitud, negar, getAllAdministradores, getadmin, eliminacionPerfil } from "../controllers/admin.controller.js";
 import jwt from 'jsonwebtoken'
 // esto es para poner rutas
 const router = express.Router();
@@ -26,6 +26,8 @@ router.post("/crear", postadmin);
 router.post("/loginout", getlogout);
 // ruta para editar el perfil del administrador
 router.put("/editarPerfil", verificarToken, editarPefil);
+// ruta para eliminar cuenta del administrador
+router.get("/eliminarPerfil",verificarToken, eliminacionPerfil);
 // ruta para traer a todos los usuarios a la interfaz de administrador
 router.get("/getAllUsuarios", verificarToken, getAllUsuarios);
 // ruta para sancionar a un usuario

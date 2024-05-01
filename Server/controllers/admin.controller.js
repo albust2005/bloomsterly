@@ -382,3 +382,14 @@ export const getadmin = async(req,res)=>{
   }
   }
 }
+// Esta funcion sirve para eliminar perfil de la cuenta del administrador
+export const eliminacionPerfil = async (req, res) => {
+  try {
+    await Administradores.destroy({ where: { COD: req.userCOD } });
+    res.status(200).json({ message: "Perfil eliminado correctamente" });
+  } catch (error) {
+    res
+      .status(400)
+      .json({ message: "Hubo un error al eliminar el perfil", error: error });
+  }
+};
