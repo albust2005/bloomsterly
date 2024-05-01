@@ -10,9 +10,8 @@ export function PerfilEmpresa() {
   const [cambiar, setCambiar] = useState(false);
   const [dato, setdato] = useState([])
   const eliminar = () => {
-    setCambiar(true); 
+    setCambiar(!cambiar); 
   };
-  // const location = useLocation();
   const empresas = useEmpresaContext();
   const { sesionUser } = useUserContext();
   const empresaIngresada = empresas?.find(
@@ -97,12 +96,7 @@ export function PerfilEmpresa() {
             <div className="flex flex-row-reverse gap-4">
               {sesionUser?.Rol === "Administrador" ? (
                 <>
-                  <ButtonAdmin
-                    // href="/administrador/eliminar"
-                    onClick={eliminar}
-                  >
-                    Eliminar
-                  </ButtonAdmin>
+                  <ButtonAdmin onClick={eliminar}>Eliminar</ButtonAdmin>
                   <ButtonAdmin href="/administrador/editarAd">
                     Editar Perfil
                   </ButtonAdmin>
@@ -117,7 +111,7 @@ export function PerfilEmpresa() {
           </div>
         </div>
       </section>
-      {cambiar && <EliminarAdmin cambiarEstado={setCambiar} />}
+      {cambiar && <EliminarAdmin estado={cambiar} cambiarEstado={setCambiar} />}
     </>
   );
 }

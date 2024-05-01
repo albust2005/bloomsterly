@@ -1,14 +1,21 @@
 import { useForm } from "react-hook-form";
 import axios from 'axios'
 import { IconUser } from "./templates/iconUser";
+import { IconPass } from "./templates/iconPass";
+import { IconPassO } from "./templates/iconPassO";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 export const FormAdmin = () => {
   const navegate = useNavigate()
+  const [showPassword, setShowPassword] = useState(false);
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+    const visibilidad = () => {
+      setShowPassword(!showPassword);
+    };
      const onSubmit = handleSubmit( async(data) => {
        console.log(data);
        alert("enviando datos");
@@ -83,8 +90,8 @@ export const FormAdmin = () => {
                     },
                   })}
                 />
+                {errors.apellido && <span>{errors.apellido.message}</span>}
               </div>
-              {errors.apellido && <span>{errors.apellido.message}</span>}
             </div>
             <label htmlFor="Cedula" className="font-bold">
               Cédula
@@ -119,6 +126,7 @@ export const FormAdmin = () => {
                 },
               })}
             />
+            {errors.Email && <span>{errors.Email.message}</span>}
             <div className="flex gap-4 w-full">
               <div className="flex flex-col w-full ">
                 <label htmlFor="Username" className="font-bold">
@@ -184,26 +192,31 @@ export const FormAdmin = () => {
                 </select>
               </div>
             </div>
-            {errors.Email && (
-              <span className="text-sm">{errors.Email.message}</span>
-            )}
-            <label htmlFor="password" className="font-bold">
-              Contraseña
-            </label>
-            <input
-              type="password"
-              className="focus:outline-none bg-transparent border-b-2 border-white text-base font-text dark:border-second_color_lt"
-              {...register("password", {
-                required: {
-                  value: true,
-                  message: "Contraseña es requerida",
-                },
-                minLength: {
-                  value: 6,
-                  message: "la contraseña debe tener al menos 6 carácteres",
-                },
-              })}
-            />
+            <div className="flex flex-col w-full relative">
+              <label htmlFor="password" className="font-bold">
+                Contraseña
+              </label>
+              <input
+                type={showPassword ? "text" : "password"}
+                className="focus:outline-none bg-transparent border-b-2 border-white text-base font-text dark:border-second_color_lt"
+                {...register("password", {
+                  required: {
+                    value: true,
+                    message: "Contraseña es requerida",
+                  },
+                  minLength: {
+                    value: 6,
+                    message: "la contraseña debe tener al menos 6 carácteres",
+                  },
+                })}
+              />
+              <div
+                className="absolute right-[1vh] pt-3 cursor-pointer"
+                onClick={visibilidad}
+              >
+                {showPassword ? <IconPass /> : <IconPassO />}
+              </div>
+            </div>
             {errors.password && (
               <span className="text-sm">{errors.password.message}</span>
             )}

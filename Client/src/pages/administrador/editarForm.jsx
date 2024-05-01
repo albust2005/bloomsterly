@@ -1,5 +1,7 @@
 import { useForm } from "react-hook-form";
 import { IconUser } from "./templates/iconUser";
+import { IconPass } from "./templates/iconPass";
+import { IconPassO } from "./templates/iconPassO";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -95,7 +97,7 @@ export const EdiarForm = () => {
         <div className="flex justify-center  flex-col gap-3 mt-3 w-full relative  p-5 rounded-lg">
           <form
             className="w-full  flex flex-col gap-2 text-white dark:text-second_color_lt"
-          onSubmit={handleSubmit(onsubmit)}
+            onSubmit={handleSubmit(onsubmit)}
           >
             <div className="flex  w-full gap-4">
               <div className="flex flex-col w-full ">
@@ -119,63 +121,33 @@ export const EdiarForm = () => {
                       value: 18,
                       message: "Este campo tiene máximo para 18 carécteres",
                     },
-                  })} defaultValue={dato.nombre}
+                  })}
+                  defaultValue={dato.nombre}
                 />
                 {errors.nombre && <span>{errors.nombre.message}</span>}
               </div>
               <div className="input-box animation flex flex-col w-full ">
-                <label htmlFor="apellido" className="font-bold">
-                  Apellido
+                <label htmlFor="Email" className="font-bold">
+                  Email
                 </label>
                 <input
                   type="text"
                   className="focus:outline-none bg-transparent border-b-2 border-white text-base font-text dark:border-second_color_lt"
-                  {...register("apellido", {
+                  {...register("Email", {
                     required: {
                       value: true,
                       message: "Este campo es requerido",
                     },
+                    pattern: {
+                      value: /\S+@\S+\.\S+/,
+                      message: "Correo no es válido",
+                    },
                   })}
-                  defaultValue={dato.primer_apelli}
+                  defaultValue={dato.email}
                 />
+                {errors.Email && <span>{errors.Email.message}</span>}
               </div>
-              {errors.apellido && <span>{errors.apellido.message}</span>}
             </div>
-            <label htmlFor="Cedula" className="font-bold">
-              Cédula
-            </label>
-            <input
-              type="text"
-              className="focus:outline-none bg-transparent border-b-2 border-white text-base font-text dark:border-second_color_lt"
-              {...register("Cedula", {
-                required: {
-                  value: true,
-                  message: "Este campo es requerido",
-                },
-              })}
-              defaultValue={dato.COD}
-            />
-            {errors.Cedula && (
-              <span className="text-sm">{errors.Cedula.message}</span>
-            )}
-            <label htmlFor="Email" className="font-bold">
-              Email
-            </label>
-            <input
-              type="text"
-              className="focus:outline-none bg-transparent border-b-2 border-white text-base font-text dark:border-second_color_lt"
-              {...register("Email", {
-                required: {
-                  value: true,
-                  message: "Este campo es requerido",
-                },
-                pattern: {
-                  value: /\S+@\S+\.\S+/,
-                  message: "Correo no es válido",
-                },
-              })}
-              defaultValue={dato.email}
-            />
             <div className="flex gap-4 w-full">
               <div className="flex flex-col w-full ">
                 <label htmlFor="Username" className="font-bold">
@@ -198,7 +170,7 @@ export const EdiarForm = () => {
                   </span>
                 )}
               </div>
-              <div className="flex flex-col w-full ">
+              <div className="flex flex-col w-full mt-[5px]">
                 <label htmlFor="municipio" className="font-bold">
                   Municipio
                 </label>
@@ -206,7 +178,8 @@ export const EdiarForm = () => {
                   name=""
                   id=""
                   className="text-white rounded-md bg-transparent text-base font-text focus:outline-none border-b-2 dark:border-second_color_lt dark:text-second_color_lt"
-                  {...register("municipio")} defaultValue={dato.municipio?.municipio}
+                  {...register("municipio")}
+                  defaultValue={dato.municipio?.municipio}
                 >
                   <option
                     value=""
@@ -242,13 +215,10 @@ export const EdiarForm = () => {
                 </select>
               </div>
             </div>
-            {errors.Email && (
-              <span className="text-sm">{errors.Email.message}</span>
-            )}
-            <label htmlFor="password" className="font-bold">
-              Contraseña
-            </label>
-            <div>
+            <div className="flex flex-col w-full relative">
+              <label htmlFor="password" className="font-bold">
+                Contraseña
+              </label>
               <input
                 type={showPassword ? "text" : "password"}
                 className="focus:outline-none bg-transparent border-b-2 border-white text-base font-text dark:border-second_color_lt"
@@ -263,7 +233,12 @@ export const EdiarForm = () => {
                   },
                 })}
               />
-              <div className="ojo" onClick={visibilidad}>{showPassword ? "texto" : "contraseña"}</div>
+              <div
+                className="absolute right-[1vh] pt-3 cursor-pointer"
+                onClick={visibilidad}
+              >
+                {showPassword ? <IconPass/> : <IconPassO/>}
+              </div>
             </div>
             {errors.password && (
               <span className="text-sm">{errors.password.message}</span>
