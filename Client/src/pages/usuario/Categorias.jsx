@@ -22,7 +22,7 @@ export function Categorias() {
                   url={categoria.img}
                   nombre={categoria.nombre}
                   descripcion={categoria.descripcion}
-                  uuid={categoria.uuid}
+                  uuid={categoria.id}
                 />
               </div>
             ))}

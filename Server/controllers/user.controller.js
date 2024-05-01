@@ -152,3 +152,18 @@ export const getuser = async(req,res)=>{
 //   }=req.body
   
 // }
+// Esta funcion sirve para obtener todas las categorias
+export const categorias = async(req,res)=>{
+  try {
+    const datos = await Categorias.findAll()
+    res.status(200).json(datos)
+  } catch (error) {
+    if (error instanceof Sequelize.DatabaseError) {
+      // Manejar el error de base de datos
+      res.status(400).json({message: `Error de base datos`, error:error.message})
+    } else {
+        // Manejar otros tipos de errores
+        res.status(400).json({message:'Hubo un error al obtener informacion de las categorias', error});
+    }
+  }
+}

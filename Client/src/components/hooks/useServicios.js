@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
-import withServicios from '../../db/servicios.json'
+// import withServicios from '../../db/servicios.json'
 import axios from 'axios'
 
 export const useServicios = () => {
-    const [servicios, setServicios] = useState()
+    const [servicios, setServicios] = useState([])
     const token = localStorage.getItem('token')
 
 
