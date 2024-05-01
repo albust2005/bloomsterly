@@ -60,11 +60,15 @@ export const TablaEmpresa = () => {
   useEffect(() => {
     obtener();
   }, []);
-  //
+  const token = localStorage.getItem("token")
   const obtener = async () => {
     try {
       const usuario = await axios.get(
-        "http://localhost:8000/admin/getAllEmpresas"
+        "http://localhost:8000/admin/getAllEmpresas",{
+          headers: {
+            Authorization: token
+          }
+        }
       );
       // console.log(usuario.data)
       const datos = usuario.data;
@@ -124,7 +128,11 @@ export const TablaEmpresa = () => {
     try {
       const respuesta = await axios.put(
         "http://localhost:8000/admin/sancionarEmpresa",
-        { username }
+        { username },{
+          headers: {
+            Authorization:token
+          }
+        }
       );
       const mensaje = respuesta.data.message;
       showToastMessage(mensaje);

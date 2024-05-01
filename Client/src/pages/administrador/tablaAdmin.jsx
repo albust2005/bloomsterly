@@ -58,11 +58,15 @@ export const TablaAdmin = () => {
   useEffect(() => {
     obtener();
   }, []);
-  //
+  const token = localStorage.getItem("token")
   const obtener = async () => {
     try {
       const usuario = await axios.get(
-        "http://localhost:8000/admin/getAllAdministradores"
+        "http://localhost:8000/admin/getAllAdministradores",{
+          headers: {
+            Authorization:token
+          }
+        }
       );
       // console.log(usuario.data)
       const datos = usuario.data;
