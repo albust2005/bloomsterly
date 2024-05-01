@@ -1,6 +1,7 @@
 import {Municipios,Administradores,Usuarios,Empresas,Reservas,Servicios,Categorias,ControlUsuarios, ControlEmpresas,DescripcionReserva,Fechas,SolicitudEmpresas,AdministradorSolicitud,Subcategorias,
   ImagesServicios} from '../models/associations.js'
 import session from "express-session";
+import Sequelize from 'sequelize';
 import bcrypt from "bcrypt";
 import { Op } from "sequelize";
 
