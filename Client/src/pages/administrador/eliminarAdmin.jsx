@@ -4,8 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useLoginUserContext } from "../../components/providers/userProvider";
 export const EliminarAdmin = ({ cambiarEstado }) => {
   const { showToastMessage } = useToastify();
-  const navegate = useNavigate();
-  const { logout } = useLoginUserContext();
+  const { logout1 } = useLoginUserContext();
   const token = localStorage.getItem("token");
   const eliminar = async () => {
     try {
@@ -19,8 +18,7 @@ export const EliminarAdmin = ({ cambiarEstado }) => {
       );
       const mensaje = respuesta.data.message;
       showToastMessage(mensaje);
-      logout;
-      navegate("/");
+      logout1();
     } catch (error) {
       if (error.response) {
         showToastMessage(error.response.data.message);

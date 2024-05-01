@@ -87,12 +87,18 @@ export const useLoginUser = (URI) => {
 
     const logout = () => {
         localStorage.removeItem('user')
-
+        
         showToastMessage(`Vuelve pronto ${sesionUser?.Username}!`)
         setSesionUser(null)
         navigate('/')
     }
 
-    return { sesionUser, loginUser, logout }
+    const logout1 = () => {
+        localStorage.removeItem("user");
+        setSesionUser(null);
+        navigate("/");
+    };
+
+    return { sesionUser, loginUser, logout, logout1 }
 
 } 
