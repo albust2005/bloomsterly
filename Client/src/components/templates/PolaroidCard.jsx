@@ -2,7 +2,6 @@ import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 
 export function PolaroidCard({url, nombre, descripcion}) {
-    console.log(url)
     return (
         <Link to={`/categorias/${nombre}`} className='z-10 flex flex-col w-full sm:min-h-[300px] md:min-h-[560px] max-h-[560px] bg-white dark:bg-[#ebd1b8] p-4 celular:p-5 rounded-md gap-3 hover:scale-105 transition-all 
             '>
