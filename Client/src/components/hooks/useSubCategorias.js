@@ -18,7 +18,7 @@ export const useSubCategorias = () =>{
             })
             setSubCategoria(respuesta.data)   
         } catch (error) {
-            alert(error.response.message) 
+            alert(error.message) 
         }
     }
 
