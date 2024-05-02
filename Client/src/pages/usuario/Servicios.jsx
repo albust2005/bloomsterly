@@ -48,7 +48,7 @@ export function Servicios() {
                             nombre={servicio.nombre}
                             descripcion={servicio.descripcion}
                             valor={servicio.valor}
-                            img={servicio.img}
+                            img={servicio.imagen}
                             addServicioSeleccionado={() => addServicioSeleccionado(servicio)}
                         >
                         </ServiciosCard>

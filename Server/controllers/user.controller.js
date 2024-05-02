@@ -99,7 +99,14 @@ export const subcategorias = async (req, res) => {
 // esto sirve para extraer todos los servicios 
 export const servicios = async (req, res) => {
   try {
-    const servicio = await Servicios.findAll()
+    const servicio = await Servicios.findAll({
+      include:[
+        {
+          model: ImagesServicios,
+          attributes:['image']
+        }
+      ]
+    });
     res.status(200).json(servicio)
   } catch (error) {
     if (error instanceof Sequelize.DatabaseError) {
@@ -239,4 +246,9 @@ export const categorias = async (req, res) => {
       res.status(400).json({ message: 'Hubo un error al obtener informacion de las categorias', error });
     }
   }
+}
+
+// Esta funcion trae todas los servicios
+export const servicio = async (req,res)=>{
+
 }
