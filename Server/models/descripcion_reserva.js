@@ -5,7 +5,7 @@ import db from '../database/db.js';
 
 const DescripcionReserva = db.define('descripcion_reservas',{
   COD_reservas: {
-    type: DataTypes.INTEGER(12),
+    type: DataTypes.INTEGER(11),
     primaryKey: true
   },
   ID_servicios: {
