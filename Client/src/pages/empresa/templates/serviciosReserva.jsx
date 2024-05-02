@@ -43,7 +43,7 @@ export function ServiciosReserva() {
                 className="min-h-full w-[30vh]  bg-color_switch_theme_dark rounded-sm
                  dark:bg-rose-400"
               >
-                <img src="" alt="" />
+                <img src={ servicio.imagen ? `http://localhost:8000/user/servicios/${servicio.imagen}` : ""} alt="" />
               </div>
               <div className="w-full text-white dark:text-second_color_lt flex flex-col py-1">
                 <div className="flex justify-between pb-2">
