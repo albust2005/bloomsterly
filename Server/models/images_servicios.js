@@ -3,7 +3,7 @@ import { DataTypes, Model } from 'sequelize';
 import db from '../database/db.js';
 
 const ImagesServicios = db.define('images_servicios',{
-  ID_servicios: {
+  ID_servicio: {
     type: DataTypes.STRING(32),
     primaryKey: true
   },

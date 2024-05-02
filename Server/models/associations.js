@@ -62,8 +62,8 @@ SolicitudEmpresas.belongsToMany(Administradores,{through: AdministradorSolicitud
 Administradores.belongsToMany(SolicitudEmpresas,{through: AdministradorSolicitud, foreignKey:'COD_administradores', as:'administradores_solicitud'})
 
 
-Categorias.hasMany(Servicios, { foreignKey: 'COD_categorias', as: 'servicios' });
-Servicios.belongsTo(Categorias, { foreignKey: 'COD_categorias' });
+// Categorias.hasMany(Servicios, { foreignKey: 'COD_categorias', as: 'servicios' });
+// Servicios.belongsTo(Categorias, { foreignKey: 'COD_categorias' });
 
 Empresas.hasMany(Servicios, { foreignKey: 'NIT_empresas', as: 'servicios' });
 Servicios.belongsTo(Empresas, { foreignKey: 'NIT_empresas' });

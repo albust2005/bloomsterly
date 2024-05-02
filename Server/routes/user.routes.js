@@ -31,6 +31,7 @@ const verificarToken=(req,res, next)=>{
 }
 router.use("/categorias", express.static('imagenes'));
 router.use("/subcategorias", express.static('imagenes'));
+router.use("/servicios", express.static('imagenes'));
 // ruta para cerrar sesion
 // router.post("/loginout",getlogout);
 // ruta para editar el perfil del usuario
@@ -40,7 +41,7 @@ router.delete("/eliminarPerfil", verificarToken, eliminacionPerfil);
 // ruta para obtener la subcategorias de la categoria seleccionada
 router.get("/subcategorias",subcategorias);
 // ruta para obtener empresa depende de la subcategoria
-router.get("/servicios",verificarToken, servicios)
+router.get("/servicios",servicios)
 // ruta para obtener a todas las empresas
 router.get("/getAllEmpresas",verificarToken, getAllEmpresas);
 // ruta para obtener la informacion del usuario con el token
