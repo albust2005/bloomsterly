@@ -143,7 +143,7 @@ export function ReservaActual() {
               htmlFor="direccion"
               className="font-title font-semibold text-xl"
             >
-              Direccion{" "}
+              Dirección{" "}
             </label>
             <input
               type="text"
@@ -193,7 +193,7 @@ export function ReservaActual() {
                 htmlFor="telefono"
                 className="font-title font-semibold text-xl"
               >
-                Telefono:
+                Teléfono:
               </label>
               <input
                 type="tel"

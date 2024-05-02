@@ -24,7 +24,7 @@ export function ReservaDescrip() {
           <p className="font-title font-semibold text-lg mt-2">Correo: </p>
           <p className="font-title">{reserva.email}</p>
 
-          <p className="font-title font-semibold text-lg mt-2">Telefono: </p>
+          <p className="font-title font-semibold text-lg mt-2">Teléfono: </p>
           <p className="font-title">{reserva.telefono}</p>
 
           <p className="font-title font-semibold text-lg mt-2">Dirección: </p>
