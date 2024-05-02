@@ -153,17 +153,16 @@ export const getuser = async (req, res) => {
 export const reserva = async (req, res) => {
   const {
     nombre,
-    // direccion,
+    direccion,
     fecha_evento,
-    // telefono,
+    telefono,
     servicios
   } = req.body
 
   let dato
   let suma = 0
-  let COD_reservas = Date.now()
   let descripción = "Esto es una descripcion"
-
+  let COD_reservas
   servicios.map(async (id_servicio, index) => {
     //inicio
     try {
@@ -176,12 +175,13 @@ export const reserva = async (req, res) => {
       if (index === (servicios.length - 1)) {
         try {
           console.log("la suma es: ", suma)
-          await Reservas.create({
-            COD: COD_reservas,
+          COD_reservas= await Reservas.create({
             COD_usuarios: req.userCOD,
             fecha_reserva: Date.now(),
             fecha_evento,
             valor_total: suma,
+            direccion,
+            telefono,
             nombre,
             estado: "Pendiente"
           })
@@ -192,7 +192,7 @@ export const reserva = async (req, res) => {
                 where: { ID: id_servicio }
               })
               await DescripcionReserva.create({
-                COD_reservas,
+                COD_reservas:COD_reservas.COD,
                 ID_servicios: id_servicio,
                 descripción,
                 valor_servicio: dato?.valor_servicio
