@@ -4,16 +4,11 @@ import axios from 'axios'
 
 export const useServicios = () => {
     const [servicios, setServicios] = useState([])
-    const token = localStorage.getItem('token')
 
 
     const obtenerServicios = async () => {
         try {
-            const response = await axios.get('http://localhost:8000/user/servicios', {
-                headers: {
-                    Authorization: token
-                } 
-            })
+            const response = await axios.get('http://localhost:8000/user/servicios')
             setServicios(response.data)
         } catch (error) {
             console.log(error.response.message)
@@ -30,7 +25,8 @@ export const useServicios = () => {
         descripcion: servicio.descripcion,
         valor: servicio.valor_servicio,
         idEmpresa: servicio.NIT_empresas,
-        idSubCategoria: servicio.COD_categorias
+        idSubCategoria: servicio.COD_subCategoria,
+        imagen: servicio?.images_servicios[0]?.image
     }))
 
     return { servicios: mappedServicios }

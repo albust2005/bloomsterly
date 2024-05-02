@@ -15,8 +15,11 @@ const useFoundEmpresasRelacionadas = () => {
     const empresas = useEmpresaContext()
 
     const subCategoriaRelacionada = subCategorias.find(sub => sub.nombre === subCategoria)
+    console.log(subCategoriaRelacionada)
     const serviciosRelacionados = servicios?.filter(servicio => servicio.idSubCategoria === subCategoriaRelacionada.id)
+    console.log(serviciosRelacionados)
     const idsEmpresasRelacionadas = serviciosRelacionados?.map(servicio => servicio.idEmpresa)
+    console.log(idsEmpresasRelacionadas)
     const empresasRelacionadas = empresas.filter(empresa => idsEmpresasRelacionadas?.includes(empresa.id))
 
 

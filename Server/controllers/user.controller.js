@@ -97,9 +97,16 @@ export const subcategorias = async (req, res) => {
   }
 };
 // esto sirve para extraer todos los servicios 
-export const servicios = async(req,res)=>{
+export const servicios = async (req, res) => {
   try {
-    const servicio= await Servicios.findAll()
+    const servicio = await Servicios.findAll({
+      include:[
+        {
+          model: ImagesServicios,
+          attributes:['image']
+        }
+      ]
+    });
     res.status(200).json(servicio)
   } catch (error) {
     if (error instanceof Sequelize.DatabaseError) {
@@ -127,43 +134,121 @@ export const getAllEmpresas = async (req, res) => {
   }
 };
 // Esta parte trae la informacion del usuario con el token
-export const getuser = async(req,res)=>{
+export const getuser = async (req, res) => {
   try {
-    const dato=req.userCOD
-    const datos=await Usuarios.findOne({where:{COD:dato}})
+    const dato = req.userCOD
+    const datos = await Usuarios.findOne({ where: { COD: dato } })
     res.status(200).json(datos)
   } catch (error) {
     if (error instanceof Sequelize.DatabaseError) {
       // Manejar el error de base de datos
-      res.status(400).json({message: `Error de base datos`, error:error.message})
+      res.status(400).json({ message: `Error de base datos`, error: error.message })
     } else {
-        // Manejar otros tipos de errores
-        res.status(400).json({message:'Hubo un error al obtener informacion del usuario', error});
+      // Manejar otros tipos de errores
+      res.status(400).json({ message: 'Hubo un error al obtener informacion del usuario', error });
     }
   }
 }
 // Esta funcion sirve para hacer una reserva el cliente
-// export const reserva = async(req,res)=>{
-//   const {
-//     nombre,
-//     direccion,
-//     fecha,
-//     telefono
-//   }=req.body
-  
-// }
+export const reserva = async (req, res) => {
+  const {
+    nombre,
+    // direccion,
+    fecha_evento,
+    // telefono,
+    servicios
+  } = req.body
+
+  let dato
+  let suma = 0
+  let COD_reservas = Date.now()
+  let descripción = "Esto es una descripcion"
+
+  servicios.map(async (id_servicio, index) => {
+    //inicio
+    try {
+      dato = await Servicios.findOne({
+        attributes: ['valor_servicio'],
+        where: { ID: id_servicio }
+      })
+      suma = suma + dato?.valor_servicio
+      //inicio
+      if (index === (servicios.length - 1)) {
+        try {
+          console.log("la suma es: ", suma)
+          await Reservas.create({
+            COD: COD_reservas,
+            COD_usuarios: req.userCOD,
+            fecha_reserva: Date.now(),
+            fecha_evento,
+            valor_total: suma,
+            nombre,
+            estado: "Pendiente"
+          })
+          servicios.map(async (id_servicio) => {
+            try {
+              dato = await Servicios.findOne({
+                attributes: ['valor_servicio'],
+                where: { ID: id_servicio }
+              })
+              await DescripcionReserva.create({
+                COD_reservas,
+                ID_servicios: id_servicio,
+                descripción,
+                valor_servicio: dato?.valor_servicio
+              })
+              res.status(201).json({ message: "Reserva realizada correctamente" })
+            } catch (error) {
+              if (error instanceof Sequelize.DatabaseError) {
+                // Manejar el error de base de datos
+                res.status(400).json({ message: `Error de base datos`, error: error.message })
+              } else {
+                // Manejar otros tipos de errores
+                res.status(400).json({ message: 'Hubo un error al crear las descripcion de la reserva', error });
+              }
+            }
+          });
+        } catch (error) {
+          if (error instanceof Sequelize.DatabaseError) {
+            // Manejar el error de base de datos
+            res.status(400).json({ message: `Error de base datos`, error: error.message })
+          } else {
+            // Manejar otros tipos de errores
+            res.status(400).json({ message: 'Hubo un error al crear las descripcion de la reserva', error });
+          }
+        }
+      }// fin
+
+    // fin
+    } catch (error) {
+      if (error instanceof Sequelize.DatabaseError) {
+        // Manejar el error de base de datos
+        res.status(400).json({ message: `Error de base datos`, error: error.message })
+      } else {
+        // Manejar otros tipos de errores
+        res.status(400).json({ message: 'Hubo un error al crear las descripcion de la reserva', error });
+      }
+    }
+  });
+}
+
 // Esta funcion sirve para obtener todas las categorias
-export const categorias = async(req,res)=>{
+export const categorias = async (req, res) => {
   try {
     const datos = await Categorias.findAll()
     res.status(200).json(datos)
   } catch (error) {
     if (error instanceof Sequelize.DatabaseError) {
       // Manejar el error de base de datos
-      res.status(400).json({message: `Error de base datos`, error:error.message})
+      res.status(400).json({ message: `Error de base datos`, error: error.message })
     } else {
-        // Manejar otros tipos de errores
-        res.status(400).json({message:'Hubo un error al obtener informacion de las categorias', error});
+      // Manejar otros tipos de errores
+      res.status(400).json({ message: 'Hubo un error al obtener informacion de las categorias', error });
     }
   }
+}
+
+// Esta funcion trae todas los servicios
+export const servicio = async (req,res)=>{
+
 }
