@@ -12,7 +12,7 @@ const DescripcionReserva = db.define('descripcion_reservas',{
     type: DataTypes.STRING(32),
     primaryKey: true
   },
-  descripcion: {
+  descripción: {
     type: DataTypes.STRING(300),
     allowNull: false
   },
