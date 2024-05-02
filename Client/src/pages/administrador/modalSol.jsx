@@ -24,10 +24,10 @@ export const ModalSol = ({ estado, cambiarEstado, NIT }) => {
     } catch (error) {}
   };
   const denegar = () => {
-    return <Denegar NIT={NIT} nombre={data.nombre} estado={cambiar} cambiarEstado={setcambiar}></Denegar>;
+    return <Denegar NIT={NIT} nombre={data.nombre} email={data.email} estado={cambiar} cambiarEstado={setcambiar}></Denegar>;
   };
   const aceptar = () => {
-    return <Aceptar NIT={NIT} nombre={data.nombre} estado={cambiar1} cambiarEstado={setcambiar1}></Aceptar>;
+    return <Aceptar NIT={NIT} nombre={data.nombre} email={data.email} estado={cambiar1} cambiarEstado={setcambiar1}></Aceptar>;
   };
   return (
     <>

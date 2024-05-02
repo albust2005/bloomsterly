@@ -1,7 +1,9 @@
 import { useToastify } from "../../components/hooks/useToastify";
 import axios from 'axios'
+import React, { useRef } from "react";
+import emailjs from "@emailjs/browser";
+export const Denegar = ({ NIT, nombre, cambiarEstado, email}) => {
 
-export const Denegar = ({ NIT, nombre, cambiarEstado }) => {
   const currentNit = NIT
   const { showToastMessage } = useToastify()
 
@@ -26,6 +28,26 @@ export const Denegar = ({ NIT, nombre, cambiarEstado }) => {
     }
   }
 
+const correo = () => {
+    const template = {
+      nombre: nombre,
+      email: email,
+    };
+  emailjs
+    .send("service_el9wigr", "template_j3od3on", template, "bbqmhiDbRK7hYsLPc")
+    .then(
+      (response) => {
+        console.log("Correo electrónico enviado con éxito!", response);
+      },
+      (error) => {
+        console.log("FAILED...", error);
+      }
+    );
+};
+  const denegar = ()=>{
+    denegarEmpresa()
+    correo()
+  }
   return (
     <>
       <div className="fixed inset-0 bg-slate-600 bg-opacity-60 backdrop-blur-sm  flex justify-center items-center  text-center z-30">
@@ -35,7 +57,7 @@ export const Denegar = ({ NIT, nombre, cambiarEstado }) => {
           </h1>
           <div className="flex gap-10">
             <button 
-            onClick={denegarEmpresa}
+            onClick={denegar}
             className="bg-admin_card dark:bg-light_theme hover:bg-dark_theme dark:text-second_color_lt px-4 py-1 rounded-lg hover:dark:bg-second_color_lt hover:dark:text-white hover:border hover:border-light_theme">
               Aceptar
             </button>

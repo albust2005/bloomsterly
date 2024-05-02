@@ -1,8 +1,11 @@
 import { useForm } from "react-hook-form";
 import { useCreateEmpresa } from "../../components/hooks/useCreateEmpresa";
+//esto es para el envío de los correos 
+import React, { useRef } from "react";
+import emailjs from "@emailjs/browser";
 
- import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
- import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
 export function RegistroEmpresa() {
@@ -15,24 +18,46 @@ export function RegistroEmpresa() {
 
   const { createEmpresa } = useCreateEmpresa()
 
+  //esto es para el envío de los correos 
+  const form = useRef();
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm("service_el9wigr", "template_ws1cceq", form.current, {
+        publicKey: "bbqmhiDbRK7hYsLPc",
+      })
+      .then(
+        () => {
+          console.log("SUCCESS!");
+        },
+        (error) => {
+          console.log("FAILED...", error.text);
+        }
+      );
+  };
   return (
     <>
-      <div className="h-full w-full bg-dark_theme dark:bg-second_color_lt text-white  p-10 shadow-xl shadow-[#4e1ba1]
-      flex flex-col gap-9 mt-10 dark:shadow-[#d91e4e] z-10">
+      <div
+        className="h-full w-full bg-dark_theme dark:bg-second_color_lt text-white  p-10 shadow-xl shadow-[#4e1ba1]
+      flex flex-col gap-9 mt-10 dark:shadow-[#d91e4e] z-10"
+      >
         <div>
           <Link to="/login">
-          <FontAwesomeIcon icon={faArrowLeft} size="xl"/>
+            <FontAwesomeIcon icon={faArrowLeft} size="xl" />
           </Link>
           <h1 className="font-bloomsterly text-white text-9xl text-center ">
             Empresa
           </h1>
           <p className="text-balance text-center font-text text-xl ">
-            Envia este formulario para poder ser parte de BloomSterly y ayudar a crear una noche inolvidable a tus clientes!
+            ¡Envía este formulario para poder ser parte de BloomSterly y ayudar
+            a crear una noche inolvidable a tus clientes!
           </p>
         </div>
 
         <div className="flex justify-center items-center">
           <form
+            ref={form}
             action=""
             className="w-[90%] text-base minicel:text-sm sm:text-lg md:text-xl  "
             onSubmit={handleSubmit(createEmpresa)}
@@ -90,7 +115,7 @@ export function RegistroEmpresa() {
                 htmlFor="descripcion"
                 className="font-texto dark:text-primary-color text-second-color font-semibold"
               >
-                Descripcion
+                Descripción
               </label>
               <textarea
                 cols="2"
@@ -109,7 +134,7 @@ export function RegistroEmpresa() {
                     message: "Tu descripcion debe ser menos extensa",
                   },
                 })}
-                className="w-full font-titulos dark:text-primary-color text-second-color pb-2 pr-3 mr-2 border-b-2 border-r-2 border-second-color dark:border-white bg-transparent focus:outline-none"
+                className="w-full font-titulos dark:text-primary-color text-second-color pb-2 pr-3 mr-2 border-b-2 border-r-2 border-second-color dark:border-white bg-transparent focus:outline-none resize-none"
               ></textarea>
               {errors.descripcion && (
                 <span className="text-sm">{errors.descripcion.message}</span>
@@ -139,7 +164,6 @@ export function RegistroEmpresa() {
                 </span>
               )}
             </div>
-
 
             <div className="flex w-full gap-4">
               <div className="input-box animation flex flex-col w-full">
@@ -177,7 +201,7 @@ export function RegistroEmpresa() {
                   htmlFor="telefono"
                   className="minicel:text-sm sm:text-lg md:text-xl  mt-2  font-semibold"
                 >
-                  Telefono
+                  Teléfono
                 </label>
                 <input
                   type="tel"
@@ -247,7 +271,7 @@ export function RegistroEmpresa() {
                 htmlFor="direccion"
                 className="minicel:text-sm sm:text-lg md:text-xl  mt-2  font-semibold"
               >
-                Direccion
+                Dirección
               </label>
               <input
                 type="text"
@@ -326,6 +350,7 @@ export function RegistroEmpresa() {
           minicel:text-sm celular:text-base sm:text-lg md:text-xl  
           minicel:mt-3 sm:mt-6 dark:bg-[#eb2651] dark:hover:bg-[#d61540]"
               type="submit"
+              onClick={sendEmail}
             >
               Enviar solicitud
             </button>
