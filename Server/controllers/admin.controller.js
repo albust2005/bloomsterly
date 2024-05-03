@@ -186,6 +186,7 @@ export const AllSolicitudes = async (req, res) => {
   try {
     const solicitudes = await SolicitudEmpresas.findAll({
       attributes: { exclude: ["contrasena", "username"] },
+      where:{estado:"Pendiente"}
     });
     res.status(200).json(solicitudes);
   } catch (error) {
@@ -259,9 +260,6 @@ export const aceptacion = async (req, res) => {
       estado: estado,
       fecha_cambio: Date.now(),
     });
-    await AdministradorSolicitud.destroy({
-      where: { NIT_empresa_solicitante: NIT },
-    });
     await SolicitudEmpresas.update(
       { estado: "Aceptado" },
       { where: { NIT: NIT } }
@@ -280,9 +278,6 @@ export const aceptacion = async (req, res) => {
 export const negar = async (req, res) => {
   const { NIT } = req.body;
   try {
-    await AdministradorSolicitud.destroy({
-      where: { NIT_empresa_solicitante: NIT },
-    });
     await SolicitudEmpresas.update(
       { estado: "Negado" },
       { where: { NIT: NIT } }

@@ -46,7 +46,7 @@ export const Solicitud = () => {
               {/* <div className=" text-center"> */}
               <img
                 className="w-[50] rounded-lg"
-                src="https://www.esneca.com/wp-content/uploads/eventos-sociales.jpg"
+                src={soli.image ? `http://localhost:8000/admin/AllSolicitudes/${soli.image}` : ""}
               />
               {/* </div> */}
               <div className="ml-5 z-10">

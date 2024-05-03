@@ -21,7 +21,9 @@ export const ModalSol = ({ estado, cambiarEstado, NIT }) => {
         }
       );
       setdata(respuesta.data);
-    } catch (error) {}
+    } catch (error) {
+      alert(error.message)
+    }
   };
   const denegar = () => {
     return <Denegar NIT={NIT} nombre={data.nombre} email={data.email} estado={cambiar} cambiarEstado={setcambiar}></Denegar>;
@@ -36,7 +38,7 @@ export const ModalSol = ({ estado, cambiarEstado, NIT }) => {
           <h1 className=" text-6xl text-white mb-5">{data.nombre}</h1>
           <img
             className="w-[30vh] rounded-2xl"
-            src="https://ethic.es/wp-content/uploads/2022/01/image-from-rawpixel-id-2043765-jpeg-1.jpg"
+            src={ data.image ? `http://localhost:8000/admin/solicitud/${data.image}` : ""}
           />
           <p>{data.descripcion}</p>
           <p>

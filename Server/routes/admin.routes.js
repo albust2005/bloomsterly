@@ -4,6 +4,9 @@ import jwt from 'jsonwebtoken'
 // esto es para poner rutas
 const router = express.Router();
 
+router.use("/AllSolicitudes", express.static("imagenes"))
+router.use("/solicitud", express.static("imagenes"))
+
 const verificarToken=(req,res, next)=>{
     const token = req.headers['authorization'];
     if (!token){
@@ -19,7 +22,6 @@ const verificarToken=(req,res, next)=>{
     });
   }
   
-
 // ruta para crear un nuevo administrador
 router.post("/crear", postadmin);
 // ruta para cerrar sesion
@@ -45,7 +47,7 @@ router.get("/getAllEmpresas", verificarToken, getAllEmpresas);
 // ruta para mostrar la solicitud de la empresa
 router.post("/solicitud",solicitud);
 // ruta para negar acceso a una solicitud de una empresa
-router.post("/negar",negar);
+router.post("/negar",verificarToken, negar);
 // ruta para obtener todos los administradores
 router.get("/getAllAdministradores",getAllAdministradores)
 // ruta para obtener la informacion del administrador

@@ -1,4 +1,5 @@
 import { useToastify } from "../../components/hooks/useToastify";
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios'
 import React, { useRef } from "react";
 import emailjs from "@emailjs/browser";
@@ -6,16 +7,22 @@ export const Denegar = ({ NIT, nombre, cambiarEstado, email}) => {
 
   const currentNit = NIT
   const { showToastMessage } = useToastify()
-
+  const token = localStorage.getItem("token")
+  const navegate = useNavigate()
   const denegarEmpresa = async () => {
     try {
       const respuesta = await axios.post("http://localhost:8000/admin/negar", {
         NIT: currentNit
+      },{
+        headers:{
+          Authorization: token
+        }
       })
 
       const mensaje = respuesta.data.message
       showToastMessage(mensaje)
-
+      correo()
+      navegate("/administrador/empresas")
     } catch (error) {
       if (error.response) {
         showToastMessage(error.response.data.message)
@@ -46,7 +53,6 @@ const correo = () => {
 };
   const denegar = ()=>{
     denegarEmpresa()
-    correo()
   }
   return (
     <>
