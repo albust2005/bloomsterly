@@ -1,4 +1,5 @@
 // import { useAceptarEmpresa } from "./hooks/useAceptarEmpresa";
+import { useNavigate } from 'react-router-dom';
 import { useToastify } from "../../components/hooks/useToastify";
 import axios from 'axios'
 import React, { useRef } from "react";
@@ -7,16 +8,22 @@ export const Aceptar = ({ NIT, nombre, cambiarEstado, email }) => {
   
   const currentNit = NIT
   const { showToastMessage } = useToastify()
-
+  const navegate = useNavigate()
+  const token = localStorage.getItem("token")
   const aceptarEmpresa = async () => {
     try {
       const respuesta = await axios.post("http://localhost:8000/admin/aceptacion", {
         NIT: currentNit
+      },{
+        headers:{
+          Authorization: token
+        }
       })
       
       const mensaje = respuesta.data.message
       showToastMessage(mensaje)
-
+      correo();
+      navegate("/administrador/empresas")
     } catch (error) {
       if (error.response) {
         showToastMessage(error.response.data.message)
@@ -51,7 +58,6 @@ export const Aceptar = ({ NIT, nombre, cambiarEstado, email }) => {
   };
     const aceptar = () => {
       aceptarEmpresa();
-      correo();
     };
   return (
     <>

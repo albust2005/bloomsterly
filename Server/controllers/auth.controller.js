@@ -167,6 +167,7 @@ export const postempresa = async (req, res) => {
       telefono,
       image,
       email,
+      estado: "Pendiente"
     });
     await AdministradorSolicitud.create({
       COD_administradores: numeroAdmin,
