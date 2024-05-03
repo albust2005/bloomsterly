@@ -13,6 +13,7 @@ import {
   AdministradorSolicitud,
   Subcategorias,
   ImagesServicios,
+  ControlEmpresas,
 } from "../models/associations.js";
 import session from "express-session";
 import bcrypt from "bcrypt";
@@ -208,15 +209,38 @@ export const getempresa = async (req, res) => {
       let comparacion = bcrypt.compareSync(contrasena, user.contrasena);
       console.log("esta es la comparacion: ", comparacion);
       if (comparacion) {
-        const token = jwt.sign(
-          { userCOD: user.NIT, rol: "empresa" },
-          "secreto",
-          { expiresIn: "7d" }
-        );
-        res.status(200).json({
-          message: "Inicio de sesión exitoso",
-          token: token,
+        const sancion = await Empresas.findOne({
+          attributes: ["NIT"],
+          where: {
+            NIT: user.NIT,
+          },
+          include: {
+            model: Administradores,
+            attributes: ["COD"],
+            through: {
+              model: ControlEmpresas,
+              attributes: ["estado"],
+            },
+          },
         });
+        const estado = sancion.administradores[0].control_empresas.estado;
+        console.log(estado)
+        if (estado == "Activo"){
+          const token = jwt.sign(
+            { userCOD: user.NIT, rol: "empresa" },
+            "secreto",
+            { expiresIn: "7d" }
+          );
+          res.status(200).json({
+            message: "Inicio de sesión exitoso",
+            token: token,
+          });
+        }else{
+          res.status(401).json({
+            message: "No puede ingresar ya que esta sancionado",
+            estado: estado,
+          });
+        }
       } else {
         res
           .status(401)
