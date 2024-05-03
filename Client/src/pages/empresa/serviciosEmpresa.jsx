@@ -9,7 +9,7 @@ export function ServiciosEmpresa() {
     return (
         <>
             <TitleAE title="Mis servicios"/>
-            <section className="w-full flex justify-center  bg-black z-10">
+            <section className="w-full flex justify-center  z-10">
                 <ServiciosReserva servicios={servicios}/>
             </section>
         </>
