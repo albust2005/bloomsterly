@@ -1,6 +1,5 @@
 import { ButtonAdmin } from "../../components/buttons/buttonAdmin";
 import { IconUser } from "../administrador/templates/iconUser";
-import { useEmpresaContext } from "../../components/providers/empresaProvider";
 // import { ServiciosReserva } from "./templates/serviciosReserva";
 import { useUserContext } from "../../components/providers/userProvider";
 import { EliminarAdmin } from "../administrador/eliminarAdmin";
@@ -9,20 +8,31 @@ import axios from "axios";
 export function PerfilEmpresa() {
   const [cambiar, setCambiar] = useState(false);
   const [dato, setdato] = useState([])
+  const [dato1, setdato1] = useState([])
   const eliminar = () => {
     setCambiar(!cambiar); 
   };
-  const empresas = useEmpresaContext();
   const { sesionUser } = useUserContext();
-  const empresaIngresada = empresas?.find(
-    (empresa) => empresa.username === sesionUser.Username
-  );
-
-
-  console.log(empresaIngresada);
+  
+  const obtener1=async()=>{
+    try {
+      const respuesta = await axios.get("http://localhost:8000/empresa/getempresa",{
+        headers:{
+          Authorization:token
+        }
+      })
+      setdato1(respuesta.data)
+    } catch (error) {
+      alert(error)
+    }
+  }
   const token=localStorage.getItem("token")
   useEffect(()=>{
-    obtener()
+    if (sesionUser?.Rol === "Administrador"){
+      obtener()
+    }else {
+      obtener1()
+    }
   },[])
   const obtener=async()=>{
     try {
@@ -51,7 +61,7 @@ export function PerfilEmpresa() {
               </h2>
             ) : (
               <h2 className="text-white text-4xl dark:text-second_color_lt celular:text-[20px] sm:text-[30px] lg:text-4xl">
-                {empresaIngresada?.nombre}
+                {dato1.nombre}
               </h2>
             )}
           </div>
@@ -95,42 +105,42 @@ export function PerfilEmpresa() {
                   Descripción
                 </p>
                 <p className="lg:text-lg celular:text-[15px]">
-                  {empresaIngresada?.descripcion}
+                  {dato1.descripcion}
                 </p>
 
                 <p className="font-semibold text-2xl celular:text-[15px] md:text-xl lg:text-2xl">
                   Dirección
                 </p>
                 <p className="lg:text-lg celular:text-[15px]">
-                  {empresaIngresada?.direccion}
+                  {dato1.direccion}
                 </p>
 
                 <p className="font-semibold text-2xl celular:text-[15px] md:text-xl lg:text-2xl">
                   Teléfono
                 </p>
                 <p className="lg:text-lg celular:text-[15px]">
-                  {empresaIngresada?.telefono}
+                  {dato1.telefono}
                 </p>
 
                 <p className="font-semibold text-2xl celular:text-[15px] md:text-xl lg:text-2xl">
                   Correo electrónico
                 </p>
                 <p className="lg:text-lg celular:text-[15px]">
-                  {empresaIngresada?.email}
+                  {dato1.email}
                 </p>
 
                 <p className="font-semibold text-2xl celular:text-[15px] md:text-xl lg:text-2xl">
                   Instagram
                 </p>
                 <p className="lg:text-lg celular:text-[15px]">
-                  {empresaIngresada?.instagram}
+                  {dato1.instagram}
                 </p>
 
                 <p className="font-semibold text-2xl celular:text-[15px] md:text-xl lg:text-2xl">
                   Facebook
                 </p>
                 <p className="lg:text-lg celular:text-[15px]">
-                  {empresaIngresada?.facebook}
+                  {dato1.facebook}
                 </p>
               </>
             )}
