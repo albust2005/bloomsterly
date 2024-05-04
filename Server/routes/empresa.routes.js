@@ -18,6 +18,7 @@ const verificarToken=(req,res, next)=>{
     next()
     });
 }
+router.use("/getempresa", express.static('imagenes'));
 
 // ruta para cerrar sesion
 router.post("/loginout",getlogout);
