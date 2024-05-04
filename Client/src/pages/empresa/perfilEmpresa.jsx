@@ -54,15 +54,17 @@ export function PerfilEmpresa() {
             className="w-full flex flex-col justify-center items-center font-title font-bold 
           bg-hover_boton_admin dark:bg-light_theme"
           >
-            <IconUser clasName="h-20" />
+            {dato1.image ? <img src={dato1.image ? `http://localhost:8000/empresa/getempresa/${dato1.image}` : ""} alt="imagen" width={100} height={100} style={{borderRadius:12}}></img>  : <IconUser clasName="h-20" />}
             {sesionUser?.Rol === "Administrador" ? (
               <h2 className="text-white dark:text-second_color_lt celular:text-[20px] sm:text-[30px] lg:text-4xl">
                 {dato.nombre}
               </h2>
             ) : (
+              <>
               <h2 className="text-white text-4xl dark:text-second_color_lt celular:text-[20px] sm:text-[30px] lg:text-4xl">
                 {dato1.nombre}
               </h2>
+              </>
             )}
           </div>
           <div className="w-[100%] bg-[#190042] rounded-sm p-5 font-title text-white dark:bg-second_color_lt">
