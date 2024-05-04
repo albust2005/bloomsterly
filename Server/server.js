@@ -3,6 +3,9 @@ import cors from "cors";
 import session from "express-session";
 // //importar la conexion de la bd
 import db from "./database/db.js"
+import { fileURLToPath } from 'url';
+import path from "path";
+import { dirname } from 'path';
 
 // //importar las rutas 
 import auth from "./routes/auth.routes.js";
@@ -22,20 +25,12 @@ app.use(session({
     resave: false,
     saveUninitialized: true,
 }));
-// app.use((req, res, next) => {
-//     if (req.session.userAdmin){
-//         console.log('Sesión:', req.session.userAdmin);
-//         next();
-//     }else{
-//         if (req.session.user){
-//             console.log('Sesión:', req.session.user);
-//             next(); 
-//         }else{
-//             console.log('Sesión:', req.session.userEmpresa);
-//             next();
-//         }
-//     }
-//   });
+
+export const baseDir=()=>{
+    const __filename = fileURLToPath(import.meta.url);
+    const __dirname = dirname(__filename);
+    return path.join(__dirname, 'imagenes');
+}
 
 //rutas para la navegacion
 app.use('/', auth);

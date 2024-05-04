@@ -2,6 +2,9 @@ import {Municipios,Administradores,Usuarios,Empresas,Reservas,Servicios,Categori
 import session from "express-session";
 import bcrypt from 'bcrypt';
 import Sequelize from 'sequelize';
+import fs from 'fs';
+import path from 'path';
+import { baseDir } from '../server.js';
 
 //Esto cierra la sesion de la empresa
 export const getlogout = async(req,res)=>{
@@ -78,5 +81,104 @@ export const getempresa = async(req,res)=>{
           // Manejar otros tipos de errores
           res.status(400).json({message:'Hubo un error al obtener informacion de la empresa', error});
       }
+    }
+}
+
+// Esta funcion crea un nuevo servicio vinculada a la cuenta de la empresa
+export const servicio = async(req,res)=>{
+    const {
+        nombre,
+        descripcion,
+        valor_servicio,
+        COD_subCategoria,
+    }= req.body
+    try {
+        const servicio=await Servicios.create({
+            ID:5,
+            nombre,
+            descripcion,
+            valor_servicio,
+            COD_subCategoria,
+            NIT_empresas: req.userCOD
+        })
+        let image
+        if (!req.files || req.files.length===0){
+            res.status(400).json({message:"Subir imagen"})
+        }
+        req.files.forEach( async(file) => {
+            image = file.filename
+            await ImagesServicios.create({
+                ID_servicio:servicio.ID,
+                image
+            })
+        });
+        res.status(201).json({message:"Servicio creado correctamente"})
+    } catch (error) {
+        if (error instanceof Sequelize.DatabaseError) {
+            // Manejar el error de base de datos
+            res.status(400).json({message: `Error de base datos`, error:error.message})
+          } else {
+              // Manejar otros tipos de errores
+              res.status(400).json({message:'Hubo un error al crear el servicio', error});
+          }
+    }
+}
+// Esta funcion sirve para editar la reserva realizada por la empresa
+export const editarServicio = async(req,res)=>{
+    const {
+        ID,
+        nombre,
+        descripcion,
+        valor_servicio,
+        COD_subCategoria,
+    }=req.body
+
+    const ruta = baseDir()
+    // console.log(ruta)
+    try {
+        const imagenes = await ImagesServicios.findAll(
+            {where:{ID_servicio:ID}
+        })
+
+        imagenes.map(async(imagen)=>{
+            const filePath = path.join(ruta, imagen.image);
+            if (fs.existsSync(filePath)) {
+                fs.unlinkSync(filePath);
+                // console.log("La ruta del archivo es: ", filePath)
+            }else{
+                console.log("El archivo no exite en la ubicacion")
+            }
+        });
+
+        await Servicios.update({
+            nombre,
+            descripcion,
+            valor_servicio,
+            COD_subCategoria,
+            NIT_empresas: req.userCOD
+        },{
+            where:{ID:ID}
+        });
+
+        await ImagesServicios.destroy({where:{ID_servicio:ID}})
+
+        let image 
+        req.files.forEach( async(file) => {
+            image = file.filename
+            await ImagesServicios.create({
+                ID_servicio:ID,
+                image
+            })
+        });
+
+        res.status(200).json({message:"Servicio actualizado correctamente"})
+    } catch (error) {
+        if (error instanceof Sequelize.DatabaseError) {
+            // Manejar el error de base de datos
+            res.status(400).json({message: `Error de base datos`, error:error.message})
+          } else {
+              // Manejar otros tipos de errores
+              res.status(400).json({message:'Hubo un error al actualizar el servicio', error});
+          }
     }
 }
