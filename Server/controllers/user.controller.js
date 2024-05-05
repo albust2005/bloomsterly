@@ -185,7 +185,7 @@ export const reserva = async (req, res) => {
             nombre,
             estado: "Pendiente"
           })
-          servicios.map(async (id_servicio) => {
+          servicios.map(async (id_servicio, indice) => {
             try {
               dato = await Servicios.findOne({
                 attributes: ['valor_servicio'],
@@ -197,7 +197,9 @@ export const reserva = async (req, res) => {
                 descripción,
                 valor_servicio: dato?.valor_servicio
               })
-              res.status(201).json({ message: "Reserva realizada correctamente" })
+              if ((servicios.length-1) === indice){
+                res.status(201).json({ message: "Reserva realizada correctamente" })
+              }
             } catch (error) {
               if (error instanceof Sequelize.DatabaseError) {
                 // Manejar el error de base de datos
