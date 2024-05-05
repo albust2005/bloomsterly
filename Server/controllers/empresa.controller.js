@@ -239,6 +239,7 @@ export const reservasCliente = async (req, res) => {
                 apellido = dato.primer_apelli
                 email = dato.email
                 formato = {
+                    COD: cliente,
                     nombre,
                     apellido,
                     email,
