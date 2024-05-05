@@ -198,3 +198,76 @@ export const getservicios = async (req, res) => {
         }
     }
 }
+// Esta funcion obtiene las reservas por parte de los clientes a la empresa
+export const reservasCliente = async (req, res) => {
+    try {
+        const servicios = await Servicios.findAll({
+            attributes: ['ID', 'NIT_empresas'],
+            include: [
+                {
+                    model: Reservas,
+                    attributes: ['COD_usuarios', 'telefono', 'direccion'],
+                    through: {
+                        model: DescripcionReserva
+                    }
+                }
+            ],
+            where: { NIT_empresas: req.userCOD },
+        })
+        const clientes = []
+        const numeroReservas = []
+        servicios.forEach((servicio) => {
+            servicio.reservas.forEach((reserva) => {
+                const cliente = reserva?.COD_usuarios
+                if (cliente !== null) {
+                    numeroReservas.push(cliente)
+                    clientes.push(cliente)
+                }
+            })
+        })
+        // Esta parte filtra los COD_usuarios repetidos para solo poner un COD_usuarios en otra array nueva
+        const codUsuariosUnicos = clientes.filter((valor, indice, arreglo) => {
+            return arreglo.indexOf(valor) === indice;
+        });
+        let dato, formato, nombre, apellido, email, numero
+        const datos = []
+        codUsuariosUnicos.map(async (cliente, indice) => {
+            try {
+                dato = await Usuarios.findOne({ where: { COD: cliente } })
+                numero=numeroReservas.filter((usuario)=>{return usuario == cliente })
+                nombre = dato.nombre_c
+                apellido = dato.primer_apelli
+                email = dato.email
+                formato = {
+                    nombre,
+                    apellido,
+                    email,
+                    numeroReservas: numero.length
+                }
+                // console.log(formato)
+                datos.push(formato)
+                // console.log(datos)
+                if ((codUsuariosUnicos.length - 1) === indice){
+                    res.status(200).json(datos)
+                }
+            } catch (error) {
+                if (error instanceof Sequelize.DatabaseError) {
+                    // Manejar el error de base de datos
+                    res.status(400).json({ message: `Error de base datos`, error: error.message })
+                } else {
+                    // Manejar otros tipos de errores
+                    res.status(400).json({ message: 'Hubo un error al obtener los clientes', error });
+                }
+            }
+        })
+        // res.status(200).json(servicios)
+    } catch (error) {
+        if (error instanceof Sequelize.DatabaseError) {
+            // Manejar el error de base de datos
+            res.status(400).json({ message: `Error de base datos`, error: error.message })
+        } else {
+            // Manejar otros tipos de errores
+            res.status(400).json({ message: 'Hubo un error al obtener los clientes', error });
+        }
+    }
+}

@@ -54,8 +54,8 @@ Usuarios.hasMany(Reservas, { foreignKey: 'COD_usuarios', as: 'reservas' });
 Reservas.belongsTo(Usuarios, { foreignKey: 'COD_usuarios' });
 
 //relacion muchos a muchos
-Reservas.belongsToMany(Servicios, { through: DescripcionReserva, foreignKey: 'COD_reservas', as: 'reservas' });
-Servicios.belongsToMany(Reservas,{through: DescripcionReserva, foreignKey: 'ID_servicios', as:'servicios'})
+Reservas.belongsToMany(Servicios, { through: DescripcionReserva, foreignKey: 'COD_reservas'});
+Servicios.belongsToMany(Reservas,{through: DescripcionReserva, foreignKey: 'ID_servicios'})
 
 //relacion muchos a muchos
 SolicitudEmpresas.belongsToMany(Administradores,{through: AdministradorSolicitud, foreignKey:'NIT_empresa_solicitante', as:'solicitud_empresa'})
