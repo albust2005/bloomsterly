@@ -137,7 +137,7 @@ export const getAllEmpresas = async (req, res) => {
 export const getuser = async (req, res) => {
   try {
     const dato = req.userCOD
-    const datos = await Usuarios.findOne({ where: { COD: dato } })
+    const datos = await Usuarios.findOne({where: { COD: dato }})
     res.status(200).json(datos)
   } catch (error) {
     if (error instanceof Sequelize.DatabaseError) {
@@ -253,4 +253,30 @@ export const categorias = async (req, res) => {
 // Esta funcion trae todas los servicios
 export const servicio = async (req,res)=>{
 
+}
+// Esta funcion trae las reservas realizada por el cliente
+export const obtenerReservas = async(req,res)=>{
+  try {
+    const reservas = await Reservas.findAll({
+      where: { COD_usuarios: req.userCOD },
+      include: [
+        {
+          model: Servicios,
+          attributes: ["nombre"],
+          through: {
+            model: DescripcionReserva,
+          },
+        },
+      ],
+    });
+    res.status(200).json(reservas)
+  } catch (error) {
+    if (error instanceof Sequelize.DatabaseError) {
+      // Manejar el error de base de datos
+      res.status(400).json({ message: `Error de base datos`, error: error.message });
+    } else {
+      // Manejar otros tipos de errores
+      res.status(400).json({message: "Hubo un error al obtener informacion de reserva",error});
+    }
+  }
 }
