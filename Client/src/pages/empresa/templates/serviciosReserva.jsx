@@ -23,12 +23,12 @@ export const useFoundServiciosEmpresa = () => {
 
 export function ServiciosReserva() {
   const { serviciosEmpresa } = useFoundServiciosEmpresa();
-  const { elimarServicio } = useServiciosEmpresaContext()
+  const { elimarServicio } = useServiciosEmpresaContext();
 
   console.log(serviciosEmpresa);
 
   return (
-    <section>
+    <section className=" gap-5 w-full h-full grid grid-cols-1 sm:grid-cols-2">
       {serviciosEmpresa?.length === 0 ? (
         <NotFound razon="servicios"></NotFound>
       ) : (
@@ -36,40 +36,45 @@ export function ServiciosReserva() {
           return (
             <div
               key={servicio.id}
-              className="flex bg-[#190042] mb-[1vh] dark:bg-light_theme w-full h-full p-3 rounded-sm 
-              items-center justify-between gap-2 z-10"
+              className="flex bg-[#190042] dark:bg-light_theme w-full h-full p-3 rounded-sm 
+              items-center justify-between gap-2 z-10 "
             >
               <div
-                className="min-h-full w-[30vh]  bg-color_switch_theme_dark rounded-sm
-                 dark:bg-rose-400"
+                className="min-h-full  bg-color_switch_theme_dark rounded-sm
+                 dark:bg-rose-400 min-w-[33.3%] max-w-[33.3%]"
               >
-                <img src={ servicio.imagen ? `http://localhost:8000/user/servicios/${servicio.imagen}` : ""} alt="" />
+                <img
+                  src={`http://localhost:8000/user/servicios/${servicio.imagen}`}
+                  alt=""
+                  className=""
+                />
               </div>
               <div className="w-full text-white dark:text-second_color_lt flex flex-col py-1">
                 <div className="flex justify-between pb-2">
                   <h1 className="font-title font-semibold text-2xl ">
                     {servicio.nombre}
                   </h1>
-                  <div className="flex gap-3 w-1/3 ">
-                    <button className="w-full h-full bg-hover_boton_admin border-2 border-transparent hover:bg-transparent
+                  <div className="flex gap-3 w-1/3 m-2">
+                    <button
+                      className="w-full h-full bg-hover_boton_admin border-2 border-transparent hover:bg-transparent
                     hover:border-hover_boton_admin dark:bg-second_color_lt dark:border-2 dark:border-transparent
                     dark:hover:bg-transparent dark:hover:border-second_color_lt dark:text-light_theme dark:hover:text-second_color_lt
-                    p-1">
+                    p-1"
+                    >
                       Editar
                     </button>
-                    <button 
-                    onClick={() => elimarServicio()}
-                    className="w-full h-full bg-hover_boton_admin border-2 border-transparent hover:bg-transparent
+                    <button
+                      onClick={() => elimarServicio()}
+                      className="w-full h-full bg-hover_boton_admin border-2 border-transparent hover:bg-transparent
                     hover:border-hover_boton_admin dark:bg-second_color_lt dark:border-2 dark:border-transparent
                     dark:hover:bg-transparent dark:hover:border-second_color_lt dark:text-light_theme dark:hover:text-second_color_lt
-                    p-1 ">
+                    p-1 "
+                    >
                       Eliminar
                     </button>
                   </div>
                 </div>
-                <p className=" overflow-hidden pb-2">
-                  {servicio.descripcion}
-                </p>
+                <p className=" overflow-hidden pb-2">{servicio.descripcion}</p>
               </div>
             </div>
           );
