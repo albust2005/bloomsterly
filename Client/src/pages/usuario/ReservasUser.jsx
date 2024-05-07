@@ -125,6 +125,7 @@ export function ReservasUser() {
   useEffect(() => {
     obtener()
   }, [])
+  
   const token = localStorage.getItem("token")
   const obtener = async () => {
     try {

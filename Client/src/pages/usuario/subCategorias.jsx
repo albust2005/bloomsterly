@@ -15,13 +15,13 @@ const useFoundSubCategorias = () => {
   const subCategorias = useSubCategoriaContext();
 
   const currentCategoria = categorias.find((cat) => cat.nombre === categoria);
-  console.log(currentCategoria.id);
+  console.log(currentCategoria?.id);
   const currentSubCategorias = subCategorias.filter(
     (sub) => sub.idCategoria === currentCategoria.id
   );
   console.log(currentSubCategorias);
   return {
-    categoria: currentCategoria.nombre,
+    categoria: currentCategoria?.nombre,
     subCategorias: currentSubCategorias,
   };
 };

@@ -20,7 +20,7 @@ const useFoundServiciosRelacionados = () => {
 
     const serviciosRelacionados = servicios?.filter(servicio =>
         servicio.idEmpresa === empresaRelacionada.id &&
-        servicio.idSubCategoria === subCategoriaRelacionada.id
+        servicio.idSubCategoria === subCategoriaRelacionada?.id
     )
 
 

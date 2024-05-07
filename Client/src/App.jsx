@@ -84,7 +84,13 @@ function RoutesPage() {
     <Routes>
       <Route path='/' element={<LandingPage />}></Route>
       <Route path='/login' element={<Login />}></Route>
-      <Route path='/categorias' element={<Categorias />}></Route>
+      <Route path='/categorias'
+        element={
+          <CategoriaProvider>
+            <Categorias />
+          </CategoriaProvider>
+        }
+      ></Route>
       <Route path='/categorias/:categoria?' element={<SubCategorias />}></Route>
       <Route path='/subCategorias/:subCategoria' element={<EmpresasRelacionadas />} />
       <Route path="/registroEmpresa" element={<RegistroEmpresa></RegistroEmpresa>}></Route>

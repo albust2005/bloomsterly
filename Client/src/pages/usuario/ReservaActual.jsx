@@ -70,8 +70,6 @@ export function ReservaActual() {
   const { removeServicioSeleccionado, createReserva } = useReservaUserCrudContext()
 
   const empresas = useEmpresaContext();
-
-
   const eventoValue = watch('evento')
 
   useState(() => {
