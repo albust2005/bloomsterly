@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
 import { NotFound } from "../../components/templates/NotFound";
 import { useUserContext } from "../../components/providers/userProvider";
-import { useReservaUserContext } from "../../components/providers/reservasUserProvider";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCreditCard, faMoneyBill, faPlusCircle } from "@fortawesome/free-solid-svg-icons";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { useToastify } from "../../components/hooks/useToastify";
+import PropTypes from 'prop-types'
 
 const ReservaDetalleCard = ({
   nombre,
@@ -12,8 +14,14 @@ const ReservaDetalleCard = ({
   fecha,
   telefono,
   servicios,
+  estado
 }) => {
   const { sesionUser } = useUserContext();
+  const mostrarServicio = () => {
+    let texto
+    texto = servicios?.join(", ")
+    return texto
+  }
 
   return (
     <article className="flex text-white flex-col z-10">
@@ -40,7 +48,7 @@ const ReservaDetalleCard = ({
           <h1 className="font-text">{telefono}</h1>
 
           <p className="font-title font-semibold text-lg mt-2">Servicios:</p>
-          <h1 className="text-white">{servicios}</h1>
+          <h1 className="text-white">{mostrarServicio()}</h1>
 
           <div>
             <p className="font-title font-semibold text-lg mt-2">
@@ -63,7 +71,7 @@ const ReservaDetalleCard = ({
               Estado:
             </p>
             <p className="font-text">
-              Pendiente
+              {estado}
             </p>
           </div>
 
@@ -81,7 +89,14 @@ const ReservaDetalleCard = ({
   );
 };
 
-
+ReservaDetalleCard.propTypes = {
+  nombre: PropTypes.string,
+  direccion: PropTypes.string,
+  fecha: PropTypes.string,
+  telefono: PropTypes.string,
+  servicios: PropTypes.array,
+  estado: PropTypes.string
+}
 const ReservaAddCard = () => {
   return (
     <article
@@ -104,11 +119,38 @@ const ReservaAddCard = () => {
 
 
 export function ReservasUser() {
-  const { sesionUser } = useUserContext();
-  const { reservaItem } = useReservaUserContext();
+  const { showToastMessage } = useToastify();
+  const [dato, setdato] = useState([])
+
+  useEffect(() => {
+    obtener()
+  }, [])
+  const token = localStorage.getItem("token")
+  const obtener = async () => {
+    try {
+      const respuesta = await axios.get("http://localhost:8000/user/obtenerReservas", {
+        headers: {
+          Authorization: token
+        }
+      })
+      setdato(respuesta.data);
+    } catch (error) {
+      showToastMessage(error);
+    }
+  }
+  const nombre = (dato1) => {
+    let servicios1 = []
+    dato1.servicios.map((servicio) => {
+      let nombre = servicio?.nombre
+      if (nombre !== null || nombre !== undefined) {
+        servicios1.push(nombre)
+      }
+    });
+    return servicios1
+  }
   return (
     <section>
-      {reservaItem?.length === 0 ? (
+      {dato?.length === 0 ? (
         <div className="w-full flex flex-col text-center gap-10 z-10">
           <p className="text-wrap text-4xl font-text text-white dark:text-black z-10">
             Realiza tu primera reserva
@@ -127,17 +169,17 @@ export function ReservasUser() {
             Reservas
           </h1>
           <div className="mx-auto grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 z-10">
-            {reservaItem?.map(
-              ({ nombreEvento, fecha, direccion, telefono, servicios }) => (
-                <ReservaDetalleCard
-                  key={nombreEvento}
-                  nombre={nombreEvento}
-                  fecha={fecha}
-                  direccion={direccion}
-                  telefono={telefono}
-                  servicios={servicios}
-                />
-              )
+            {dato?.map((dato1) => (
+              <ReservaDetalleCard
+                key={dato1.COD}
+                nombre={dato1.nombre}
+                fecha={dato1.fecha_evento}
+                direccion={dato1.direccion}
+                telefono={dato1.telefono}
+                servicios={nombre(dato1)}
+                estado={dato1.estado}
+              />
+            )
             )}
             <ReservaAddCard />
           </div>
