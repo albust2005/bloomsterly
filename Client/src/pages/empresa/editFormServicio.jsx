@@ -3,7 +3,9 @@ import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
+import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 export const EditarFormServicio = ({ servicioId }) => {
   const { showToastMessage } = useToastify();
   const navegate = useNavigate();
@@ -51,175 +53,222 @@ export const EditarFormServicio = ({ servicioId }) => {
   };
 
   return (
-    <div className="z-10 border-2 dark:bg-white dark:border-second_color_lt shadow-lg bg-dark_theme rounded-2xl">
-      <div className="flex flex-col justify-center text-center dark:bg-light_theme bg-admin_card p-4 gap-3 rounded-xl">
-        <h2 className="dark:text-second_color_lt text-white font-semibold text-3xl">
-          Editar Servicio
-        </h2>
-      </div>
-      <div className="flex justify-center flex-col gap-3 mt-3 w-full relative p-5 rounded-lg">
-        <form
-          className="w-full flex flex-col gap-2 text-white dark:text-second_color_lt"
-          onSubmit={handleSubmit(onSubmit)}
-        >
-          {/* Campo ID */}
-          <label htmlFor="ID" className="font-bold">
-            ID
-          </label>
-          <input
-            type="text"
-            {...register("ID")}
-            defaultValue={servicio.ID} // Asignar el valor actual del ID del servicio
-            disabled // El campo ID no se puede editaz
-            className="focus:outline-none bg-transparent border-b-2 dark:border-second_color_lt"
+    <>
+         <div
+        className="h-full w-full bg-dark_theme dark:bg-second_color_lt text-white  p-10 shadow-xl shadow-[#4e1ba1]
+        flex flex-col gap-9 mt-10 dark:shadow-[#d91e4e] z-10"
+      >
+        <div>
+          <Link to="/empresa/servicios">
+            <FontAwesomeIcon icon={faArrowLeft} size="xl" />
+          </Link>
+          <h1 className="font-bloomsterly text-white text-9xl text-center ">
+            Editar Servicios 
+          </h1>
+          <p className="text-balance text-center font-text text-xl ">
+            Atraves de este formulario podras editar tu servicio seleccionado
+          </p>
+        </div>
 
-          />
+        <div className="flex justify-center items-center">
+          <form
+            className="w-[90%] text-base minicel:text-sm sm:text-lg md:text-xl  "
+            onSubmit={onSubmit}
+          >
+            <div className="flex w-full gap-4">
+              <div className="input-box animation flex flex-col w-full ">
+                {/* Campo para ID */}
+                <label htmlFor="ID" className="font-bold">
+                  ID
+                </label>
+                <input
+                  type="text"
+                  {...register("ID", {
+                    required: "Este campo es requerido",
+                  })}
+                  className="focus:outline-none bg-transparent border-b-2 border-white text-base font-text 
+                    minicel:w-2/3 sm:w-full minicel:mb-1"
+                />
+                {errors.ID && <span>{errors.ID.message}</span>}
+              </div>
 
-          {/* Campo para Imagen */}
-          <label htmlFor="imagen" className="font-bold">
-            Imagen
-          </label>
-          <div className="mt-1 flex justify-center items-center">
-            <label
-              htmlFor="imagen"
-              className="cursor-pointer bg-gray-100 dark:bg-second_color_lt border border-gray-300 dark:border-second_color_lt rounded-lg py-2 px-4 text-sm text-gray-700 dark:text-second_color_lt hover:bg-gray-200 dark:hover:bg-slate-50 transition-all duration-300"
-            >
-              Seleccionar archivo
+              <div className="input-box animation flex flex-col w-full">
+                {/* Campo para Imagen */}
+                <label htmlFor="imagen" className="font-bold">
+                  Imagen
+                </label>
+                <div className="mt-4 mb-4">
+                  <label
+                    htmlFor="imagen"
+                    className=" cursor-pointer bg-white dark:bg-white border border-gray-300 dark:border-second_color_lt rounded-lg py-2 px-4 text-sm text-gray-700 hover:text-white dark:text-second_color_lt dark:hover:text-white hover:bg-admin_card  dark:hover:bg-second_color_lt  transition-all duration-300"
+                  >
+                    Seleccionar archivo
+                    <input
+                      type="file"
+                      accept="image/*"
+                      {...register("imagen", {
+                        required: "Este campo es requerido",
+                      })}
+                      className="hidden"
+                      id="imagen"
+                    />
+                  </label>
+                </div>
+                {errors.imagen && (
+                  <span className="text-red-500 text-sm">
+                    {errors.imagen.message}
+                  </span>
+                )}
+              </div>
+            </div>
+
+            <div className="input-box animation flex flex-col w-full">
+              {/* Campo para Nombre */}
+              <label htmlFor="nombre" className="font-bold">
+                Nombre
+              </label>
               <input
-                type="file"
-                accept="image/*"
-                {...register("imagen", {
+                type="text"
+                {...register("nombre", {
                   required: "Este campo es requerido",
                 })}
-                className="hidden"
-                id="imagen"
+                className="focus:outline-none bg-transparent border-b-2 dark:border-white"
               />
-            </label>
-          </div>
-          {errors.imagen && <span className="text-red-500 text-sm">{errors.imagen.message}</span>}
+              {errors.nombre && <span>{errors.nombre.message}</span>}
+            </div>
 
+            <div className="input-box animation flex flex-col w-full">
+              {/* Campo para Descripción */}
+              <label htmlFor="descripcion" className="font-bold">
+                Descripción
+              </label>
+              <textarea
+                {...register("descripcion", {
+                  required: "Este campo es requerido",
+                })}
+                className="w-full font-titulos dark:text-primary-color text-second-color pb-2 pr-3 mr-2 border-b-2 border-r-2 border-second-color dark:border-white bg-transparent focus:outline-none resize-none"
+              />
+              {errors.descripcion && <span>{errors.descripcion.message}</span>}
+            </div>
 
-          {/* Campo Nombre */}
-          <label htmlFor="nombre" className="font-bold">
-            Nombre
-          </label>
-          <input
-            type="text"
-            {...register("nombre", {
-              required: "Este campo es requerido",
-            })}
-            defaultValue={servicio.nombre} // Asignar el valor actual del nombre del servicio
-            className="focus:outline-none bg-transparent border-b-2 dark:border-second_color_lt"
-          />
-          {errors.nombre && <span>{errors.nombre.message}</span>}
+            <div className="flex w-full gap-4">
+              <div className="input-box animation flex flex-col w-full ">
+                {/* Campo para Valor del Servicio */}
+                <label htmlFor="valor_servicio" className="font-bold">
+                  Valor del Servicio
+                </label>
+                <input
+                  type="number"
+                  {...register("valor_servicio", {
+                    required: "Este campo es requerido",
+                  })}
+                  className="focus:outline-none bg-transparent border-b-2 dark:border-white"
+                />
+                {errors.valor_servicio && (
+                  <span>{errors.valor_servicio.message}</span>
+                )}
+              </div>
+            </div>
 
-          {/* Campo Descripción */}
-          <label htmlFor="descripcion" className="font-bold">
-            Descripción
-          </label>
-          <textarea
-            {...register("descripcion", {
-              required: "Este campo es requerido",
-            })}
-            defaultValue={servicio.descripcion} // Asignar el valor actual de la descripción del servicio
-            className="focus:outline-none bg-transparent border-b-2 dark:border-second_color_lt"
+            <div className="flex w-full gap-4">
+              <div className="input-box animation flex flex-col w-full">
+                {/* Campo para Código de Subcategoría */}
+                <div className="flex flex-col w-full ">
+                  <label htmlFor="COD_subCategoria" className="font-bold">
+                    Codigo Subcategoria
+                  </label>
+                  <select
+                    className="text-white rounded-md bg-transparent text-base font-text focus:outline-none border-b-2 dark:border-white dark:text-white"
+                    {...register("COD_subCategoria")}
+                  >
+                    <option
+                      value=""
+                      disabled
+                      className="bg-dark_theme dark:text-second_color_lt dark:bg-white"
+                      
+                    >
+                      Sub categoria
+                    </option>
+                    <option
+                      value="1"
+                      className="bg-dark_theme dark:text-second_color_lt dark:bg-white"
+                      
+                    >
+                      Mariachis
+                    </option>
+                    <option
+                      value="2"
+                      className="bg-dark_theme dark:text-second_color_lt dark:bg-white"
+                      
+                    >
+                      Música Electrónica
+                    </option>
+                    <option
+                      value="3"
+                      className="bg-dark_theme dark:text-second_color_lt dark:bg-white"
+                      
+                    >
+                      Decoración Infantil
+                    </option>
+                    <option
+                      value="4"
+                      className="bg-dark_theme dark:text-second_color_lt dark:bg-white"
+                      
+                    >
+                      Decoración Matrimonia
+                    </option>
+                    <option
+                      value="5"
+                      className="bg-dark_theme dark:text-second_color_lt dark:bg-white"
+                      
+                    >
+                      Decoración de Quinces
+                    </option>
+                    <option
+                      value="6"
+                      className="bg-dark_theme dark:text-second_color_lt dark:bg-white"
+                      
+                    >
+                      Buffet Mexicano
+                    </option>
+                    <option
+                      value="7"
+                      className="bg-dark_theme dark:text-second_color_lt dark:bg-white"
+                      
+                    >
+                      Catering Gourmet
+                    </option>
+                    <option
+                      value="8"
+                      className="bg-dark_theme dark:text-second_color_lt dark:bg-white"
+                      
+                    >
+                      Cócteles Clásicos
+                    </option>
+                    <option
+                      value="9"
+                      className="bg-dark_theme dark:text-second_color_lt dark:bg-white"
+                      
+                    >
+                      Cócteles Exóticos
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
 
-          />
-          {errors.descripcion && <span>{errors.descripcion.message}</span>}
-
-          {/* Campo Valor del Servicio */}
-          <label htmlFor="valor_servicio" className="font-bold">
-            Valor del Servicio
-          </label>
-          <input
-            type="number"
-            {...register("valor_servicio", {
-              required: "Este campo es requerido",
-            })}
-            defaultValue={servicio.valor_servicio} // Asignar el valor actual del valor del servicio
-          />
-          {errors.valor_servicio && <span>{errors.valor_servicio.message}</span>}
-
-          {/* Campo Código de Subcategoría */}
-          <label htmlFor="COD_subCategoria" className="font-bold">
-            Código de Subcategoría
-          </label>
-          <select
-                  className="text-white rounded-md bg-transparent text-base font-text focus:outline-none border-b-2 dark:border-second_color_lt dark:text-second_color_lt"
-                  {...register("COD_subCategoria")}
-                >
-                  <option
-                    value=""
-                    disabled
-                    className="bg-dark_theme dark:bg-light_theme"
-                  >
-                    Sub categoria 
-                  </option>
-                  <option
-                    value="1"
-                    className="bg-dark_theme dark:bg-light_theme"
-                  >
-                    Mariachis
-                  </option>
-                  <option
-                    value="2"
-                    className="bg-dark_theme dark:bg-light_theme"
-                  >
-                    Música Electrónica
-                  </option>
-                  <option
-                    value="3"
-                    className="bg-dark_theme dark:bg-light_theme"
-                  >
-                    Decoración Infantil
-                  </option>
-                  <option
-                    value="4"
-                    className="bg-dark_theme dark:bg-light_theme"
-                  >
-                    Decoración Matrimonia
-                  </option>
-                  <option
-                    value="5"
-                    className="bg-dark_theme dark:bg-light_theme"
-                  >
-                    Decoración de Quinces
-                  </option>
-                  <option
-                    value="6"
-                    className="bg-dark_theme dark:bg-light_theme"
-                  >
-                    Buffet Mexicano
-                  </option>
-                  <option
-                    value="7"
-                    className="bg-dark_theme dark:bg-light_theme"
-                  >
-                    Catering Gourmet
-                  </option>
-                  <option
-                    value="8"
-                    className="bg-dark_theme dark:bg-light_theme"
-                  >
-                    Cócteles Clásicos
-                  </option>
-                  <option
-                    value="9"
-                    className="bg-dark_theme dark:bg-light_theme"
-                  >
-                   Cócteles Exóticos
-                  </option>
-                </select>
-
-          {/* Botón de Envío */}
-          <button
-            type="submit"
-            className="text-white mt-2 bg-color_switch_theme_dark w-full p-2 font-bold rounded-md hover:bg-[#8e5ee0] dark:bg-[#eb2651] dark:hover:bg-[#d61540]"
-          >
-            Editar
-          </button>
-        </form>
+            {/* Botón de Envío */}
+            <button
+              type="submit"
+              className="text-white mt-2 bg-color_switch_theme_dark w-full p-1 rounded-md hover:bg-[#8e5ee0]
+              minicel:text-sm celular:text-base sm:text-lg md:text-xl  
+              minicel:mt-3 sm:mt-6 dark:bg-[#eb2651] dark:hover:bg-[#d61540]"
+            >
+              Editar servicio
+            </button>
+          </form>
+        </div>
       </div>
-    </div>
+    </>
   );
 };

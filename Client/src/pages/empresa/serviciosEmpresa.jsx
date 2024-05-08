@@ -10,7 +10,11 @@ export function ServiciosEmpresa() {
     return (
         <>
             <TitleAE title="Mis servicios"/>
-            <Link to="crear">
+            <Link to="crear"      
+                    className="w-full h-full bg-hover_boton_admin border-2 border-transparent hover:bg-transparent
+                    hover:border-hover_boton_admin dark:bg-second_color_lt dark:border-2 dark:border-transparent
+                    dark:hover:bg-transparent dark:hover:border-second_color_lt dark:text-light_theme dark:hover:text-second_color_lt
+                    p-1 text-white">
                 Crear servicio
             </Link>
             <section className="w-full flex justify-center  z-10">
