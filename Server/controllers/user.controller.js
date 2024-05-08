@@ -280,3 +280,20 @@ export const obtenerReservas = async(req,res)=>{
     }
   }
 }
+// Esta funcion sirve para eliminar una reserva
+export const eliminarReserva = async(req,res)=>{
+  const { COD }=req.body
+  try {
+    await DescripcionReserva.destroy({where:{COD_reservas:COD}})
+    await Reservas.destroy({where:{COD:COD}})
+    res.status(200).json({message: "Reserva eliminada correctamente"})
+  } catch (error) {
+    if (error instanceof Sequelize.DatabaseError) {
+      // Manejar el error de base de datos
+      res.status(400).json({ message: `Error de base datos`, error: error.message });
+    } else {
+      // Manejar otros tipos de errores
+      res.status(400).json({message: "Hubo un error al eliminar la reserva",error});
+    }
+  }
+} 

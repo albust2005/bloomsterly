@@ -9,6 +9,7 @@ import { useToastify } from "../../components/hooks/useToastify";
 import PropTypes from 'prop-types'
 
 const ReservaDetalleCard = ({
+  COD,
   nombre,
   direccion,
   fecha,
@@ -16,13 +17,27 @@ const ReservaDetalleCard = ({
   servicios,
   estado
 }) => {
+  const { showToastMessage } = useToastify();
   const { sesionUser } = useUserContext();
   const mostrarServicio = () => {
     let texto
     texto = servicios?.join(", ")
     return texto
   }
-
+  const token = localStorage.getItem("token")
+  const eliminarReserva = async(COD)=>{
+    try {
+      const respuesta = await axios.post("http://localhost:8000/user/eliminarReserva",{COD:COD}, {
+        headers: {
+          Authorization: token
+        }
+      })
+      showToastMessage(respuesta.data.message)
+      ReservasUser()
+    } catch (error) {
+      showToastMessage(error);
+    }
+  }
   return (
     <article className="flex text-white flex-col z-10">
       <div className="w-full  h-full p-5 bg-dark_theme dark:bg-second_color_lt rounded-sm z-10">
@@ -79,7 +94,7 @@ const ReservaDetalleCard = ({
             <button className="bg-color_font_dark hover:bg-violet-700 transition-all dark:bg-rose-400 dark:hover:bg-rose-600  px-2 rounded-sm">
               Editar
             </button>
-            <button className="bg-color_font_dark hover:bg-violet-700 transition-all dark:bg-rose-400 dark:hover:bg-rose-600  px-2 rounded-sm">
+            <button onClick={()=>{eliminarReserva(COD)}} className="bg-color_font_dark hover:bg-violet-700 transition-all dark:bg-rose-400 dark:hover:bg-rose-600  px-2 rounded-sm">
               Eliminar
             </button>
           </div>
@@ -90,6 +105,7 @@ const ReservaDetalleCard = ({
 };
 
 ReservaDetalleCard.propTypes = {
+  COD: PropTypes.number,
   nombre: PropTypes.string,
   direccion: PropTypes.string,
   fecha: PropTypes.string,
@@ -173,6 +189,7 @@ export function ReservasUser() {
             {dato?.map((dato1) => (
               <ReservaDetalleCard
                 key={dato1.COD}
+                COD={dato1.COD}
                 nombre={dato1.nombre}
                 fecha={dato1.fecha_evento}
                 direccion={dato1.direccion}

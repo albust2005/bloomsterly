@@ -10,7 +10,7 @@ import {
 import { useEmpresaContext } from "../../components/providers/empresaProvider";
 import { useUserContext } from "../../components/providers/userProvider";
 import { useThemeContext } from "../../components/providers/themeProvider"
-import { useState, useRef } from "react";
+import { useState } from "react";
 
 {
   /*agregar el servicio  */
@@ -62,7 +62,7 @@ export function ReservaActual() {
     register,
     handleSubmit,
     formState: { errors },
-    watch 
+    //watch 
   } = useForm();
 
   const [servicioSeleccionadoNombre, setServicioSeleccionadoNombre] = useState([]);
@@ -70,12 +70,12 @@ export function ReservaActual() {
   const { removeServicioSeleccionado, createReserva } = useReservaUserCrudContext()
 
   const empresas = useEmpresaContext();
-  const eventoValue = watch('evento')
+  //const eventoValue = watch('evento')
 
   useState(() => {
     const servicioNombre = servicioSeleccionados?.find(
       (servicio) => servicio.id
-    )?.nombre;
+    )?.id;
     setServicioSeleccionadoNombre([...servicioSeleccionadoNombre, servicioNombre]);
   }, [servicioSeleccionados]);
 
@@ -121,7 +121,7 @@ export function ReservaActual() {
                 Nombre del evento
               </label>
               <input
-                type="text"        
+                type="text"
                 {...register("evento", {
                   required: {
                     value: true,

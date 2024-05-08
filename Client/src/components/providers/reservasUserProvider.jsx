@@ -1,6 +1,7 @@
 import { createContext, useContext, useState } from "react";
 import { useNavigate } from 'react-router-dom'
 import { useToastify } from "../hooks/useToastify";
+import axios from "axios";
 
 const reservasUserContext = createContext()
 const reservasUserCrudContext = createContext()
@@ -13,36 +14,52 @@ export function ReservasUserProvider({ children }) {
     const { showToastMessage } = useToastify()
 
     const [servicios, setServicios] = useState([])
-    const [reservas, setReserva] = useState([])
+    const token = localStorage.getItem('token')
 
-    const createReserva = (data) => {
-        console.log(data)
-        const newItem = {
-            nombreEvento: data.evento,
-            fecha: data.fecha,
-            direccion: data.direccion,
-            telefono: data.telefono,
-            servicios: data.servicios
+    const reserva = async (data) => {
+        try {
+            const { evento, fecha, direccion, telefono, servicios } = data
+            const res = await axios.post(
+                'http://localhost:8000/user/reserva',
+                {
+                    nombre: evento,
+                    direccion: direccion,
+                    fecha_evento: fecha,
+                    telefono: telefono,
+                    servicios: servicios,
+                },
+                {
+                    headers: {
+                        Authorization: token
+                    }
+                }
+            );
+
+            setServicios([])
+            navigate('/reservas')
+            showToastMessage(res.message)
+            alert(res.message)
+        } catch (err) {
+            showToastMessage(err)
+            console.log(err)
         }
+    }
 
-        console.log(newItem)
-        setReserva([...reservas, newItem])
-        setServicios([])
+    const createReserva = async (data) => {
+        reserva(data)
+        console.log(data)
 
-        navigate('/reservas')
-        showToastMessage('¡Reserva creada correctamente!')
         document.getElementById('my-form').reset()
     }
 
     const addServicioSeleccionado = servicio => {
         const { id } = servicio
-        // const servicioExistente = servicios.find(servicio => servicio.id === id);
-        // if (servicioExistente) {
-        //     showToastMessage('¡Este servicio ya ha sido seleccionado!');
-        //     navigate(`/reserva/crear`)
-        //     return;
-        // }
-
+        const servicioExistente = servicios.find(servicio => servicio.id === id);
+        if (servicioExistente) {
+            showToastMessage('¡Este servicio ya ha sido seleccionado!');
+            navigate(`/reserva/crear`)
+            return;
+        }
 
         setServicios(prevItem => [
             ...prevItem,
@@ -64,7 +81,6 @@ export function ReservasUserProvider({ children }) {
     return (
         <reservasUserContext.Provider value={{
             servicioSeleccionados: servicios,
-            reservaItem: reservas
         }}>
             <reservasUserCrudContext.Provider value={{
                 addServicioSeleccionado,
