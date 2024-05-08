@@ -54,7 +54,7 @@ export const FormServicio = () => {
             Crear Servicios
           </h1>
           <p className="text-balance text-center font-text text-xl ">
-            Atraves de este formulario podras tu crear un servicio
+            A través de este formulario podrás crear un servicio
           </p>
         </div>
 
@@ -163,7 +163,7 @@ export const FormServicio = () => {
                 {/* Campo para Código de Subcategoría */}
                 <div className="flex flex-col w-full ">
                   <label htmlFor="COD_subCategoria" className="font-bold">
-                    Codigo Subcategoria
+                    Codigo Subcategoría
                   </label>
                   <select
                     className="text-white rounded-md bg-transparent text-base font-text focus:outline-none border-b-2 dark:border-white dark:text-white"
@@ -174,7 +174,7 @@ export const FormServicio = () => {
                       disabled
                       className="bg-dark_theme dark:text-second_color_lt dark:bg-white"
                     >
-                      Sub categoria
+                      Subcategoría
                     </option>
                     <option
                       value="1"
@@ -202,7 +202,7 @@ export const FormServicio = () => {
                       className="bg-dark_theme dark:text-second_color_lt dark:bg-white"
                       
                     >
-                      Decoración Matrimonia
+                      Decoración Matrimonial
                     </option>
                     <option
                       value="5"

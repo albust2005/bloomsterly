@@ -88,7 +88,7 @@ export const useLoginUser = (URI) => {
     const logout = () => {
         localStorage.removeItem('user')
         
-        showToastMessage(`Vuelve pronto ${sesionUser?.Username}!`)
+        showToastMessage(`¡Vuelve pronto ${sesionUser?.Username}!`)
         setSesionUser(null)
         navigate('/')
     }
