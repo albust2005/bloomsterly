@@ -148,7 +148,7 @@ export function ReservaActual() {
               {...register("direccion", {
                 required: {
                   value: true,
-                  message: "Escribe la direccion del evento",
+                  message: "Escribe la dirección del evento",
                 },
               })}
               className="focus:outline-none bg-transparent border-b-2 border-white text-base font-text"
@@ -198,7 +198,7 @@ export function ReservaActual() {
                 {...register("telefono", {
                   required: {
                     value: true,
-                    message: "Debes poner tu telefono",
+                    message: "Debes poner tu teléfono",
                   },
                 })}
                 className="focus:outline-none bg-transparent border-b-2 border-white text-base font-text"

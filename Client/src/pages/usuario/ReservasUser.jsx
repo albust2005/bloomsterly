@@ -51,15 +51,15 @@ const ReservaDetalleCard = ({
           </p>
           <h1 className="font-text">{nombre}</h1>
 
-          <p className="font-title font-semibold text-lg mt-2">Direccion:</p>
+          <p className="font-title font-semibold text-lg mt-2">Dirección:</p>
           <h1 className="font-text">{direccion}</h1>
 
           <p className="font-title font-semibold text-lg mt-2">
-            Fecha de realizacion:
+            Fecha de realización:
           </p>
           <h1 className="font-text">{fecha}</h1>
 
-          <p className="font-title font-semibold text-lg mt-2">Telefono:</p>
+          <p className="font-title font-semibold text-lg mt-2">Teléfono:</p>
           <h1 className="font-text">{telefono}</h1>
 
           <p className="font-title font-semibold text-lg mt-2">Servicios:</p>
@@ -67,7 +67,7 @@ const ReservaDetalleCard = ({
 
           <div>
             <p className="font-title font-semibold text-lg mt-2">
-              Metodos de pago:
+              Métodos de pago:
             </p>
             <div className="flex gap-5">
               <FontAwesomeIcon
