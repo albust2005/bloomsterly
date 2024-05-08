@@ -3,45 +3,27 @@ import { NotFound } from "../../components/templates/NotFound";
 import { useUserContext } from "../../components/providers/userProvider";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCreditCard, faMoneyBill, faPlusCircle } from "@fortawesome/free-solid-svg-icons";
-import { useEffect, useState } from "react";
-import axios from "axios";
-import { useToastify } from "../../components/hooks/useToastify";
+import { useEffect } from "react";
 import PropTypes from 'prop-types'
- 
+import { useReservaUserContext, useReservaUserCrudContext } from "../../components/providers/reservasUserProvider";
+
 const ReservaDetalleCard = ({
-  COD,
   nombre,
   direccion,
   fecha,
   telefono,
   servicios,
   estado,
-  setReservasUser
+  eliminarReserva,
 }) => {
-  const { showToastMessage } = useToastify();
   const { sesionUser } = useUserContext();
+
   const mostrarServicio = () => {
     let texto
     texto = servicios?.join(", ")
     return texto
   }
-  const token = localStorage.getItem("token")
-  const eliminarReserva = async(COD)=>{
-    try {
-      const respuesta = await axios.post("http://localhost:8000/user/eliminarReserva",{COD:COD}, {
-        headers: {
-          Authorization: token
-        }
-      })
-      showToastMessage(respuesta.data.message)
-      setReservasUser(true);
-    } catch (error) {
-      showToastMessage(error);
-    }
-  }
-  const editarReserva = ()=>{
-    setReservasUser(true);
-  }
+
   return (
     <article className="flex text-white flex-col z-10">
       <div className="w-full  h-full p-5 bg-dark_theme dark:bg-second_color_lt rounded-sm z-10">
@@ -95,10 +77,7 @@ const ReservaDetalleCard = ({
           </div>
 
           <div className="w-full flex flex-row-reverse font-semibold font-text gap-3">
-            <button onClick={()=>{editarReserva()}} className="bg-color_font_dark hover:bg-violet-700 transition-all dark:bg-rose-400 dark:hover:bg-rose-600  px-2 rounded-sm">
-              Editar
-            </button>
-            <button onClick={()=>{eliminarReserva(COD)}} className="bg-color_font_dark hover:bg-violet-700 transition-all dark:bg-rose-400 dark:hover:bg-rose-600  px-2 rounded-sm">
+            <button onClick={eliminarReserva} className="bg-color_font_dark hover:bg-violet-700 transition-all dark:bg-rose-400 dark:hover:bg-rose-600  px-2 rounded-sm">
               Eliminar
             </button>
           </div>
@@ -139,24 +118,13 @@ const ReservaAddCard = () => {
 
 
 export function ReservasUser() {
-  const { showToastMessage } = useToastify();
-  const [dato, setdato] = useState([])
+  const { eliminarReserva, obtenerReservas } = useReservaUserCrudContext()
+  const { reservas } = useReservaUserContext()
+
   useEffect(() => {
-      obtener()
+    obtenerReservas()
   }, [])
-  const token = localStorage.getItem("token")
-  const obtener = async () => {
-    try {
-      const respuesta = await axios.get("http://localhost:8000/user/obtenerReservas", {
-        headers: {
-          Authorization: token
-        }
-      })
-      setdato(respuesta.data);
-    } catch (error) {
-      showToastMessage(error);
-    }
-  }
+
   const nombre = (dato1) => {
     let servicios1 = []
     dato1.servicios.map((servicio) => {
@@ -167,14 +135,11 @@ export function ReservasUser() {
     });
     return servicios1
   }
-  const setReservasUser = (boleano)=>{
-    if (boleano){
-      obtener()
-    }
-  }
+
+
   return (
     <section>
-      {dato?.length === 0 ? (
+      {reservas?.length === 0 ? (
         <div className="w-full flex flex-col text-center gap-10 z-10">
           <p className="text-wrap text-4xl font-text text-white dark:text-black z-10">
             Realiza tu primera reserva
@@ -193,7 +158,7 @@ export function ReservasUser() {
             Reservas
           </h1>
           <div className="mx-auto grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 z-10">
-            {dato?.map((dato1) => (
+            {reservas?.map((dato1) => (
               <ReservaDetalleCard
                 key={dato1.COD}
                 COD={dato1.COD}
@@ -203,7 +168,7 @@ export function ReservasUser() {
                 telefono={dato1.telefono}
                 servicios={nombre(dato1)}
                 estado={dato1.estado}
-                setReservasUser={setReservasUser}
+                eliminarReserva={() => eliminarReserva(dato1.COD)}
               />
             )
             )}

@@ -14,9 +14,40 @@ export function ReservasUserProvider({ children }) {
     const { showToastMessage } = useToastify()
 
     const [servicios, setServicios] = useState([])
+    const [reservas, setReservas] = useState([])
+
     const token = localStorage.getItem('token')
 
-    const reserva = async (data) => {
+    const obtenerReservas = async () => {
+        try {
+          const respuesta = await axios.get("http://localhost:8000/user/obtenerReservas", {
+            headers: {
+              Authorization: token
+            }
+          })
+          setReservas(respuesta.data);
+        } catch (error) {
+          showToastMessage(error);
+        }
+    }
+
+    const eliminarReserva = async (COD) => {
+        try {
+            const respuesta = await axios.post("http://localhost:8000/user/eliminarReserva", { COD: COD }, {
+                headers: {
+                    Authorization: token
+                }
+            })
+            showToastMessage(respuesta.data.message)
+            obtenerReservas()
+        } catch (error) {
+            showToastMessage(error);
+        }
+    }
+
+    const createReserva = async (data) => {
+        console.log(data)
+
         try {
             const { evento, fecha, direccion, telefono, servicios } = data
             const res = await axios.post(
@@ -43,11 +74,6 @@ export function ReservasUserProvider({ children }) {
             showToastMessage(err)
             console.log(err)
         }
-    }
-
-    const createReserva = async (data) => {
-        reserva(data)
-        console.log(data)
 
         document.getElementById('my-form').reset()
     }
@@ -81,11 +107,14 @@ export function ReservasUserProvider({ children }) {
     return (
         <reservasUserContext.Provider value={{
             servicioSeleccionados: servicios,
+            reservas
         }}>
             <reservasUserCrudContext.Provider value={{
                 addServicioSeleccionado,
                 removeServicioSeleccionado,
-                createReserva
+                createReserva,
+                eliminarReserva, 
+                obtenerReservas
             }}>
                 {children}
             </reservasUserCrudContext.Provider>
