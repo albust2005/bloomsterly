@@ -113,14 +113,15 @@ export function Header() {
         </div>
 
         <div className="flex flex-row-reverse w-full gap-7">
-          {sesionUser?.Rol === "Administrador" ? (
+          {sesionUser ? (
             <>
               <button onClick={logout}>
                 <ButtonNav text="Cerrar sesión"></ButtonNav>
               </button>
-              <IconUser clasName="h-6 cursor-pointer  bg-transparent 
-        hover:bg-purple-900 px-6 py-5 md:py-1 rounded-lg hover:ease-in-out duration-300 z-10
-        dark:text-second_color_lt hover:dark:bg-[#ebd1b8]" href="/administrador/perfil" />
+              <IconUser 
+              clasName="h-6 cursor-pointer  bg-transparent hover:bg-purple-900 px-6 py-5 md:py-1 rounded-lg hover:ease-in-out duration-300 z-10 dark:text-second_color_lt hover:dark:bg-[#ebd1b8]" 
+              href={`/perfil`} 
+              />
             </>
           ) : sesionUser === null ? (
             <ButtonNav href="/login" text="Iniciar sesión" />

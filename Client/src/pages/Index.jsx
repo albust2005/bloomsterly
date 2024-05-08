@@ -72,8 +72,10 @@ export function LandingPage() {
             </Link>
           </ScrollAnimatedSection>
 
+          
+
           <ScrollAnimatedSection
-            className="mx-auto grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 opacity-0"
+            className="mx-auto grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6  z-10"
             animation="animate-fade"
           >
             {categorias.slice(0, 3).map((categoria) => (
