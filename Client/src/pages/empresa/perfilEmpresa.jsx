@@ -13,8 +13,22 @@ export function PerfilEmpresa() {
     setCambiar(!cambiar); 
   };
   const { sesionUser } = useUserContext();
+
+  const obtenerUser=async()=>{
+    try {
+      const respuesta = await axios.get("http://localhost:8000/user/getusuario",{
+        headers:{
+          Authorization:token
+        }
+      })
+      setdato(respuesta.data)
+    } catch (error) {
+      alert(error)
+      console.log(error)
+    }
+  }
   
-  const obtener1=async()=>{
+  const obtenerEmpresa=async()=>{
     try {
       const respuesta = await axios.get("http://localhost:8000/empresa/getempresa",{
         headers:{
@@ -26,15 +40,21 @@ export function PerfilEmpresa() {
       alert(error)
     }
   }
+
   const token=localStorage.getItem("token")
   useEffect(()=>{
     if (sesionUser?.Rol === "Administrador"){
-      obtener()
-    }else {
-      obtener1()
+      obtenerAdmin()
+    }
+    if (sesionUser?.Rol === "Empresa") {
+      obtenerEmpresa()
+    }
+    if (sesionUser?.Rol === "Cliente") {
+      obtenerUser()
     }
   },[])
-  const obtener=async()=>{
+
+  const obtenerAdmin=async()=>{
     try {
       const respuesta = await axios.get("http://localhost:8000/admin/getadmin",{
         headers:{
@@ -46,6 +66,8 @@ export function PerfilEmpresa() {
       alert(error)
     }
   }
+
+
   return (
     <>
       <section className="flex  w-full justify-center gap-4 z-10">
