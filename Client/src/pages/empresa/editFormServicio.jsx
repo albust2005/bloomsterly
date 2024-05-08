@@ -2,22 +2,29 @@ import { useToastify } from "../../components/hooks/useToastify";
 import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
-export const EditarFormServicio = ({ servicioId }) => {
+export const EditarFormServicio = () => {
   const { showToastMessage } = useToastify();
   const navegate = useNavigate();
-  const [servicio, setServicio] = useState({});
-
+  const [servicio, setServicio] = useState([]);
+  const {id} = useParams();
   useEffect(() => {
-    cargarDatosServicio();
-  }, [servicioId]);
+    // cargarDatosServicio();
+    // console.log(id);
+  }, []);
 
   const cargarDatosServicio = async () => {
     try {
-      const respuesta = await axios.get(`http://localhost:8000/api/servicios/${servicioId}`);
+      const respuesta = await axios.post(
+        `http://localhost:8000/empresa/servicio`,{
+          id
+        },{
+          
+        }
+      );
       setServicio(respuesta.data);
     } catch (error) {
       showToastMessage("Error al cargar los datos del servicio");
@@ -32,16 +39,22 @@ export const EditarFormServicio = ({ servicioId }) => {
 
   const onSubmit = async (data) => {
     try {
-      const { ID, nombre, descripcion, valor_servicio, COD_subCategoria } = data;
-
-      const respuesta = await axios.put(
-        `http://localhost:8000/api/servicios/${servicioId}`,
+      const { ID, nombre, descripcion, valor_servicio, COD_subCategoria } =
+        data;
+      const token = localStorage.getItem("token");
+      const respuesta = await axios.post(
+        `http://localhost:8000/empresa/editarServicio`,
         {
           ID,
           nombre,
           descripcion,
           valor_servicio,
           COD_subCategoria,
+        },
+        {
+          headers: {
+            Authorization: token,
+          },
         }
       );
 

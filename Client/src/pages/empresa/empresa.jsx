@@ -28,7 +28,7 @@ export function Empresa() {
 
               <Route path="/servicios" element={<ServiciosEmpresa />}></Route>
               <Route path="/servicios/crear" element={<FormServicio />}></Route>
-              <Route path="/servicios/editar" element={<EditarFormServicio />}></Route>
+              <Route path="/servicios/editar/:id" element={<EditarFormServicio />}></Route>
 
 
               <Route path="/perfil" element={<PerfilEmpresa />}></Route>

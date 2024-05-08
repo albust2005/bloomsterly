@@ -289,3 +289,25 @@ export const reservasCliente = async (req, res) => {
         }
     }
 }
+// Esta funcion sirve para obtener los datos del servicio selecccionado
+export const servicio1 = async(req,res)=>{
+    const {
+        id
+    }=req.body
+    try {
+        const servicio= await Servicios.findOne({where:{ID:id}})
+        res.status(200).json(servicio)
+    } catch (error) {
+        if (error instanceof Sequelize.DatabaseError) {
+          // Manejar el error de base de datos
+          res
+            .status(400)
+            .json({ message: `Error de base datos`, error: error.message });
+        } else {
+          // Manejar otros tipos de errores
+          res
+            .status(400)
+            .json({ message: "Hubo un error al obtener el servicio", error });
+        }
+    }
+}

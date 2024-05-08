@@ -1,8 +1,7 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useEmpresaContext } from "../../../components/providers/empresaProvider";
 import { useServiciosContext } from "../../../components/providers/serviciosProvider";
 import { useUserContext } from "../../../components/providers/userProvider";
-
 import { NotFound } from "../../../components/templates/NotFound";
 import { useServiciosEmpresaContext } from "../provider/serviciosEmpresaProvider";
 
@@ -25,9 +24,13 @@ export const useFoundServiciosEmpresa = () => {
 export function ServiciosReserva() {
   const { serviciosEmpresa } = useFoundServiciosEmpresa();
   const { elimarServicio } = useServiciosEmpresaContext();
-
+  const navegate = useNavigate();
   console.log(serviciosEmpresa);
 
+  const editarServicio = (id) => {
+    console.log("click");
+    navegate(`/servicios/editar/${id}`);
+  };
   return (
     <section className=" gap-5 w-full h-full grid grid-cols-1 sm:grid-cols-2 mt-5">
       {serviciosEmpresa?.length === 0 ? (
@@ -56,13 +59,14 @@ export function ServiciosReserva() {
                     {servicio.nombre}
                   </h1>
                   <div className="flex gap-3 w-1/3 m-2">
-                    <Link to="editar"
+                    <Link
+                      to={`editar/${servicio.id}`}
                       className="w-full h-full bg-hover_boton_admin border-2 border-transparent hover:bg-transparent
                     hover:border-hover_boton_admin dark:bg-second_color_lt dark:border-2 dark:border-transparent
                     dark:hover:bg-transparent dark:hover:border-second_color_lt dark:text-light_theme dark:hover:text-second_color_lt
                     p-1"
                     >
-                      Editar
+                      editar
                     </Link>
                     <button
                       onClick={() => elimarServicio()}
