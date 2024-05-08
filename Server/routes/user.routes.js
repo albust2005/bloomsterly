@@ -10,6 +10,7 @@ import {
   categorias,
   reserva,
   obtenerReservas,
+  eliminarReserva,
 } from "../controllers/user.controller.js";
 import jwt from "jsonwebtoken";
 
@@ -53,4 +54,6 @@ router.get("/categorias", categorias);
 router.post("/reserva", verificarToken, reserva);
 // ruta para obtener las reservas realizadas por el cliente
 router.get("/obtenerReservas", verificarToken, obtenerReservas);
+// ruta para eliminar una reserva
+router.post("/eliminarReserva", verificarToken, eliminarReserva);
 export default router;
