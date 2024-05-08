@@ -29,7 +29,7 @@ export function ServiciosReserva() {
   console.log(serviciosEmpresa);
 
   return (
-    <section className=" gap-5 w-full h-full grid grid-cols-1 sm:grid-cols-2">
+    <section className=" gap-5 w-full h-full grid grid-cols-1 sm:grid-cols-2 mt-5">
       {serviciosEmpresa?.length === 0 ? (
         <NotFound razon="servicios"></NotFound>
       ) : (
