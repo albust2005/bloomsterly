@@ -54,7 +54,7 @@ export const EditarFormServicio = ({ servicioId }) => {
 
   return (
     <>
-         <div
+      <div
         className="h-full w-full bg-dark_theme dark:bg-second_color_lt text-white  p-10 shadow-xl shadow-[#4e1ba1]
         flex flex-col gap-9 mt-10 dark:shadow-[#d91e4e] z-10"
       >
@@ -63,7 +63,7 @@ export const EditarFormServicio = ({ servicioId }) => {
             <FontAwesomeIcon icon={faArrowLeft} size="xl" />
           </Link>
           <h1 className="font-bloomsterly text-white text-9xl text-center ">
-            Editar Servicios 
+            Editar Servicios
           </h1>
           <p className="text-balance text-center font-text text-xl ">
             A través de este formulario podras editar tu servicio seleccionado
@@ -100,7 +100,7 @@ export const EditarFormServicio = ({ servicioId }) => {
                 <div className="mt-4 mb-4">
                   <label
                     htmlFor="imagen"
-                    className=" cursor-pointer bg-white dark:bg-white border border-gray-300 dark:border-second_color_lt rounded-lg py-2 px-4 text-sm text-gray-700 hover:text-white dark:text-second_color_lt dark:hover:text-white hover:bg-admin_card  dark:hover:bg-second_color_lt  transition-all duration-300"
+                    className=" cursor-pointer bg-white dark:bg-white border border-gray-300  rounded-lg py-2 px-4 text-sm text-gray-700 hover:text-white dark:text-second_color_lt dark:hover:text-white hover:bg-admin_card  dark:hover:bg-[#eb2651] transition-all duration-300"
                   >
                     Seleccionar archivo
                     <input
@@ -114,11 +114,7 @@ export const EditarFormServicio = ({ servicioId }) => {
                     />
                   </label>
                 </div>
-                {errors.imagen && (
-                  <span className="text-red-500 text-sm">
-                    {errors.imagen.message}
-                  </span>
-                )}
+                {errors.imagen && <span>{errors.imagen.message}</span>}
               </div>
             </div>
 
@@ -185,70 +181,60 @@ export const EditarFormServicio = ({ servicioId }) => {
                       value=""
                       disabled
                       className="bg-dark_theme dark:text-second_color_lt dark:bg-white"
-                      
                     >
                       Subcategoría
                     </option>
                     <option
                       value="1"
                       className="bg-dark_theme dark:text-second_color_lt dark:bg-white"
-                      
                     >
                       Mariachis
                     </option>
                     <option
                       value="2"
                       className="bg-dark_theme dark:text-second_color_lt dark:bg-white"
-                      
                     >
                       Música Electrónica
                     </option>
                     <option
                       value="3"
                       className="bg-dark_theme dark:text-second_color_lt dark:bg-white"
-                      
                     >
                       Decoración Infantil
                     </option>
                     <option
                       value="4"
                       className="bg-dark_theme dark:text-second_color_lt dark:bg-white"
-                      
                     >
                       Decoración Matrimonial
                     </option>
                     <option
                       value="5"
                       className="bg-dark_theme dark:text-second_color_lt dark:bg-white"
-                      
                     >
                       Decoración de Quinces
                     </option>
                     <option
                       value="6"
                       className="bg-dark_theme dark:text-second_color_lt dark:bg-white"
-                      
                     >
                       Buffet Mexicano
                     </option>
                     <option
                       value="7"
                       className="bg-dark_theme dark:text-second_color_lt dark:bg-white"
-                      
                     >
                       Catering Gourmet
                     </option>
                     <option
                       value="8"
                       className="bg-dark_theme dark:text-second_color_lt dark:bg-white"
-                      
                     >
                       Cócteles Clásicos
                     </option>
                     <option
                       value="9"
                       className="bg-dark_theme dark:text-second_color_lt dark:bg-white"
-                      
                     >
                       Cócteles Exóticos
                     </option>

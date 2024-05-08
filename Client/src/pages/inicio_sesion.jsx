@@ -27,7 +27,7 @@ export function InicioSesion() {
       <form action="" className="w-full " onSubmit={handleSubmit(loginUser)}>
         <div className="input-box animation flex flex-col ">
           <label htmlFor="Username" className="mb-1 font-semibold">
-            Username
+            Nombre de usuario
           </label>
           <input
             type="text"

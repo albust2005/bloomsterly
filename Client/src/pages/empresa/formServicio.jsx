@@ -88,7 +88,7 @@ export const FormServicio = () => {
                 <div className="mt-4 mb-4">
                   <label
                     htmlFor="imagen"
-                    className=" cursor-pointer bg-white dark:bg-white border border-gray-300 dark:border-second_color_lt rounded-lg py-2 px-4 text-sm text-gray-700 hover:text-white dark:text-second_color_lt dark:hover:text-white hover:bg-admin_card  dark:hover:bg-second_color_lt  transition-all duration-300"
+                    className=" cursor-pointer bg-white dark:bg-white border border-gray-300 rounded-lg py-2 px-4 text-sm text-gray-700 hover:text-white dark:text-second_color_lt dark:hover:text-white hover:bg-admin_card dark:hover:bg-[#eb2651]  transition-all duration-300"
                   >
                     Seleccionar archivo
                     <input
@@ -102,11 +102,7 @@ export const FormServicio = () => {
                     />
                   </label>
                 </div>
-                {errors.imagen && (
-                  <span className="text-red-500 text-sm">
-                    {errors.imagen.message}
-                  </span>
-                )}
+                {errors.imagen && <span>{errors.imagen.message}</span>}
               </div>
             </div>
 
@@ -163,7 +159,7 @@ export const FormServicio = () => {
                 {/* Campo para Código de Subcategoría */}
                 <div className="flex flex-col w-full ">
                   <label htmlFor="COD_subCategoria" className="font-bold">
-                    Codigo Subcategoría
+                    Código Subcategoría
                   </label>
                   <select
                     className="text-white rounded-md bg-transparent text-base font-text focus:outline-none border-b-2 dark:border-white dark:text-white"
@@ -179,63 +175,54 @@ export const FormServicio = () => {
                     <option
                       value="1"
                       className="bg-dark_theme dark:text-second_color_lt dark:bg-white"
-
                     >
                       Mariachis
                     </option>
                     <option
                       value="2"
                       className="bg-dark_theme dark:text-second_color_lt dark:bg-white"
-                      
                     >
                       Música Electrónica
                     </option>
                     <option
                       value="3"
                       className="bg-dark_theme dark:text-second_color_lt dark:bg-white"
-                      
                     >
                       Decoración Infantil
                     </option>
                     <option
                       value="4"
                       className="bg-dark_theme dark:text-second_color_lt dark:bg-white"
-                      
                     >
                       Decoración Matrimonial
                     </option>
                     <option
                       value="5"
                       className="bg-dark_theme dark:text-second_color_lt dark:bg-white"
-                      
                     >
                       Decoración de Quinces
                     </option>
                     <option
                       value="6"
                       className="bg-dark_theme dark:text-second_color_lt dark:bg-white"
-                      
                     >
                       Buffet Mexicano
                     </option>
                     <option
                       value="7"
                       className="bg-dark_theme dark:text-second_color_lt dark:bg-white"
-                      
                     >
                       Catering Gourmet
                     </option>
                     <option
                       value="8"
                       className="bg-dark_theme dark:text-second_color_lt dark:bg-white"
-                      
                     >
                       Cócteles Clásicos
                     </option>
                     <option
                       value="9"
                       className="bg-dark_theme dark:text-second_color_lt dark:bg-white"
-                      
                     >
                       Cócteles Exóticos
                     </option>
