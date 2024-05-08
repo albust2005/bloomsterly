@@ -2,7 +2,7 @@ import axios from "axios";
 import { ModalSol } from "./modalSol";
 import { useEffect, useState } from "react";
 import { ScrollAnimatedSection } from "../../components/templates/ScrollAnimatedSection";
-
+import { TitleAE } from "../../components/titles/titleAE";
 export const Solicitud = () => {
   const [estadoModal1, cambiarEstadoModal1] = useState(false);
   const [data, setData] = useState([]);
@@ -29,10 +29,11 @@ export const Solicitud = () => {
   return (
     <>
       <div className="flex flex-col gap-5">
-        <ScrollAnimatedSection animation="animate-fade-up" className="opacity-0">
-          <h1 className="text-white text-xl font-title italic dark:text-second_color_lt minicel:text-3xl sm:text-6xl md:text-8xl z-10">
-            Solicitudes de Ingreso
-          </h1>
+        <ScrollAnimatedSection
+          animation="animate-fade-up"
+          className="opacity-0"
+        >
+        <TitleAE title="Solicitudes de ingreso" />
         </ScrollAnimatedSection>
         {data.map((soli) => (
           <div
@@ -46,7 +47,11 @@ export const Solicitud = () => {
               {/* <div className=" text-center"> */}
               <img
                 className="w-[50] rounded-lg"
-                src={soli.image ? `http://localhost:8000/admin/AllSolicitudes/${soli.image}` : ""}
+                src={
+                  soli.image
+                    ? `http://localhost:8000/admin/AllSolicitudes/${soli.image}`
+                    : ""
+                }
               />
               {/* </div> */}
               <div className="ml-5 z-10">

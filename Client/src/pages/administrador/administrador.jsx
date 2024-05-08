@@ -14,11 +14,6 @@ export function Administrador() {
 
   return (
     <>
-      {/* <div className="flex justify-between minicel:flex-col sm:flex-row">
-        <div className="w-[25%]">
-          <Menudiag />
-        </div>
-        <div className="w-[70%]"> */}
       <Routes>
         <Route path="/" element={<IndexAdmin />}></Route>
         <Route path="/solicitudes" element={<Solicitud />}></Route>
@@ -34,8 +29,6 @@ export function Administrador() {
           element={<NotFound razon="resultados"></NotFound>}
         ></Route>
       </Routes>
-      {/* </div>
-      </div> */}
     </>
   );
 }

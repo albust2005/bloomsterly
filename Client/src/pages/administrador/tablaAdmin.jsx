@@ -11,6 +11,7 @@ import {
 import classNames from "classnames"; //Esta libreria nos permitirá dar estilo según su condicionamiento
 import { rankItem } from "@tanstack/match-sorter-utils";
 import { useEffect, useState } from "react";
+import { TitleAE } from "../../components/titles/titleAE";
 import axios from "axios";
 import { ScrollAnimatedSection } from "../../components/templates/ScrollAnimatedSection";
 const filterTable = (row, columnId, value, addMeta) => {
@@ -147,9 +148,7 @@ export const TablaAdmin = () => {
           animation="animate-fade-up"
           className="opacity-0"
         >
-          <h1 className="text-white text-xl font-title italic dark:text-second_color_lt minicel:text-3xl sm:text-6xl md:text-8xl z-10">
-            Administradores
-          </h1>
+        <TitleAE title="Administradores"/>
         </ScrollAnimatedSection>
         <DebouncedInput
           type="text"
