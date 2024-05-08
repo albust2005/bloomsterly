@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useToastify } from "../../components/hooks/useToastify";
 import PropTypes from 'prop-types'
-
+ 
 const ReservaDetalleCard = ({
   COD,
   nombre,
@@ -15,7 +15,8 @@ const ReservaDetalleCard = ({
   fecha,
   telefono,
   servicios,
-  estado
+  estado,
+  setReservasUser
 }) => {
   const { showToastMessage } = useToastify();
   const { sesionUser } = useUserContext();
@@ -33,10 +34,13 @@ const ReservaDetalleCard = ({
         }
       })
       showToastMessage(respuesta.data.message)
-      ReservasUser()
+      setReservasUser(true);
     } catch (error) {
       showToastMessage(error);
     }
+  }
+  const editarReserva = ()=>{
+    setReservasUser(true);
   }
   return (
     <article className="flex text-white flex-col z-10">
@@ -91,7 +95,7 @@ const ReservaDetalleCard = ({
           </div>
 
           <div className="w-full flex flex-row-reverse font-semibold font-text gap-3">
-            <button className="bg-color_font_dark hover:bg-violet-700 transition-all dark:bg-rose-400 dark:hover:bg-rose-600  px-2 rounded-sm">
+            <button onClick={()=>{editarReserva()}} className="bg-color_font_dark hover:bg-violet-700 transition-all dark:bg-rose-400 dark:hover:bg-rose-600  px-2 rounded-sm">
               Editar
             </button>
             <button onClick={()=>{eliminarReserva(COD)}} className="bg-color_font_dark hover:bg-violet-700 transition-all dark:bg-rose-400 dark:hover:bg-rose-600  px-2 rounded-sm">
@@ -111,7 +115,8 @@ ReservaDetalleCard.propTypes = {
   fecha: PropTypes.string,
   telefono: PropTypes.string,
   servicios: PropTypes.array,
-  estado: PropTypes.string
+  estado: PropTypes.string,
+  setReservasUser: PropTypes.func.isRequired
 }
 const ReservaAddCard = () => {
   return (
@@ -133,15 +138,12 @@ const ReservaAddCard = () => {
 }
 
 
-
 export function ReservasUser() {
   const { showToastMessage } = useToastify();
   const [dato, setdato] = useState([])
-
   useEffect(() => {
-    obtener()
+      obtener()
   }, [])
-  
   const token = localStorage.getItem("token")
   const obtener = async () => {
     try {
@@ -164,6 +166,11 @@ export function ReservasUser() {
       }
     });
     return servicios1
+  }
+  const setReservasUser = (boleano)=>{
+    if (boleano){
+      obtener()
+    }
   }
   return (
     <section>
@@ -196,6 +203,7 @@ export function ReservasUser() {
                 telefono={dato1.telefono}
                 servicios={nombre(dato1)}
                 estado={dato1.estado}
+                setReservasUser={setReservasUser}
               />
             )
             )}
