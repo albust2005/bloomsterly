@@ -46,7 +46,7 @@ export function Reservas() {
               <p className="font-title font-semibold text-lg mt-1 z-10">Correo: </p>
               <p className="font-title">{reserva.email}</p>
 
-              <p className="font-title font-semibold text-lg mt-1 z-10">Numero de Servicios: </p>
+              <p className="font-title font-semibold text-lg mt-1 z-10">Número de Servicios: </p>
               <p className="font-title">{reserva.numeroReservas}</p>
 
 

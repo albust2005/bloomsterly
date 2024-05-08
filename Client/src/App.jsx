@@ -36,6 +36,7 @@ import { ToastContainer } from 'react-toastify';
 import { ReservaActual } from './pages/usuario/ReservaActual'
 import { ReservasUserProvider } from './components/providers/reservasUserProvider'
 import { RegistroEmpresa } from './pages/empresa/registroEmpresa'
+import { PerfilEmpresa } from './pages/empresa/perfilEmpresa'
 
 //import { Empresa } from './pages/empresa/empresa'
 
@@ -95,7 +96,7 @@ function RoutesPage() {
       <Route path='/subCategorias/:subCategoria' element={<EmpresasRelacionadas />} />
       <Route path="/registroEmpresa" element={<RegistroEmpresa></RegistroEmpresa>}></Route>
       <Route path='*' element={<NotFound razon={'resultados'}></NotFound>}></Route>
-
+      <Route path='/perfil' element={<PerfilEmpresa></PerfilEmpresa>}></Route>
 
       <Route element={
         <ProtectedRoute
