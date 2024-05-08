@@ -206,7 +206,7 @@ export const reservasCliente = async (req, res) => {
             include: [
                 {
                     model: Reservas,
-                    attributes: ['COD_usuarios', 'telefono', 'direccion'],
+                    attributes: ['COD','COD_usuarios', 'telefono', 'direccion'],
                     through: {
                         model: DescripcionReserva
                     }
@@ -216,12 +216,22 @@ export const reservasCliente = async (req, res) => {
         })
         const clientes = []
         const numeroReservas = []
+        const codUsuariosVistos = [];
+        let info
         servicios.forEach((servicio) => {
             servicio.reservas.forEach((reserva) => {
                 const cliente = reserva?.COD_usuarios
                 if (cliente !== null) {
-                    numeroReservas.push(cliente)
+                    
+                    if (!codUsuariosVistos.includes(reserva.COD)){
+                        info={
+                            COD:reserva.COD,
+                            cliente:cliente
+                        }
+                        numeroReservas.push(info)
+                    }
                     clientes.push(cliente)
+                    codUsuariosVistos.push(reserva.COD);
                 }
             })
         })
@@ -234,7 +244,11 @@ export const reservasCliente = async (req, res) => {
         codUsuariosUnicos.map(async (cliente, indice) => {
             try {
                 dato = await Usuarios.findOne({ where: { COD: cliente } })
-                numero=numeroReservas.filter((usuario)=>{return usuario == cliente })
+                numero=numeroReservas.filter((usuario)=>{
+                    if (usuario.cliente == cliente){
+                        return usuario
+                    } 
+                })
                 nombre = dato.nombre_c
                 apellido = dato.primer_apelli
                 email = dato.email
@@ -243,7 +257,10 @@ export const reservasCliente = async (req, res) => {
                     nombre,
                     apellido,
                     email,
-                    numeroReservas: numero.length
+                    numeroReservas: numero.length,
+                    cod_reservas: numero.map((cod)=>{
+                        return cod.COD
+                    })
                 }
                 // console.log(formato)
                 datos.push(formato)
