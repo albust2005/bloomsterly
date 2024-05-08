@@ -6,6 +6,9 @@ import { ReservasCliente } from "./reservasClientes";
 import { ReservaDescrip } from "./reservaDescrip";
 import { ReservasProvider } from "./provider/reservasProvider";
 import { ServiciosEmpresa } from "./serviciosEmpresa";
+import { FormServicio } from "./formServicio"
+import { EditarFormServicio } from "./editFormServicio";
+
 import { PerfilEmpresa } from "./perfilEmpresa";
 import { ServiciosEmpresaProvider } from "./provider/serviciosEmpresaProvider";
 
@@ -24,6 +27,9 @@ export function Empresa() {
               ></Route>
 
               <Route path="/servicios" element={<ServiciosEmpresa />}></Route>
+              <Route path="/servicios/crear" element={<FormServicio />}></Route>
+              <Route path="/servicios/editar" element={<EditarFormServicio />}></Route>
+
 
               <Route path="/perfil" element={<PerfilEmpresa />}></Route>
             </Routes>
