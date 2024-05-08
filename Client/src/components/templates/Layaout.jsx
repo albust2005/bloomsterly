@@ -95,7 +95,7 @@ export function Layaout({ children }) {
 
       <ScrollAnimatedSection
         className="absolute 
-        top-[85%] 
+        top-[75%] 
         left-[6%] 
         minicel:w-[70px] sm:w-[100px] lg:w-[130px]
         z-0 opacity-0"
@@ -185,7 +185,7 @@ export function Layaout({ children }) {
 
       <ScrollAnimatedSection
         className="absolute 
-        top-56 
+        top-[56%] 
         right-[220px] 
         minicel:w-[38px] sm:w-[70px]
         opacity-0"
@@ -197,8 +197,8 @@ export function Layaout({ children }) {
       <ScrollAnimatedSection
         className=" absolute 
         minicel:w-[130px] sm:w-[180px] md:w-[220px]
-        left-[42%] 
-        top-[93%] 
+        left-[43%] 
+        top-[50%] 
         opacity-0 z-0"
         animation="animate-fade-down"
       >
@@ -207,7 +207,7 @@ export function Layaout({ children }) {
 
       <ScrollAnimatedSection
         className="absolute 
-        top-[108%] 
+        top-[72%] 
         left-[28%] 
         minicel:w-[50px] sm:w-[65px]
         opacity-0"
@@ -284,8 +284,6 @@ export function Layaout({ children }) {
       >
         <img src="../../../src/assets/flor_img/liriorosa.webp" alt="" />
       </ScrollAnimatedSection>
-
-      
 
     </main>
   );

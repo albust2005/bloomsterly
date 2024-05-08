@@ -130,17 +130,6 @@ export function FloresIndex() {
 
       <ScrollAnimatedSection
         className="absolute 
-        bottom-[-160%] 
-        right-[5%] 
-        w-[90px]  sm:w-[130px]
-        z-0 opacity-0"
-        animation="animate-fade-left"
-      >
-        <img src="../../../src/assets/flor_img/lirioamarillo.webp" alt="" />
-      </ScrollAnimatedSection>
-
-      <ScrollAnimatedSection
-        className="absolute 
         bottom-[-115%] 
         right-[50%] 
         w-[50px]  sm:w-[100px]
