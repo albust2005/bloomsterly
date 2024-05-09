@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 import { FloresIndex } from "../components/templates/layoutFloresIndex.jsx";
 
 export function LandingPage() {
-  const categorias = useCategoriaContext();
+  const { categorias } = useCategoriaContext();
 
   return (
     <>
@@ -64,7 +64,7 @@ export function LandingPage() {
         {/*Seccion Conoce*/}
         <section className="flex flex-col w-full gap-5">
           <ScrollAnimatedSection
-            className="w-full"
+            className="w-full opacity-0"
             animation="animate-fade-right"
           >
             <Link to="/categorias">
@@ -72,10 +72,8 @@ export function LandingPage() {
             </Link>
           </ScrollAnimatedSection>
 
-          
-
           <ScrollAnimatedSection
-            className="mx-auto grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6  z-10"
+            className="mx-auto grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 z-10 opacity-0"
             animation="animate-fade"
           >
             {categorias.slice(0, 3).map((categoria) => (

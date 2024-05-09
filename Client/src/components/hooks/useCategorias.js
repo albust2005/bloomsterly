@@ -1,14 +1,13 @@
 import { useEffect, useState } from 'react'
-// import withCategorias from '../../db/categorias.json'
 import axios from 'axios'
 
 export const useCategorias = () => {
     const [categorias, setcategorias]=useState([])
     useEffect(()=>{
-        obtener()
+        obtenerCategorias()
     },[])
     // const token = localStorage.getItem("token")
-    const obtener=async()=>{
+    const obtenerCategorias=async()=>{
         try {
             const respuesta = await axios.get("http://localhost:8000/user/categorias")
             setcategorias(respuesta.data)
@@ -24,5 +23,5 @@ export const useCategorias = () => {
         descripcion: categoria.descripcion,
     }))
 
-    return { categorias: mappedCategorias }
+    return { categorias: mappedCategorias, obtenerCategorias }
 }

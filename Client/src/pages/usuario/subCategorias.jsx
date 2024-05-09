@@ -5,14 +5,21 @@ import { NotFound } from "../../components/templates/NotFound.jsx";
 import { useSubCategoriaContext } from "../../components/providers/subCategoriaProvider.jsx";
 import { useCategoriaContext } from "../../components/providers/categoriaProvider.jsx";
 import { SubCategoriaCard } from "../../components/templates/SubCategoriaCard.jsx";
+import { useSubCategorias } from "../../components/hooks/useSubCategorias.js";
+import { useEffect } from "react";
 
 //custom hook que nos devuelve de manera mas organizada el nombre de la categoria
 //y las subcategorias filtradas
 const useFoundSubCategorias = () => {
   const { categoria } = useParams();
 
-  const categorias = useCategoriaContext();
-  const subCategorias = useSubCategoriaContext();
+  const { categorias } = useCategoriaContext();
+  const { subCategorias, obtenerSubCategoria } = useSubCategoriaContext();
+
+  useEffect(() => {
+    obtenerSubCategoria()
+  }, [])
+
 
   const currentCategoria = categorias.find((cat) => cat.nombre === categoria);
   console.log(currentCategoria?.id);
@@ -28,6 +35,7 @@ const useFoundSubCategorias = () => {
 
 export function SubCategorias() {
   const { categoria, subCategorias } = useFoundSubCategorias();
+
   //mostramos las empresas por pantalla haciendo mapenado el array que las contiene
   //y renderizamos el componente EmpresaCards que contiene la estructura
   return (
@@ -49,6 +57,7 @@ export function SubCategorias() {
               />
             ))
           )}
+
         </section>
       </section>
     </section>

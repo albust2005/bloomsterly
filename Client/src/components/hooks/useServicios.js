@@ -29,5 +29,5 @@ export const useServicios = () => {
         imagen: servicio?.images_servicios[0]?.image
     }))
 
-    return { servicios: mappedServicios }
+    return { servicios: mappedServicios, obtenerServicios }
 }

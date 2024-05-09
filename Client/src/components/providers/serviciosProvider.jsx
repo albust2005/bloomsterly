@@ -6,10 +6,10 @@ const serviciosContext = createContext()
 export const useServiciosContext = () => useContext(serviciosContext)
 
 export function ServiciosProvider ({children}) {
-    const { servicios } = useServicios()
+    const { servicios, obtenerServicios } = useServicios()
 
     return (
-        <serviciosContext.Provider value={servicios}>
+        <serviciosContext.Provider value={{servicios, obtenerServicios}}>
             {children}
         </serviciosContext.Provider>
     )

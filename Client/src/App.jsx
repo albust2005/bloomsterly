@@ -85,17 +85,27 @@ function RoutesPage() {
     <Routes>
       <Route path='/' element={<LandingPage />}></Route>
       <Route path='/login' element={<Login />}></Route>
+
       <Route path='/categorias'
         element={
-          <CategoriaProvider>
-            <Categorias />
-          </CategoriaProvider>
+          <Categorias />
         }
       ></Route>
+
       <Route path='/categorias/:categoria?' element={<SubCategorias />}></Route>
       <Route path='/subCategorias/:subCategoria' element={<EmpresasRelacionadas />} />
       <Route path="/registroEmpresa" element={<RegistroEmpresa></RegistroEmpresa>}></Route>
+      <Route element={<ProtectedRoute
+        isAuth={!!sesionUser && sesionUser.Rol === 'Cliente'}
+      />}>
+        <Route path='/servicio/:subCategoria/:empresa' element={<Servicios></Servicios>}></Route>
+        <Route path='/reservas' element={<ReservasUser />} />
+        <Route path='/reserva/crear' element={<ReservaActual />}></Route>
+      </Route>
+
+
       <Route path='*' element={<NotFound razon={'resultados'}></NotFound>}></Route>
+
       <Route path='/perfil' element={<PerfilEmpresa></PerfilEmpresa>}></Route>
 
       <Route element={
@@ -112,13 +122,7 @@ function RoutesPage() {
         <Route path='/administrador/*' element={<Administrador />}></Route>
       </Route>
 
-      <Route element={<ProtectedRoute
-        isAuth={!!sesionUser && sesionUser.Rol === 'Cliente'}
-      />}>
-        <Route path='/servicio/:subCategoria/:empresa' element={<Servicios></Servicios>}></Route>
-        <Route path='/reservas' element={<ReservasUser />} />
-        <Route path='/reserva/crear' element={<ReservaActual />}></Route>
-      </Route>
+
 
     </Routes>
   )

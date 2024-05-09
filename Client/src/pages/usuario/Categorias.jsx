@@ -1,11 +1,15 @@
+import { useEffect } from "react"
 import { useCategoriaContext } from "../../components/providers/categoriaProvider.jsx"
 import { PolaroidCard } from "../../components/templates/PolaroidCard.jsx"
 import { FirtsTitle } from "../../components/titles/Title.jsx" 
 
 
 export function Categorias() {
+    const { categorias, obtenerCategorias }  = useCategoriaContext()
 
-    const categorias = useCategoriaContext()
+    useEffect(()=>{
+      obtenerCategorias()
+    },[])
 
     return (
       <>

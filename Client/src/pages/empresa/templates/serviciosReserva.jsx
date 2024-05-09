@@ -4,11 +4,14 @@ import { useServiciosContext } from "../../../components/providers/serviciosProv
 import { useUserContext } from "../../../components/providers/userProvider";
 import { NotFound } from "../../../components/templates/NotFound";
 import { useServiciosEmpresaContext } from "../provider/serviciosEmpresaProvider";
+import { useEffect } from "react";
 
 export const useFoundServiciosEmpresa = () => {
-  const servicios = useServiciosContext();
-  const empresas = useEmpresaContext();
+  const { servicios, obtenerServicios } = useServiciosContext();
+  const { empresas } = useEmpresaContext();
   const { sesionUser } = useUserContext();
+
+  useEffect(() =>{obtenerServicios()}, [])
 
   const empresaIngresada = empresas?.find(
     (empresa) => empresa.username === sesionUser.Username
@@ -24,8 +27,8 @@ export const useFoundServiciosEmpresa = () => {
 export function ServiciosReserva() {
   const { serviciosEmpresa } = useFoundServiciosEmpresa();
   const { elimarServicio } = useServiciosEmpresaContext();
-  const navegate = useNavigate();
   console.log(serviciosEmpresa);
+
 
   const editarServicio = (id) => {
     console.log("click");
@@ -34,6 +37,7 @@ export function ServiciosReserva() {
   const eliminarServicio = (id)=>{
 
   }
+  
   return (
     <section className=" gap-5 w-full h-full grid grid-cols-1 sm:grid-cols-2 mt-5">
       {serviciosEmpresa?.length === 0 ? (
@@ -89,7 +93,7 @@ export function ServiciosReserva() {
         })
       )}
 
-      {}
+      { }
     </section>
   );
 }

@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-import withEmpresas from '../../db/empresas.json'
 
 export const useEmpresas = () => {
     const [ empresas, setEmpresas ] = useState([])
@@ -38,6 +37,6 @@ export const useEmpresas = () => {
         email: empresa.email,
     }))
 
-    return { empresas: mappedEmpresas}
+    return { empresas: mappedEmpresas, obtenerEmpresas}
 
 }
