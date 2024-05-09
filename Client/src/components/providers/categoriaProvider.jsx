@@ -8,10 +8,10 @@ export function useCategoriaContext() {
 }
 
 export function CategoriaProvider({ children }) {
-    const { categorias } = useCategorias()
+    const { categorias, obtenerCategorias } = useCategorias()
 
     return (
-        <categoriaContext.Provider value={categorias}>
+        <categoriaContext.Provider value={{categorias, obtenerCategorias}}>
             {children}
         </categoriaContext.Provider>
     )

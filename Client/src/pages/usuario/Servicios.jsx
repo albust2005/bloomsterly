@@ -5,24 +5,27 @@ import { useSubCategoriaContext } from "../../components/providers/subCategoriaP
 import { ServiciosCard } from "../../components/templates/ServiciosCard"
 import { TitleSubCategoria } from "../../components/titles/subCategoriaTitle"
 import { useReservaUserCrudContext } from "../../components/providers/reservasUserProvider"
+import { useEffect } from "react"
 
 
 const useFoundServiciosRelacionados = () => {
     const { subCategoria, empresa } = useParams()
 
-    const empresas = useEmpresaContext()
-    const servicios = useServiciosContext()
-    const subCategorias = useSubCategoriaContext()
+    const { empresas } = useEmpresaContext()
+    const { subCategorias } = useSubCategoriaContext()
+    const { servicios, obtenerServicios } = useServiciosContext()
 
+    useEffect(()=>{
+        obtenerServicios()
+    },[])
 
-    const empresaRelacionada = empresas.find(em => em.nombre === empresa)
+    const empresaRelacionada = empresas?.find(em => em.nombre === empresa)
     const subCategoriaRelacionada = subCategorias.find(sub => sub.nombre === subCategoria)
 
     const serviciosRelacionados = servicios?.filter(servicio =>
-        servicio.idEmpresa === empresaRelacionada.id &&
+        servicio.idEmpresa === empresaRelacionada?.id &&
         servicio.idSubCategoria === subCategoriaRelacionada?.id
     )
-
 
     // Puedes devolver los objetos encontrados para su uso posterior si es necesario
     console.log(empresaRelacionada, serviciosRelacionados)
@@ -33,7 +36,7 @@ const useFoundServiciosRelacionados = () => {
 export function Servicios() {
     const { empresa, servicios, subCategoria } = useFoundServiciosRelacionados()
     const { addServicioSeleccionado } = useReservaUserCrudContext()
-    
+
     return (
         <section className="z-10">
             <TitleSubCategoria

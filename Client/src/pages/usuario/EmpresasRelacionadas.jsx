@@ -6,13 +6,16 @@ import { useEmpresaContext } from "../../components/providers/empresaProvider"
 import { NotFound } from "../../components/templates/NotFound"
 import { EmpresaCards } from "../../components/templates/EmpresaCard"
 import { TitleSubCategoria } from "../../components/titles/subCategoriaTitle"
+import { useEffect } from "react"
 
 const useFoundEmpresasRelacionadas = () => {
     const { subCategoria } = useParams()
 
-    const subCategorias = useSubCategoriaContext()
-    const servicios = useServiciosContext()
-    const empresas = useEmpresaContext()
+    const { subCategorias } = useSubCategoriaContext()
+    const { servicios } = useServiciosContext()
+    const { empresas, obtenerEmpresas } = useEmpresaContext()
+
+    useEffect(() => { obtenerEmpresas() }, [])
 
     const subCategoriaRelacionada = subCategorias.find(sub => sub.nombre === subCategoria)
     console.log(subCategoriaRelacionada)
@@ -38,8 +41,8 @@ export function EmpresasRelacionadas() {
                 descripcion={`Las siguientes empresas ofrecen servicios de ${subCategoria}.`}
             />
             <section className="gap-5 grid grid-cols-1 sm:grid-cols-2  w-full">
-                    {
-                        empresas.length === 0 
+                {
+                    empresas.length === 0
                         ?
                         <NotFound razon='empresas'></NotFound>
                         :
@@ -56,7 +59,7 @@ export function EmpresasRelacionadas() {
                                 logo={logo}
                             />
                         ))
-                    }
+                }
             </section>
 
         </section>

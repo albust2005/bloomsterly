@@ -8,10 +8,10 @@ export const useEmpresaContext = () => useContext(empresaContext)
 
 export function EmpresaProvider ({children}){
 
-    const { empresas } = useEmpresas()
+    const { empresas, obtenerEmpresas } = useEmpresas()
 
     return (
-        <empresaContext.Provider value={empresas}>
+        <empresaContext.Provider value={{empresas, obtenerEmpresas}}>
             {children}
         </empresaContext.Provider>
     ) 
