@@ -9,30 +9,39 @@ import {
 } from "../../components/providers/reservasUserProvider";
 import { useEmpresaContext } from "../../components/providers/empresaProvider";
 import { useUserContext } from "../../components/providers/userProvider";
-import { useThemeContext } from "../../components/providers/themeProvider"
+import { useThemeContext } from "../../components/providers/themeProvider";
 import { useState } from "react";
 
 {
   /*agregar el servicio  */
 }
 function AgregarServiciosReserva() {
-  const theme = useThemeContext()
-  const logoColor = theme === "dark" ? "#BC0B38" : "#fff"
+  const theme = useThemeContext();
+  const logoColor = theme === "dark" ? "#BC0B38" : "#fff";
 
   return (
-    <div className="bg-color_switch_theme_dark w-1/5 min-h-48 flex justify-center items-center 
-    rounded-sm dark:bg-[#FFFFDD]">
+    <div
+      className="bg-color_switch_theme_dark w-1/5 min-h-48 flex justify-center items-center 
+    rounded-sm dark:bg-[#FFFFDD]"
+    >
       <Link to="/categorias">
-        <FontAwesomeIcon icon={faCirclePlus} size="2x"
-          style={{ color: logoColor }} />
+        <FontAwesomeIcon
+          icon={faCirclePlus}
+          size="2x"
+          style={{ color: logoColor }}
+        />
       </Link>
     </div>
   );
 }
 
-
 /*renderiza el servicio seleccionado */
-function ServicioCardReserva({ empresa, nombre, valor, removeServicioSeleccionado }) {
+function ServicioCardReserva({
+  empresa,
+  nombre,
+  valor,
+  removeServicioSeleccionado,
+}) {
   return (
     <article className="bg-color_switch_theme_dark w-full max-w-full h-full p-2 rounded-sm mx-auto
     dark:bg-[#FFFFDD] dark:text-second_color_lt">
@@ -47,12 +56,12 @@ function ServicioCardReserva({ empresa, nombre, valor, removeServicioSeleccionad
           <button
             type="button"
             onClick={removeServicioSeleccionado}
-            className="bg-dark_theme px-2 rounded-sm dark:bg-second_color_lt dark:text-light_theme ">
+            className="bg-dark_theme px-2 rounded-sm dark:bg-second_color_lt dark:text-light_theme "
+          >
             Eliminar
           </button>
         </div>
       </div>
-
     </article>
   );
 }
@@ -62,21 +71,27 @@ export function ReservaActual() {
     register,
     handleSubmit,
     formState: { errors },
-    //watch 
+    //watch
   } = useForm();
 
-  const [servicioSeleccionadoNombre, setServicioSeleccionadoNombre] = useState([]);
+  const [servicioSeleccionadoNombre, setServicioSeleccionadoNombre] = useState(
+    []
+  );
   const { servicioSeleccionados } = useReservaUserContext();
-  const { removeServicioSeleccionado, createReserva } = useReservaUserCrudContext()
+  const { removeServicioSeleccionado, createReserva } =
+    useReservaUserCrudContext();
 
-  const empresas = useEmpresaContext();
+  const { empresas } = useEmpresaContext();
   //const eventoValue = watch('evento')
 
   useState(() => {
     const servicioNombre = servicioSeleccionados?.find(
       (servicio) => servicio.id
     )?.id;
-    setServicioSeleccionadoNombre([...servicioSeleccionadoNombre, servicioNombre]);
+    setServicioSeleccionadoNombre([
+      ...servicioSeleccionadoNombre,
+      servicioNombre,
+    ]);
   }, [servicioSeleccionados]);
 
   const onSubmit = (data) => {
@@ -218,12 +233,17 @@ export function ReservaActual() {
             </label>
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3 w-full">
               {servicioSeleccionados?.map(servicio => (
+
                 <ServicioCardReserva
                   key={servicio.id}
-                  empresa={empresas.find((em) => em.id == servicio.idEmpresa)?.nombre}
+                  empresa={
+                    empresas.find((em) => em.id == servicio.idEmpresa)?.nombre
+                  }
                   nombre={servicio.nombre}
                   valor={servicio.valor}
-                  removeServicioSeleccionado={() => removeServicioSeleccionado(servicio)}
+                  removeServicioSeleccionado={() =>
+                    removeServicioSeleccionado(servicio)
+                  }
                 />
               ))}
               <AgregarServiciosReserva />
@@ -234,7 +254,8 @@ export function ReservaActual() {
               type="submit"
               className="w-full bg-transparent border-2 border-[#451693] rounded-sm 
              hover:bg-[#451693] font-title p-1 transition-all ease-in-out
-             dark:border-light_theme dark:hover:text-second_color_lt dark:hover:bg-light_theme">
+             dark:border-light_theme dark:hover:text-second_color_lt dark:hover:bg-light_theme"
+            >
               Confirmar
             </button>
           </div>

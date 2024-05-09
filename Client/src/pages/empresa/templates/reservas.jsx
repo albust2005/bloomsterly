@@ -1,4 +1,3 @@
-import { reservasDB } from "../db/reservasDB.json";
 import { NotFound } from "../../../components/templates/NotFound";
 import { ButtonAdmin } from "../../../components/buttons/buttonAdmin";
 import { useEffect, useState } from "react";
