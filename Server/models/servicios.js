@@ -6,7 +6,8 @@ import db from '../database/db.js';
 const Servicios = db.define('servicios',{
   ID: {
     type: DataTypes.STRING(32),
-    primaryKey: true
+    primaryKey: true,
+    autoIncrement: true
   },
   nombre: {
     type: DataTypes.STRING(60),
