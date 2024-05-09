@@ -9,6 +9,7 @@ export function PerfilEmpresa() {
   const [cambiar, setCambiar] = useState(false);
   const [dato, setdato] = useState([])
   const [dato1, setdato1] = useState([])
+  const [dato2, setdato2] = useState([])
   const eliminar = () => {
     setCambiar(!cambiar); 
   };
@@ -21,7 +22,7 @@ export function PerfilEmpresa() {
           Authorization:token
         }
       })
-      setdato(respuesta.data)
+      setdato2(respuesta.data)
     } catch (error) {
       alert(error)
       console.log(error)
@@ -81,13 +82,19 @@ export function PerfilEmpresa() {
               <h2 className="text-white dark:text-second_color_lt celular:text-[20px] sm:text-[30px] lg:text-4xl">
                 {dato.nombre}
               </h2>
-            ) : (
+            ) : (sesionUser?.Rol === "Empresa" ? (
               <>
               <h2 className="text-white text-4xl dark:text-second_color_lt celular:text-[20px] sm:text-[30px] lg:text-4xl">
                 {dato1.nombre}
               </h2>
               </>
-            )}
+            ): (
+              <>
+              <h2 className="text-white text-4xl dark:text-second_color_lt celular:text-[20px] sm:text-[30px] lg:text-4xl">
+                {dato2.nombre_c}
+              </h2>
+              </>
+            ))}
           </div>
           <div className="w-[100%] bg-[#190042] rounded-sm p-5 font-title text-white dark:bg-second_color_lt">
             {sesionUser?.Rol === "Administrador" ? (
@@ -123,7 +130,7 @@ export function PerfilEmpresa() {
                   {dato.municipio?.municipio}
                 </p>
               </>
-            ) : (
+            ) : ( sesionUser?.Rol === "Empresa" ? (
               <>
                 <p className="font-semibold text-2xl celular:text-[15px] md:text-xl lg:text-2xl">
                   Descripción
@@ -167,7 +174,40 @@ export function PerfilEmpresa() {
                   {dato1.facebook}
                 </p>
               </>
-            )}
+            ) : (
+              <>
+                <p className="font-semibold md:text-xl celular:text-[15px] lg:text-2xl">
+                  Cédula
+                </p>
+                <p className="celular:text-[15px] lg:text-[lg]">{dato2.COD}</p>
+                <p className="font-semibold text-2xl celular:text-[15px] md:text-xl lg:text-2xl">
+                  Nombre
+                </p>
+                <p className="lg:text-lg celular:text-[15px]">{dato2.nombre_c}</p>
+                <p className="font-semibold text-2xl celular:text-[15px] md:text-xl lg:text-2xl">
+                  Primer Apellido
+                </p>
+                <p className="lg:text-lg celular:text-[15px]">
+                  {dato2.primer_apelli}
+                </p>
+                <p className="font-semibold text-2xl celular:text-[15px] md:text-xl lg:text-2xl">
+                  Nombre De Usuario
+                </p>
+                <p className="lg:text-lg celular:text-[15px]">
+                  {dato2.username}
+                </p>
+                <p className="font-semibold text-2xl celular:text-[15px] md:text-xl lg:text-2xl">
+                  Gmail
+                </p>
+                <p className="lg:text-lg celular:text-[15px]">{dato2.email}</p>
+                <p className="font-semibold text-2xl celular:text-[15px] md:text-xl lg:text-2xl">
+                  Municipio
+                </p>
+                <p className="lg:text-lg celular:text-[15px]">
+                  {dato2.municipio?.municipio}
+                </p>
+              </>
+            ))}
 
             <div className="flex flex-row-reverse gap-4 mt-2">
               {sesionUser?.Rol === "Administrador" ? (
