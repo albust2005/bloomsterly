@@ -31,6 +31,9 @@ export function ServiciosReserva() {
     console.log("click");
     navegate(`/servicios/editar/${id}`);
   };
+  const eliminarServicio = (id)=>{
+
+  }
   return (
     <section className=" gap-5 w-full h-full grid grid-cols-1 sm:grid-cols-2 mt-5">
       {serviciosEmpresa?.length === 0 ? (
@@ -48,7 +51,7 @@ export function ServiciosReserva() {
                  dark:bg-rose-400 min-w-[33.3%] max-w-[33.3%]"
               >
                 <img
-                  src={`http://localhost:8000/user/servicios/${servicio.imagen}`}
+                  src={servicio.imagen ? `http://localhost:8000/user/servicios/${servicio.imagen}` : ""}
                   alt=""
                   className=""
                 />
@@ -69,7 +72,7 @@ export function ServiciosReserva() {
                       editar
                     </Link>
                     <button
-                      onClick={() => elimarServicio()}
+                      onClick={() => {eliminarServicio(servicio.id)}}
                       className="w-full h-full bg-hover_boton_admin border-2 border-transparent hover:bg-transparent
                     hover:border-hover_boton_admin dark:bg-second_color_lt dark:border-2 dark:border-transparent
                     dark:hover:bg-transparent dark:hover:border-second_color_lt dark:text-light_theme dark:hover:text-second_color_lt

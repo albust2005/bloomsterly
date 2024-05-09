@@ -81,7 +81,7 @@ export const EditarFormServicio = () => {
         },
       });
       showToastMessage(respuesta.data.message);
-      navegate(`servicios`);
+      navegate(`/empresa/servicios`);
     } catch (error) {
       showToastMessage("Hubo un error al editar el servicio");
     }
@@ -121,7 +121,7 @@ export const EditarFormServicio = () => {
               <input
                 type="text"
                 {...register("nombre", {
-                  required: "Este campo es requerido",
+                  required: false,
                 })}
                 defaultValue={servicio. nombre}
                 className="focus:outline-none bg-transparent border-b-2 dark:border-white"
@@ -136,7 +136,7 @@ export const EditarFormServicio = () => {
               </label>
               <textarea
                 {...register("descripcion", {
-                  required: "Este campo es requerido",
+                  required: false,
                 })}
                 defaultValue={servicio.descripcion}
                 className="w-full font-titulos dark:text-primary-color text-second-color pb-2 pr-3 mr-2 border-b-2 border-r-2 border-second-color dark:border-white bg-transparent focus:outline-none resize-none"
@@ -153,7 +153,7 @@ export const EditarFormServicio = () => {
                 <input
                   type="number"
                   {...register("valor_servicio", {
-                    required: "Este campo es requerido",
+                    required: false,
                   })}
                   defaultValue={servicio.valor_servicio}
                   className="focus:outline-none bg-transparent border-b-2 dark:border-white"
