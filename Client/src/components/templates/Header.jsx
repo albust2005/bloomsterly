@@ -5,45 +5,48 @@ import { IconUser } from "../../pages/administrador/templates/iconUser";
 //importaciones de dependencias
 import { Link, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
+import {
+  faBars,
+  faXmark,
+  faArrowRightFromBracket,
+} from "@fortawesome/free-solid-svg-icons";
 
 import { useState } from "react";
 import { useThemeContext } from "../providers/themeProvider";
 import { useLoginUserContext, useUserContext } from "../providers/userProvider";
 
 export function Header() {
-  const location = useLocation()
-  const { sesionUser } = useUserContext()
-  const { logout } = useLoginUserContext()
+  const location = useLocation();
+  const { sesionUser } = useUserContext();
+  const { logout } = useLoginUserContext();
 
-  const [menu, setMenu] = useState(faBars);   //use stated para asignar el logo y las clases necesarias al menu responsive
-  //cada click cambia el estado 
+  const [menu, setMenu] = useState(faBars); //use stated para asignar el logo y las clases necesarias al menu responsive
+  //cada click cambia el estado
   const toggleClick = () => {
     setMenu(menu === faBars ? faXmark : faBars);
   };
 
-  //para evitar la reutilizacion de nuevo del hook useEffect y estar pasando 
-  //informacion mediante las props creamos un objeto que va a guardar el valor del contexto 
+  //para evitar la reutilizacion de nuevo del hook useEffect y estar pasando
+  //informacion mediante las props creamos un objeto que va a guardar el valor del contexto
   //dependiendo de este valor podemos aplicar la logica deseada
-  const theme = useThemeContext()
-  const logoColor = theme === 'dark' ? '#BC0B38' : '#fff'
+  const theme = useThemeContext();
+  const logoColor = theme === "dark" ? "#BC0B38" : "#fff";
 
-  if (location?.pathname === '/login') {
-    return null
+  if (location?.pathname === "/login") {
+    return null;
   }
 
-  if (location?.pathname === '/registroEmpresa') {
-    return null
+  if (location?.pathname === "/registroEmpresa") {
+    return null;
   }
 
-  let route = "/"
+  let route = "/";
   if (sesionUser?.Rol === "Empresa") {
-    route = "/empresa"
+    route = "/empresa";
   }
   if (sesionUser?.Rol === "Administrador") {
-    route = "/administrador"
+    route = "/administrador";
   }
-
 
   return (
     <nav className="bg-transparent flex justify-between items-center h-20 dark:bg-transparent dark:shadow-[#f7e6d5] z-10 ">
@@ -64,10 +67,11 @@ export function Header() {
         className={`dark:bg-nav_light_theme md:dark:bg-transparent bg-color_font_dark md:bg-transparent 
                     flex flex-col px-4 md:flex-row md:px-0 md:z-auto md:static absolute w-full left-0 md:w-auto md:py-0 
                     md:pl-0 pl-7 md:opacity-100 duration-75 md:duration-0 z-10
-                    ${menu === faBars
-            ? "top-[-400px] opacity-0"
-            : "top-[80px] opacity-100"
-          }`}
+                    ${
+                      menu === faBars
+                        ? "top-[-400px] opacity-0"
+                        : "top-[80px] opacity-100"
+                    }`}
       >
         {!sesionUser && (
           <div className="flex flex-col md:flex-row">
@@ -87,7 +91,6 @@ export function Header() {
           <div className="flex flex-col md:flex-row">
             <ButtonNav text="Clientes" href={"empresa/reserva"} />
             <ButtonNav text="Servicios" href="empresa/servicios" />
-            <ButtonNav text="Perfil" href="empresa/perfil" />
           </div>
         )}
         {sesionUser?.Rol === "Administrador" && (
@@ -103,21 +106,27 @@ export function Header() {
         )}
       </div>
 
-      <div className="flex flex-row-reverse w-full gap-2 items-center">
+      <div className="flex flex-row justify-end w-full gap-4 items-center">
         {sesionUser ? (
           <>
-            <IconUser
-              href={`/perfil`}
-            />
+            <IconUser href={`/perfil`} />
             <button onClick={logout}>
-              <ButtonNav text="Cerrar sesión"></ButtonNav>
+                <FontAwesomeIcon 
+                  icon={faArrowRightFromBracket}
+                  style={{color:"#fff"}}
+                  size="xl"
+                />
             </button>
           </>
         ) : sesionUser === null ? (
           <ButtonNav href="/login" text="Iniciar sesión" />
         ) : (
           <button onClick={logout}>
-            <ButtonNav text="Cerrar sesión"></ButtonNav>
+            <FontAwesomeIcon 
+                  icon={faArrowRightFromBracket}
+                  style={{color:"#fff"}}
+                  size="xl"
+                />
           </button>
         )}
 
@@ -132,8 +141,6 @@ export function Header() {
       </div>
     </nav>
   );
-
-
 }
 
 //Para evitar la redundancia se componetiza en ./buttons/buttonNav

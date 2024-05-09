@@ -1,14 +1,19 @@
 import { useForm } from "react-hook-form";
 import { useCreateEmpresa } from "../../components/hooks/useCreateEmpresa";
-//esto es para el envío de los correos 
+//esto es para el envío de los correos
 import React, { useRef } from "react";
 import emailjs from "@emailjs/browser";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { useToastify } from '../../components/hooks/useToastify'
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export function RegistroEmpresa() {
+
+  const { showToastMessage } = useToastify()
+
   const {
     register,
     handleSubmit,
@@ -16,9 +21,10 @@ export function RegistroEmpresa() {
     watch,
   } = useForm();
 
-  const { createEmpresa } = useCreateEmpresa()
+  const { createEmpresa } = useCreateEmpresa();
+  const navigate = useNavigate()
 
-  //esto es para el envío de los correos 
+  //esto es para el envío de los correos
   const form = useRef();
   const sendEmail = (e) => {
     e.preventDefault();
@@ -29,7 +35,8 @@ export function RegistroEmpresa() {
       })
       .then(
         () => {
-          console.log("SUCCESS!");
+          showToastMessage("Tu solicitud fue enviada correctamente, revisa tu correo!")
+          navigate("/")
         },
         (error) => {
           console.log("FAILED...", error.text);
@@ -55,14 +62,14 @@ export function RegistroEmpresa() {
           </p>
         </div>
 
-        <div className="flex justify-center items-center">
+        <div className="flex justify-center items-center ">
           <form
             ref={form}
             action=""
-            className="w-[90%] text-base minicel:text-sm sm:text-lg md:text-xl  "
+            className="w-[90%] text-base minicel:text-base  md:text-xl  "
             onSubmit={handleSubmit(createEmpresa)}
           >
-            <div className="flex w-full gap-4">
+            <div className="flex w-full gap-4 minicel:flex-col sm:flex-row">
               <div className="input-box animation flex flex-col w-full ">
                 <label htmlFor="Nit" className="   font-semibold">
                   NIT
@@ -86,7 +93,7 @@ export function RegistroEmpresa() {
               <div className="input-box animation flex flex-col w-full">
                 <label
                   htmlFor="Nombreempresa"
-                  className="minicel:text-xs sm:text-lg md:text-xl  font-semibold"
+                  className="minicel:text-base sm:text-lg md:text-xl  font-semibold"
                 >
                   Nombre de la empresa
                 </label>
@@ -346,9 +353,7 @@ export function RegistroEmpresa() {
             </div>
 
             <button
-              className="text-white mt-2 bg-color_switch_theme_dark w-full p-1 rounded-md hover:bg-[#8e5ee0]
-          minicel:text-sm celular:text-base sm:text-lg md:text-xl  
-          minicel:mt-3 sm:mt-6 dark:bg-[#eb2651] dark:hover:bg-[#d61540]"
+              className="text-white mt-2 bg-color_switch_theme_dark w-full p-1 rounded-md hover:bg-[#8e5ee0]minicel:text-sm celular:text-base sm:text-lg md:text-xl minicel:mt-3 sm:mt-6 dark:bg-[#eb2651] dark:hover:bg-[#d61540] text-center"
               type="submit"
               onClick={sendEmail}
             >

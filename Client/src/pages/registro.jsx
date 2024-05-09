@@ -19,7 +19,7 @@ export function Registro() {
         className="w-full text-base minicel:text-sm sm:text-lg md:text-xl "
         onSubmit={handleSubmit(createUser)}
       >
-        <div className="flex w-full gap-4">
+        <div className="flex w-full gap-4 minicel:flex-col sm:flex-row">
           <div className="input-box animation flex flex-col w-full ">
             <label htmlFor="Name" className="   font-semibold">
               Nombre
@@ -43,7 +43,7 @@ export function Registro() {
           <div className="input-box animation flex flex-col w-full">
             <label
               htmlFor="Firstlastname"
-              className="minicel:text-xs sm:text-lg md:text-xl  font-semibold"
+              className="minicel:text-xs sm:text-xs md:text-xl  font-semibold"
             >
               Primer Apellido
             </label>
