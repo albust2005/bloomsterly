@@ -3,6 +3,9 @@
   margin: 0;
   box-sizing: border-box;
 }
+::-webkit-calendar-picker-indicator{
+  filter: invert(1);
+}
 
 /* Estilos para la barra de desplazamiento en dispositivos Android */
 ::-webkit-scrollbar {

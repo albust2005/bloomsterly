@@ -96,12 +96,12 @@ export function Layaout({ children }) {
       <ScrollAnimatedSection
         className="absolute 
         top-[75%] 
-        left-[6%] 
+        left-[10%] 
         minicel:w-[70px] sm:w-[100px] lg:w-[130px]
         z-0 opacity-0"
         animation="animate-fade-up"
       >
-        <img src="../../../src/assets/flor_img/lirioblanco-rosa.webp" alt="" />
+        <img src="../../../src/assets/flor_img/lirioblanco.webp" alt="" />
       </ScrollAnimatedSection>
 
       {/*CENTRO */}
@@ -190,17 +190,6 @@ export function Layaout({ children }) {
         minicel:w-[38px] sm:w-[70px]
         opacity-0"
         animation="animate-fade-left"
-      >
-        <img src="../../../src/assets/flor_img/liriorosa.webp" alt="" />
-      </ScrollAnimatedSection>
-
-      <ScrollAnimatedSection
-        className=" absolute 
-        minicel:w-[130px] sm:w-[180px] md:w-[220px]
-        left-[43%] 
-        top-[50%] 
-        opacity-0 z-0"
-        animation="animate-fade-down"
       >
         <img src="../../../src/assets/flor_img/liriorosa.webp" alt="" />
       </ScrollAnimatedSection>

@@ -29,11 +29,11 @@ export function Reservas() {
       ) : (
         datos.map((reserva) => (
           <div
-            className="flex  border-2 border-solid border-color_font_dark rounded-sm
+            className="flex   rounded-sm
             dark:bg-light_theme dark:border-light_theme z-10 "
             key={reserva.COD}
           >
-            <div className="w-full flex flex-col justify-center bg-[#190042] text-white p-4
+            <div className="w-full flex flex-col justify-center bg-[#2D0969] text-white p-4
             rounded-sm dark:bg-second_color_lt z-10">
               <h3 className="font-title font-semibold text-3xl z-10" >Contrato de servicios</h3>
 

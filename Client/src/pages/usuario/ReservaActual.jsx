@@ -34,7 +34,7 @@ function AgregarServiciosReserva() {
 /*renderiza el servicio seleccionado */
 function ServicioCardReserva({ empresa, nombre, valor, removeServicioSeleccionado }) {
   return (
-    <article className="bg-color_switch_theme_dark w-1/5 h-full p-2 rounded-sm
+    <article className="bg-color_switch_theme_dark w-full max-w-full h-full p-2 rounded-sm mx-auto
     dark:bg-[#FFFFDD] dark:text-second_color_lt">
       <div className="flex flex-col gap-1">
         <h2 className="font-title text-xl font-semibold"> {empresa}</h2>
@@ -102,18 +102,18 @@ export function ReservaActual() {
           onSubmit={handleSubmit(onSubmit)}
           className=" w-[90%] text-white flex flex-col gap-5"
         >
-          <div className="flex">
-            <div className="flex justify-start items-center w-1/3">
+          <div className="flex minicel:flex-col sm:flex-row">
+            <div className="flex justify-start items-center w-1/3 minicel:w-full sm:w-1/3">
               <label
                 htmlFor="cliente"
                 {...register("cliente")}
-                className="font-title font-semibold text-xl"
+                className="font-title font-semibold text-xl "
               >
                 Cliente: {sesionUser?.Username}
               </label>
             </div>
 
-            <div className="flex flex-col w-2/3">
+            <div className="flex flex-col w-2/3 minicel:w-full sm:w-2/3 ">
               <label
                 htmlFor="evento"
                 className="font-title font-semibold text-xl"
@@ -158,8 +158,8 @@ export function ReservaActual() {
             )}
           </div>
 
-          <div className="flex gap-5">
-            <div className="flex flex-col w-1/2">
+          <div className="flex gap-5 minicel:flex-col sm:flex-row">
+            <div className="flex flex-col w-1/2 minicel:w-full sm:w-1/2">
               <label
                 htmlFor="fecha"
                 className="font-title font-semibold text-xl"
@@ -186,7 +186,7 @@ export function ReservaActual() {
               )}
             </div>
 
-            <div className="flex flex-col w-1/2">
+            <div className="flex flex-col w-1/2 minicel:w-full sm:w-1/2">
               <label
                 htmlFor="telefono"
                 className="font-title font-semibold text-xl"
@@ -216,7 +216,7 @@ export function ReservaActual() {
             >
               Servicios
             </label>
-            <div className="flex gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3 w-full">
               {servicioSeleccionados?.map(servicio => (
                 <ServicioCardReserva
                   key={servicio.id}
