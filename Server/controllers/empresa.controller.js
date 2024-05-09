@@ -101,9 +101,9 @@ export const servicio = async (req, res) => {
             NIT_empresas: req.userCOD
         })
         let image
-        if (!req.files || req.files.length === 0) {
-            res.status(400).json({ message: "Subir imagen" })
-        }
+        // if (!req.files || req.files.length === 0) {
+        //     res.status(400).json({ message: "Subir imagen" })
+        // }
         req.files.forEach(async (file) => {
             image = file.filename
             await ImagesServicios.create({

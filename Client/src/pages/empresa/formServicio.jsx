@@ -5,40 +5,47 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { useState } from "react";
 
 export const FormServicio = () => {
   const { showToastMessage } = useToastify();
   const navegate = useNavigate();
+  const [imagenes, setImagenes]= useState([])
 
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-
-  const onSubmit = handleSubmit(async (data) => {
+  const capturarImagenes= (event)=>{
+    const files = event.target.files;
+    setImagenes(files)
+    console.log(imagenes);
+  }
+  const onSubmit = async (data) => { 
+    const { nombre, descripcion, valor_servicio, COD_subCategoria } = data;
     const formData = new FormData();
-    formData.append("imagen", data.imagen[0]); // Accede al archivo de imagen
-    // const { ID, nombre, descripcion, valor_servicio, COD_subCategoria } = data;
-    // try {
-    //   const respuesta = await axios.post(
-    //     "http://localhost:8000/api/servicios",
-    //     {
-    //       ID: ID,
-    //       nombre: nombre,
-    //       descripcion: descripcion,
-    //       valor_servicio: valor_servicio,
-    //       COD_subCategoria: COD_subCategoria,
-    //     }
-    //   );
-    //   showToastMessage(respuesta.data.message);
-    //   // Navegar a la página deseada después de la creación exitosa
-    //   navegate("/ruta-de-redireccion");
-    // } catch (error) {
-    //   showToastMessage("Hubo un error al crear el servicio.");
-    // }
+    formData.append('nombre', nombre)
+    formData.append('descripcion', descripcion)
+    formData.append('valor_servicio', valor_servicio)
+    formData.append('COD_subCategoria', COD_subCategoria)
+    for (let i=0; i<imagenes.length; i++){
+      formData.append('imagenes', imagenes[i])
+    }
+    const token = localStorage.getItem("token");
+    try{
+      const respuesta = await axios.post(`http://localhost:8000/empresa/crearServicio`, formData, {
+        headers: {
+          Authorization: token
+        }
+      });
+      showToastMessage(respuesta.data.message);
+      navegate(`/empresa/servicios`);
+    } catch (error) {
+      showToastMessage("Hubo un error al editar el servicio");
+    }
     console.log(data);
-  });
+  };
 
   return (
     <>
@@ -61,49 +68,9 @@ export const FormServicio = () => {
         <div className="flex justify-center items-center">
           <form
             className="w-[90%] text-base minicel:text-sm sm:text-lg md:text-xl  "
-            onSubmit={onSubmit}
+            onSubmit={handleSubmit(onSubmit)}
           >
             <div className="flex w-full gap-4">
-              <div className="input-box animation flex flex-col w-full ">
-                {/* Campo para ID */}
-                <label htmlFor="ID" className="font-bold">
-                  ID
-                </label>
-                <input
-                  type="text"
-                  {...register("ID", {
-                    required: "Este campo es requerido",
-                  })}
-                  className="focus:outline-none bg-transparent border-b-2 border-white text-base font-text 
-                    minicel:w-2/3 sm:w-full minicel:mb-1"
-                />
-                {errors.ID && <span>{errors.ID.message}</span>}
-              </div>
-
-              <div className="input-box animation flex flex-col w-full">
-                {/* Campo para Imagen */}
-                <label htmlFor="imagen" className="font-bold">
-                  Imagen
-                </label>
-                <div className="mt-4 mb-4">
-                  <label
-                    htmlFor="imagen"
-                    className=" cursor-pointer bg-white dark:bg-white border border-gray-300 rounded-lg py-2 px-4 text-sm text-gray-700 hover:text-white dark:text-second_color_lt dark:hover:text-white hover:bg-admin_card dark:hover:bg-[#eb2651]  transition-all duration-300"
-                  >
-                    Seleccionar archivo
-                    <input
-                      type="file"
-                      accept="image/*"
-                      {...register("imagen", {
-                        required: "Este campo es requerido",
-                      })}
-                      className="hidden"
-                      id="imagen"
-                    />
-                  </label>
-                </div>
-                {errors.imagen && <span>{errors.imagen.message}</span>}
-              </div>
             </div>
 
             <div className="input-box animation flex flex-col w-full">
@@ -230,7 +197,32 @@ export const FormServicio = () => {
                 </div>
               </div>
             </div>
-
+            <div className="input-box animation flex flex-col w-full">
+                {/* Campo para Imagen */}
+                <label htmlFor="imagen" className="font-bold">
+                  Imagen
+                </label>
+                <div className="mt-4 mb-4">
+                  <label
+                    htmlFor="imagen"
+                    className=" cursor-pointer bg-white dark:bg-white border border-gray-300 rounded-lg py-2 px-4 text-sm text-gray-700 hover:text-white dark:text-second_color_lt dark:hover:text-white hover:bg-admin_card dark:hover:bg-[#eb2651]  transition-all duration-300"
+                  >
+                    Seleccionar archivo
+                    <input
+                      type="file"
+                      accept="image/*"
+                      multiple
+                      {...register("imagen", {
+                        required: "Este campo es requerido",
+                      })}
+                      onChange={capturarImagenes}
+                      className="hidden"
+                      id="imagen"
+                    />
+                  </label>
+                </div>
+                {errors.imagen && <span>{errors.imagen.message}</span>}
+              </div>
             {/* Botón de Envío */}
             <button
               type="submit"
