@@ -2,7 +2,6 @@ import { useForm } from "react-hook-form";
 // import { useCreateEmpresa } from "../../components/hooks/useCreateEmpresa";
 //esto es para el envío de los correos 
 import { useRef, useState } from "react";
-import { useCreateEmpresa } from "../../components/hooks/useCreateEmpresa";
 //esto es para el envío de los correos
 import emailjs from "@emailjs/browser";
 
@@ -13,7 +12,6 @@ import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom'
-import { useToastify } from '../../components/hooks/useToastify'
 import axios from 'axios';
 
 export function RegistroEmpresa() {
@@ -29,7 +27,6 @@ export function RegistroEmpresa() {
   } = useForm();
 
   // const { createEmpresa } = useCreateEmpresa()
-  const navigate = useNavigate()
 
   //esto es para el envío de los correos
   const form = useRef();
