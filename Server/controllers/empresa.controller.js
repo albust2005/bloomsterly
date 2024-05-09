@@ -94,7 +94,6 @@ export const servicio = async (req, res) => {
     } = req.body
     try {
         const servicio = await Servicios.create({
-            ID: 5,
             nombre,
             descripcion,
             valor_servicio,
@@ -308,6 +307,39 @@ export const servicio1 = async(req,res)=>{
           res
             .status(400)
             .json({ message: "Hubo un error al obtener el servicio", error });
+        }
+    }
+}
+// Esta funcion sirve para eliminar un servicio
+export const eliminarServicio = async(req,res)=>{
+    const {
+        ID
+    }=req.body
+    const ruta = baseDir()
+    try {
+        const imagenes = await ImagesServicios.findAll({
+                where: { ID_servicio: ID }
+        })
+        // imagenes.map(async (imagen) => {
+        //     const filePath = path.join(ruta, imagen.image);
+        //     if (fs.existsSync(filePath)) {
+        //         fs.unlinkSync(filePath);
+        //         // console.log("La ruta del archivo es: ", filePath)
+        //     } else {
+        //         console.log("El archivo no exite en la ubicacion")
+        //     }
+        // });
+        // await ImagesServicios.destroy({ where: { ID_servicio: ID } })
+        // await DescripcionReserva.destroy
+        await Servicios.destroy({ where: { ID: ID } })
+        res.status(200).json({message:"Servicio eliminado correctamente"})
+    } catch (error) {
+        if (error instanceof Sequelize.DatabaseError) {
+            // Manejar el error de base de datos
+            res.status(400).json({ message: `Error de base datos`, error: error.message })
+        } else {
+            // Manejar otros tipos de errores
+            res.status(400).json({ message: 'Hubo un error al eliminar el servicio', error });
         }
     }
 }
