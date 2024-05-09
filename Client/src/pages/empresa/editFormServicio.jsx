@@ -10,19 +10,19 @@ export const EditarFormServicio = () => {
   const { showToastMessage } = useToastify();
   const navegate = useNavigate();
   const [servicio, setServicio] = useState([]);
+  const [imagenes, setImagenes] = useState([])
   const {id} = useParams();
   useEffect(() => {
-    // cargarDatosServicio();
-    // console.log(id);
-  }, []);
-
+    cargarDatosServicio();
+  },[]);
+  const token = localStorage.getItem("token")
   const cargarDatosServicio = async () => {
     try {
-      const respuesta = await axios.post(
-        `http://localhost:8000/empresa/servicio`,{
-          id
-        },{
-          
+      const respuesta = await axios.post(`http://localhost:8000/empresa/servicio`,{id},
+      {
+          headers:{
+            Authorization:token
+          }
         }
       );
       setServicio(respuesta.data);
@@ -36,30 +36,52 @@ export const EditarFormServicio = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-
+  const capturarImagenes= (event)=>{
+    const files = event.target.files;
+    setImagenes(files)
+    console.log(imagenes);
+  }
   const onSubmit = async (data) => {
     try {
-      const { ID, nombre, descripcion, valor_servicio, COD_subCategoria } =
-        data;
-      const token = localStorage.getItem("token");
-      const respuesta = await axios.post(
-        `http://localhost:8000/empresa/editarServicio`,
-        {
-          ID,
-          nombre,
-          descripcion,
-          valor_servicio,
-          COD_subCategoria,
-        },
-        {
-          headers: {
-            Authorization: token,
-          },
+        let nombre, descripcion, valor_servicio, COD_subCategoria;
+        if (data.nombre === "") {
+          nombre = servicio.nombre;
+        } else {
+          nombre = data.nombre;
         }
-      );
+        if (data.descripcion === "") {
+          descripcion = servicio.descripcion;
+        } else {
+          descripcion = data.descripcion;
+        }
+        if (data.valor_servicio === "") {
+          valor_servicio = servicio.valor_servicio;
+        } else {
+          valor_servicio = data.valor_servicio;
+        }
+        if (data.COD_subCategoria === "") {
+          COD_subCategoria = servicio.COD_subCategoria;
+        } else {
+          COD_subCategoria = data.COD_subCategoria;
+        }
+        const formData = new FormData();
+        formData.append('ID', servicio.ID)
+        formData.append('nombre', nombre)
+        formData.append('descripcion', descripcion)
+        formData.append('valor_servicio', valor_servicio)
+        formData.append('COD_subCategoria', COD_subCategoria)
+        for (let i=0; i<imagenes.length; i++){
+          formData.append('imagenes', imagenes[i])
+        }
 
+      const token = localStorage.getItem("token");
+      const respuesta = await axios.post(`http://localhost:8000/empresa/editarServicio`, formData, {
+        headers: {
+          Authorization: token
+        },
+      });
       showToastMessage(respuesta.data.message);
-      navegate(`/ruta-de-redireccion`);
+      navegate(`reserva`);
     } catch (error) {
       showToastMessage("Hubo un error al editar el servicio");
     }
@@ -86,49 +108,9 @@ export const EditarFormServicio = () => {
         <div className="flex justify-center items-center">
           <form
             className="w-[90%] text-base minicel:text-sm sm:text-lg md:text-xl  "
-            onSubmit={onSubmit}
+            onSubmit={handleSubmit(onSubmit)}
           >
             <div className="flex w-full gap-4">
-              <div className="input-box animation flex flex-col w-full ">
-                {/* Campo para ID */}
-                <label htmlFor="ID" className="font-bold">
-                  ID
-                </label>
-                <input
-                  type="text"
-                  {...register("ID", {
-                    required: "Este campo es requerido",
-                  })}
-                  className="focus:outline-none bg-transparent border-b-2 border-white text-base font-text 
-                    minicel:w-2/3 sm:w-full minicel:mb-1"
-                />
-                {errors.ID && <span>{errors.ID.message}</span>}
-              </div>
-
-              <div className="input-box animation flex flex-col w-full">
-                {/* Campo para Imagen */}
-                <label htmlFor="imagen" className="font-bold">
-                  Imagen
-                </label>
-                <div className="mt-4 mb-4">
-                  <label
-                    htmlFor="imagen"
-                    className=" cursor-pointer bg-white dark:bg-white border border-gray-300  rounded-lg py-2 px-4 text-sm text-gray-700 hover:text-white dark:text-second_color_lt dark:hover:text-white hover:bg-admin_card  dark:hover:bg-[#eb2651] transition-all duration-300"
-                  >
-                    Seleccionar archivo
-                    <input
-                      type="file"
-                      accept="image/*"
-                      {...register("imagen", {
-                        required: "Este campo es requerido",
-                      })}
-                      className="hidden"
-                      id="imagen"
-                    />
-                  </label>
-                </div>
-                {errors.imagen && <span>{errors.imagen.message}</span>}
-              </div>
             </div>
 
             <div className="input-box animation flex flex-col w-full">
@@ -141,6 +123,7 @@ export const EditarFormServicio = () => {
                 {...register("nombre", {
                   required: "Este campo es requerido",
                 })}
+                defaultValue={servicio. nombre}
                 className="focus:outline-none bg-transparent border-b-2 dark:border-white"
               />
               {errors.nombre && <span>{errors.nombre.message}</span>}
@@ -155,6 +138,7 @@ export const EditarFormServicio = () => {
                 {...register("descripcion", {
                   required: "Este campo es requerido",
                 })}
+                defaultValue={servicio.descripcion}
                 className="w-full font-titulos dark:text-primary-color text-second-color pb-2 pr-3 mr-2 border-b-2 border-r-2 border-second-color dark:border-white bg-transparent focus:outline-none resize-none"
               />
               {errors.descripcion && <span>{errors.descripcion.message}</span>}
@@ -171,6 +155,7 @@ export const EditarFormServicio = () => {
                   {...register("valor_servicio", {
                     required: "Este campo es requerido",
                   })}
+                  defaultValue={servicio.valor_servicio}
                   className="focus:outline-none bg-transparent border-b-2 dark:border-white"
                 />
                 {errors.valor_servicio && (
@@ -255,6 +240,32 @@ export const EditarFormServicio = () => {
                 </div>
               </div>
             </div>
+            <div className="input-box animation flex flex-col w-full">
+                {/* Campo para Imagen */}
+                <label htmlFor="imagen" className="font-bold">
+                  Imagen
+                </label>
+                <div className="mt-4 mb-4">
+                  <label
+                    htmlFor="imagen"
+                    className=" cursor-pointer bg-white dark:bg-white border border-gray-300  rounded-lg py-2 px-4 text-sm text-gray-700 hover:text-white dark:text-second_color_lt dark:hover:text-white hover:bg-admin_card  dark:hover:bg-[#eb2651] transition-all duration-300"
+                  >
+                    Seleccionar archivo
+                    <input
+                      type="file"
+                      accept="image/*"
+                      multiple
+                      {...register("imagen", {
+                        required: "Este campo es requerido",
+                      })}
+                      onChange={capturarImagenes}
+                      className="hidden"
+                      id="imagen"
+                    />
+                  </label>
+                </div>
+                {errors.imagen && <span>{errors.imagen.message}</span>}
+              </div>
 
             {/* Botón de Envío */}
             <button
