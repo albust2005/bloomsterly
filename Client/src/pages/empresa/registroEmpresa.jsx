@@ -1,14 +1,20 @@
 import { useForm } from "react-hook-form";
-import { useCreateEmpresa } from "../../components/hooks/useCreateEmpresa";
+// import { useCreateEmpresa } from "../../components/hooks/useCreateEmpresa";
 //esto es para el envío de los correos 
-import React, { useRef } from "react";
+import { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import { useNavigate } from 'react-router-dom'
+import { useToastify } from '../../components/hooks/useToastify'
+import axios from 'axios';
 
 export function RegistroEmpresa() {
+  const [imagenes, setImagenes] = useState()
+  const navigate = useNavigate()
+  const { showToastMessage } = useToastify()
   const {
     register,
     handleSubmit,
@@ -16,10 +22,48 @@ export function RegistroEmpresa() {
     watch,
   } = useForm();
 
-  const { createEmpresa } = useCreateEmpresa()
+  // const { createEmpresa } = useCreateEmpresa()
 
   //esto es para el envío de los correos 
   const form = useRef();
+  const capturarImagenes= (event)=>{
+    const files = event.target.file;
+    setImagenes(files)
+    console.log(imagenes);
+  }
+  const createEmpresa = async (data) => {
+    console.log(data)
+    try {
+        const { Nit, Nombreempresa, descripcion, municipio, Instagram, Facebook, Password, direccion, telefono, email } = data
+        const formData = new FormData();
+        formData.append('NIT', Nit)
+        formData.append('nombre', Nombreempresa)
+        formData.append('descripcion', descripcion)
+        formData.append('COD_municipios', municipio)
+        formData.append('instagram',Instagram)
+        formData.append('facebook', Facebook)
+        formData.append('contrasena',Password)
+        formData.append('username', Nombreempresa)
+        formData.append('direccion',direccion)
+        formData.append('telefono', telefono)
+        formData.append('email',email)
+        formData.append('imagen', imagenes[0])
+
+        const respuesta = await axios.post("http://localhost:8000/registerempresa/", formData)
+
+        showToastMessage('Solicitud enviada correctamente')
+        showToastMessage('La respuesta le sera enviada al correo electronico registrado')
+
+        navigate('/')
+
+        console.log(respuesta);
+
+    } catch (error) {
+        console.log(error.message)
+        showToastMessage(error.message)
+    }
+};
+
   const sendEmail = (e) => {
     e.preventDefault();
 
@@ -344,7 +388,31 @@ export function RegistroEmpresa() {
                 </span>
               )}
             </div>
-
+            <div className="input-box animation flex flex-col w-full">
+                {/* Campo para Imagen */}
+                <label htmlFor="imagen" className="font-bold">
+                  Imagen
+                </label>
+                <div className="mt-4 mb-4">
+                  <label
+                    htmlFor="imagen"
+                    className=" cursor-pointer bg-white dark:bg-white border border-gray-300  rounded-lg py-2 px-4 text-sm text-gray-700 hover:text-white dark:text-second_color_lt dark:hover:text-white hover:bg-admin_card  dark:hover:bg-[#eb2651] transition-all duration-300"
+                  >
+                    Seleccionar archivo
+                    <input
+                      type="file"
+                      accept="image/*"
+                      // {...register("imagen", {
+                      //   required: "Este campo es requerido",
+                      // })}
+                      onChange={capturarImagenes}
+                      className="hidden"
+                      id="imagen"
+                    />
+                  </label>
+                </div>
+                {errors.imagen && <span>{errors.imagen.message}</span>}
+              </div>
             <button
               className="text-white mt-2 bg-color_switch_theme_dark w-full p-1 rounded-md hover:bg-[#8e5ee0]
           minicel:text-sm celular:text-base sm:text-lg md:text-xl  
