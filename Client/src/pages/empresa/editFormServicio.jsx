@@ -81,7 +81,7 @@ export const EditarFormServicio = () => {
         },
       });
       showToastMessage(respuesta.data.message);
-      navegate(`reserva`);
+      navegate(`servicios`);
     } catch (error) {
       showToastMessage("Hubo un error al editar el servicio");
     }
