@@ -137,7 +137,15 @@ export const getAllEmpresas = async (req, res) => {
 export const getuser = async (req, res) => {
   try {
     const dato = req.userCOD
-    const datos = await Usuarios.findOne({where: { COD: dato }})
+    const datos = await Usuarios.findOne({
+      where: { COD: dato },
+      include: [
+        {
+          model:Municipios,
+          attributes:["municipio"],
+        },
+      ]
+    })
     res.status(200).json(datos)
   } catch (error) {
     if (error instanceof Sequelize.DatabaseError) {
