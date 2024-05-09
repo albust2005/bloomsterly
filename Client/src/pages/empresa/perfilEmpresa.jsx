@@ -165,9 +165,7 @@ export function PerfilEmpresa() {
                   </p>
                 </>
             }
-
-
-
+            
             <div className="flex flex-row-reverse gap-4 mt-2">
               {sesionUser?.Rol === "Administrador" ? (
                 <>
