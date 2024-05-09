@@ -23,21 +23,7 @@ export function FloresIndex() {
         animation="animate-fade-left"
       >
         <img src="../../../src/assets/flor_img/lirioamarillo.webp" alt="" />
-      </ScrollAnimatedSection>
-
-      {/*BLANCO */}
-
-
-      <ScrollAnimatedSection
-        className="absolute 
-        top-[70%] 
-        left-[25%] 
-        w-[60px] minicel:w-[60px] sm:w-[110px] lg:w-[130px]
-        z-0 opacity-0"
-        animation="animate-fade-left"
-      >
-        <img src="../../../src/assets/flor_img/lirioblanco.webp" alt="" />
-      </ScrollAnimatedSection>
+      </ScrollAnimatedSection>  
 
       
 
