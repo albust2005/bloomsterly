@@ -344,52 +344,89 @@ export const eliminarServicio = async(req,res)=>{
     }
 }
 // Esta funcion trae las reservas seleccionadas por cliente
-export const reservaSeleccionada = async(req,res)=>{
-    const {
-        reservas
-    }=req.body
-    const datos = []
-    let formato
-    let COD, COD_usuarios, fecha_reserva, fecha_evento, valor_total, direccion, telefono, nombre, estado
+// export const reservaSeleccionada = async(req,res)=>{
+//     const {reservas}=req.body
+//     // let formato
+//     // let COD, COD_usuarios, fecha_reserva, fecha_evento, valor_total, direccion, telefono, nombre, estado
+//     try {
+//         let datos = []
+//         reservas.map( async(reserva,index)=>{
+//             try {
+//                 const dato = await Reservas.findOne({where:{COD:reserva}})
+//                     let formato={
+//                         COD: dato.COD,
+//                         COD_usuarios:dato.COD_usuarios,
+//                         fecha_reserva:dato.fecha_reserva,
+//                         fecha_evento:dato.fecha_evento,
+//                         valor_total:dato.valor_total,
+//                         direccion:dato.direccion,
+//                         telefono:dato.telefono,
+//                         nombre:dato.nombre,
+//                         estado:dato.estado
+//                     }
+//                     datos.push(formato)
+
+//                 if ((reservas.length-1)==index){
+//                     res.status(200).json(datos)
+//                 }
+//             } catch (error) {
+//                 if (error instanceof Sequelize.DatabaseError) {
+//                     // Manejar el error de base de datos
+//                     res.status(400).json({ message: `Error de base datos`, error: error.message })
+//                 } else {
+//                     // Manejar otros tipos de errores
+//                     res.status(400).json({ message: 'Hubo un error al obtener las reservas por una', error });
+//                 }
+//             }
+//         });
+//     } catch (error) {
+//         if (error instanceof Sequelize.DatabaseError) {
+//             // Manejar el error de base de datos
+//             res.status(400).json({ message: `Error de base datos`, error: error.message })
+//         } else {
+//             // Manejar otros tipos de errores
+//             res.status(400).json({ message: 'Hubo un error al obtener las reservas', error });
+//         }
+//     }
+// }
+export const reservaSeleccionada = async(req, res) => {
+    const { reservas } = req.body;
+
     try {
-        reservas.map( async(reserva,index)=>{
+        let datos = [];
+
+        for (const reserva of reservas) {
             try {
-                const dato = await Reservas.findOne({where:{COD:reserva}})
-                console.log(dato)
-                if (dato.length>0){
-                    formato={
-                        COD: dato.COD,
-                        COD_usuarios:dato.COD_usuarios,
-                        fecha_reserva:ato.fecha_reserva,
-                        fecha_evento:dato.fecha_evento,
-                        valor_total:dato.valor_total,
-                        direccion:dato.direccion,
-                        telefono:dato.telefono,
-                        nombre:dato.nombre,
-                        estado:dato.estado
-                    }
-                    datos.push(formato)
-                }
-                if ((reservas.length-1)==index){
-                    res.status(200).json(datos)
-                }
+                const dato = await Reservas.findOne({ where: { COD: reserva } });
+
+                let formato = {
+                    COD: dato.COD,
+                    COD_usuarios: dato.COD_usuarios,
+                    fecha_reserva: dato.fecha_reserva,
+                    fecha_evento: dato.fecha_evento,
+                    valor_total: dato.valor_total,
+                    direccion: dato.direccion,
+                    telefono: dato.telefono,
+                    nombre: dato.nombre,
+                    estado: dato.estado
+                };
+
+                datos.push(formato);
             } catch (error) {
                 if (error instanceof Sequelize.DatabaseError) {
-                    // Manejar el error de base de datos
-                    res.status(400).json({ message: `Error de base datos`, error: error.message })
+                    res.status(400).json({ message: `Error de base de datos`, error: error.message });
                 } else {
-                    // Manejar otros tipos de errores
                     res.status(400).json({ message: 'Hubo un error al obtener las reservas por una', error });
                 }
             }
-        })
+        }
+
+        res.status(200).json(datos); // Mover la respuesta aquí fuera del bucle
     } catch (error) {
         if (error instanceof Sequelize.DatabaseError) {
-            // Manejar el error de base de datos
-            res.status(400).json({ message: `Error de base datos`, error: error.message })
+            res.status(400).json({ message: `Error de base de datos`, error: error.message });
         } else {
-            // Manejar otros tipos de errores
             res.status(400).json({ message: 'Hubo un error al obtener las reservas', error });
         }
     }
-}
+};
