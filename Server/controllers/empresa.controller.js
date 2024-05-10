@@ -453,12 +453,12 @@ export const negarReserva = async(req,res)=>{
         await Reservas.update({estado:"Negado"},{
             where:{COD:COD}
         })
-        res.status(200).json({message:"Reserva aceptada correctamente"})
+        res.status(200).json({message:"Reserva negada correctamente"})
     } catch (error) {
         if (error instanceof Sequelize.DatabaseError) {
             res.status(400).json({ message: `Error de base de datos`, error: error.message });
         } else {
-            res.status(400).json({ message: 'Hubo un error al aceptar la reserva', error });
+            res.status(400).json({ message: 'Hubo un error al negar la reserva', error });
         }
     }
 }

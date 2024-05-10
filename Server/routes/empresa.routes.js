@@ -1,5 +1,5 @@
 import express from "express";
-import { getlogout, editarPerfil, eliminarPerfil, getempresa, servicio, editarServicio, getservicios, reservasCliente, servicio1, eliminarServicio, reservaSeleccionada} from "../controllers/empresa.controller.js";
+import { getlogout, editarPerfil, eliminarPerfil, getempresa, servicio, editarServicio, getservicios, reservasCliente, servicio1, eliminarServicio, reservaSeleccionada, aceptarReserva, negarReserva} from "../controllers/empresa.controller.js";
 import jwt from 'jsonwebtoken'
 import { upload } from "../multer/multer.js";
 // esto es para poner rutas
@@ -42,7 +42,9 @@ router.get("/reservasClientes", verificarToken, reservasCliente)
 router.post("/eliminarServicio", verificarToken, eliminarServicio);
 // ruta para obtener la reserva seleccionada por cliente
 router.post("/reservaSeleccionada",verificarToken, reservaSeleccionada);
-// ruta para cambiar el estado a la reserva del cliente
-router.get("/aceptarReserva",verificarToken, )
+// ruta para aceptar la reserva del cliente
+router.post("/aceptarReserva", verificarToken, aceptarReserva);
+// ruta para negar la reserva del cliente
+router.post("/negarReserva", verificarToken, negarReserva);
 
 export default router
