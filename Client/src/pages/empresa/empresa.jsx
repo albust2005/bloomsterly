@@ -11,6 +11,7 @@ import { EditarFormServicio } from "./editFormServicio";
 
 import { PerfilEmpresa } from "./perfilEmpresa";
 import { ServiciosEmpresaProvider } from "./provider/serviciosEmpresaProvider";
+import { EdiarForm } from "../administrador/editarForm";
 
 export function Empresa() {
   return (
@@ -30,8 +31,8 @@ export function Empresa() {
               <Route path="/servicios/crear" element={<FormServicio />}></Route>
               <Route path="/servicios/editar/:id" element={<EditarFormServicio />}></Route>
 
-
               <Route path="/perfil" element={<PerfilEmpresa />}></Route>
+              <Route path="/editarPerfil" element={<EdiarForm></EdiarForm>}></Route>
             </Routes>
           </ReservasProvider>
         </ServiciosEmpresaProvider>
