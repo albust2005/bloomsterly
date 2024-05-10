@@ -20,7 +20,7 @@ export function EmpresaCards({
       <ScrollAnimatedSection animation="animate-fade-up" className="opacity-0">
         <article className="w-full h-full max-h-[360px] min-h-[360px]">
           <img
-            src={logo}
+            src={logo ? `http://localhost:8000/user/subcategorias/${logo}` : ""}
             alt="imagen_empresa"
             className="imagen w-full h-1/2 aspect-auto object-cover rounded-t-lg bg-black"
           />
