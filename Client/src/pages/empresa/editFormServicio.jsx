@@ -236,6 +236,66 @@ export const EditarFormServicio = () => {
                     >
                       Cócteles Exóticos
                     </option>
+                    <option
+                      value="10"
+                      className="bg-dark_theme dark:text-second_color_lt dark:bg-white"
+                    >
+                      Intendencia para bodas
+                    </option>
+                    <option
+                      value="11"
+                      className="bg-dark_theme dark:text-second_color_lt dark:bg-white"
+                    >
+                      Intendencia para 15 años
+                    </option>
+                    <option
+                      value="12"
+                      className="bg-dark_theme dark:text-second_color_lt dark:bg-white"
+                    >
+                      Meceros
+                    </option>
+                    <option
+                      value="13"
+                      className="bg-dark_theme dark:text-second_color_lt dark:bg-white"
+                    >
+                      Seguridad
+                    </option>
+                    <option
+                      value="14"
+                      className="bg-dark_theme dark:text-second_color_lt dark:bg-white"
+                    >
+                      Fincas
+                    </option>
+                    <option
+                      value="15"
+                      className="bg-dark_theme dark:text-second_color_lt dark:bg-white"
+                    >
+                      Salones
+                    </option>
+                    <option
+                      value="16"
+                      className="bg-dark_theme dark:text-second_color_lt dark:bg-white"
+                    >
+                      Músicos independientes
+                    </option>
+                    <option
+                      value="17"
+                      className="bg-dark_theme dark:text-second_color_lt dark:bg-white"
+                    >
+                      Entretenimiento infantil
+                    </option>
+                    <option
+                      value="18"
+                      className="bg-dark_theme dark:text-second_color_lt dark:bg-white"
+                    >
+                      Fotografía profesional
+                    </option>
+                    <option
+                      value="19"
+                      className="bg-dark_theme dark:text-second_color_lt dark:bg-white"
+                    >
+                      Retrato
+                    </option>
                   </select>
                 </div>
               </div>
