@@ -7,7 +7,7 @@ export const IndexAdmin = () => {
 
   return (
     <ScrollAnimatedSection animation="animate-fade-up" className="opacity-0">
-      <div className="flex justify-center items-center text-center">
+      <div className="flex justify-center items-center text-center min-h-96">
         <TitleAE
           title="Administrador"
           descripcion={`Bienvenido a tu espacio ${sesionUser?.Username}`}

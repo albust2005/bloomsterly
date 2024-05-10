@@ -1,7 +1,5 @@
-import { ButtonNav } from "../../components/buttons/buttonNav";
 import { useUserContext } from "../../components/providers/userProvider";
 import { TitleAE } from "../../components/titles/titleAE";
-import { LateralMenu } from "./templates/lateralMenu";
 import { ScrollAnimatedSection } from "../../components/templates/ScrollAnimatedSection";
 
 export function Index_empresa() {
@@ -10,7 +8,7 @@ export function Index_empresa() {
   return (
     <>
       <ScrollAnimatedSection animation="animate-fade-up" className="opacity-0">
-        <div className="flex justify-center items-center text-center">
+        <div className="flex justify-center items-center text-center min-h-96">
           <TitleAE
             title="Empresa"
             descripcion={`Bienvenido a tu espacio empresa ${sesionUser?.Username}`}
