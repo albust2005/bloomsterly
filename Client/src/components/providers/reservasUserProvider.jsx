@@ -50,6 +50,7 @@ export function ReservasUserProvider({ children }) {
 
         try {
             const { evento, fecha, direccion, telefono, servicios } = data
+            console.log(servicios)
             const res = await axios.post(
                 'http://localhost:8000/user/reserva',
                 {

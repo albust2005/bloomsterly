@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 
 export function SubCategoriaCard({id, idCategoria, nombre, imagen}){
-    console.log({id, idCategoria})
+    console.log({id, idCategoria,imagen})
 
     return (
         <Link to={`/subCategorias/${nombre}`} className="bg-white dark:bg-[#ebd1b8] h-44 w-full transition-all hover:scale-105 z-10">

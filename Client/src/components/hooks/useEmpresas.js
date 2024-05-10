@@ -26,7 +26,7 @@ export const useEmpresas = () => {
     const mappedEmpresas = empresas?.map(empresa => ({
         id: empresa.NIT,
         nombre: empresa.nombre,
-        logo: empresa.logo,
+        logo: empresa.image,
         descripcion: empresa.descripcion,
         direccion: empresa.direccion,
         telefono: empresa.telefono,
