@@ -6,7 +6,7 @@ import { Reservas } from "./templates/reservas";
 import { NotFound } from "../../components/templates/NotFound";
 
 export function ReservasCliente() {
-  const { obtenerAllReservas, reservas } = useReservasContext();
+  const { obtenerAllReservas, obtenerReserva, reservas } = useReservasContext();
 
   useEffect(() => {
     obtenerAllReservas();
@@ -26,6 +26,7 @@ export function ReservasCliente() {
           email={reserva.email}  
           apellido={reserva.apellido}
           numeroReservas={reserva.numeroReservas}
+          obtenerReserva={() => obtenerReserva(reserva.cod_reservas)}
           />)
         )}
 

@@ -1,6 +1,13 @@
 import { ButtonAdmin } from "../../../components/buttons/buttonAdmin";
 
-export function Reservas({ id, nombre, apellido, email, numeroReservas }) {
+export function Reservas({
+  id,
+  nombre,
+  apellido,
+  email,
+  numeroReservas,
+  obtenerReserva,
+}) {
   return (
     <div className="flex rounded-sm dark:bg-light_theme dark:border-light_theme z-10 ">
       <div
@@ -29,9 +36,9 @@ export function Reservas({ id, nombre, apellido, email, numeroReservas }) {
         <p className="font-title">{numeroReservas}</p>
 
         <div className="flex  text-center flex-row-reverse z-10">
-          <ButtonAdmin href={`/empresa/reserva/reservaDescrip/${id}`}>
-            Ver reservas
-          </ButtonAdmin>
+          <button onClick={obtenerReserva}>
+            <ButtonAdmin>Ver reservas</ButtonAdmin>
+          </button>
         </div>
       </div>
     </div>
