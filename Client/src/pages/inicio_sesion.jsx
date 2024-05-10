@@ -97,9 +97,6 @@ export function InicioSesion() {
               Administrador
             </option>
           </select>
-          <p className="flex justify-end mt-2 text-xs md:text-base">
-            ¿Olvidaste la contraseña?
-          </p>
         </div>
 
         <div className="text-xs md:text-base">

@@ -31,15 +31,17 @@ export const getlogout = async (req, res) => {
   });
 };
 export const editarPerfil = async (req, res) => {
-  const { email, contrasena, COD_municipios } = req.body;
+  const { nombre, username, COD_municipios, contrasena, email } = req.body;
 
   try {
     console.log(req.userCOD);
     const hashedPassword = await bcrypt.hash(contrasena, 5);
     await Usuarios.update(
       {
+        nombre_c : nombre,
         COD_municipios,
         contrasena: hashedPassword,
+        username,
         email,
       },
       { where: { COD: req.userCOD } }

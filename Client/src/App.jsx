@@ -40,34 +40,35 @@ import { ReservaActual } from "./pages/usuario/ReservaActual";
 import { ReservasUserProvider } from "./components/providers/reservasUserProvider";
 import { RegistroEmpresa } from "./pages/empresa/registroEmpresa";
 import { PerfilEmpresa } from "./pages/empresa/perfilEmpresa";
+import { EdiarForm } from "./pages/administrador/editarForm";
 
 //import { Empresa } from './pages/empresa/empresa'
 
 function App() {
   return (
-      <UserProvider>
-        <ThemeProvider>
-          <ThemeColor />
+    <UserProvider>
+      <ThemeProvider>
+        <ThemeColor />
 
-          {/* Providers y contextos para poder acceder a los valores de cada uno*/}
-          <CategoriaProvider>
-            <SubCategoriaProvider>
-              <ServiciosProvider>
-                <EmpresaProvider>
-                  <ReservasUserProvider>
-                    <Layaout>
-                      <Header />
-                      <RoutesPage></RoutesPage>
-                      <Footer />
-                    </Layaout>
-                  </ReservasUserProvider>
-                </EmpresaProvider>
-              </ServiciosProvider>
-            </SubCategoriaProvider>
-          </CategoriaProvider>
-        </ThemeProvider>
-        <ToastContainer position="top-center" />
-      </UserProvider>
+        {/* Providers y contextos para poder acceder a los valores de cada uno*/}
+        <CategoriaProvider>
+          <SubCategoriaProvider>
+            <ServiciosProvider>
+              <EmpresaProvider>
+                <ReservasUserProvider>
+                  <Layaout>
+                    <Header />
+                    <RoutesPage></RoutesPage>
+                    <Footer />
+                  </Layaout>
+                </ReservasUserProvider>
+              </EmpresaProvider>
+            </ServiciosProvider>
+          </SubCategoriaProvider>
+        </CategoriaProvider>
+      </ThemeProvider>
+      <ToastContainer position="top-center" />
+    </UserProvider>
   );
 }
 
@@ -111,6 +112,7 @@ function RoutesPage() {
       ></Route>
 
       <Route path="/perfil" element={<PerfilEmpresa></PerfilEmpresa>}></Route>
+      <Route path="/editarPerfil" element={<EdiarForm></EdiarForm>}></Route>
 
       <Route
         element={

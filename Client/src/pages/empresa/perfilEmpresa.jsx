@@ -6,67 +6,74 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 export const useFoundUser = () => {
-  const token = localStorage.getItem("token")
+  const token = localStorage.getItem("token");
   const { sesionUser } = useUserContext();
-  const [dataUser, setDataUser] = useState({})
+  const [dataUser, setDataUser] = useState({});
 
   const obtenerUser = async () => {
     try {
-      const respuesta = await axios.get("http://localhost:8000/user/getusuario", {
-        headers: {
-          Authorization: token
+      const respuesta = await axios.get(
+        "http://localhost:8000/user/getusuario",
+        {
+          headers: {
+            Authorization: token,
+          },
         }
-      })
-      setDataUser(respuesta.data)
+      );
+      setDataUser(respuesta.data);
     } catch (error) {
-      alert(error)
-      console.log(error)
+      alert(error);
+      console.log(error);
     }
-  }
+  };
 
   const obtenerEmpresa = async () => {
     try {
-      const respuesta = await axios.get("http://localhost:8000/empresa/getempresa", {
-        headers: {
-          Authorization: token
+      const respuesta = await axios.get(
+        "http://localhost:8000/empresa/getempresa",
+        {
+          headers: {
+            Authorization: token,
+          },
         }
-      })
-      setDataUser(respuesta.data)
+      );
+      setDataUser(respuesta.data);
     } catch (error) {
-      alert(error)
+      alert(error);
     }
-  }
+  };
 
   const obtenerAdmin = async () => {
     try {
-      const respuesta = await axios.get("http://localhost:8000/admin/getadmin", {
-        headers: {
-          Authorization: token
+      const respuesta = await axios.get(
+        "http://localhost:8000/admin/getadmin",
+        {
+          headers: {
+            Authorization: token,
+          },
         }
-      })
-      setDataUser(respuesta.data)
+      );
+      setDataUser(respuesta.data);
     } catch (error) {
-      alert(error)
+      alert(error);
     }
-  }
+  };
 
   useEffect(() => {
     if (sesionUser?.Rol === "Administrador") {
-      obtenerAdmin()
+      obtenerAdmin();
     }
     if (sesionUser?.Rol === "Empresa") {
-      obtenerEmpresa()
+      obtenerEmpresa();
     }
     if (sesionUser?.Rol === "Cliente") {
-      obtenerUser()
+      obtenerUser();
     }
-  }, [])
+  }, []);
 
-  console.log(dataUser)
-  return ({ dataUser, sesionUser })
-}
-
-
+  console.log(dataUser);
+  return { dataUser, sesionUser };
+};
 
 export function PerfilEmpresa() {
   const [cambiar, setCambiar] = useState(false);
@@ -74,39 +81,51 @@ export function PerfilEmpresa() {
     setCambiar(!cambiar);
   };
 
-  const { dataUser, sesionUser } = useFoundUser()
+  const { dataUser, sesionUser } = useFoundUser();
 
   return (
     <>
-      <section className="flex w-full min-h-64 justify-center gap-4 z-10">
+      <section className="flex w-full min-h-96 justify-center gap-4 z-10">
         <div className="flex w-full min-h-full">
           <div
             className="w-1/2 flex flex-col justify-center items-center font-title font-bold 
           bg-hover_boton_admin dark:bg-light_theme"
           >
-            {dataUser.image ? <img src={dataUser.image ? `http://localhost:8000/empresa/getempresa/${dataUser.image}` : ""} alt="imagen" width={100} height={100} style={{ borderRadius: 12 }}></img> : <IconUser clasName="h-20" />}
+            {dataUser.image ? (
+              <img
+                src={
+                  dataUser.image
+                    ? `http://localhost:8000/empresa/getempresa/${dataUser.image}`
+                    : ""
+                }
+                alt="imagen"
+                width={100}
+                height={100}
+                style={{ borderRadius: 12 }}
+              ></img>
+            ) : (
+              <IconUser clasName="h-20" />
+            )}
 
             <h2 className="text-white text-4xl dark:text-second_color_lt celular:text-[20px] sm:text-[30px] lg:text-4xl">
               {dataUser.username}
             </h2>
-
           </div>
 
           <div className="w-1/2 bg-[#190042] rounded-sm p-5 font-title text-white dark:bg-second_color_lt">
-
             <p className="font-semibold text-2xl celular:text-[15px] md:text-xl lg:text-2xl">
               Nombre
             </p>
             <p className="lg:text-lg celular:text-[15px]">
-              {sesionUser.Rol === 'Cliente' ? dataUser.nombre_c : dataUser.nombre}
+              {sesionUser.Rol === "Cliente"
+                ? dataUser.nombre_c
+                : dataUser.nombre}
             </p>
 
             <p className="font-semibold text-2xl celular:text-[15px] md:text-xl lg:text-2xl">
               Email
             </p>
-            <p className="lg:text-lg celular:text-[15px]">
-              {dataUser.email}
-            </p>
+            <p className="lg:text-lg celular:text-[15px]">{dataUser.email}</p>
 
             <p className="font-semibold text-2xl celular:text-[15px] md:text-xl lg:text-2xl">
               Username
@@ -115,58 +134,55 @@ export function PerfilEmpresa() {
               {dataUser.username}
             </p>
 
+            {sesionUser.Rol !== "Empresa" ? (
+              <>
+                <p className="font-semibold text-2xl celular:text-[15px] md:text-xl lg:text-2xl">
+                  Apellido
+                </p>
+                <p className="lg:text-lg celular:text-[15px]">
+                  {dataUser.primer_apelli}
+                </p>
+              </>
+            ) : (
+              <>
+                <p className="font-semibold text-2xl celular:text-[15px] md:text-xl lg:text-2xl">
+                  Descripción
+                </p>
+                <p className="lg:text-lg celular:text-[15px]">
+                  {dataUser.descripcion}
+                </p>
 
-            {
-              sesionUser.Rol !== 'Empresa'
-                ?
-                <>
-                  <p className="font-semibold text-2xl celular:text-[15px] md:text-xl lg:text-2xl">
-                    Apellido
-                  </p>
-                  <p className="lg:text-lg celular:text-[15px]">
-                    {dataUser.primer_apelli}
-                  </p>
-                </>
-                :
-                <>
-                  <p className="font-semibold text-2xl celular:text-[15px] md:text-xl lg:text-2xl">
-                    Descripción
-                  </p>
-                  <p className="lg:text-lg celular:text-[15px]">
-                    {dataUser.descripcion}
-                  </p>
+                <p className="font-semibold text-2xl celular:text-[15px] md:text-xl lg:text-2xl">
+                  Dirección
+                </p>
+                <p className="lg:text-lg celular:text-[15px]">
+                  {dataUser.direccion}
+                </p>
 
-                  <p className="font-semibold text-2xl celular:text-[15px] md:text-xl lg:text-2xl">
-                    Dirección
-                  </p>
-                  <p className="lg:text-lg celular:text-[15px]">
-                    {dataUser.direccion}
-                  </p>
+                <p className="font-semibold text-2xl celular:text-[15px] md:text-xl lg:text-2xl">
+                  Teléfono
+                </p>
+                <p className="lg:text-lg celular:text-[15px]">
+                  {dataUser.telefono}
+                </p>
 
-                  <p className="font-semibold text-2xl celular:text-[15px] md:text-xl lg:text-2xl">
-                    Teléfono
-                  </p>
-                  <p className="lg:text-lg celular:text-[15px]">
-                    {dataUser.telefono}
-                  </p>
+                <p className="font-semibold text-2xl celular:text-[15px] md:text-xl lg:text-2xl">
+                  Instagram
+                </p>
+                <p className="lg:text-lg celular:text-[15px]">
+                  {dataUser.instagram}
+                </p>
 
-                  <p className="font-semibold text-2xl celular:text-[15px] md:text-xl lg:text-2xl">
-                    Instagram
-                  </p>
-                  <p className="lg:text-lg celular:text-[15px]">
-                    {dataUser.instagram}
-                  </p>
+                <p className="font-semibold text-2xl celular:text-[15px] md:text-xl lg:text-2xl">
+                  Facebook
+                </p>
+                <p className="lg:text-lg celular:text-[15px]">
+                  {dataUser.facebook}
+                </p>
+              </>
+            )}
 
-                  <p className="font-semibold text-2xl celular:text-[15px] md:text-xl lg:text-2xl">
-                    Facebook
-                  </p>
-                  <p className="lg:text-lg celular:text-[15px]">
-                    {dataUser.facebook}
-                  </p>
-                </>
-            }
-            
-            <div className="flex flex-row-reverse gap-4 mt-2">
+            <div className="flex flex-row-reverse gap-4">
               {sesionUser?.Rol === "Administrador" ? (
                 <>
                   <ButtonAdmin onClick={eliminar}>Eliminar</ButtonAdmin>
@@ -178,7 +194,7 @@ export function PerfilEmpresa() {
                   </ButtonAdmin>
                 </>
               ) : (
-                <ButtonAdmin>Editar Datos</ButtonAdmin>
+                <ButtonAdmin href="/editarPerfil">Editar Perfil</ButtonAdmin>
               )}
             </div>
           </div>
