@@ -276,31 +276,31 @@ export function RegistroEmpresa() {
                   <option
                     value=""
                     disabled
-                    className="bg-dark_theme minicel:text-xs sm:text-lg md:text-xl  "
+                    className="bg-dark_theme minicel:text-xs sm:text-lg md:text-xl dark:bg-[#d61540]"
                   >
                     Municipio
                   </option>
                   <option
                     value="1"
-                    className="bg-dark_theme minicel:text-xs sm:text-lg md:text-xl  "
+                    className="bg-dark_theme minicel:text-xs sm:text-lg md:text-xl dark:bg-[#d61540]"
                   >
                     Rionegro
                   </option>
                   <option
                     value="2"
-                    className="bg-dark_theme minicel:text-xs sm:text-lg md:text-xl  "
+                    className="bg-dark_theme minicel:text-xs sm:text-lg md:text-xl dark:bg-[#d61540]"
                   >
                     Marinilla
                   </option>
                   <option
                     value="3"
-                    className="bg-dark_theme minicel:text-xs sm:text-lg md:text-xl  "
+                    className="bg-dark_theme minicel:text-xs sm:text-lg md:text-xl dark:bg-[#d61540]"
                   >
                     Guarne
                   </option>
                   <option
                     value="4"
-                    className="bg-dark_theme minicel:text-xs sm:text-lg md:text-xl  "
+                    className="bg-dark_theme minicel:text-xs sm:text-lg md:text-xl dark:bg-[#d61540]"
                   >
                     Medellín
                   </option>
@@ -387,27 +387,27 @@ export function RegistroEmpresa() {
               )}
             </div>
             <div className="input-box animation flex flex-col w-full">
-                {/* Campo para Imagen */}
-                <label htmlFor="imagen" className="font-bold">
-                  Imagen
+              {/* Campo para Imagen */}
+              <label htmlFor="imagen" className="font-bold">
+                Imagen
+              </label>
+              <div className="mt-4 mb-4">
+                <label
+                  htmlFor="imagen"
+                  className=" cursor-pointer bg-white dark:bg-white border border-gray-300  rounded-lg py-2 px-4 text-sm text-gray-700 hover:text-white dark:text-second_color_lt dark:hover:text-white hover:bg-admin_card  dark:hover:bg-[#eb2651] transition-all duration-300"
+                >
+                  Seleccionar archivo
+                  <input
+                    type="file"
+                    accept="image/*"
+                    {...register("imagen")}
+                    className="hidden"
+                    id="imagen"
+                  />
                 </label>
-                <div className="mt-4 mb-4">
-                  <label
-                    htmlFor="imagen"
-                    className=" cursor-pointer bg-white dark:bg-white border border-gray-300  rounded-lg py-2 px-4 text-sm text-gray-700 hover:text-white dark:text-second_color_lt dark:hover:text-white hover:bg-admin_card  dark:hover:bg-[#eb2651] transition-all duration-300"
-                  >
-                    Seleccionar archivo
-                    <input
-                      type="file"
-                      accept="image/*"
-                      {...register("imagen")}
-                      className="hidden"
-                      id="imagen"
-                    />
-                  </label>
-                </div>
-                {errors.imagen && <span>{errors.imagen.message}</span>}
               </div>
+              {errors.imagen && <span>{errors.imagen.message}</span>}
+            </div>
             <button
               className="text-white mt-2 bg-color_switch_theme_dark w-full p-1 rounded-md hover:bg-[#8e5ee0]minicel:text-sm celular:text-base sm:text-lg md:text-xl minicel:mt-3 sm:mt-6 dark:bg-[#eb2651] dark:hover:bg-[#d61540] text-center"
               type="submit"

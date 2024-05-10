@@ -13,7 +13,6 @@ export function Registro() {
 
   return (
     <div className="form-box flex justify-center items-center flex-col gap-4 mt-3 w-full text-white  relative">
-
       <form
         action=""
         className="w-full text-base minicel:text-sm sm:text-lg md:text-xl "
@@ -55,7 +54,7 @@ export function Registro() {
               {...register("Firstlastname", {
                 required: {
                   value: true,
-                  message: "Escribe tu Primer aperllido", 
+                  message: "Escribe tu Primer aperllido",
                 },
               })}
             />
@@ -152,31 +151,31 @@ export function Registro() {
               <option
                 value=""
                 disabled
-                className="bg-dark_theme minicel:text-xs sm:text-lg md:text-xl  "
+                className="bg-dark_theme minicel:text-xs sm:text-lg md:text-xl dark:bg-[#d61540]"
               >
                 Municipio
               </option>
               <option
                 value="1"
-                className="bg-dark_theme minicel:text-xs sm:text-lg md:text-xl  "
+                className="bg-dark_theme minicel:text-xs sm:text-lg md:text-xl dark:bg-[#d61540]"
               >
                 Rionegro
               </option>
               <option
                 value="2"
-                className="bg-dark_theme minicel:text-xs sm:text-lg md:text-xl  "
+                className="bg-dark_theme minicel:text-xs sm:text-lg md:text-xl dark:bg-[#d61540]"
               >
                 Marinilla
               </option>
               <option
                 value="3"
-                className="bg-dark_theme minicel:text-xs sm:text-lg md:text-xl  "
+                className="bg-dark_theme minicel:text-xs sm:text-lg md:text-xl dark:bg-[#d61540]"
               >
                 Guarne
               </option>
               <option
                 value="4"
-                className="bg-dark_theme minicel:text-xs sm:text-lg md:text-xl  "
+                className="bg-dark_theme minicel:text-xs sm:text-lg md:text-xl  dark:bg-[#d61540]"
               >
                 Medellín
               </option>
@@ -239,13 +238,13 @@ export function Registro() {
           )}
         </div>
 
-        
-          <button className="text-white mt-2 bg-color_switch_theme_dark w-full p-1 rounded-md hover:bg-[#8e5ee0]
+        <button
+          className="text-white mt-2 bg-color_switch_theme_dark w-full p-1 rounded-md hover:bg-[#8e5ee0]
           minicel:text-sm celular:text-base sm:text-lg md:text-xl  
-          minicel:mt-3 sm:mt-6 dark:bg-[#eb2651] dark:hover:bg-[#d61540]">
-            Registro
-          </button>
-       
+          minicel:mt-3 sm:mt-6 dark:bg-[#eb2651] dark:hover:bg-[#d61540]"
+        >
+          Registro
+        </button>
       </form>
     </div>
   );
