@@ -68,8 +68,8 @@ export function ReservasUserProvider({ children }) {
 
             setServicios([])
             navigate('/reservas')
-            showToastMessage(res.message)
-            alert(res.message)
+            showToastMessage(res.data.message)
+            // alert(res.message)
         } catch (err) {
             showToastMessage(err)
             console.log(err)
