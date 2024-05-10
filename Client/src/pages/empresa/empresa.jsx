@@ -22,7 +22,7 @@ export function Empresa() {
               <Route path="/" element={<Index_empresa />}></Route>
               <Route path="/reserva" element={<ReservasCliente />}></Route>
               <Route
-                path="/reserva/reservaDescrip/:id"
+                path="/reserva/reservas"
                 element={<ReservaDescrip />}
               ></Route>
 
