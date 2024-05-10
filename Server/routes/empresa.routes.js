@@ -42,5 +42,7 @@ router.get("/reservasClientes", verificarToken, reservasCliente)
 router.post("/eliminarServicio", verificarToken, eliminarServicio);
 // ruta para obtener la reserva seleccionada por cliente
 router.post("/reservaSeleccionada",verificarToken, reservaSeleccionada);
+// ruta para cambiar el estado a la reserva del cliente
+router.get("/aceptarReserva",verificarToken, )
 
 export default router
