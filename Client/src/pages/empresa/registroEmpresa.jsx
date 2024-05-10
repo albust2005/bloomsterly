@@ -15,7 +15,6 @@ import { useNavigate } from 'react-router-dom'
 import axios from 'axios';
 
 export function RegistroEmpresa() {
-  const [imagenes, setImagenes] = useState()
   const navigate = useNavigate()
   const { showToastMessage } = useToastify()
   
@@ -30,15 +29,12 @@ export function RegistroEmpresa() {
 
   //esto es para el envío de los correos
   const form = useRef();
-  const capturarImagenes= (event)=>{
-    const files = event.target.file;
-    setImagenes(files)
-    console.log(imagenes);
-  }
   const createEmpresa = async (data) => {
     console.log(data)
     try {
-        const { Nit, Nombreempresa, descripcion, municipio, Instagram, Facebook, Password, direccion, telefono, email } = data
+        const { Nit, Nombreempresa, descripcion, municipio, Instagram, Facebook, Password, direccion, telefono, email, imagen } = data
+        const newFile = imagen[0]
+
         const formData = new FormData();
         formData.append('NIT', Nit)
         formData.append('nombre', Nombreempresa)
@@ -51,25 +47,22 @@ export function RegistroEmpresa() {
         formData.append('direccion',direccion)
         formData.append('telefono', telefono)
         formData.append('email',email)
-        formData.append('imagen', imagenes[0])
+        formData.append('imagen', newFile)
 
-        const respuesta = await axios.post("http://localhost:8000/registerempresa/", formData)
-
-        showToastMessage('Solicitud enviada correctamente')
-        showToastMessage('La respuesta le sera enviada al correo electronico registrado')
-
+        const respuesta = await axios.post("http://localhost:8000/registerempresa", formData)
+        
+        sendEmail()
         navigate('/')
 
         console.log(respuesta);
 
     } catch (error) {
-        console.log(error.message)
-        showToastMessage(error.message)
+        console.log(error)
+        showToastMessage(error.response.data.message)
     }
 };
 
-  const sendEmail = (e) => {
-    e.preventDefault();
+  const sendEmail = () => {
 
     emailjs
       .sendForm("service_el9wigr", "template_ws1cceq", form.current, {
@@ -81,7 +74,7 @@ export function RegistroEmpresa() {
           navigate("/")
         },
         (error) => {
-          console.log("FAILED...", error.text);
+          console.log("FAILED...", error);
         }
       );
   };
@@ -407,10 +400,7 @@ export function RegistroEmpresa() {
                     <input
                       type="file"
                       accept="image/*"
-                      // {...register("imagen", {
-                      //   required: "Este campo es requerido",
-                      // })}
-                      onChange={capturarImagenes}
+                      {...register("imagen")}
                       className="hidden"
                       id="imagen"
                     />
@@ -421,7 +411,6 @@ export function RegistroEmpresa() {
             <button
               className="text-white mt-2 bg-color_switch_theme_dark w-full p-1 rounded-md hover:bg-[#8e5ee0]minicel:text-sm celular:text-base sm:text-lg md:text-xl minicel:mt-3 sm:mt-6 dark:bg-[#eb2651] dark:hover:bg-[#d61540] text-center"
               type="submit"
-              onClick={sendEmail}
             >
               Enviar solicitud
             </button>
